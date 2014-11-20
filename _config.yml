@@ -1,0 +1,39 @@
+# Site settings
+title: colmarius
+name: Marius Colacioiu
+profession: Software Developer - Github Lover - Mountaineer
+email: hello@colmarius.net
+description: "This is my personal website were you can learn more about me."
+
+# Color settings (hex-codes without the leading hash-tag)
+color:
+  primary: 18bc9c
+  secondary: 2c3e50
+  secondary-dark: 233140
+
+# Footer settings
+footer:
+  copyright: Marius Colacioiu
+  location: Location
+  social: Around the Web
+
+# Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
+social:
+  - title: github
+    url: http://github.com/colmarius
+  - title: twitter
+    url: http://twitter.com/colmarius
+  - title: linkedin
+    url: https://www.linkedin.com/in/mariuscolacioiu
+  - title: google-plus
+    url: https://plus.google.com/+MariusColacioiu
+
+# Postal address (add as many lines as necessary)
+address:
+  - line: Via Giacomo Matteotti 43
+  - line: Parabiago, 20015
+  - line: Milan, Italy
+
+# Build settings
+markdown: kramdown
+permalink: pretty
