@@ -1,2 +1,3 @@
-Hello world! Here is where I will push my public website.
+#### colmarius.net
 
+Hi there this is my personal website. Feel free to look around!
