@@ -32,9 +32,9 @@ social:
 
 # Postal address (add as many lines as necessary)
 address:
-  - line: Via Giacomo Matteotti 43
-  - line: Parabiago, 20015
-  - line: Milan, Italy
+  - line: Ueberlandstrasse 13
+  - line: 8953 Dietikon
+  - line: Zuerich, Switzerland
 
 # Build settings
 markdown: kramdown
