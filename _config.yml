@@ -1,7 +1,7 @@
 # Site settings
 title: colmarius
 name: Marius Colacioiu
-profession: Software Developer - Github Lover - Mountaineer
+profession: Software Engineer
 email: hello@colmarius.net
 description: "This is my personal website were you can learn more about me."
 
@@ -25,16 +25,12 @@ social:
     url: http://twitter.com/colmarius
   - title: linkedin
     url: https://www.linkedin.com/in/mariuscolacioiu
-  - title: google-plus
-    url: https://plus.google.com/+MariusColacioiu
   - title: book
     url: https://www.goodreads.com/colmarius
 
 # Postal address (add as many lines as necessary)
 address:
-  - line: Rifertstrasse 22a
-  - line: 8134 Adliswil
-  - line: Zuerich, Switzerland
+  - line: Zürich, Switzerland
 
 # Build settings
 markdown: kramdown
