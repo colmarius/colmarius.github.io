@@ -7,9 +7,9 @@ description: "This is my personal website were you can learn more about me."
 
 # Color settings (hex-codes without the leading hash-tag)
 color:
-  primary: 18bc9c
-  secondary: 2c3e50
-  secondary-dark: 233140
+  primary: 00926B
+  secondary: 515E79
+  secondary-dark: 2B3853
 
 # Footer settings
 footer:
