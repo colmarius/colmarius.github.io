@@ -1,4 +1,4 @@
-#### colmarius.net
+#### colmarius.github.io
 
 Hi there, this is my personal website. Feel free to look around!
 
