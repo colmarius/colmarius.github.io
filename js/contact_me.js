@@ -12,12 +12,6 @@ $(function() {
     $('#notification > .alert-success').append('</div>')
   }
 
-  function clearFormFields() {
-    setTimeout(function() {
-      $('#contactForm').trigger('reset')
-    }, 2000)
-  }
-
   $('input,textarea').jqBootstrapValidation({
     preventSubmit: true,
     submitError: function($form, event, errors) {
