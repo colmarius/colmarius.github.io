@@ -1,6 +1,7 @@
 import './Header.css';
 
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { NAVIGATION_ITEMS } from '../config';
 import { NavItemProps } from '../types';
@@ -13,19 +14,20 @@ const HamburgerIcon = ({ onClick }: { onClick: () => void }) => (
   </div>
 );
 
-const NavItem = ({ item }: { item: NavItemProps }) => (
-  <li key={item.link} className="my-8 uppercase hover:text-indigo-700">
-    <a href={item.link} itemProp="url">
+const NavItem = ({ item, onClick = () => {} }: { item: NavItemProps; onClick?: () => void }) => (
+  <li key={item.link}>
+    <Link to={item.link} onClick={onClick} className="my-8 uppercase hover:text-indigo-700">
       {item.title}
-    </a>
+    </Link>
   </li>
 );
 
 const MobileMenu = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const toggleMobileMenu = () => setIsNavOpen((prev) => !prev);
   return (
     <section className="flex lg:hidden">
-      <HamburgerIcon onClick={() => setIsNavOpen((prev) => !prev)} />
+      <HamburgerIcon onClick={toggleMobileMenu} />
       <div className={isNavOpen ? 'show-menu-nav' : 'hide-menu-nav'}>
         <div className="absolute top-0 right-0 px-8 py-8" onClick={() => setIsNavOpen(false)}>
           <svg
@@ -43,7 +45,7 @@ const MobileMenu = () => {
         </div>
         <ul className="flex flex-col items-center justify-between min-h-[250px]">
           {NAVIGATION_ITEMS.map((item) => (
-            <NavItem key={item.link} item={item} />
+            <NavItem key={item.link} item={item} onClick={toggleMobileMenu} />
           ))}
         </ul>
       </div>
