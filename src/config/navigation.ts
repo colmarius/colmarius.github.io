@@ -1,4 +1,4 @@
-import { NavItemProps } from '../types';
+import { NavItemProps } from '@types';
 
 export const NAVIGATION_ITEMS: NavItemProps[] = [
   { link: '/about', title: 'About' },

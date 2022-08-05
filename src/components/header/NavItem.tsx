@@ -1,7 +1,6 @@
+import { NavItemProps } from '@types';
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-import { NavItemProps } from '../../types';
 
 export const NavItem = ({
   item,

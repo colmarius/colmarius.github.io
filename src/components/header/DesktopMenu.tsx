@@ -1,6 +1,6 @@
+import { NAVIGATION_ITEMS } from '@config';
 import React from 'react';
 
-import { NAVIGATION_ITEMS } from '../../config';
 import { NavItem } from './NavItem';
 
 export const DesktopMenu = () => (

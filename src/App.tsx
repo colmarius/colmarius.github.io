@@ -1,9 +1,8 @@
 import './App.css';
 
+import { Header } from '@components';
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
-import { Header } from './components';
 
 export const App = () => (
   <div className="container m-auto my-4">
