@@ -1,5 +1,5 @@
 import { NAVIGATION_ITEMS } from '@config';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { HamburgerIcon } from './HamburgerIcon';
 import { NavItem } from './NavItem';

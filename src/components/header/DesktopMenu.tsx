@@ -1,5 +1,4 @@
 import { NAVIGATION_ITEMS } from '@config';
-import React from 'react';
 
 import { NavItem } from './NavItem';
 
