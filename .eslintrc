@@ -1,0 +1,115 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:security/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "@typescript-eslint",
+    "jsx-a11y",
+    "import",
+    "fp",
+    "react-hooks",
+    "simple-import-sort"
+  ],
+  "rules": {
+    "sonarjs/no-identical-functions": "off",
+    "sonarjs/prefer-immediate-return": "off",
+    "react/require-render-return": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/ban-ts-ignore": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "ignoreRestSiblings": true
+      }
+    ],
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": "error",
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": "error",
+    "no-undef": "off",
+    "no-underscore-dangle": "off",
+    "no-useless-constructor": "off",
+    "fp/no-arguments": "error",
+    "fp/no-class": "error",
+    "fp/no-delete": "error",
+    "fp/no-events": "error",
+    "fp/no-get-set": "error",
+    "fp/no-loops": "error",
+    "fp/no-proxy": "error",
+    "fp/no-valueof-field": "error",
+    "no-var": "error",
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "specialLink": [
+          "to"
+        ]
+      }
+    ],
+    "react/default-props-match-prop-types": "off",
+    "react/prop-types": "off",
+    "react/destructuring-assignment": "off",
+    "react/require-default-props": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-wrap-multilines": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/function-component-definition": "off",
+    "react/no-unstable-nested-components": [
+      "error",
+      {
+        "allowAsProps": true
+      }
+    ],
+    "react/jsx-no-useless-fragment": [
+      "error",
+      {
+        "allowExpressions": true
+      }
+    ],
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "implicit-arrow-linebreak": "off",
+    "react/static-property-placement": "off",
+    "jsx-a11y/control-has-associated-label": "off",
+    "camelcase": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "printWidth": 100
+      }
+    ],
+    "react-hooks/rules-of-hooks": "error",
+    "import/no-absolute-path": "off",
+    "import/extensions": [
+      "error",
+      "never",
+      {
+        "json": "always"
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "import/no-default-export": "off",
+    "import/no-cycle": "off",
+    "max-lines": "error",
+    "max-params": "error"
+  }
+}
