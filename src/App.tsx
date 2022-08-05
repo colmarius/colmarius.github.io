@@ -5,8 +5,8 @@ import { AboutPage, ContactPage, HomePage, ResourcesPage, WorkPage } from '@page
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 export const App = () => (
-  <div className="container m-auto my-4">
-    <Router>
+  <Router>
+    <div className="m-auto mt-8 m-12">
       <Header />
       <Routes>
         <Route path="/about" element={<AboutPage />}></Route>
@@ -15,6 +15,6 @@ export const App = () => (
         <Route path="/contact" element={<ContactPage />}></Route>
         <Route path="/" element={<HomePage />}></Route>
       </Routes>
-    </Router>
-  </div>
+    </div>
+  </Router>
 );

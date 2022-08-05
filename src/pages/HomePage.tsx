@@ -1,3 +1,6 @@
 export const HomePage = () => (
-  <h1 className="text-3xl font-bold underline">Welcome to my new website!</h1>
+  <div className="leading-10 text-3xl antialiased font-light max-w-screen-sm">
+    Hi there! I’m Marius Colacioiu – <span className="font-medium">Engineering Leader</span> and{' '}
+    <span className="font-medium">Entrepreneur</span> from Zürich, Switzerland.
+  </div>
 );
