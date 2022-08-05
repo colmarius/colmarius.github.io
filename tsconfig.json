@@ -18,6 +18,7 @@
     "paths": {
       "@components": ["./src/components"],
       "@config": ["./src/config"],
+      "@pages": ["./src/pages"],
       "@types": ["./src/types"]
     }
   },

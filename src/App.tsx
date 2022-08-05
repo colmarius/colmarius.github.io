@@ -1,6 +1,7 @@
 import './App.css';
 
 import { Header } from '@components';
+import { AboutPage, ContactPage, HomePage, ResourcesPage, WorkPage } from '@pages';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 export const App = () => (
@@ -8,14 +9,11 @@ export const App = () => (
     <Router>
       <Header />
       <Routes>
-        <Route path="/about" element={<div>About page</div>}></Route>
-        <Route path="/work" element={<div>Work page</div>}></Route>
-        <Route path="/resources" element={<div>Resources page</div>}></Route>
-        <Route path="/contact" element={<div>Contact page</div>}></Route>
-        <Route
-          path="/"
-          element={<h1 className="text-3xl font-bold underline">Welcome to my new website!</h1>}
-        ></Route>
+        <Route path="/about" element={<AboutPage />}></Route>
+        <Route path="/work" element={<WorkPage />}></Route>
+        <Route path="/resources" element={<ResourcesPage />}></Route>
+        <Route path="/contact" element={<ContactPage />}></Route>
+        <Route path="/" element={<HomePage />}></Route>
       </Routes>
     </Router>
   </div>
