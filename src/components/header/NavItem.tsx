@@ -9,7 +9,11 @@ export const NavItem = ({
   onClick?: () => void;
 }) => (
   <li key={item.link}>
-    <Link to={item.link} onClick={onClick} className="my-8 uppercase hover:text-indigo-700">
+    <Link
+      to={item.link}
+      onClick={onClick}
+      className="font-light uppercase hover:text-indigo-700 my-8"
+    >
       {item.title}
     </Link>
   </li>

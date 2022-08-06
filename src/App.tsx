@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 export const App = () => (
   <Router>
-    <div className="m-auto mt-8 m-12">
+    <div className="m-auto m-16">
       <Header />
       <Routes>
         <Route path="/about" element={<AboutPage />}></Route>
