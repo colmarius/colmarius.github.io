@@ -26,7 +26,7 @@ const MainImage = () => (
 
 const AboutMeMessage = () => (
   <div className="lg:mx-28 md:mx-20">
-    {MESSAGES.ABOUT_ME.map((line, index) => (
+    {MESSAGES.HOME_PAGE.map((line, index) => (
       <p key={index} className="mb-8 font-light text-lg">
         {line}
       </p>
