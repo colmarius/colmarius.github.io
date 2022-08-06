@@ -1,5 +1,5 @@
 import { NavItemProps } from '@types';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export const NavItem = ({
   item,
@@ -9,12 +9,16 @@ export const NavItem = ({
   onClick?: () => void;
 }) => (
   <li key={item.link}>
-    <Link
+    <NavLink
       to={item.link}
       onClick={onClick}
-      className="font-light uppercase hover:text-indigo-700 my-8"
+      className={({ isActive }) =>
+        `font-light uppercase hover:text-indigo-600 my-8 border-indigo-600 ${
+          isActive ? 'text-indigo-600 border-b-2' : ''
+        }`
+      }
     >
       {item.title}
-    </Link>
+    </NavLink>
   </li>
 );
