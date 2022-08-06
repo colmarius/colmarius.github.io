@@ -1,4 +1,5 @@
 import { MESSAGES } from '@config';
+import { NavLink } from 'react-router-dom';
 
 import placeholder from '../assets/placeholder.png';
 
@@ -33,10 +34,25 @@ const AboutMeMessage = () => (
   </div>
 );
 
+const ReachOutMessage = () => (
+  <div className="leading-10 text-3xl antialiased font-light mb-20">
+    Checkout my{' '}
+    <NavLink to="work" className="text-indigo-600">
+      work
+    </NavLink>{' '}
+    experience or{' '}
+    <NavLink to="contact" className="text-indigo-600">
+      get in touch
+    </NavLink>{' '}
+    if you want to reach out.
+  </div>
+);
+
 export const HomePage = () => (
   <div className="lg:mx-20">
     <HelloMessage />
     <MainImage />
     <AboutMeMessage />
+    <ReachOutMessage />
   </div>
 );
