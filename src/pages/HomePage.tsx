@@ -12,6 +12,7 @@ const HelloMessage = () => (
 const MainImage = () => (
   <div className="mb-8">
     <img
+      className="flex m-auto"
       src={placeholder}
       width="342"
       height="396"
@@ -23,13 +24,13 @@ const MainImage = () => (
 );
 
 const AboutMeMessage = () => (
-  <>
+  <div className="lg:mx-28 md:mx-20">
     {MESSAGES.ABOUT_ME.map((line, index) => (
-      <p key={index} className="mb-8 font-light  text-lg">
+      <p key={index} className="mb-8 font-light text-lg">
         {line}
       </p>
     ))}
-  </>
+  </div>
 );
 
 export const HomePage = () => (
