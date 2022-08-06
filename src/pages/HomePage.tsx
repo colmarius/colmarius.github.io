@@ -1,11 +1,16 @@
+import { MESSAGES } from '@config';
+
 import placeholder from '../assets/placeholder.png';
 
-export const HomePage = () => (
-  <div className="lg:mx-12">
-    <div className="leading-10 text-3xl antialiased font-light max-w-screen-sm mb-8">
-      Hi there! I’m Marius Colacioiu – <span className="font-medium">Engineering Leader</span> and{' '}
-      <span className="font-medium">Entrepreneur</span> from Zürich, Switzerland.
-    </div>
+const HelloMessage = () => (
+  <div className="leading-10 text-3xl antialiased font-light max-w-screen-sm mb-20">
+    Hi there! I’m Marius Colacioiu – <span className="font-medium">Engineering Leader</span> and{' '}
+    <span className="font-medium">Entrepreneur</span> from Zürich, Switzerland.
+  </div>
+);
+
+const MainImage = () => (
+  <div className="mb-8">
     <img
       src={placeholder}
       width="342"
@@ -14,5 +19,23 @@ export const HomePage = () => (
       title="Marius Colacioiu"
       itemProp="image"
     ></img>
+  </div>
+);
+
+const AboutMeMessage = () => (
+  <>
+    {MESSAGES.ABOUT_ME.map((line, index) => (
+      <p key={index} className="mb-8 font-light  text-lg">
+        {line}
+      </p>
+    ))}
+  </>
+);
+
+export const HomePage = () => (
+  <div className="lg:mx-20">
+    <HelloMessage />
+    <MainImage />
+    <AboutMeMessage />
   </div>
 );
