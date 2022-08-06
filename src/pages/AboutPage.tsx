@@ -24,7 +24,12 @@ const WorkExperience = () => (
       <div key={index} className="mb-6">
         <p>{work.period}</p>
         <p className="text-medium font-bold">{work.title}</p>
-        <a href={work.link} target="_blank" rel="noreferrer" className="text-indigo-600">
+        <a
+          href={work.link}
+          target="_blank"
+          rel="noreferrer"
+          className="text-indigo-600 hover:text-indigo-500"
+        >
           {work.company}
         </a>
       </div>

@@ -10,11 +10,16 @@ export const ContactPage = () => (
       </p>
       <p>
         In that case{' '}
-        <a href="/" className="text-indigo-500">
+        <a href="/" className="text-indigo-700 hover:text-indigo-500">
           send me an email
         </a>{' '}
         or a message on{' '}
-        <a href={ABOUT_ME.LINKEDIN} className="text-indigo-500" target="_blank" rel="noreferrer">
+        <a
+          href={ABOUT_ME.LINKEDIN}
+          className="text-indigo-700 hover:text-indigo-500"
+          target="_blank"
+          rel="noreferrer"
+        >
           LinkedIn
         </a>
         .

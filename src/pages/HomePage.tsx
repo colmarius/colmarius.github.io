@@ -37,11 +37,11 @@ const AboutMeMessage = () => (
 const ReachOutMessage = () => (
   <div className="leading-10 text-3xl antialiased font-light mb-20">
     Checkout my{' '}
-    <NavLink to="work" className="text-indigo-600">
+    <NavLink to="work" className="text-indigo-700 hover:text-indigo-500">
       work
     </NavLink>{' '}
     experience or{' '}
-    <NavLink to="contact" className="text-indigo-600">
+    <NavLink to="contact" className="text-indigo-700 hover:text-indigo-500">
       get in touch
     </NavLink>{' '}
     if you want to reach out.
