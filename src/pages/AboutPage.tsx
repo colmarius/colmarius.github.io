@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 import { ABOUT_ME } from '../config/aboutMe';
 import { Page } from './Page';
 
