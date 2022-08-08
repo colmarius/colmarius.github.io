@@ -6,9 +6,10 @@
   "scripts": {
     "start": "vite",
     "dev": "vite",
+    "lint": "npx eslint --fix ./src",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "npx eslint --fix ./src"
+    "publish": "./scripts/publish.sh"
   },
   "dependencies": {
     "react": "18.2.0",
