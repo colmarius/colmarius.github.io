@@ -10,7 +10,10 @@ export const ContactPage = () => (
       </p>
       <p>
         In that case{' '}
-        <a href="/" className="text-indigo-700 hover:text-indigo-500">
+        <a
+          href="mailto:hello@marius-colacioiu.com"
+          className="text-indigo-700 hover:text-indigo-500"
+        >
           send me an email
         </a>{' '}
         or a message on{' '}
