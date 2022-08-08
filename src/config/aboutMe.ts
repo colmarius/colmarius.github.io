@@ -3,9 +3,10 @@ import type { Education, WorkExperience } from '@types';
 const LINKEDIN = 'https://www.linkedin.com/in/mariuscolacioiu/';
 
 const MESSAGE = [
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vulputate id diam dapibus interdum. Nam et odio a augue cursus blandit. Nullam mollis lacus augue, in efficitur nisl scelerisque a. Aenean sodales dictum turpis id finibus.',
-  'Nunc aliquet, nulla et faucibus tristique, nisi nisi eleifend sapien, eu porta urna justo vel ex. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum eros sapien, lacinia et maximus vitae, mattis nec sapien. Vestibulum semper suscipit elit, eget sodales libero accumsan sed.',
-  'Donec luctus consectetur risus ac sagittis. Praesent dui felis, sodales a cursus ac, pharetra sit amet erat. Phasellus sapien mi, euismod in lectus at, semper hendrerit felis. Ut varius sem sit amet efficitur sollicitudin. Sed finibus tincidunt nunc, et tristique sem commodo et. Aliquam nec odio egestas ante rutrum mollis. Nullam rhoncus blandit tempus. Integer fermentum orci quis nisl volutpat hendrerit.',
+  'I started coding at a young age, initially for school projects having been in both middle school and high school in classes having Informatics in the curriculum.',
+  'My big passion for programming developed during my Computer Science bachelor at the University of Milan, after doign advanced programming and security courses, and after discovering the open source movement and the Linux operating system.',
+  'I got hooked on startups since 2012, after following one of this first YC Startup School online courses. Since then I have joined several startups as one of the first employees which got modest successes (either an exit or IPO). Very early in my career I got lucky and worked for Gild a company based in San Francisco, where I have done my onboarding and got contaminated with the Silicon Valley startup mindset.',
+  'Since then I have always pushed myself to continue learning and find environments where I can learn and contribute the most. It gives me great joy being part of an amazing startup environment with great mission, team and culture.',
 ];
 
 const WORK_EXPERIENCE: WorkExperience[] = [
@@ -43,7 +44,7 @@ const WORK_EXPERIENCE: WorkExperience[] = [
 
 const EDUCATION: Education[] = [
   {
-    period: 'Graduated in 2012',
+    period: 'Graduated in 2012 cum laude',
     title: 'Master in Computer Science',
     university: 'University of Milan, Italy',
   },
