@@ -1,4 +1,4 @@
-import { Page } from './Page';
+import { Page } from '@components';
 
 export const ResourcesPage = () => (
   <Page title="Resources">

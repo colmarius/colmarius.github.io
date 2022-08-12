@@ -1,4 +1,4 @@
-import { Page } from './Page';
+import { Page } from '@components';
 
 export const WorkPage = () => (
   <Page title="Work">

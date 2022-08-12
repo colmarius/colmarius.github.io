@@ -1,5 +1,5 @@
-import { ABOUT_ME } from '../config/aboutMe';
-import { Page } from './Page';
+import { Page } from '@components';
+import { ABOUT_ME } from '@config';
 
 export const ContactPage = () => (
   <Page title="Contact">
