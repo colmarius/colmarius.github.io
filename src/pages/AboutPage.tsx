@@ -1,6 +1,5 @@
-import { Page } from '@components';
+import { Page, Section } from '@components';
 import { ABOUT_ME } from '@config';
-import type { ReactNode } from 'react';
 
 const AboutMeMessage = () => (
   <div className="mb-20">
@@ -9,21 +8,6 @@ const AboutMeMessage = () => (
         {line}
       </p>
     ))}
-  </div>
-);
-
-const Section = ({
-  title,
-  children,
-  className,
-}: {
-  title: string;
-  children: ReactNode;
-  className: string;
-}) => (
-  <div className={className}>
-    <h1 className="text-3xl mb-6">{title}</h1>
-    <div className="text-lg font-extralight">{children}</div>
   </div>
 );
 
