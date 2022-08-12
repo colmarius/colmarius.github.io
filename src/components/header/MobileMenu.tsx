@@ -28,7 +28,7 @@ export const MobileMenu = () => {
             <line x1="2" y1="2" x2="22" y2="22" />
           </svg>
         </div>
-        <ul className="flex flex-col items-center justify-between min-h-[100px]">
+        <ul className="flex flex-col items-center justify-between min-h-[150px]">
           {NAVIGATION_ITEMS.map((item) => (
             <NavItem key={item.link} item={item} onClick={toggleMobileMenu} />
           ))}
