@@ -1,4 +1,4 @@
-import type { Education, WorkExperience } from '@types';
+import type { EducationProps, WorkExperienceProps } from '@types';
 
 const LINKEDIN = 'https://www.linkedin.com/in/mariuscolacioiu/';
 
@@ -9,7 +9,7 @@ const MESSAGE = [
   'Since then I have always pushed myself to continue learning and find environments where I can learn and contribute the most. It gives me great joy being part of an amazing startup environment with great mission, team and culture.',
 ];
 
-const WORK_EXPERIENCE: WorkExperience[] = [
+const WORK_EXPERIENCE: WorkExperienceProps[] = [
   {
     period: '2019 - Present',
     title: 'Engineering Leader',
@@ -42,7 +42,7 @@ const WORK_EXPERIENCE: WorkExperience[] = [
   },
 ];
 
-const EDUCATION: Education[] = [
+const EDUCATION: EducationProps[] = [
   {
     period: 'Graduated in 2012 cum laude',
     title: 'Master in Computer Science',
