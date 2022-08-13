@@ -8,11 +8,14 @@ declare global {
 }
 
 export const setupGoogleAnalytics = () => {
+  const configKey = import.meta.env.VITE_GOOGLE_ANALYTICS_KEY;
+  if (!configKey) return;
+
   window.dataLayer = window.dataLayer || [];
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function gtag(_: string, __: unknown) {
     window.dataLayer.push(arguments);
   }
   gtag('js', new Date());
-  gtag('config', import.meta.env.VITE_GOOGLE_ANALYTICS_KEY);
+  gtag('config', configKey);
 };
