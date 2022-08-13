@@ -2,7 +2,7 @@ import './App.css';
 
 import { Footer, Header } from '@components';
 import { AboutPage, ContactPage, HomePage, ResourcesPage, WorkPage } from '@pages';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 
 export const App = () => (
   <Router>
