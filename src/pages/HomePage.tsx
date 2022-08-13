@@ -1,4 +1,5 @@
-import { MESSAGES } from '@config';
+import { MESSAGES, trackPage } from '@config';
+import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import placeholder from '../assets/placeholder.png';
@@ -48,11 +49,14 @@ const ReachOutMessage = () => (
   </div>
 );
 
-export const HomePage = () => (
-  <div className="lg:mx-20">
-    <HelloMessage />
-    <MainImage />
-    <AboutMeMessage />
-    <ReachOutMessage />
-  </div>
-);
+export const HomePage = () => {
+  useEffect(() => trackPage('/'));
+  return (
+    <div className="lg:mx-20">
+      <HelloMessage />
+      <MainImage />
+      <AboutMeMessage />
+      <ReachOutMessage />
+    </div>
+  );
+};

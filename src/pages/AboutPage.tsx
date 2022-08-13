@@ -1,5 +1,6 @@
 import { ArrowRight, Page, Section } from '@components';
-import { ABOUT_ME } from '@config';
+import { ABOUT_ME, trackPage } from '@config';
+import { useEffect } from 'react';
 
 const AboutMeMessage = () => (
   <div className="mb-20">
@@ -53,12 +54,15 @@ const ViewMyFullCv = () => (
   </a>
 );
 
-export const AboutPage = () => (
-  <Page title="About">
-    <AboutMeMessage />
-    <WorkExperience />
-    <Education />
-    <hr className="w-40 bg-indigo-600 mb-5" />
-    <ViewMyFullCv />
-  </Page>
-);
+export const AboutPage = () => {
+  useEffect(() => trackPage('/about'));
+  return (
+    <Page title="About">
+      <AboutMeMessage />
+      <WorkExperience />
+      <Education />
+      <hr className="w-40 bg-indigo-600 mb-5" />
+      <ViewMyFullCv />
+    </Page>
+  );
+};
