@@ -11,15 +11,21 @@ const MESSAGE = [
 
 const WORK_EXPERIENCE: WorkExperienceProps[] = [
   {
-    period: '2019 - Present',
+    period: '2023 - Present',
+    title: 'Founder and Head of Engineering',
+    company: 'Norm',
+    link: 'https://norm.ch/',
+  },
+  {
+    period: '2019 - 2023',
     title: 'Engineering Leader',
-    company: 'Ledgy AG',
+    company: 'Ledgy',
     link: 'https://ledgy.com/',
   },
   {
     period: '2018 - 2019',
     title: 'Full Stack Engineer',
-    company: 'On AG',
+    company: 'On',
     link: 'https://www.crunchbase.com/organization/on-ag',
   },
   {
@@ -31,7 +37,7 @@ const WORK_EXPERIENCE: WorkExperienceProps[] = [
   {
     period: '2015 - 2016',
     title: 'Lead Software Engineer',
-    company: 'BuddyBroker AG',
+    company: 'BuddyBroker',
     link: 'https://www.crunchbase.com/organization/buddy-broker',
   },
   {
