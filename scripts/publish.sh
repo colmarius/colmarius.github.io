@@ -1,6 +1,6 @@
 #!/bin/sh
 
-git checkout -B master
+git checkout -B main
 npm run build
 cp -r ./dist/* .
 git add .
