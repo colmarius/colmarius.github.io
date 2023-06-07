@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import placeholder from '../assets/placeholder.png';
 
 const HelloMessage = () => (
-  <div className="leading-10 text-3xl antialiased font-light max-w-screen-sm mb-20">
+  <div className="leading-10 text-3xl antialiased font-light max-w-screen-sm mb-20 mx-auto">
     Hi there! I’m Marius Colacioiu – <span className="font-medium">Engineering Leader</span> and{' '}
     <span className="font-medium">Entrepreneur</span> from Zürich, Switzerland.
   </div>
@@ -36,7 +36,7 @@ const AboutMeMessage = () => (
 );
 
 const ReachOutMessage = () => (
-  <div className="leading-10 text-3xl antialiased font-light mb-20">
+  <div className="leading-10 text-3xl antialiased font-light mb-20 mx-auto">
     Checkout my{' '}
     <NavLink to="about" className="text-indigo-700 hover:text-indigo-500">
       work

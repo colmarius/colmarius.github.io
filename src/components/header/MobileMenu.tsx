@@ -8,13 +8,10 @@ export const MobileMenu = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const toggleMobileMenu = () => setIsNavOpen((prev) => !prev);
   return (
-    <section className="flex lg:hidden">
+    <section className="flex sm:hidden">
       <HamburgerIcon onClick={toggleMobileMenu} />
       <div className={isNavOpen ? 'show-menu-nav' : 'hide-menu-nav'}>
-        <div
-          className="absolute top-0 right-0 mr-8 mt-12 px-8 py-8"
-          onClick={() => setIsNavOpen(false)}
-        >
+        <div className="absolute top-0 right-0 mt-1 p-4" onClick={() => setIsNavOpen(false)}>
           <svg
             className="h-8 w-8 text-gray-600"
             viewBox="0 0 24 24"

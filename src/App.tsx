@@ -10,7 +10,7 @@ export const App = () => {
   useEffect(() => setupGoogleAnalytics());
   return (
     <Router>
-      <div className="m-auto my-20 mx-16 lg:mx-28">
+      <div className="mx-auto max-w-4xl p-4 sm:p-6 lg:p-8">
         <div className="flex flex-col h-[80vh] justify-between">
           <Header />
           <Routes>
