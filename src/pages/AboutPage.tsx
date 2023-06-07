@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 const AboutMeMessage = () => (
   <div className="mb-20">
     {ABOUT_ME.MESSAGE.map((line, index) => (
-      <p key={index} className="mb-8 font-light text-md">
+      <p key={index} className="mb-8 font-light text-lg sm:text-md">
         {line}
       </p>
     ))}

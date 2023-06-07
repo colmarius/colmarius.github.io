@@ -6,7 +6,7 @@ export const ContactPage = () => {
   useEffect(() => trackPage('/contact'));
   return (
     <Page title="Contact">
-      <div className="text-lg leading-loose">
+      <div className="text-xl sm:text-lg leading-loose">
         <p>
           Get in touch if you find my expertise useful and think I can help, or if you simply want
           to say hello.
