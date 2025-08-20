@@ -13,7 +13,7 @@ const NAVIGATION_ITEMS = [
 ---
 
 <header class="flex items-center justify-between pb-20">
-  <a href="/" class="text-bold text-3xl hover:text-indigo-600">
+  <a href="/" class="text-bold text-3xl hover:text-indigo-600 transition-colors duration-200">
     colmarius
   </a>
   <nav>
@@ -23,7 +23,7 @@ const NAVIGATION_ITEMS = [
         <li>
           <a
             href={item.link}
-            class={`font-light uppercase hover:text-indigo-600 my-8 border-indigo-600 ${
+            class={`font-light uppercase hover:text-indigo-600 my-8 border-indigo-600 transition-colors duration-200 ${
               currentPath === item.link ? 'text-indigo-600 border-b-2' : ''
             }`}
           >
@@ -67,7 +67,7 @@ const NAVIGATION_ITEMS = [
             <a
               href={item.link}
               onclick="closeMobileMenu()"
-              class={`font-light uppercase hover:text-indigo-600 my-8 border-indigo-600 ${
+              class={`font-light uppercase hover:text-indigo-600 my-8 border-indigo-600 transition-colors duration-200 ${
                 currentPath === item.link ? 'text-indigo-600 border-b-2' : ''
               }`}
             >
