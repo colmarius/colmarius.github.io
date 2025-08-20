@@ -9,13 +9,13 @@ This is an Astro-based static site generator with React integration, configured 
 - **Dev server**: `npm run dev` or `npm start`
 - **Build**: `npm run build`
 - **Preview**: `npm run preview`
-- **Lint**: `npm run lint`
+- **Lint**: `npm run lint` (not implemented yet)
 - **Deploy**: `npm run publish` (builds and commits to main branch)
 
 ## Architecture
 
-- **Framework**: Astro v4 with React integration
-- **Styling**: TailwindCSS
+- **Framework**: Astro v5 with React integration
+- **Styling**: TailwindCSS v4
 - **Deployment**: GitHub Pages (static generation)
 - **Routing**: React Router with hash routing for SPA compatibility
 

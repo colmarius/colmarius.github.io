@@ -1,20 +1,19 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+
 import react from '@astrojs/react';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://colmarius.github.io',
-  integrations: [
-    react(),
-    tailwind()
-  ],
+  integrations: [react()],
   
   // Configure for GitHub Pages deployment
   output: 'static',
-  
+
   vite: {
+    plugins: [tailwindcss()],
     resolve: {
       alias: {
         '@components': '/src/components',

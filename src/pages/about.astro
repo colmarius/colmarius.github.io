@@ -1,104 +1,109 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="About - Marius Colacioiu">
-  <main>
-    <div class="mx-auto xl:mx-40 md:mx-20">
-      <h1 class="text-4xl mb-6">About</h1>
-      <div class="font-light">
-        <!-- About Me Message -->
-        <div class="mb-20">
-          <p class="mb-8 font-light text-lg sm:text-md">
-            I started coding at a young age, initially for school projects having been in both middle school and high school in classes having Informatics in the curriculum.
-          </p>
-          <p class="mb-8 font-light text-lg sm:text-md">
-            My big passion for programming developed during my Computer Science bachelor at the University of Milan, after doing advanced programming and security courses, and having discovering the open source movement and the Linux operating system.
-          </p>
-          <p class="mb-8 font-light text-lg sm:text-md">
-            I got hooked on startups since 2012, after following one of the first YC Startup School online courses. Since then I have joined several startups as one of the first employees which got modest successes (either an exit or IPO). Very early in my career I got lucky and worked for Gild a company based in San Francisco, where I have done my onboarding and got contaminated with the Silicon Valley startup mindset.
-          </p>
-          <p class="mb-8 font-light text-lg sm:text-md">
-            Since then I have always pushed myself to continue learning and find environments where I can learn and contribute the most. It gives me great joy being part of an amazing startup environment with great mission, team and culture.
-          </p>
-        </div>
+  <div>
+    <h1 class="text-3xl font-medium mb-10">About</h1>
+    
+    <!-- About Me Message -->
+    <div class="mb-20">
+      <p class="mb-8 font-light text-lg sm:text-md">
+        I started coding at a young age, initially for school projects having been in both middle school and high school in classes having Informatics in the curriculum.
+      </p>
+      <p class="mb-8 font-light text-lg sm:text-md">
+        My big passion for programming developed during my Computer Science bachelor at the University of Milan, after doing advanced programming and security courses, and having discovering the open source movement and the Linux operating system.
+      </p>
+      <p class="mb-8 font-light text-lg sm:text-md">
+        I got hooked on startups since 2012, after following one of the first YC Startup School online courses. Since then I have joined several startups as one of the first employees which got modest successes (either an exit or IPO). Very early in my career I got lucky and worked for Gild a company based in San Francisco, where I have done my onboarding and got contaminated with the Silicon Valley startup mindset.
+      </p>
+      <p class="mb-8 font-light text-lg sm:text-md">
+        Since then I have always pushed myself to continue learning and find environments where I can learn and contribute the most. It gives me great joy being part of an amazing startup environment with great mission, team and culture.
+      </p>
+    </div>
 
-        <!-- Work Experience Section -->
-        <section class="mb-20">
-          <h2 class="text-xl font-medium text-slate-900 mb-6">Work Experience</h2>
-          <div class="mb-6">
-            <p>2023 - Present</p>
-            <p class="text-medium font-bold">Founder and Head of Engineering</p>
-            <a href="https://norm.ch/" target="_blank" rel="noreferrer" class="text-indigo-600 hover:text-indigo-500">
-              Norm
-            </a>
-          </div>
-          <div class="mb-6">
-            <p>2019 - 2023</p>
-            <p class="text-medium font-bold">Engineering Leader</p>
-            <a href="https://ledgy.com/" target="_blank" rel="noreferrer" class="text-indigo-600 hover:text-indigo-500">
-              Ledgy
-            </a>
-          </div>
-          <div class="mb-6">
-            <p>2018 - 2019</p>
-            <p class="text-medium font-bold">Full Stack Engineer</p>
-            <a href="https://www.crunchbase.com/organization/on-ag" target="_blank" rel="noreferrer" class="text-indigo-600 hover:text-indigo-500">
-              On
-            </a>
-          </div>
-          <div class="mb-6">
-            <p>2016 - 2018</p>
-            <p class="text-medium font-bold">Engineering Team Lead</p>
-            <a href="https://www.crunchbase.com/organization/xing" target="_blank" rel="noreferrer" class="text-indigo-600 hover:text-indigo-500">
-              XING
-            </a>
-          </div>
-          <div class="mb-6">
-            <p>2015 - 2016</p>
-            <p class="text-medium font-bold">Lead Software Engineer</p>
-            <a href="https://www.crunchbase.com/organization/buddy-broker" target="_blank" rel="noreferrer" class="text-indigo-600 hover:text-indigo-500">
-              BuddyBroker
-            </a>
-          </div>
-          <div class="mb-6">
-            <p>2013 - 2015</p>
-            <p class="text-medium font-bold">Frontend Software Engineer</p>
-            <a href="https://www.crunchbase.com/organization/gild" target="_blank" rel="noreferrer" class="text-indigo-600 hover:text-indigo-500">
-              Gild
-            </a>
-          </div>
-        </section>
-
-        <!-- Education Section -->
-        <section class="mb-10">
-          <h2 class="text-xl font-medium text-slate-900 mb-6">Education</h2>
-          <div class="mb-6">
-            <p>Graduated in 2012 cum laude</p>
-            <p class="text-medium font-bold">Master in Computer Science</p>
-            <p>University of Milan, Italy</p>
-          </div>
-          <div class="mb-6">
-            <p>Graduated in 2008</p>
-            <p class="text-medium font-bold">Bachelor in Computer Science</p>
-            <p>University of Milan, Italy</p>
-          </div>
-        </section>
-
-        <!-- View Full CV -->
-        <hr class="w-40 bg-indigo-600 mb-5" />
-        <a
-          class="flex text-medium hover:text-indigo-600 mb-20 items-center"
-          href="https://marius-colacioiu.com/cv/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <strong class="text-xl">View my full CV</strong>
-          <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
+    <!-- Work Experience -->
+    <section class="mb-20">
+      <h2 class="text-2xl font-medium mb-8">Work Experience</h2>
+      
+      <div class="mb-6">
+        <p>2023 - Present</p>
+        <p class="text-medium font-bold">Founder and Head of Engineering</p>
+        <a href="https://norm.ch/" target="_blank" rel="noreferrer" class="text-indigo-600 hover:text-indigo-500">
+          Norm
         </a>
       </div>
-    </div>
-  </main>
+      
+      <div class="mb-6">
+        <p>2019 - 2023</p>
+        <p class="text-medium font-bold">Engineering Leader</p>
+        <a href="https://ledgy.com/" target="_blank" rel="noreferrer" class="text-indigo-600 hover:text-indigo-500">
+          Ledgy
+        </a>
+      </div>
+      
+      <div class="mb-6">
+        <p>2018 - 2019</p>
+        <p class="text-medium font-bold">Full Stack Engineer</p>
+        <a href="https://www.crunchbase.com/organization/on-ag" target="_blank" rel="noreferrer" class="text-indigo-600 hover:text-indigo-500">
+          On
+        </a>
+      </div>
+      
+      <div class="mb-6">
+        <p>2016 - 2018</p>
+        <p class="text-medium font-bold">Engineering Team Lead</p>
+        <a href="https://www.crunchbase.com/organization/xing" target="_blank" rel="noreferrer" class="text-indigo-600 hover:text-indigo-500">
+          XING
+        </a>
+      </div>
+      
+      <div class="mb-6">
+        <p>2015 - 2016</p>
+        <p class="text-medium font-bold">Lead Software Engineer</p>
+        <a href="https://www.crunchbase.com/organization/buddy-broker" target="_blank" rel="noreferrer" class="text-indigo-600 hover:text-indigo-500">
+          BuddyBroker
+        </a>
+      </div>
+      
+      <div class="mb-6">
+        <p>2013 - 2015</p>
+        <p class="text-medium font-bold">Frontend Software Engineer</p>
+        <a href="https://www.crunchbase.com/organization/gild" target="_blank" rel="noreferrer" class="text-indigo-600 hover:text-indigo-500">
+          Gild
+        </a>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-medium mb-8">Education</h2>
+      
+      <div class="mb-6">
+        <p>Graduated in 2012 cum laude</p>
+        <p class="text-medium font-bold">Master in Computer Science</p>
+        <p>University of Milan, Italy</p>
+      </div>
+      
+      <div class="mb-6">
+        <p>Graduated in 2008</p>
+        <p class="text-medium font-bold">Bachelor in Computer Science</p>
+        <p>University of Milan, Italy</p>
+      </div>
+    </section>
+
+    <hr class="w-40 bg-indigo-600 mb-5" />
+    
+    <a
+      class="flex text-medium hover:text-indigo-600 mb-20"
+      href="https://marius-colacioiu.com/cv/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <strong class="text-xl">View my full CV</strong>
+      <svg class="ml-2 mt-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </a>
+  </div>
 </BaseLayout>

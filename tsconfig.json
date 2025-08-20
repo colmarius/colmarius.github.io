@@ -1,27 +1,22 @@
 {
+  "extends": "astro/tsconfigs/strict",
+  "include": [
+    ".astro/types.d.ts",
+    "**/*"
+  ],
+  "exclude": [
+    "dist"
+  ],
   "compilerOptions": {
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "allowJs": false,
-    "skipLibCheck": true,
-    "esModuleInterop": false,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
     "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "baseUrl": ".",
     "paths": {
-      "@components": ["./src/components"],
-      "@config": ["./src/config"],
-      "@pages": ["./src/pages"],
-      "@types": ["./src/types"]
+      "@components/*": ["./src/components/*"],
+      "@config/*": ["./src/config/*"],
+      "@types/*": ["./src/types/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@layouts/*": ["./src/layouts/*"]
     }
-  },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  }
 }
