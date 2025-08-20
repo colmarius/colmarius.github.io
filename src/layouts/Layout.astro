@@ -1,10 +1,10 @@
 ---
-import "../styles/global.css";
-import Navigation from "@components/Navigation.astro";
+import '../styles/global.css';
+import Navigation from '@components/Navigation.astro';
 
 type Props = {
 	title: string;
-}
+};
 
 const { title } = Astro.props;
 const currentPath = Astro.url.pathname;
@@ -52,7 +52,7 @@ const currentPath = Astro.url.pathname;
         </footer>
       </div>
     </div>
-    
+
     <!-- Page Transition Script -->
     <script>
       // Smooth page transitions
@@ -60,7 +60,7 @@ const currentPath = Astro.url.pathname;
         // Add fade-in effect to current page
         document.body.style.opacity = '0';
         document.body.style.transition = 'opacity 300ms ease-in-out';
-        
+
         // Fade in the page
         requestAnimationFrame(() => {
           document.body.style.opacity = '1';
@@ -68,25 +68,25 @@ const currentPath = Astro.url.pathname;
 
         // Handle navigation clicks
         const links = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href^="../"]');
-        
+
         links.forEach(link => {
           link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
-            
+
             // Skip if external link, hash link, or special behavior
-            if (!href || 
-                href.startsWith('http') || 
-                href.startsWith('#') || 
+            if (!href ||
+                href.startsWith('http') ||
+                href.startsWith('#') ||
                 (link as HTMLAnchorElement).target === '_blank' ||
                 link.hasAttribute('download')) {
               return;
             }
-            
+
             e.preventDefault();
-            
+
             // Fade out current page
             document.body.style.opacity = '0';
-            
+
             // Navigate after fade out completes
             setTimeout(() => {
               window.location.href = href;
