@@ -7,5 +7,59 @@
     "description": "A History of Information Networks from the Stone Age to AI. Harari explores how information networks have shaped human civilization and what AI means for our future.",
     "image": "https://www.ynharari.com/wp-content/uploads/2024/01/NEXUS-UK-website-cover-1.png",
     "category": "Technology & Society"
+  },
+  {
+    "id": 2,
+    "title": "Collapse: How Societies Choose to Fail or Succeed",
+    "author": "Jared Diamond",
+    "url": "https://www.goodreads.com/book/show/475.Collapse",
+    "description": "Examines why some societies collapse while others succeed, focusing on environmental damage, climate change, population growth, and political choices. Draws parallels between historical civilizations and contemporary challenges.",
+    "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1441419222i/475.jpg",
+    "category": "History & Environment"
+  },
+  {
+    "id": 3,
+    "title": "Our Inner Ape: A Leading Primatologist Explains Why We Are Who We Are",
+    "author": "Frans de Waal",
+    "url": "https://www.goodreads.com/book/show/257106.Our_Inner_Ape",
+    "description": "Explores human nature by examining the behavior of chimpanzees and bonobos, our closest primate relatives. Reveals what ape behavior can teach us about power, sex, violence, kindness, and morality.",
+    "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1583612259i/257106.jpg",
+    "category": "Psychology & Biology"
+  },
+  {
+    "id": 4,
+    "title": "Clear Thinking: Turning Ordinary Moments into Extraordinary Results",
+    "author": "Shane Parrish",
+    "url": "https://www.goodreads.com/book/show/75665850-clear-thinking",
+    "description": "Provides tools and mental models to help readers recognize opportunities to think clearly in critical moments. A manual for optimizing decision-making and achieving desired outcomes through intentional thinking.",
+    "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1685350454i/75665850.jpg",
+    "category": "Self-Improvement & Decision Making"
+  },
+  {
+    "id": 5,
+    "title": "It Doesn't Have to Be Crazy at Work",
+    "author": "Jason Fried, David Heinemeier Hansson",
+    "url": "https://www.goodreads.com/book/show/38900866-it-doesn-t-have-to-be-crazy-at-work",
+    "description": "Challenges the notion that long hours and aggressive hustle are necessary for business success. Advocates for a 'calm company' culture with less waste and fewer distractions for better productivity.",
+    "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1526057292i/38900866.jpg",
+    "category": "Business & Management"
+  },
+  {
+    "id": 6,
+    "title": "The Great CEO Within: The Tactical Guide to Company Building",
+    "author": "Matt Mochary",
+    "url": "https://www.goodreads.com/book/show/48691943-the-great-ceo-within",
+    "description": "A Silicon Valley CEO coach shares leadership and business-operating tools for efficiently scaling from startup to corporation. Provides guidance on accountability, problem-solving, and transparent feedback systems.",
+    "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1572993319i/48691943.jpg",
+    "category": "Business & Leadership"
+  },
+  {
+    "id": 7,
+    "title": "The Power Law: Venture Capital and the Making of the New Future",
+    "author": "Sebastian Mallaby",
+    "url": "https://www.goodreads.com/book/show/58009109-the-power-law",
+    "description": "Explores the history and impact of venture capital firms in Silicon Valley and their role in shaping innovation and the global economy. Examines the 'power law' principle where a few massive successes compensate for many failures.",
+    "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1624825190i/58009109.jpg",
+    "category": "Finance & Innovation"
   }
 ]
