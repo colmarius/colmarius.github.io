@@ -7,7 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://colmarius.github.io',
+  site: 'https://marius-colacioiu.com',
   integrations: [react()],
   
   // Configure for GitHub Pages deployment

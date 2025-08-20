@@ -7,7 +7,6 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "publish": "./scripts/publish.sh",
     "astro": "astro"
   },
   "dependencies": {
