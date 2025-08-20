@@ -7,11 +7,13 @@ import Layout from '@layouts/Layout.astro';
 ---
 
 <Layout title="About - Marius Colacioiu">
-  <div>
-    <h1 class="text-3xl font-medium mb-10">About</h1>
-    <AboutMeMessage />
-    <WorkExperience />
-    <Education />
-    <ViewMyFullCvLink />
+  <div class="max-w-4xl">
+    <h1 class="text-4xl sm:text-5xl font-light mb-16 text-center">About</h1>
+    <div class="space-y-16">
+      <AboutMeMessage />
+      <WorkExperience />
+      <Education />
+      <ViewMyFullCvLink />
+    </div>
   </div>
 </Layout>
