@@ -1,8 +1,8 @@
 export interface BaseProps {
-	className?: string;
+  className?: string;
 }
 
 export interface PageProps {
-	title: string;
-	description?: string;
+  title: string;
+  description?: string;
 }
