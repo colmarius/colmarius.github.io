@@ -9,7 +9,8 @@ This is an Astro-based static site generator with React integration, configured 
 - **Dev server**: `npm run dev` or `npm start`
 - **Build**: `npm run build`
 - **Preview**: `npm run preview`
-- **Lint**: `npm run lint` (not implemented yet)
+- **Lint**: `npm run lint` (Biome linting with auto-fix)
+- **Lint & Format**: `npm run lint:fix` (Biome check with formatting and fixes)
 - **Deploy**: `npm run publish` (builds and commits to main branch)
 
 ## Architecture
@@ -29,9 +30,11 @@ This is an Astro-based static site generator with React integration, configured 
 
 ## Linting & Formatting
 
-- ESLint with Airbnb + TypeScript rules
-- Prettier with Astro plugin
-- Supports `.astro`, `.tsx`, `.ts`, `.jsx`, `.js` files
+- **Biome**: Modern linter and formatter for JavaScript, TypeScript, and web frameworks
+- **Configuration**: Tab indentation, double quotes, recommended rules enabled
+- **Auto-fix**: Import organization and code fixes on save
+- **File support**: `.astro`, `.tsx`, `.ts`, `.jsx`, `.js` files
+- **Special rules**: Relaxed linting for `.astro` files (unused variables/imports disabled)
 
 ## Code Guidelines
 
