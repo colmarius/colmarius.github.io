@@ -1,37 +1,11 @@
 ---
+import ContactInfo from '@components/contact/ContactInfo.astro';
 import Layout from '@layouts/Layout.astro';
 ---
 
 <Layout title="Contact - Marius Colacioiu">
   <div>
     <h1 class="text-3xl font-medium mb-10">Contact</h1>
-
-    <div class="text-xl sm:text-lg leading-loose">
-      <p>
-        Get in touch if you find my expertise useful and think I can help, or if you simply want to say hello.
-      </p>
-      <p>
-        In that case{' '}
-        <a
-          href="mailto:hello@marius-colacioiu.com"
-          class="text-indigo-700 hover:text-indigo-500"
-        >
-          send me an email
-        </a>{' '}
-        or a message on{' '}
-        <a
-          href="https://www.linkedin.com/in/mariuscolacioiu/"
-          class="text-indigo-700 hover:text-indigo-500"
-          target="_blank"
-          rel="noreferrer"
-        >
-          LinkedIn
-        </a>
-        .
-      </p>
-      <p>
-        <span class="font-bold">Marius Colacioiu</span> based in Zürich, Switzerland
-      </p>
-    </div>
+    <ContactInfo />
   </div>
 </Layout>

@@ -1,48 +1,16 @@
 ---
+import AboutMeSummary from '@components/index/AboutMeSummary.astro';
+import HelloMessage from '@components/index/HelloMessage.astro';
+import MainImage from '@components/index/MainImage.astro';
+import ReachOutMessage from '@components/index/ReachOutMessage.astro';
 import Layout from '@layouts/Layout.astro';
 ---
 
 <Layout title="Marius Colacioiu - Engineering Leader and Entrepreneur">
   <div class="lg:mx-20">
-    <!-- Hello Message -->
-    <div class="leading-10 text-3xl antialiased font-light max-w-screen-sm mb-20 mx-auto">
-      Hi there! I'm Marius Colacioiu – <span class="font-medium">Engineering Leader</span> and{' '}
-      <span class="font-medium">Entrepreneur</span> from Zürich, Switzerland.
-    </div>
-
-    <!-- Main Image -->
-    <div class="mb-8">
-      <img
-        class="flex m-auto"
-        src="/marius-photo.png"
-        width="342"
-        height="396"
-        alt="Marius Colacioiu"
-        title="Marius Colacioiu"
-      />
-    </div>
-
-    <!-- About Me Message -->
-    <div class="lg:mx-28 md:mx-20">
-      <p class="mb-8 font-light text-xl sm:text-lg">
-        For the past {new Date().getFullYear() - 2012} years, I have been busy working in the startup world building products in PropTech, HR-tech and Fin-tech. Several times, I have been one of the first employees in newly born startups having a big impact on the Engineering culture. With a background in computer science, I specialize in building web products from scratch.
-      </p>
-      <p class="mb-8 font-light text-xl sm:text-lg">
-        Currently, I'm focusing on building Norm together with a highly talented team, on a mission to make living energy efficient.
-      </p>
-    </div>
-
-    <!-- Reach Out Message -->
-    <div class="leading-10 text-3xl antialiased font-light mb-20 mx-auto">
-      Checkout my{' '}
-      <a href="/about" class="text-indigo-700 hover:text-indigo-500 transition-colors duration-200">
-        work
-      </a>{' '}
-      experience or{' '}
-      <a href="/contact" class="text-indigo-700 hover:text-indigo-500 transition-colors duration-200">
-        get in touch
-      </a>{' '}
-      if you want to reach out.
-    </div>
+    <HelloMessage />
+    <MainImage />
+    <AboutMeSummary />
+    <ReachOutMessage />
   </div>
 </Layout>
