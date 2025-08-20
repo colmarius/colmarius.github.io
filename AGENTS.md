@@ -33,6 +33,12 @@ This is an Astro-based static site generator with React integration, configured 
 - Prettier with Astro plugin
 - Supports `.astro`, `.tsx`, `.ts`, `.jsx`, `.js` files
 
+## Code Guidelines
+
+- **TypeScript**: Use `type` instead of `interface` for type definitions
+- **Style**: Prefer functional programming patterns, avoid class/object-oriented approaches
+- **Workflow**: Commit changes after each logical step during development
+
 ## Development Notes
 
 - Uses `client:only="react"` for the main app to avoid SSR issues
