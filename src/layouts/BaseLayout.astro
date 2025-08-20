@@ -1,0 +1,192 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Marius Colacioiu - Engineering Leader and Entrepreneur from Zürich, Switzerland" } = Astro.props;
+
+// Google Analytics setup
+const googleAnalyticsKey = import.meta.env.VITE_GOOGLE_ANALYTICS_KEY;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    
+    <!-- Google Analytics -->
+    {googleAnalyticsKey && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsKey}`}></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${googleAnalyticsKey}');
+        </script>
+      </>
+    )}
+  </head>
+  <body>
+    <div class="mx-auto max-w-4xl p-4 sm:p-6 lg:p-8">
+      <div class="flex flex-col h-[80vh] justify-between">
+        <!-- Header -->
+        <header class="flex items-center justify-between pb-20">
+          <a href="/" class="text-bold text-3xl hover:text-indigo-600">
+            colmarius
+          </a>
+          <nav>
+            <!-- Mobile Menu -->
+            <section class="flex sm:hidden">
+              <button id="mobile-menu-button" class="flex items-center p-1">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+              </button>
+              <div id="mobile-menu" class="hide-menu-nav">
+                <div class="absolute top-0 right-0 mt-1 p-4" id="close-mobile-menu">
+                  <svg class="h-8 w-8 text-gray-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="2" y2="22"></line>
+                    <line x1="2" y1="2" x2="22" y2="22"></line>
+                  </svg>
+                </div>
+                <ul class="flex flex-col items-center justify-between min-h-[150px]">
+                  <li><a href="/" class="font-light uppercase hover:text-indigo-600 my-8 border-indigo-600">Home</a></li>
+                  <li><a href="/about" class="font-light uppercase hover:text-indigo-600 my-8 border-indigo-600">About</a></li>
+                  <li><a href="/contact" class="font-light uppercase hover:text-indigo-600 my-8 border-indigo-600">Contact</a></li>
+                </ul>
+              </div>
+            </section>
+            
+            <!-- Desktop Menu -->
+            <ul class="hidden space-x-8 sm:flex">
+              <li><a href="/" class="font-light uppercase hover:text-indigo-600 my-8 border-indigo-600">Home</a></li>
+              <li><a href="/about" class="font-light uppercase hover:text-indigo-600 my-8 border-indigo-600">About</a></li>
+              <li><a href="/contact" class="font-light uppercase hover:text-indigo-600 my-8 border-indigo-600">Contact</a></li>
+            </ul>
+          </nav>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="flex-1">
+          <slot />
+        </main>
+        
+        <!-- Footer -->
+        <footer class="mx-auto">
+          <div class="font-light mb-10">
+            Copyright © {new Date().getFullYear()} Marius Colacioiu
+          </div>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  html {
+    font-family: system-ui, sans-serif;
+  }
+  
+  code {
+    font-family:
+      Menlo,
+      Monaco,
+      Lucida Console,
+      Liberation Mono,
+      DejaVu Sans Mono,
+      Bitstream Vera Sans Mono,
+      Courier New,
+      monospace;
+  }
+  
+  /* Selection styles from App.css */
+  ::-moz-selection {
+    color: white;
+    background: #4338ca;
+  }
+
+  ::selection {
+    color: white;
+    background: #4338ca;
+  }
+  
+  /* Mobile menu styles */
+  .hide-menu-nav {
+    transform: translateY(-100%);
+    transition: all 0.3s ease-in-out;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    background-color: white;
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .show-menu-nav {
+    transform: translateY(0%);
+    transition: all 0.3s ease-in-out;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    background-color: white;
+    opacity: 1;
+    pointer-events: all;
+  }
+  
+  /* Active nav item styling for current page */
+  .nav-active {
+    @apply text-indigo-600 border-b-2;
+  }
+</style>
+
+<script>
+  // Mobile menu functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeMobileMenu = document.getElementById('close-mobile-menu');
+    
+    if (mobileMenuButton && mobileMenu && closeMobileMenu) {
+      mobileMenuButton.addEventListener('click', function() {
+        mobileMenu.classList.remove('hide-menu-nav');
+        mobileMenu.classList.add('show-menu-nav');
+      });
+      
+      closeMobileMenu.addEventListener('click', function() {
+        mobileMenu.classList.remove('show-menu-nav');
+        mobileMenu.classList.add('hide-menu-nav');
+      });
+      
+      // Close menu when clicking on nav items
+      const navItems = mobileMenu.querySelectorAll('a');
+      navItems.forEach(item => {
+        item.addEventListener('click', function() {
+          mobileMenu.classList.remove('show-menu-nav');
+          mobileMenu.classList.add('hide-menu-nav');
+        });
+      });
+    }
+    
+    // Highlight active navigation item
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+      if (link.getAttribute('href') === currentPath || 
+          (currentPath === '/' && link.getAttribute('href') === '/')) {
+        link.classList.add('nav-active');
+      }
+    });
+  });
+</script>
