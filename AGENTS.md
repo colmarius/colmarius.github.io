@@ -9,6 +9,7 @@ This is an Astro-based static site generator with React integration, configured 
 - **Dev server**: `npm run dev` or `npm start`
 - **Build**: `npm run build`
 - **Preview**: `npm run preview`
+- **TypeScript check**: `npm run check` (Astro type checking)
 - **Lint**: `npm run lint` (Biome linting with auto-fix)
 - **Lint & Format**: `npm run lint:fix` (Biome check with formatting and fixes)
 - **Deploy**: `npm run publish` (builds and commits to main branch)

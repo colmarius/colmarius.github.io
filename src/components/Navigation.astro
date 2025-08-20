@@ -1,7 +1,7 @@
 ---
 type Props = {
 	currentPath: string;
-}
+};
 
 const { currentPath } = Astro.props;
 
@@ -119,6 +119,8 @@ const NAVIGATION_ITEMS = [
   }
 
   // Make functions globally available
+  // @ts-ignore
   window.toggleMobileMenu = toggleMobileMenu;
+  // @ts-ignore
   window.closeMobileMenu = closeMobileMenu;
 </script>

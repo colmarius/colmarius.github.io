@@ -20,6 +20,7 @@ npm install        # Install dependencies
 npm run dev        # Start development server
 npm run build      # Build for production
 npm run preview    # Preview production build
+npm run check      # TypeScript type checking
 ```
 
 ### Project Structure
@@ -51,6 +52,6 @@ After cloning, configure your GitHub repository:
 ## 📁 Key Files
 
 - `astro.config.mjs` - Astro configuration
-- `src/layouts/BaseLayout.astro` - Main layout with navigation
+- `src/layouts/Layout.astro` - Main layout with navigation
 - `public/CNAME` - Custom domain configuration
 - `.github/workflows/deploy.yml` - Deployment workflow

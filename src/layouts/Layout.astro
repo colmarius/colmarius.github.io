@@ -77,7 +77,7 @@ const currentPath = Astro.url.pathname;
             if (!href || 
                 href.startsWith('http') || 
                 href.startsWith('#') || 
-                link.target === '_blank' ||
+                (link as HTMLAnchorElement).target === '_blank' ||
                 link.hasAttribute('download')) {
               return;
             }
