@@ -16,7 +16,7 @@ const Books = () => {
               <img
                 src={book.image}
                 alt={`${book.title} by ${book.author}`}
-                className="w-16 h-20 md:w-20 md:h-24 rounded object-cover bg-gray-100"
+                className="w-20 h-28 md:w-24 md:h-36 rounded object-contain bg-gray-100 border border-gray-200"
                 onError={(e) => {
                   e.currentTarget.src =
                     'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA4MCA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjgwIiBoZWlnaHQ9Ijk2IiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0yMCAzMEg2MEwyMCA0MFYzMFoiIGZpbGw9IiM5Q0E0QUYiLz4KPHA+ID48cGF0aCBkPSJNMjAgNDJINjBMMjAgNTJWNDJaIiBmaWxsPSIjOUNBNEFGIi8+CjxwYXRoIGQ9Ik0yMCA1NEg2MEwyMCA2NFY1NFoiIGZpbGw9IiM5Q0E0QUYiLz4KPC9zdmc+Cg==';
