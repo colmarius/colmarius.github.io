@@ -17,7 +17,6 @@ const NAVIGATION_ITEMS = [
     colmarius
   </a>
   <nav>
-    <!-- Desktop Menu -->
     <ul class="hidden space-x-8 sm:flex">
       {NAVIGATION_ITEMS.map((item) => (
         <li>
@@ -33,19 +32,15 @@ const NAVIGATION_ITEMS = [
       ))}
     </ul>
 
-    <!-- Mobile Menu Button -->
     <button
       class="flex sm:hidden"
       onclick="toggleMobileMenu()"
       id="mobile-menu-button"
     >
-      <!-- Hamburger Icon -->
       <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
-
-    <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="hide-menu-nav">
       <div class="absolute top-0 right-0 mt-1 p-4" onclick="closeMobileMenu()">
         <svg
@@ -118,7 +113,6 @@ const NAVIGATION_ITEMS = [
     menu?.classList.add('hide-menu-nav');
   }
 
-  // Make functions globally available
   // @ts-ignore
   window.toggleMobileMenu = toggleMobileMenu;
   // @ts-ignore

@@ -19,61 +19,47 @@ const currentPath = Astro.url.pathname;
     <title>{title}</title>
     <link rel="icon" type="image/png" href="/flashtocat.png" />
 
-    <!-- Page Transitions -->
     <style>
       body {
         transition: opacity 300ms ease-in-out;
       }
     </style>
-
-    <!-- Google Analytics -->
     <script>
       if (import.meta.env.VITE_GOOGLE_ANALYTICS_KEY) {
-        // Google Analytics setup would go here
       }
     </script>
   </head>
-  <body>
-    <!-- Exact container structure from App.tsx -->
-    <div class="mx-auto max-w-4xl p-4 sm:p-6 lg:p-8">
-      <div class="flex flex-col h-[80vh] justify-between">
+  <body class="antialiased">
+    <div class="mx-auto max-w-5xl px-6 py-12 sm:px-8 lg:px-12">
+      <div class="flex flex-col min-h-[85vh] justify-between">
 
-        <!-- Header -->
         <Navigation currentPath={currentPath} />
 
-        <!-- Main Content -->
         <main>
           <slot />
         </main>
 
-        <!-- Footer - matches original Footer.tsx -->
         <footer class="mx-auto">
-          <div class="font-light mb-10">Copyright © {new Date().getFullYear()} Marius Colacioiu</div>
+          <div class="text-sm text-gray-600 font-light">Copyright © {new Date().getFullYear()} Marius Colacioiu</div>
         </footer>
       </div>
     </div>
 
-    <!-- Page Transition Script -->
     <script>
-      // Smooth page transitions
       document.addEventListener('DOMContentLoaded', () => {
-        // Add fade-in effect to current page
         document.body.style.opacity = '0';
         document.body.style.transition = 'opacity 300ms ease-in-out';
 
-        // Fade in the page
         requestAnimationFrame(() => {
           document.body.style.opacity = '1';
         });
 
-        // Handle navigation clicks
         const links = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href^="../"]');
 
         links.forEach(link => {
           link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
 
-            // Skip if external link, hash link, or special behavior
             if (!href ||
                 href.startsWith('http') ||
                 href.startsWith('#') ||
@@ -84,10 +70,8 @@ const currentPath = Astro.url.pathname;
 
             e.preventDefault();
 
-            // Fade out current page
             document.body.style.opacity = '0';
 
-            // Navigate after fade out completes
             setTimeout(() => {
               window.location.href = href;
             }, 300);
