@@ -29,6 +29,13 @@
   },
   {
     "id": 5,
+    "name": "Geoffrey Huntley",
+    "url": "https://ghuntley.com/",
+    "description": "Technology blog focused on software engineering, AI, and their creative implications with thought-provoking insights.",
+    "image": "https://ghuntley.com/favicon.ico"
+  },
+  {
+    "id": 6,
     "name": "Better Allies",
     "url": "https://betterallies.com/",
     "description": "Practical advice and resources for creating more inclusive and equitable workplaces.",
