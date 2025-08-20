@@ -1,0 +1,41 @@
+# Agents Configuration
+
+## Project Setup
+
+This is an Astro-based static site generator with React integration, configured for GitHub Pages deployment.
+
+## Commands
+
+- **Dev server**: `npm run dev` or `npm start`
+- **Build**: `npm run build`
+- **Preview**: `npm run preview`
+- **Lint**: `npm run lint`
+- **Deploy**: `npm run publish` (builds and commits to main branch)
+
+## Architecture
+
+- **Framework**: Astro v4 with React integration
+- **Styling**: TailwindCSS
+- **Deployment**: GitHub Pages (static generation)
+- **Routing**: React Router with hash routing for SPA compatibility
+
+## Key Files
+
+- `astro.config.mjs`: Astro configuration
+- `src/pages/index.astro`: Main entry point
+- `src/components/App.tsx`: React router setup
+- `src/pages/_*.tsx`: Page components (prefixed with _ to avoid Astro routing)
+- `scripts/publish.sh`: Deployment script
+
+## Linting & Formatting
+
+- ESLint with Airbnb + TypeScript rules
+- Prettier with Astro plugin
+- Supports `.astro`, `.tsx`, `.ts`, `.jsx`, `.js` files
+
+## Development Notes
+
+- Uses `client:only="react"` for the main app to avoid SSR issues
+- Browser APIs (like `window`) must be conditional for build compatibility
+- Build output goes to `dist/` directory
+- GitHub Pages configured with CNAME for custom domain
