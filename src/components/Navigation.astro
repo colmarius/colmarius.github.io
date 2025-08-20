@@ -23,7 +23,7 @@ const NAVIGATION_ITEMS = [
           <a
             href={item.link}
             class={`font-light uppercase hover:text-indigo-600 my-8 border-indigo-600 transition-colors duration-200 ${
-              currentPath === item.link ? 'text-indigo-600 border-b-2' : ''
+              currentPath === item.link ? 'text-indigo-600 border-b-2 pb-2' : ''
             }`}
           >
             {item.title}
@@ -63,7 +63,7 @@ const NAVIGATION_ITEMS = [
               href={item.link}
               onclick="closeMobileMenu()"
               class={`font-light uppercase hover:text-indigo-600 my-8 border-indigo-600 transition-colors duration-200 ${
-                currentPath === item.link ? 'text-indigo-600 border-b-2' : ''
+                currentPath === item.link ? 'text-indigo-600 border-b-2 pb-2' : ''
               }`}
             >
               {item.title}
