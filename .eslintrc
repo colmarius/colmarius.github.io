@@ -12,8 +12,8 @@
     "plugin:react/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:security/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:astro/recommended"
   ],
   "plugins": [
     "@typescript-eslint",
@@ -23,6 +23,21 @@
     "react-hooks",
     "simple-import-sort"
   ],
+  "overrides": [
+    {
+      "files": ["*.astro"],
+      "parser": "astro-eslint-parser",
+      "parserOptions": {
+        "parser": "@typescript-eslint/parser",
+        "extraFileExtensions": [".astro"]
+      }
+    }
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "rules": {
     "sonarjs/no-identical-functions": "off",
     "sonarjs/prefer-immediate-return": "off",

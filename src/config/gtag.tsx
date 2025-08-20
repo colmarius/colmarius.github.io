@@ -3,13 +3,17 @@
 
 declare global {
   interface Window {
-    dataLayer: any;
+    dataLayer: unknown[];
   }
 }
 
-window.dataLayer = window.dataLayer || [];
+if (typeof window !== 'undefined') {
+  window.dataLayer = window.dataLayer || [];
+}
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function gtag(_: string, __: unknown, ___?: unknown) {
-  window.dataLayer.push(arguments);
+  if (typeof window !== 'undefined') {
+    window.dataLayer.push(arguments);
+  }
 }
