@@ -5,6 +5,9 @@ type Props = {
 
 const { currentPath } = Astro.props;
 
+// Normalize paths by removing trailing slashes for comparison
+const normalizedCurrentPath = currentPath.replace(/\/$/, '') || '/';
+
 const NAVIGATION_ITEMS = [
   { link: '/', title: 'Home' },
   { link: '/about', title: 'About' },
@@ -24,7 +27,7 @@ const NAVIGATION_ITEMS = [
           <a
             href={item.link}
             class={`font-light uppercase hover:text-indigo-600 my-8 border-indigo-600 transition-colors duration-200 ${
-              currentPath === item.link ? 'text-indigo-600 border-b-2 pb-2' : ''
+              normalizedCurrentPath === item.link ? 'text-indigo-600 border-b-2 pb-2' : ''
             }`}
           >
             {item.title}
@@ -64,7 +67,7 @@ const NAVIGATION_ITEMS = [
               href={item.link}
               onclick="closeMobileMenu()"
               class={`font-light uppercase hover:text-indigo-600 my-8 border-indigo-600 transition-colors duration-200 ${
-                currentPath === item.link ? 'text-indigo-600 border-b-2 pb-2' : ''
+                normalizedCurrentPath === item.link ? 'text-indigo-600 border-b-2 pb-2' : ''
               }`}
             >
               {item.title}
