@@ -24,7 +24,7 @@ npm run preview    # Preview production build
 
 ### Project Structure
 
-```
+```text
 ├── src/
 │   ├── components/    # React components
 │   ├── layouts/       # Astro layouts
@@ -43,11 +43,10 @@ The deployment uses the official [Astro GitHub Action](https://github.com/withas
 ### Manual Setup Required
 
 After cloning, configure your GitHub repository:
+
 1. Go to **Settings** > **Pages**
 2. Set **Source** to "GitHub Actions"
 3. Configure custom domain if needed
-
-See [GITHUB_SETUP_INSTRUCTIONS.md](./GITHUB_SETUP_INSTRUCTIONS.md) for detailed setup steps.
 
 ## 📁 Key Files
 
@@ -55,14 +54,3 @@ See [GITHUB_SETUP_INSTRUCTIONS.md](./GITHUB_SETUP_INSTRUCTIONS.md) for detailed 
 - `src/layouts/BaseLayout.astro` - Main layout with navigation
 - `public/CNAME` - Custom domain configuration
 - `.github/workflows/deploy.yml` - Deployment workflow
-
-## 🔧 Migration Notes
-
-This site was migrated from a React SPA (Vite) to Astro while preserving:
-- ✅ React components and functionality
-- ✅ TailwindCSS styling
-- ✅ Custom domain setup
-- ✅ Mobile-responsive design
-- ✅ Git history
-
-See [DEPLOYMENT_PLAN.md](./DEPLOYMENT_PLAN.md) for migration details.
