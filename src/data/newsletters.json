@@ -1,31 +1,31 @@
 [
   {
     "id": 1,
-    "name": "News AI",
-    "url": "http://news.smol.ai",
-    "description": "Stay updated on the latest AI developments and breakthroughs with curated news and insights.",
-    "image": "https://news.smol.ai/favicon.ico"
-  },
-  {
-    "id": 2,
     "name": "Fullstack Bulletin",
     "url": "https://fullstackbulletin.com/",
     "description": "Weekly curated content about full-stack development, tools, and best practices.",
     "image": "https://fullstackbulletin.com/android-icon-192x192.png"
   },
   {
+    "id": 2,
+    "name": "FS Blog",
+    "url": "https://fs.blog/newsletter/",
+    "description": "Brain Food: weekly insights on decision-making, mental models, and continuous learning from Farnam Street.",
+    "image": "https://149664534.v2.pressablecdn.com/wp-content/uploads/2021/06/fsblog-logo@2x.png"
+  },
+  {
     "id": 3,
     "name": "Register Spill",
     "url": "https://registerspill.thorstenball.com/",
-    "description": "Thorsten Ball's newsletter about programming, compilers, and software engineering insights.",
+    "description": "Thorsten Ball's newsletter about AI, programming, compilers, and software engineering insights.",
     "image": "https://substackcdn.com/image/fetch/w_88,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff114450f-2313-48c6-a253-a1d476c21d93_1164x1164.png"
   },
   {
     "id": 4,
-    "name": "FS Blog (Knowledge Project)",
-    "url": "https://fs.blog/newsletter/",
-    "description": "Weekly insights on decision-making, mental models, and continuous learning from Farnam Street.",
-    "image": "https://149664534.v2.pressablecdn.com/wp-content/uploads/2021/06/fsblog-logo@2x.png"
+    "name": "News AI",
+    "url": "http://news.smol.ai",
+    "description": "Stay updated on the latest AI developments and breakthroughs with curated news and insights.",
+    "image": "https://news.smol.ai/favicon.ico"
   },
   {
     "id": 5,
