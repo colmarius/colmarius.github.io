@@ -61,5 +61,14 @@
     "description": "Explores the history and impact of venture capital firms in Silicon Valley and their role in shaping innovation and the global economy. Examines the 'power law' principle where a few massive successes compensate for many failures.",
     "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1624825190i/58009109.jpg",
     "category": "Finance & Innovation"
+  },
+  {
+    "id": 8,
+    "title": "Irrational Exuberance",
+    "author": "Robert J. Shiller",
+    "url": "https://www.goodreads.com/book/show/100132.Irrational_Exuberance",
+    "description": "A prescient analysis of market volatility and behavioral economics that predicted both the tech stock bubble collapse and the housing market crash. Examines the structural, cultural, and psychological factors behind dangerous price growth in financial markets.",
+    "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1384376065i/100132.jpg",
+    "category": "Economics & Finance"
   }
 ]
