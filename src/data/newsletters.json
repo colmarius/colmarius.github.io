@@ -15,27 +15,34 @@
   },
   {
     "id": 3,
-    "name": "Register Spill",
-    "url": "https://registerspill.thorstenball.com/",
-    "description": "Thorsten Ball's newsletter about AI, programming, compilers, and software engineering insights.",
-    "image": "https://substackcdn.com/image/fetch/w_88,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff114450f-2313-48c6-a253-a1d476c21d93_1164x1164.png"
-  },
-  {
-    "id": 4,
-    "name": "News AI",
-    "url": "http://news.smol.ai",
-    "description": "Stay updated on the latest AI developments and breakthroughs with curated news and insights.",
-    "image": "https://news.smol.ai/favicon.ico"
-  },
-  {
-    "id": 5,
     "name": "Geoffrey Huntley",
     "url": "https://ghuntley.com/",
     "description": "Technology blog focused on software engineering, AI, and their creative implications with thought-provoking insights.",
     "image": "https://ghuntley.com/favicon.ico"
   },
   {
+    "id": 4,
+    "name": "Register Spill",
+    "url": "https://registerspill.thorstenball.com/",
+    "description": "Thorsten Ball's newsletter about AI, programming, compilers, and software engineering insights.",
+    "image": "https://substackcdn.com/image/fetch/w_88,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff114450f-2313-48c6-a253-a1d476c21d93_1164x1164.png"
+  },
+  {
+    "id": 5,
+    "name": "News AI",
+    "url": "http://news.smol.ai",
+    "description": "Stay updated on the latest AI developments and breakthroughs with curated news and insights.",
+    "image": "https://news.smol.ai/favicon.ico"
+  },
+  {
     "id": 6,
+    "name": "The Batch",
+    "url": "https://www.deeplearning.ai/the-batch/",
+    "description": "Weekly AI news and insights from DeepLearning.AI covering research breakthroughs, industry developments, and policy updates.",
+    "image": "https://www.deeplearning.ai/favicon.ico"
+  },
+  {
+    "id": 7,
     "name": "Better Allies",
     "url": "https://betterallies.com/",
     "description": "Practical advice and resources for creating more inclusive and equitable workplaces.",
