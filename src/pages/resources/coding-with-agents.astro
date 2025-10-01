@@ -1,0 +1,20 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ResourcesNav from '../../components/resources/ResourcesNav.astro';
+import CodingWithAgentsList from '../../components/resources/CodingWithAgents';
+---
+
+<Layout title="Marius Colacioiu – Resources – Coding with Agents">
+  <div class="max-w-4xl mx-auto px-6 py-16">
+    <ResourcesNav active="coding-with-agents" />
+    
+    <h1 class="text-3xl md:text-4xl font-light mb-4 text-gray-900">
+      Coding with Agents
+    </h1>
+    <p class="text-lg text-gray-600 mb-12 font-light leading-relaxed">
+      Podcasts, videos, and articles exploring AI-powered coding workflows, agentic design patterns, and the future of software development.
+    </p>
+
+    <CodingWithAgentsList client:load />
+  </div>
+</Layout>
