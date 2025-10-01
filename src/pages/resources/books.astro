@@ -1,0 +1,20 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ResourcesNav from '../../components/resources/ResourcesNav.astro';
+import BooksList from '../../components/resources/Books';
+---
+
+<Layout title="Marius Colacioiu – Resources – Books">
+  <div class="max-w-4xl mx-auto px-6 py-16">
+    <ResourcesNav active="books" />
+    
+    <h1 class="text-3xl md:text-4xl font-light mb-4 text-gray-900">
+      Recommended Books
+    </h1>
+    <p class="text-lg text-gray-600 mb-12 font-light leading-relaxed">
+      Books that shaped my thinking on technology, business, decision-making, and understanding human nature.
+    </p>
+
+    <BooksList client:load />
+  </div>
+</Layout>
