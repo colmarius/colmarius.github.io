@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "title": "Building AI Agents with LangChain",
+    "url": "https://www.youtube.com/watch?v=example1",
+    "description": "Deep dive into building autonomous AI agents using LangChain framework, covering tool use, memory, and agent orchestration patterns.",
+    "type": "video",
+    "source": "AI Engineering",
+    "date": "2024-09",
+    "duration": "42m",
+    "tags": ["LangChain", "agents", "tools"]
+  },
+  {
+    "id": 2,
+    "title": "The Future of Coding with AI Assistants",
+    "url": "https://podcasts.example.com/future-coding",
+    "description": "Discussion on how AI coding assistants are transforming software development workflows and what the future holds for developers.",
+    "type": "podcast",
+    "source": "Developer Voices",
+    "date": "2024-08",
+    "duration": "58m",
+    "tags": ["AI", "coding", "future"]
+  },
+  {
+    "id": 3,
+    "title": "Agentic Design Patterns for Code Generation",
+    "url": "https://example.com/articles/agentic-patterns",
+    "description": "Exploring design patterns for building effective code generation agents, including reflection, planning, and tool use strategies.",
+    "type": "article",
+    "source": "AI Research",
+    "date": "2024-07",
+    "tags": ["patterns", "agents", "code generation"]
+  }
+]
