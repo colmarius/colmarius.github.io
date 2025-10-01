@@ -25,7 +25,6 @@ const CodingWithAgents = () => {
                 <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500">
                   <span className="font-medium">{resource.source}</span>
                   {resource.date && <span>{resource.date}</span>}
-                  {resource.duration && <span>{resource.duration}</span>}
                   {resource.tags && resource.tags.length > 0 && (
                     <div className="flex gap-2">
                       {resource.tags.map((tag) => (
