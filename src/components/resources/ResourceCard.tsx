@@ -1,13 +1,3 @@
-type IconType = 'newsletter' | 'book' | 'coding';
-
-type Props = {
-  href: string;
-  title: string;
-  description: string;
-  count?: number;
-  iconType: IconType;
-};
-
 const NewsletterIcon = () => (
   <svg
     className="w-20 h-20"
@@ -137,6 +127,16 @@ const iconMap = {
   newsletter: NewsletterIcon,
   book: BookIcon,
   coding: CodingIcon,
+};
+
+type IconType = 'newsletter' | 'book' | 'coding';
+
+type Props = {
+  href: string;
+  title: string;
+  description: string;
+  count?: number;
+  iconType: IconType;
 };
 
 export default function ResourceCard({
