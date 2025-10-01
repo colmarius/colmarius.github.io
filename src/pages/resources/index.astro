@@ -1,0 +1,45 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ResourceCard from '../../components/resources/ResourceCard';
+import newsletters from '../../data/newsletters.json';
+import books from '../../data/books.json';
+import codingResources from '../../data/coding-with-agents.json';
+---
+
+<Layout title="Marius Colacioiu – Resources">
+  <div class="max-w-5xl mx-auto px-6 py-16">
+    <h1 class="text-4xl md:text-5xl font-light mb-4 text-gray-900">
+      Resources
+    </h1>
+    <p class="text-xl text-gray-600 mb-16 font-light leading-relaxed">
+      A curated collection of newsletters, books, and media that inspire and inform my work.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <ResourceCard
+        href="/resources/newsletters"
+        title="Newsletters"
+        description="Weekly insights on tech, AI, and software engineering from my favorite sources."
+        count={newsletters.length}
+        iconType="newsletter"
+        client:load
+      />
+      <ResourceCard
+        href="/resources/books"
+        title="Books"
+        description="Books that shaped my thinking on technology, business, and decision-making."
+        count={books.length}
+        iconType="book"
+        client:load
+      />
+      <ResourceCard
+        href="/resources/coding-with-agents"
+        title="Coding with Agents"
+        description="Podcasts, videos, and articles on AI-powered development workflows."
+        count={codingResources.length}
+        iconType="coding"
+        client:load
+      />
+    </div>
+  </div>
+</Layout>
