@@ -1,3 +1,11 @@
+---
+title: "Raising an Agent - Episode 4"
+resourceId: 1
+series: "coding-with-agents"
+episode: 4
+date: "2025-06-01"
+---
+
 # Summary of "Raising An Agent - Episode 4"
 
 This episode of "Raising An Agent" discusses the profound shift in the software engineering world driven by code-generating AI agents.

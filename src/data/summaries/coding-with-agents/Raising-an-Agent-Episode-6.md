@@ -1,3 +1,11 @@
+---
+title: "Raising an Agent - Episode 6"
+resourceId: 1
+series: "coding-with-agents"
+episode: 6
+date: "2025-06-01"
+---
+
 # Summary of "Raising An Agent - Episode 6"
 
 This episode of Raising an Agent (Episode 6) by Sourcegraph discusses the latest developments in AI coding agents, focusing heavily on Anthropic's Claude Sonnet 4 model.

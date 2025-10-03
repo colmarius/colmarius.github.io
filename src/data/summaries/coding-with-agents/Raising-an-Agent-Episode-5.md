@@ -1,3 +1,11 @@
+---
+title: "Raising an Agent - Episode 5"
+resourceId: 1
+series: "coding-with-agents"
+episode: 5
+date: "2025-06-01"
+---
+
 # Summary of "Raising An Agent - Episode 5"
 
 This is a summary of the fifth installment of "Raising an Agent," a discussion focusing on the philosophy, design, and recent developments of the Sourcegraph coding agent, AMP.

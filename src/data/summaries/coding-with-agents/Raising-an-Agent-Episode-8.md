@@ -1,3 +1,11 @@
+---
+title: "Raising an Agent - Episode 8"
+resourceId: 1
+series: "coding-with-agents"
+episode: 8
+date: "2025-06-01"
+---
+
 # Summary of "Raising An Agent - Episode 8"
 
 The video is an episode of "Raising an Agent," featuring a discussion between members of the Sourcegraph team about their process for evaluating and integrating different Large Language Models (LLMs) into their AI coding product, AMP.

@@ -1,3 +1,11 @@
+---
+title: "Raising an Agent - Episode 1"
+resourceId: 1
+series: "coding-with-agents"
+episode: 1
+date: "2025-06-01"
+---
+
 # Summary of "Raising An Agent - Episode 1"
 
 This is a summary of "Raising An Agent - Episode 1" a limited-run special edition podcast from Sourcegraph, featuring CEO Quinn and software engineer Torsten.
