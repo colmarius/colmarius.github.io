@@ -6,7 +6,7 @@
     "url": "https://www.youtube.com/watch?v=b4rOVZWLW6E",
     "description": "Sourcegraph's CEO and Amp Dictator discuss the philosophy behind Amp Code, their unconventional 15x/day shipping cadence without code reviews, and critical insights on coding agent architecture. Topics include why subagents and prompt optimizers may be misguided, the diminishing importance of model selectors, agent-friendly tooling, version control in an AI-first world, and how agents are transforming enterprise software development workflows.",
     "type": "podcast",
-    "source": "Latent Space - Youtube",
+    "source": "Latent Space",
     "date": "2025-09-26",
     "duration": "1h 21m",
     "tags": ["Coding agents", "Workflow", "Tools", "Architecture"]
