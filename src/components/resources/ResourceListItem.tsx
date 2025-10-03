@@ -29,13 +29,13 @@ export default function ResourceListItem({
   description,
   url,
   linkText,
-  buttonVariant = 'primary',
+  buttonVariant = 'secondary',
   metadata,
   children,
   hideExternalLink = false,
 }: Props) {
   return (
-    <div className="flex flex-col md:flex-row gap-6 p-6 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-lg hover:border-gray-300 transition-all duration-200 group">
+    <div className="flex flex-col md:flex-row gap-6 p-6 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-lg hover:border-gray-300 transition-all duration-200 group focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 focus-within:ring-offset-white">
       <div className="flex-shrink-0">
         <img
           src={image.src}
@@ -48,16 +48,14 @@ export default function ResourceListItem({
           }}
         />
       </div>
-      <div className="flex-1 flex flex-col">
-        <div className="flex items-center gap-2 mb-3">
+      <div className="flex-1 flex flex-col gap-3 md:gap-4">
+        <div className="flex items-center gap-2">
           <h3 className="text-xl font-medium text-gray-900">{title}</h3>
           {badge}
         </div>
         {metadata}
-        <p className="text-gray-600 my-4 leading-relaxed">{description}</p>
-        {children && (
-          <div className="flex flex-wrap gap-2 mt-4">{children}</div>
-        )}
+        <p className="text-gray-600 leading-relaxed">{description}</p>
+        {children && <div className="flex flex-wrap gap-2">{children}</div>}
         {!hideExternalLink && url && linkText && (
           <Button
             as="a"
@@ -65,10 +63,11 @@ export default function ResourceListItem({
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 w-fit"
+            aria-label={`${linkText} — ${title}`}
+            className="mt-auto self-start group/button transition-all duration-200 group-hover:-translate-y-0.5 group-hover:shadow-md focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none"
           >
             {linkText}
-            <ExternalLinkIcon />
+            <ExternalLinkIcon className="ml-2 h-4 w-4 shrink-0 transition-transform duration-200 group-hover/button:translate-x-0.5" />
             <span className="sr-only">(opens in a new tab)</span>
           </Button>
         )}

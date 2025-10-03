@@ -1,7 +1,11 @@
-export function ExternalLinkIcon() {
+type Props = {
+  className?: string;
+};
+
+export function ExternalLinkIcon({ className = 'w-4 h-4 ml-1' }: Props) {
   return (
     <svg
-      className="w-4 h-4 ml-1"
+      className={className}
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
