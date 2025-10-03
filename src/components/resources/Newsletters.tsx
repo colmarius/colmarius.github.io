@@ -23,6 +23,7 @@ const Newsletters = () => {
             description={newsletter.description}
             url={newsletter.url}
             linkText="Subscribe"
+            buttonVariant="secondary"
           />
         ))}
       </div>

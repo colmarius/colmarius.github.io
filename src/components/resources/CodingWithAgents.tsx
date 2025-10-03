@@ -7,10 +7,12 @@ import {
   resolveSummaryRef,
   type SummaryRef,
 } from '../../utils/summaries';
+import { Button } from '../ui/Button';
+import { DocumentIcon } from '../ui/DocumentIcon';
+import { ExternalLinkIcon } from '../ui/ExternalLinkIcon';
 import { EpisodeList } from './EpisodeList';
 import MarkdownRenderer from './MarkdownRenderer';
 import ResourceListItem from './ResourceListItem';
-import { SummaryButton } from './SummaryButton';
 import { SummaryModal } from './SummaryModal';
 
 type Resource = {
@@ -194,34 +196,29 @@ const CodingWithAgents = () => {
 
                 <div className="flex flex-wrap gap-2 md:justify-self-end md:flex-shrink-0">
                   {summaryAvailability[resource.id] && (
-                    <SummaryButton
+                    <Button
+                      variant="secondary"
                       onClick={() => handleOpenSummary(resource)}
-                      label={`Read ${resource.type === 'playlist' ? 'Summaries' : 'Summary'}`}
-                      controlId={`summary-modal-${resource.id}`}
-                    />
+                      aria-haspopup="dialog"
+                      aria-controls={`summary-modal-${resource.id}`}
+                      aria-expanded="false"
+                    >
+                      <DocumentIcon />
+                      Read{' '}
+                      {resource.type === 'playlist' ? 'Summaries' : 'Summary'}
+                    </Button>
                   )}
-                  <a
+                  <Button
+                    as="a"
+                    variant="primary"
                     href={resource.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium bg-gray-900 text-white hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900/25 focus-visible:ring-offset-2 transition-colors"
                   >
                     {getLinkText(resource.type)}
-                    <svg
-                      className="w-4 h-4 ml-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                      />
-                    </svg>
+                    <ExternalLinkIcon />
                     <span className="sr-only">(opens in a new tab)</span>
-                  </a>
+                  </Button>
                 </div>
               </div>
             </div>

@@ -10,7 +10,15 @@ type MarkdownRendererProps = {
 export default function MarkdownRenderer({ markdown }: MarkdownRendererProps) {
   const components = useMemo(
     () => ({
-      a: ({ children, href, ...props }: { children?: React.ReactNode; href?: string; [key: string]: unknown }) => {
+      a: ({
+        children,
+        href,
+        ...props
+      }: {
+        children?: React.ReactNode;
+        href?: string;
+        [key: string]: unknown;
+      }) => {
         const isExternal = href?.startsWith('http');
         return (
           <a
