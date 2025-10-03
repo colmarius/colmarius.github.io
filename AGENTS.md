@@ -12,27 +12,23 @@ This is an Astro-based static site generator with React integration, configured 
 - **TypeScript check**: `npm run check` (Astro type checking)
 - **Lint**: `npm run lint` (Biome linting with auto-fix)
 - **Lint & Format**: `npm run lint:fix` (Biome check with formatting and fixes)
-- **Deploy**: `npm run publish` (builds and commits to main branch)
-
 ## Architecture
 
 - **Framework**: Astro v5 with React integration
 - **Styling**: TailwindCSS v4
 - **Deployment**: GitHub Pages (static generation)
-- **Routing**: React Router with hash routing for SPA compatibility
+- **Site**: https://marius-colacioiu.com
+- **Path Aliases**: `@components`, `@config`, `@types`, `@assets`, `@layouts` configured
 
 ## Key Files
 
-- `astro.config.mjs`: Astro configuration
+- `astro.config.mjs`: Astro configuration with Vite path aliases
 - `src/pages/index.astro`: Main entry point
-- `src/components/App.tsx`: React router setup
-- `src/pages/_*.tsx`: Page components (prefixed with _ to avoid Astro routing)
-- `scripts/publish.sh`: Deployment script
 
 ## Linting & Formatting
 
 - **Biome**: Modern linter and formatter for JavaScript, TypeScript, and web frameworks
-- **Configuration**: Tab indentation, double quotes, recommended rules enabled
+- **Configuration**: Space indentation, single quotes, semicolons, recommended rules enabled
 - **Auto-fix**: Import organization and code fixes on save
 - **File support**: `.astro`, `.tsx`, `.ts`, `.jsx`, `.js` files
 - **Special rules**: Relaxed linting for `.astro` files (unused variables/imports disabled)
