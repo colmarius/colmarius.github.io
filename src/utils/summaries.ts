@@ -11,7 +11,8 @@ type SummaryMetadata = {
 };
 
 const summaryFiles = import.meta.glob<string>("/src/data/summaries/**/*.md", {
-	as: "raw",
+	query: "?raw",
+	import: "default",
 	eager: false,
 });
 
