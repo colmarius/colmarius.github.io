@@ -1,10 +1,14 @@
 import codingResources from '../../data/coding-with-agents.json';
 
 const CodingWithAgents = () => {
+  const sortedResources = [...codingResources].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+  );
+
   return (
     <section>
       <div className="space-y-8">
-        {codingResources.map((resource) => (
+        {sortedResources.map((resource) => (
           <div
             key={resource.id}
             className="flex flex-col gap-4 p-6 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
@@ -19,6 +23,11 @@ const CodingWithAgents = () => {
                     {resource.type}
                   </span>
                 </div>
+                {resource.subtitle && (
+                  <p className="text-base font-medium text-gray-700 mb-2">
+                    {resource.subtitle}
+                  </p>
+                )}
                 <p className="text-gray-600 mb-3 leading-relaxed">
                   {resource.description}
                 </p>
@@ -47,6 +56,7 @@ const CodingWithAgents = () => {
               className="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium transition-colors w-fit"
             >
               {resource.type === 'video' && 'Watch Video'}
+              {resource.type === 'playlist' && 'Watch Playlist'}
               {resource.type === 'podcast' && 'Listen to Podcast'}
               {resource.type === 'article' && 'Read Article'}
               <svg
