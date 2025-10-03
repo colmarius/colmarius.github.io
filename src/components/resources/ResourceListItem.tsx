@@ -64,7 +64,7 @@ export default function ResourceListItem({
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`${linkText} — ${title}`}
-            className="mt-auto self-start group/button transition-all duration-200 group-hover:-translate-y-0.5 group-hover:shadow-md focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none"
+            className="mt-auto self-start group/button transition-all duration-200 group-hover:-translate-y-0.5 group-hover:shadow-md focus-visible:ring-blue-500 motion-reduce:transform-none motion-reduce:transition-none"
           >
             {linkText}
             <ExternalLinkIcon className="ml-2 h-4 w-4 shrink-0 transition-transform duration-200 group-hover/button:translate-x-0.5" />

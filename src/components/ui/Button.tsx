@@ -1,4 +1,6 @@
+import { clsx } from 'clsx';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 type ButtonVariant = 'primary' | 'secondary' | 'ghost';
 type ButtonSize = 'sm' | 'md';
@@ -56,10 +58,12 @@ export function Button({
   children,
   ...props
 }: ButtonProps) {
-  const combinedClassName = `${baseStyles} ${getVariantStyles(variant)} ${getSizeStyles(size)} ${className}`;
+  const combinedClassName = twMerge(
+    clsx(baseStyles, getVariantStyles(variant), getSizeStyles(size), className),
+  );
 
   if (props.as === 'a') {
-    const { ...linkProps } = props;
+    const { as: _as, ...linkProps } = props;
     return (
       <a {...linkProps} className={combinedClassName}>
         {children}
@@ -67,7 +71,7 @@ export function Button({
     );
   }
 
-  const { ...buttonProps } = props as ButtonAsButton;
+  const { as: _as, ...buttonProps } = props as ButtonAsButton;
   return (
     <button type="button" {...buttonProps} className={combinedClassName}>
       {children}
