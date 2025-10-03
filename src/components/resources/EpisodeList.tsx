@@ -101,7 +101,7 @@ export const EpisodeList = ({
       }
       tabIndex={0}
       onKeyDown={handleKeyDown}
-      className="flex flex-col gap-2 p-0 focus:outline-none"
+      className="flex flex-col gap-1 p-0 focus:outline-none text-sm text-gray-600 dark:text-zinc-300"
     >
       <h3 className="sr-only">Episodes</h3>
       {episodes.map((episode) => {
@@ -116,26 +116,35 @@ export const EpisodeList = ({
             aria-selected={isSelected}
             onClick={() => onSelectEpisode(episode.episode, episode.path)}
             className={`
-							w-full rounded-md px-3 py-2.5 text-left transition-colors cursor-pointer
-							focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2
+							group w-full rounded-sm px-2.5 py-1.5 text-left transition-colors cursor-pointer
+							bg-transparent border border-transparent
+							focus:outline-none focus-visible:ring-1 focus-visible:ring-gray-400/70 focus-visible:ring-offset-0
 							${
                 isSelected
-                  ? 'bg-gray-900 text-white shadow-sm focus-visible:ring-gray-400'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300 focus-visible:ring-gray-300'
+                  ? 'text-gray-900 dark:text-zinc-100 bg-gray-50/60 dark:bg-zinc-800/40 border-l-2 border-l-gray-400 dark:border-l-zinc-500 pl-2'
+                  : 'text-gray-600 dark:text-zinc-400 hover:text-gray-800 dark:hover:text-zinc-200 hover:bg-gray-50/40 dark:hover:bg-zinc-800/30'
               }
 						`}
           >
-            <div className="flex items-baseline gap-2">
+            <div className="flex items-center gap-2">
               <span
-                className={`text-xs font-medium ${
+                className={`shrink-0 tabular-nums text-[11px] tracking-wide ${
                   isSelected
-                    ? 'text-gray-300 dark:text-zinc-300'
-                    : 'text-gray-500 dark:text-zinc-400'
+                    ? 'text-gray-500 dark:text-zinc-400'
+                    : 'text-gray-400 dark:text-zinc-500'
                 }`}
               >
-                Episode {episode.episode}
+                Ep {episode.episode}
               </span>
-              <span className="flex-1 text-sm font-medium">{episode.title}</span>
+              <span
+                className={`flex-1 truncate text-[13px] font-normal ${
+                  isSelected
+                    ? 'text-gray-900 dark:text-zinc-100'
+                    : 'text-gray-600 dark:text-zinc-400 group-hover:text-gray-800 dark:group-hover:text-zinc-200'
+                }`}
+              >
+                {episode.title}
+              </span>
             </div>
           </button>
         );
