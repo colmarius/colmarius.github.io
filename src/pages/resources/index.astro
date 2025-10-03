@@ -14,8 +14,15 @@ import Layout from '../../layouts/Layout.astro';
     <p class="text-xl text-gray-600 mb-16 font-light leading-relaxed">
       A curated collection of newsletters, books, and media that inspire and inform my work.
     </p>
-
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <ResourceCard
+        href="/resources/coding-with-agents"
+        title="Coding with Agents"
+        description="Podcasts, videos, and articles on AI-powered development workflows."
+        count={codingResources.length}
+        iconType="coding"
+        client:load
+      />
       <ResourceCard
         href="/resources/newsletters"
         title="Newsletters"
@@ -30,14 +37,6 @@ import Layout from '../../layouts/Layout.astro';
         description="Books that shaped my thinking on technology, business, and decision-making."
         count={books.length}
         iconType="book"
-        client:load
-      />
-      <ResourceCard
-        href="/resources/coding-with-agents"
-        title="Coding with Agents"
-        description="Podcasts, videos, and articles on AI-powered development workflows."
-        count={codingResources.length}
-        iconType="coding"
         client:load
       />
     </div>

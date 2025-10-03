@@ -29,6 +29,16 @@ const { active } = Astro.props;
   </a>
   <div class="flex flex-wrap gap-2">
     <a
+      href="/resources/coding-with-agents"
+      class={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+        active === 'coding-with-agents'
+          ? 'bg-gray-900 text-white shadow-sm'
+          : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 hover:border-gray-400'
+      }`}
+    >
+      Coding with Agents
+    </a>
+    <a
       href="/resources/newsletters"
       class={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
         active === 'newsletters'
@@ -47,16 +57,6 @@ const { active } = Astro.props;
       }`}
     >
       Books
-    </a>
-    <a
-      href="/resources/coding-with-agents"
-      class={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-        active === 'coding-with-agents'
-          ? 'bg-gray-900 text-white shadow-sm'
-          : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 hover:border-gray-400'
-      }`}
-    >
-      Coding with Agents
     </a>
   </div>
 </nav>
