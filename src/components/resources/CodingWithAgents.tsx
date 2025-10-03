@@ -10,6 +10,7 @@ import {
 import { EpisodeList } from './EpisodeList';
 import MarkdownRenderer from './MarkdownRenderer';
 import ResourceListItem from './ResourceListItem';
+import { SummaryButton } from './SummaryButton';
 import { SummaryModal } from './SummaryModal';
 
 type Resource = {
@@ -160,8 +161,7 @@ const CodingWithAgents = () => {
               </span>
             }
             description={resource.description}
-            url={resource.url}
-            linkText={getLinkText(resource.type)}
+            hideExternalLink={true}
             metadata={
               resource.subtitle && (
                 <p className="text-base font-medium text-gray-700 mb-1">
@@ -170,45 +170,58 @@ const CodingWithAgents = () => {
               )
             }
           >
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500 mb-4">
-              <span className="font-medium">{resource.source}</span>
-              {resource.date && <span>{resource.date}</span>}
-              {resource.tags && resource.tags.length > 0 && (
-                <div className="flex gap-2">
-                  {resource.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2 py-0.5 bg-gray-100 text-gray-600 rounded text-xs"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+            <div className="flex flex-col gap-4">
+              <div className="text-sm text-gray-500">
+                <div className="flex items-center gap-x-4 mb-2">
+                  <span className="font-medium">{resource.source}</span>
+                  {resource.date && <span>{resource.date}</span>}
                 </div>
-              )}
-            </div>
+                {resource.tags && resource.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-2">
+                    {resource.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-2 py-0.5 bg-gray-100 text-gray-600 rounded text-xs"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
 
-            {summaryAvailability[resource.id] && (
-              <button
-                type="button"
-                onClick={() => handleOpenSummary(resource)}
-                className="inline-flex items-center text-emerald-600 hover:text-emerald-800 font-medium transition-colors mt-2"
-              >
-                Read {resource.type === 'playlist' ? 'Summaries' : 'Summary'}
-                <svg
-                  className="w-4 h-4 ml-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              <div className="flex flex-wrap gap-2">
+                {summaryAvailability[resource.id] && (
+                  <SummaryButton
+                    onClick={() => handleOpenSummary(resource)}
+                    label={`Read ${resource.type === 'playlist' ? 'Summaries' : 'Summary'}`}
+                    controlId={`summary-modal-${resource.id}`}
                   />
-                </svg>
-              </button>
-            )}
+                )}
+                <a
+                  href={resource.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium bg-gray-900 text-white hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900/25 focus-visible:ring-offset-2 transition-colors"
+                >
+                  {getLinkText(resource.type)}
+                  <svg
+                    className="w-4 h-4 ml-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    />
+                  </svg>
+                  <span className="sr-only">(opens in a new tab)</span>
+                </a>
+              </div>
+            </div>
           </ResourceListItem>
         ))}
       </div>

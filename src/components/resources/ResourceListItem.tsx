@@ -10,10 +10,11 @@ type Props = {
   title: string;
   badge?: ReactNode;
   description: string;
-  url: string;
-  linkText: string;
+  url?: string;
+  linkText?: string;
   metadata?: ReactNode;
   children?: ReactNode;
+  hideExternalLink?: boolean;
 };
 
 const ExternalLinkIcon = () => (
@@ -41,6 +42,7 @@ export default function ResourceListItem({
   linkText,
   metadata,
   children,
+  hideExternalLink = false,
 }: Props) {
   return (
     <div className="flex flex-col md:flex-row gap-6 p-6 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-lg hover:border-gray-300 transition-all duration-200 group">
@@ -56,23 +58,26 @@ export default function ResourceListItem({
           }}
         />
       </div>
-      <div className="flex-1">
+      <div className="flex-1 flex flex-col">
         <div className="flex items-center gap-2 mb-2">
           <h3 className="text-xl font-medium text-gray-900">{title}</h3>
           {badge}
         </div>
         {metadata}
         <p className="text-gray-600 mt-3 mb-4 leading-relaxed">{description}</p>
-        {children}
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium transition-colors"
-        >
-          {linkText}
-          <ExternalLinkIcon />
-        </a>
+        <div className="flex flex-wrap gap-2 mb-4">{children}</div>
+        {!hideExternalLink && url && linkText && (
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium bg-gray-900 text-white hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900/25 focus-visible:ring-offset-2 transition-colors mt-auto"
+          >
+            {linkText}
+            <ExternalLinkIcon />
+            <span className="sr-only">(opens in a new tab)</span>
+          </a>
+        )}
       </div>
     </div>
   );
