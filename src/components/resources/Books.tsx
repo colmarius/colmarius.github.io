@@ -22,10 +22,10 @@ const Books = () => {
             title={book.title}
             description={book.description}
             url={book.url}
-            linkText="Learn More"
+            linkText="View"
             buttonVariant="secondary"
             metadata={
-              <p className="text-gray-500 mb-2 text-sm">
+              <p className="text-gray-500 text-sm">
                 by {book.author} • {book.category}
               </p>
             }

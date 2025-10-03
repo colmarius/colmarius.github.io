@@ -49,13 +49,15 @@ export default function ResourceListItem({
         />
       </div>
       <div className="flex-1 flex flex-col">
-        <div className="flex items-center gap-2 mb-2">
+        <div className="flex items-center gap-2 mb-3">
           <h3 className="text-xl font-medium text-gray-900">{title}</h3>
           {badge}
         </div>
         {metadata}
-        <p className="text-gray-600 mt-3 mb-4 leading-relaxed">{description}</p>
-        <div className="flex flex-wrap gap-2 mb-4">{children}</div>
+        <p className="text-gray-600 my-4 leading-relaxed">{description}</p>
+        {children && (
+          <div className="flex flex-wrap gap-2 mt-4">{children}</div>
+        )}
         {!hideExternalLink && url && linkText && (
           <Button
             as="a"
@@ -63,7 +65,7 @@ export default function ResourceListItem({
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-auto"
+            className="mt-4 w-fit"
           >
             {linkText}
             <ExternalLinkIcon />
