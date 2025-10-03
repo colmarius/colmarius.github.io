@@ -1,4 +1,4 @@
-import books from '../../data/books.json';
+import books from '../../data/resources/books.json';
 import ResourceListItem from './ResourceListItem';
 
 const Books = () => {

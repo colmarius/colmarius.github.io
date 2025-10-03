@@ -1,4 +1,4 @@
-import newsletters from '../../data/newsletters.json';
+import newsletters from '../../data/resources/newsletters.json';
 import ResourceListItem from './ResourceListItem';
 
 const Newsletters = () => {

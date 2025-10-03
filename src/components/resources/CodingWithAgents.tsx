@@ -1,4 +1,4 @@
-import codingResources from '../../data/coding-with-agents.json';
+import codingResources from '../../data/resources/coding-with-agents.json';
 import ResourceListItem from './ResourceListItem';
 
 const CodingWithAgents = () => {
