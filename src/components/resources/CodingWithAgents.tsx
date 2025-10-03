@@ -171,10 +171,25 @@ const CodingWithAgents = () => {
             }
           >
             <div className="flex flex-col gap-4 w-full">
-              <div className="flex flex-col gap-4 md:grid md:grid-cols-[1fr_auto] md:gap-4 md:items-center w-full">
-                <div className="text-sm text-gray-500 flex items-center gap-x-4">
-                  <span className="font-medium">{resource.source}</span>
-                  {resource.date && <span>{resource.date}</span>}
+              <div className="flex flex-col gap-4 md:grid md:grid-cols-[1fr_auto] md:gap-4 md:items-start w-full">
+                <div className="flex flex-col gap-2">
+                  <div className="text-sm text-gray-500 flex items-center gap-x-4">
+                    <span className="font-medium">{resource.source}</span>
+                    {resource.date && <span>{resource.date}</span>}
+                  </div>
+
+                  {resource.tags && resource.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {resource.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2 py-0.5 bg-gray-100 text-gray-600 rounded text-xs"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
                 <div className="flex flex-wrap gap-2 md:justify-self-end md:flex-shrink-0">
@@ -209,19 +224,6 @@ const CodingWithAgents = () => {
                   </a>
                 </div>
               </div>
-
-              {resource.tags && resource.tags.length > 0 && (
-                <div className="flex flex-wrap gap-2">
-                  {resource.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2 py-0.5 bg-gray-100 text-gray-600 rounded text-xs"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
             </div>
           </ResourceListItem>
         ))}
