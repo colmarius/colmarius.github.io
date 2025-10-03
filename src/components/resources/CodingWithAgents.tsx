@@ -170,57 +170,58 @@ const CodingWithAgents = () => {
               )
             }
           >
-            <div className="flex flex-col gap-4">
-              <div className="text-sm text-gray-500">
-                <div className="flex items-center gap-x-4 mb-2">
+            <div className="flex flex-col gap-4 w-full">
+              <div className="flex flex-col gap-4 md:grid md:grid-cols-[1fr_auto] md:gap-4 md:items-center w-full">
+                <div className="text-sm text-gray-500 flex items-center gap-x-4">
                   <span className="font-medium">{resource.source}</span>
                   {resource.date && <span>{resource.date}</span>}
                 </div>
-                {resource.tags && resource.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-2">
-                    {resource.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-0.5 bg-gray-100 text-gray-600 rounded text-xs"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
+
+                <div className="flex flex-wrap gap-2 md:justify-self-end md:flex-shrink-0">
+                  {summaryAvailability[resource.id] && (
+                    <SummaryButton
+                      onClick={() => handleOpenSummary(resource)}
+                      label={`Read ${resource.type === 'playlist' ? 'Summaries' : 'Summary'}`}
+                      controlId={`summary-modal-${resource.id}`}
+                    />
+                  )}
+                  <a
+                    href={resource.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium bg-gray-900 text-white hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900/25 focus-visible:ring-offset-2 transition-colors"
+                  >
+                    {getLinkText(resource.type)}
+                    <svg
+                      className="w-4 h-4 ml-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
+                    </svg>
+                    <span className="sr-only">(opens in a new tab)</span>
+                  </a>
+                </div>
               </div>
 
-              <div className="flex flex-wrap gap-2">
-                {summaryAvailability[resource.id] && (
-                  <SummaryButton
-                    onClick={() => handleOpenSummary(resource)}
-                    label={`Read ${resource.type === 'playlist' ? 'Summaries' : 'Summary'}`}
-                    controlId={`summary-modal-${resource.id}`}
-                  />
-                )}
-                <a
-                  href={resource.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium bg-gray-900 text-white hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900/25 focus-visible:ring-offset-2 transition-colors"
-                >
-                  {getLinkText(resource.type)}
-                  <svg
-                    className="w-4 h-4 ml-1"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
-                  </svg>
-                  <span className="sr-only">(opens in a new tab)</span>
-                </a>
-              </div>
+              {resource.tags && resource.tags.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  {resource.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2 py-0.5 bg-gray-100 text-gray-600 rounded text-xs"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           </ResourceListItem>
         ))}
