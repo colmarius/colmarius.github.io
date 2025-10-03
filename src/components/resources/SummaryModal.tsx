@@ -103,10 +103,13 @@ export function SummaryModal({
 
       <div
         ref={modalRef}
-        className="relative bg-white rounded-lg shadow-2xl w-full max-w-4xl max-h-[90vh] flex flex-col border border-gray-200 animate-slideUp"
+        className="relative bg-white rounded-lg shadow-2xl w-full max-w-5xl max-h-[90vh] flex flex-col border border-gray-200 animate-slideUp"
       >
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
-          <h2 id={modalId} className="text-2xl font-bold text-gray-900">
+          <h2
+            id={modalId}
+            className="text-xl md:text-2xl font-semibold text-gray-900"
+          >
             {title}
           </h2>
           <button
@@ -133,7 +136,9 @@ export function SummaryModal({
           </button>
         </div>
 
-        <div className="overflow-y-auto px-6 py-6 flex-1">{children}</div>
+        <div className="px-6 py-6 flex-1 min-h-0 overflow-hidden flex flex-col">
+          {children}
+        </div>
       </div>
     </div>
   );

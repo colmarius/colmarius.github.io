@@ -241,20 +241,22 @@ const CodingWithAgents = () => {
         ) : error ? (
           <div className="text-red-600 p-4 bg-red-50 rounded-lg">{error}</div>
         ) : summaryRef?.kind === 'series' && episodes.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="md:col-span-1">
+          <div className="flex flex-col md:flex-row gap-6 min-h-0 flex-1 overflow-hidden">
+            <aside className="md:w-64 md:flex-shrink-0 md:overflow-y-auto overflow-y-auto">
               <EpisodeList
                 episodes={episodes}
                 selectedEpisode={selectedEpisode}
                 onSelectEpisode={handleSelectEpisode}
               />
-            </div>
-            <div className="md:col-span-3">
+            </aside>
+            <main className="flex-1 min-w-0 overflow-y-auto">
               <MarkdownRenderer markdown={summaryContent} />
-            </div>
+            </main>
           </div>
         ) : (
-          <MarkdownRenderer markdown={summaryContent} />
+          <div className="overflow-y-auto flex-1">
+            <MarkdownRenderer markdown={summaryContent} />
+          </div>
         )}
       </SummaryModal>
     </section>
