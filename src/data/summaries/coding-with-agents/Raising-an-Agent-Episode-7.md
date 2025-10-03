@@ -6,11 +6,9 @@ episode: 7
 date: "2025-06-01"
 ---
 
-# Summary of "Raising An Agent - Episode 7"
-
 This episode of Raising an Agent by Sourcegraph, titled "Raising an Agent - Episode 7," discusses strategies for working with coding agents, focusing on the shift from older chat-based LLMs to autonomous agentic development.
 
-## Key points covered
+### Key Points Covered
 
 - The Agentic Mindset: The hosts stress that a coding agent is a "power tool" and should be treated like a full-time engineer, not a junior engineer. They function as autonomous "little robots" that, once given a task, will use tools to edit files, run tests, and self-correct until the task is complete [04:15]–[06:16].
 

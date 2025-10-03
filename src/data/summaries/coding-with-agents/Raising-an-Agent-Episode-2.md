@@ -6,11 +6,9 @@ episode: 2
 date: "2025-06-01"
 ---
 
-# Summary of "Raising An Agent - Episode 2"
-
 Episode 2 of the "Raising An Agent" podcast, featuring Sourcegraph's CEO Quinn and software engineer Torsten, continues the discussion on prototyping their AI-fueled code editing agent. They focus on the agent's effectiveness, where it currently fails, and the groundbreaking implications of not limiting its operational costs.
 
-## The Power and Pitfalls of the Agent
+### The Power and Pitfalls of the Agent
 
 - Increased Flow and Productivity: Torsten finds the agent "addicting" because it lowers the barrier to entry for coding. Instead of having a blank page, he can start by writing a wish list and letting the agent write the initial code. This allows him to "skip all of this" mental preparation traditionally required to enter a state of coding flow [01:31].
 
@@ -18,7 +16,7 @@ Episode 2 of the "Raising An Agent" podcast, featuring Sourcegraph's CEO Quinn a
 
 - Architectural Guidance: To solve a complex problem that went "off the rails," Torsten guided the process by instructing the failing agent to write up everything it learned into a task.md file. A new, "fresh" agent was then started, given the task.md and the existing code changes, and it successfully identified and implemented a cleaner, seven-point architectural fix [05:19].
 
-## The Magic of No Token Limit and Cost
+### The Magic of No Token Limit and Cost
 
 The hosts discuss the commercial trade-off between speed/cost and agent quality:
 
@@ -26,7 +24,7 @@ The hosts discuss the commercial trade-off between speed/cost and agent quality:
 
 - The Cost-Value Ratio: While the agent is currently slow and relatively expensive, they note that the cost of a human software developer is far higher [10:03]. They believe usage-based pricing models will prevail over flat-rate subscriptions to support this high-autonomy, high-efficacy approach [11:55].
 
-## Parallel Agents and Future Trajectory
+### Parallel Agents and Future Trajectory
 
 - Multiple Agents and Workspaces: The team implemented the ability to run multiple agent threads concurrently (in separate tabs) to overcome the speed bottleneck [17:41]. This naturally leads to the need for features like Git work trees and multiple workspaces, so agents working on different parts of the codebase (frontend vs. backend) can run their tools and builds in parallel without conflicting [20:49].
 

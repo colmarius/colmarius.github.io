@@ -6,11 +6,9 @@ episode: 4
 date: "2025-06-01"
 ---
 
-# Summary of "Raising An Agent - Episode 4"
-
 This episode of "Raising An Agent" discusses the profound shift in the software engineering world driven by code-generating AI agents.
 
-## The main points covered include
+### The main points covered include
 
 - Devaluation of Code and Open Source: The ease and speed with which AI can generate simple, functional code is making traditional open-source libraries, especially those for small, isolated tasks, less valuable. It is often simpler to have the AI write a component than to integrate and maintain an external dependency.
 

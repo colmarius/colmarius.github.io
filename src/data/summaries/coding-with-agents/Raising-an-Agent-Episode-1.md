@@ -6,13 +6,11 @@ episode: 1
 date: "2025-06-01"
 ---
 
-# Summary of "Raising An Agent - Episode 1"
-
 This is a summary of "Raising An Agent - Episode 1" a limited-run special edition podcast from Sourcegraph, featuring CEO Quinn and software engineer Torsten.
 
 The episode serves as a diary of their excitement while prototyping a new AI-fueled code editing tool, which they refer to as an "agentic tool." They discuss the surprising capabilities of the latest large language models (LLMs) in a developer environment and the shift in their approach to building AI tools.
 
-## Key Takeaways from the Prototype
+### Key Takeaways from the Prototype
 
 - The Power of LLMs as Agents: They were shocked by how easy it was to reach a mind-blowing prototype state, attributing the success to the underlying models' ability to strategically use the tools they are given [06:40].
 
