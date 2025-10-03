@@ -21,6 +21,7 @@ export default defineConfig({
         '@assets': '/src/assets',
         '@layouts': '/src/layouts',
       },
+      dedupe: ['react', 'react-dom'],
     },
 
     // @ts-expect-error
