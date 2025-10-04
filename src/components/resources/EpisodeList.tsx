@@ -118,7 +118,7 @@ export const EpisodeList = ({
             className={`
 							group w-full rounded-sm px-2.5 py-1.5 text-left transition-colors cursor-pointer
 							bg-transparent border border-transparent
-							focus:outline-none focus-visible:ring-1 focus-visible:ring-gray-400/70 focus-visible:ring-offset-0
+							focus:outline-none focus-visible:ring-1 focus-visible:ring-indigo-600/50 focus-visible:ring-offset-0
 							${
                 isSelected
                   ? 'text-gray-900 dark:text-zinc-100 bg-gray-50/60 dark:bg-zinc-800/40 border-l-2 border-l-gray-400 dark:border-l-zinc-500 pl-2'

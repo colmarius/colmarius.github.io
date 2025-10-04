@@ -151,7 +151,7 @@ export default function ResourceCard({
   return (
     <a
       href={href}
-      className="block rounded-xl border border-gray-200 p-8 hover:shadow-lg transition-all duration-200 bg-white hover:border-gray-300 group"
+      className="block rounded-xl border border-gray-200 p-8 hover:shadow-lg transition-all duration-200 bg-white hover:border-gray-300 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600/50 focus-visible:ring-offset-2"
     >
       <div className="flex flex-col items-center text-center">
         <div className="mb-6 transform group-hover:scale-110 transition-transform duration-200">
