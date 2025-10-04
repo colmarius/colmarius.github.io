@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import codingResources from '../../data/resources/coding-with-agents.json';
 import {
   listSeries,
@@ -42,8 +42,12 @@ const CodingWithAgents = () => {
   const [selectedEpisode, setSelectedEpisode] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const sortedResources = [...codingResources].sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+  const sortedResources = useMemo(
+    () =>
+      [...codingResources].sort(
+        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+      ),
+    [],
   );
 
   const getLinkText = (type: string) => {
