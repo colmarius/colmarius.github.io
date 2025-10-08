@@ -1,5 +1,15 @@
 [
   {
+    "id": 3,
+    "title": "BuildCrew - Series",
+    "url": "https://www.youtube.com/playlist?list=PL6zLuuRVa1_g_ieW4LnrwhVo6bNHmRwEA",
+    "description": "A series from the Amp team covering AI agent best practices and prompting strategies. Topics include structured prompts, chain of thought prompting, using the Oracle sub-agent for complex reasoning, external memory management with short threads, and practical tips for effective agent collaboration. Features real-world development scenarios and insights from the Build Crew community.",
+    "type": "playlist",
+    "source": "Amp Code",
+    "date": "2025-10-08",
+    "tags": ["Coding agents", "Workflow", "Live coding"]
+  },
+  {
     "id": 2,
     "title": "Amp: The Emperor Has No Clothes",
     "subtitle": "Quinn Slack & Thorsten Ball on Building Amp Code",

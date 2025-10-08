@@ -1,6 +1,6 @@
 type SummaryRef =
   | { kind: 'single'; singlePath: string }
-  | { kind: 'series'; seriesPrefix: string };
+  | { kind: 'series'; seriesPrefix: string; seriesName: string };
 
 type SummaryMetadata = {
   title: string;
@@ -69,7 +69,7 @@ async function resolveSummaryRef(
 ): Promise<SummaryRef | null> {
   try {
     const paths = Object.keys(summaryFiles);
-    const seriesMap = new Map<string, number>();
+    const seriesMap = new Map<string, { count: number; seriesName: string }>();
 
     for (const path of paths) {
       const markdown = await loadMarkdown(path);
@@ -78,7 +78,11 @@ async function resolveSummaryRef(
       if (metadata.resourceId === resourceId) {
         if (metadata.series) {
           const prefix = path.substring(0, path.lastIndexOf('/') + 1);
-          seriesMap.set(prefix, (seriesMap.get(prefix) || 0) + 1);
+          const existing = seriesMap.get(prefix);
+          seriesMap.set(prefix, {
+            count: (existing?.count || 0) + 1,
+            seriesName: metadata.series,
+          });
         } else {
           return { kind: 'single', singlePath: path };
         }
@@ -86,10 +90,14 @@ async function resolveSummaryRef(
     }
 
     if (seriesMap.size > 0) {
-      const [prefix] = Array.from(seriesMap.entries()).sort(
-        (a, b) => b[1] - a[1],
+      const [prefix, data] = Array.from(seriesMap.entries()).sort(
+        (a, b) => b[1].count - a[1].count,
       )[0];
-      return { kind: 'series', seriesPrefix: prefix };
+      return {
+        kind: 'series',
+        seriesPrefix: prefix,
+        seriesName: data.seriesName,
+      };
     }
 
     return null;

@@ -1,7 +1,7 @@
 ---
 title: "Raising an Agent - Episode 5"
 resourceId: 1
-series: "coding-with-agents"
+series: "raising-an-agent"
 episode: 5
 date: "2025-06-01"
 ---
