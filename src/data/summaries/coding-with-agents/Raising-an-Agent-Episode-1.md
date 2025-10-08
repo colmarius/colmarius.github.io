@@ -1,5 +1,5 @@
 ---
-title: "Raising an Agent - Episode 1"
+title: "Feedback Loops"
 resourceId: 1
 series: "raising-an-agent"
 episode: 1

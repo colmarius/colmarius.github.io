@@ -1,5 +1,5 @@
 ---
-title: "Raising an Agent - Episode 4"
+title: "Code Quality Shifts"
 resourceId: 1
 series: "raising-an-agent"
 episode: 4

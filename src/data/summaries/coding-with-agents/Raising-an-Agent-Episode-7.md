@@ -1,5 +1,5 @@
 ---
-title: "Raising an Agent - Episode 7"
+title: "Context Engineering"
 resourceId: 1
 series: "raising-an-agent"
 episode: 7

@@ -1,5 +1,5 @@
 ---
-title: "Raising an Agent - Episode 5"
+title: "Power Tool Philosophy"
 resourceId: 1
 series: "raising-an-agent"
 episode: 5

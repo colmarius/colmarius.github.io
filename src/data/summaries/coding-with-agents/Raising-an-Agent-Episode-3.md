@@ -1,5 +1,5 @@
 ---
-title: "Raising an Agent - Episode 3"
+title: "Search Agent"
 resourceId: 1
 series: "raising-an-agent"
 episode: 3
