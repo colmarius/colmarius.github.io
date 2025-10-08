@@ -1,47 +1,44 @@
-# Agents Configuration
+# Coding Agent Configuration
 
-## Project Setup
+## Stack & Architecture
 
-This is an Astro-based static site generator with React integration, configured for GitHub Pages deployment.
+- **Astro v5** + React 19 + TailwindCSS v4
+- **Static site** deployed to GitHub Pages
+- **Site**: <https://marius-colacioiu.com>
+- **Path aliases**: `@components`, `@config`, `@types`, `@assets`, `@layouts`
 
 ## Commands
 
-- **Dev server**: `npm run dev` or `npm start`
-- **Build**: `npm run build`
-- **Preview**: `npm run preview`
-- **TypeScript check**: `npm run check` (Astro type checking)
-- **Lint**: `npm run lint` (Biome linting with auto-fix)
-- **Lint & Format**: `npm run lint:fix` (Biome check with formatting and fixes)
-## Architecture
+- `npm run dev` - Dev server
+- `npm run build` - Production build (runs type checking)
+- `npm run preview` - Preview build
+- `npm run check` - TypeScript check only
+- `npm run lint:fix` - Lint & format with Biome
 
-- **Framework**: Astro v5 with React integration
-- **Styling**: TailwindCSS v4
-- **Deployment**: GitHub Pages (static generation)
-- **Site**: https://marius-colacioiu.com
-- **Path Aliases**: `@components`, `@config`, `@types`, `@assets`, `@layouts` configured
+## Project Structure
 
-## Key Files
+```text
+src/
+├── components/    # React components
+├── data/          # Content data
+├── layouts/       # Astro layouts  
+├── pages/         # Routes (index.astro is entry)
+├── scripts/       # Client scripts
+├── styles/        # Global styles
+├── types/         # Type definitions
+└── utils/         # Utilities
+```
 
-- `astro.config.mjs`: Astro configuration with Vite path aliases
-- `src/pages/index.astro`: Main entry point
+## Code Conventions
 
-## Linting & Formatting
+- Use `type` not `interface`
+- Functional patterns over OOP
+- Single quotes, semicolons (Biome enforced)
+- No unused imports/vars in `.astro` files (Biome override)
 
-- **Biome**: Modern linter and formatter for JavaScript, TypeScript, and web frameworks
-- **Configuration**: Space indentation, single quotes, semicolons, recommended rules enabled
-- **Auto-fix**: Import organization and code fixes on save
-- **File support**: `.astro`, `.tsx`, `.ts`, `.jsx`, `.js` files
-- **Special rules**: Relaxed linting for `.astro` files (unused variables/imports disabled)
+## Important Notes
 
-## Code Guidelines
-
-- **TypeScript**: Use `type` instead of `interface` for type definitions
-- **Style**: Prefer functional programming patterns, avoid class/object-oriented approaches
-- **Workflow**: Commit changes after each logical step during development
-
-## Development Notes
-
-- Uses `client:only="react"` for the main app to avoid SSR issues
-- Browser APIs (like `window`) must be conditional for build compatibility
-- Build output goes to `dist/` directory
-- GitHub Pages configured with CNAME for custom domain
+- `client:only="react"` required for React components (avoid SSR issues)
+- Browser APIs must be conditionally accessed
+- Build outputs to `dist/`
+- Always run `npm run build` after changes to verify
