@@ -1,5 +1,5 @@
 ---
-title: "BuildCrew - Episode 1"
+title: "Prompting Strategies"
 resourceId: 3
 series: "build-crew"
 episode: 1

@@ -130,7 +130,7 @@ export const EpisodeList = ({
               <span
                 className={`shrink-0 tabular-nums text-[11px] tracking-wide ${
                   isSelected
-                    ? 'text-gray-500 dark:text-zinc-400'
+                    ? 'text-gray-500 dark:text-zinc-300'
                     : 'text-gray-400 dark:text-zinc-500'
                 }`}
               >
@@ -143,7 +143,7 @@ export const EpisodeList = ({
                     : 'text-gray-600 dark:text-zinc-400 group-hover:text-gray-800 dark:group-hover:text-zinc-200'
                 }`}
               >
-                {episode.title}
+                {episode.title.replace(/\s*-\s*Episode\s+\d+$/i, '')}
               </span>
             </div>
           </button>
