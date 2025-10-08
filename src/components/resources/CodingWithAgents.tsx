@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { titleCase } from 'src/utils/helpers';
 import codingResources from '../../data/resources/coding-with-agents.json';
 import {
   listSeries,
@@ -7,9 +8,7 @@ import {
   resolveSummaryRef,
   type SummaryRef,
 } from '../../utils/summaries';
-import { Button } from '../ui/Button';
-import { DocumentIcon } from '../ui/DocumentIcon';
-import { ExternalLinkIcon } from '../ui/ExternalLinkIcon';
+import { Button, DocumentIcon, ExternalLinkIcon } from '../ui';
 import { EpisodeList } from './EpisodeList';
 import MarkdownRenderer from './MarkdownRenderer';
 import ResourceListItem from './ResourceListItem';
@@ -163,7 +162,7 @@ const CodingWithAgents = () => {
             title={resource.title}
             badge={
               <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
-                {resource.type}
+                {titleCase(resource.type)}
               </span>
             }
             description={resource.description}

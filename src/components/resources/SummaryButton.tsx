@@ -1,5 +1,4 @@
-import { Button } from '../ui/Button';
-import { DocumentIcon } from '../ui/DocumentIcon';
+import { Button, DocumentIcon } from '../ui';
 
 type SummaryButtonProps = {
   onClick: () => void;

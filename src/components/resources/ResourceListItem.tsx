@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
-import { Button } from '../ui/Button';
-import { ExternalLinkIcon } from '../ui/ExternalLinkIcon';
+import { Button, ExternalLinkIcon } from '../ui';
 
 type ButtonVariant = 'primary' | 'secondary' | 'ghost';
 
