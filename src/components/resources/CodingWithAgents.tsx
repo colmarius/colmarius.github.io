@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from 'react';
-import { titleCase } from 'src/utils/helpers';
 import codingResources from '../../data/resources/coding-with-agents.json';
 import {
   listSeries,
@@ -7,7 +6,8 @@ import {
   parseFrontmatter,
   resolveSummaryRef,
   type SummaryRef,
-} from '../../utils/summaries';
+  titleCase,
+} from '../../utils';
 import { Button, DocumentIcon, ExternalLinkIcon } from '../ui';
 import { EpisodeList } from './EpisodeList';
 import MarkdownRenderer from './MarkdownRenderer';
