@@ -6,9 +6,7 @@ episode: 5
 date: "2025-06-01"
 ---
 
-This is a summary of the fifth installment of "Raising an Agent," a discussion focusing on the philosophy, design, and recent developments of the Sourcegraph coding agent, AMP.
-
-The conversation, featuring Dorsten, Quinn, and Bang, centered on key lessons learned over five weeks in the rapidly evolving landscape of AI coding agents, with an emphasis on building a practical, powerful tool rather than a magical, over-engineered solution.
+Episode 5 of the "Raising an Agent" series from Sourcegraph focuses on the philosophy, design, and recent developments of the AMP coding agent. The conversation, featuring Dorsten, Quinn, and Bang, centers on key lessons learned over five weeks in the rapidly evolving landscape of AI coding agents, with an emphasis on building a practical, powerful tool rather than a magical, over-engineered solution.
 
 ### The Philosophy of Building an Agent (AMP)
 

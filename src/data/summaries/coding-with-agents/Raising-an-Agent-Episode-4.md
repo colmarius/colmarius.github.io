@@ -6,7 +6,7 @@ episode: 4
 date: "2025-06-01"
 ---
 
-This episode of "Raising An Agent" discusses the profound shift in the software engineering world driven by code-generating AI agents.
+Episode 4 of the "Raising an Agent" series from Sourcegraph discusses the profound shift in the software engineering world driven by code-generating AI agents.
 
 ### The main points covered include
 

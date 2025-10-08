@@ -6,7 +6,7 @@ episode: 7
 date: "2025-06-01"
 ---
 
-This episode of Raising an Agent by Sourcegraph, titled "Raising an Agent - Episode 7," discusses strategies for working with coding agents, focusing on the shift from older chat-based LLMs to autonomous agentic development.
+Episode 7 of the "Raising an Agent" series from Sourcegraph discusses strategies for working with coding agents, focusing on the shift from older chat-based LLMs to autonomous agentic development.
 
 ### Key Points Covered
 

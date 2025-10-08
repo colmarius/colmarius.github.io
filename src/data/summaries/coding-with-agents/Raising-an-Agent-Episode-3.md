@@ -6,7 +6,7 @@ episode: 3
 date: "2025-06-01"
 ---
 
-Episode 3 of the "Raising An Agent" podcast, featuring Sourcegraph's CEO Quinn and software engineer Torsten, delves into the cultural shift in coding, the necessity of fine-tuned feedback loops, and the future of code search powered by agentic models.
+Episode 3 of the "Raising an Agent" series from Sourcegraph, featuring CEO Quinn and software engineer Torsten, delves into the cultural shift in coding, the necessity of fine-tuned feedback loops, and the future of code search powered by agentic models.
 
 ### The New Developer Mental Model
 

@@ -6,7 +6,7 @@ episode: 2
 date: "2025-06-01"
 ---
 
-Episode 2 of the "Raising An Agent" podcast, featuring Sourcegraph's CEO Quinn and software engineer Torsten, continues the discussion on prototyping their AI-fueled code editing agent. They focus on the agent's effectiveness, where it currently fails, and the groundbreaking implications of not limiting its operational costs.
+Episode 2 of the "Raising an Agent" series from Sourcegraph, featuring CEO Quinn and software engineer Torsten, continues the discussion on prototyping their AI-fueled code editing agent. They focus on the agent's effectiveness, where it currently fails, and the groundbreaking implications of not limiting its operational costs.
 
 ### The Power and Pitfalls of the Agent
 
