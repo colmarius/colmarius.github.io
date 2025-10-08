@@ -4,7 +4,7 @@ resourceId: 2
 date: "2025-09-26"
 ---
 
-This video from Latent Space, titled "Amp: The Emperor Has No Clothes," features a discussion with Alessio, Quinn Slack (CEO), and Thorsten Ball (Amp Dictator) from Sourcegraph about their new product, Amp, an AI coding agent. The video was published on September 26, 2025, and has 4,036 views.
+This video from Latent Space, features a discussion with Alessio, Quinn Slack (CEO), and Thorsten Ball (Amp Dictator) from Sourcegraph about their new product, Amp, an AI coding agent.
 
 ### Extended summary of the important topics
 
