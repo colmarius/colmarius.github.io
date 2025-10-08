@@ -80,16 +80,14 @@ export function SummaryModal({
 
   if (!isOpen) return null;
 
-  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === e.currentTarget) {
-      onClose();
-    }
-  };
-
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 animate-fadeIn"
-      onClick={handleBackdropClick}
+      onClick={(e) => {
+        if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
+          onClose();
+        }
+      }}
       onKeyDown={(e) => {
         if (e.key === 'Escape') {
           onClose();
