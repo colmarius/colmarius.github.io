@@ -6,11 +6,11 @@ episode: 8
 date: "2025-06-01"
 ---
 
-Episode 8 of the "Raising an Agent" series from Sourcegraph features a discussion between team members about their process for evaluating and integrating different Large Language Models (LLMs) into their AI coding product, AMP.
+Episode 8 of the "Raising an Agent" series from Sourcegraph features a discussion between team members about their process for evaluating and integrating different Large Language Models (LLMs) into their AI coding product, Amp.
 
 ### Model Strategy
 
-AMP's philosophy is to combine the best models across the industry, creating a product that is more effective as a whole [01:09:00].
+Amp's philosophy is to combine the best models across the industry, creating a product that is more effective as a whole [01:09:00].
 
 - The primary model is currently Sonnet 4 [01:39:00].
 

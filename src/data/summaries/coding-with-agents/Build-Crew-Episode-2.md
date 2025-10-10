@@ -44,6 +44,6 @@ The conversation highlights significant shifts in developer workflows and roles 
 * **Designing for Agents**: The discussion touches on the need for tooling and logging to become more "agent-friendly," with unified logs and deterministic tools that agents can easily interpret and utilize.
 * **More Accessible Development**: Tim's journey from surf movie maker to builder underscores how AI agents are democratizing software creation, empowering individuals with ideas to bring them to life without extensive coding backgrounds.
 
-Full Video: [Watch on Youtube](https://www.youtube.com/watch?v=VkV4p-eDPmM&list=PL6zLuuRVa1_g_ieW4LnrwhVo6bNHmRwEA&index=1)
+Full Video: [Watch on Youtube](https://www.youtube.com/watch?v=VkV4p-eDPmM&list=PL6zLuuRVa1_g_ieW4LnrwhVo6bNHmRwEA)
 
 Build Crew: <https://buildcrew.team>

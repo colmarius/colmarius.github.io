@@ -6,13 +6,13 @@ episode: 5
 date: "2025-06-01"
 ---
 
-Episode 5 of the "Raising an Agent" series from Sourcegraph focuses on the philosophy, design, and recent developments of the AMP coding agent. The conversation, featuring Dorsten, Quinn, and Bang, centers on key lessons learned over five weeks in the rapidly evolving landscape of AI coding agents, with an emphasis on building a practical, powerful tool rather than a magical, over-engineered solution.
+Episode 5 of the "Raising an Agent" series from Sourcegraph focuses on the philosophy, design, and recent developments of the Amp coding agent. The conversation, featuring Dorsten, Quinn, and Bang, centers on key lessons learned over five weeks in the rapidly evolving landscape of AI coding agents, with an emphasis on building a practical, powerful tool rather than a magical, over-engineered solution.
 
-### The Philosophy of Building an Agent (AMP)
+### The Philosophy of Building an Agent (Amp)
 
 - Model-Centric Design: The speakers affirm that success with a coding agent is primarily determined by the capabilities of the underlying Large Language Model (LLM), not by complex, hidden logic. When an agent hits an error, the system simply sends the error message back to the model, which then decides the next step (e.g., trying a different command) [03:50]. They caution against believing there's one "weird trick" in the system prompt [04:13], emphasizing that the model is the biggest differentiator [05:49].
 
-- A "Power Tool" Mentality: AMP is designed as a power drill or a senior engineer—a tool to be leveraged for productivity—rather than a "wishing well" that can build a full application from a vague, five-word prompt [11:23]. It's meant to take on "grunt work" like fixing parentheses, renaming files, and managing imports, allowing human developers to focus on higher-level tasks [01:00:01].
+- A "Power Tool" Mentality: Amp is designed as a power drill or a senior engineer—a tool to be leveraged for productivity—rather than a "wishing well" that can build a full application from a vague, five-word prompt [11:23]. It's meant to take on "grunt work" like fixing parentheses, renaming files, and managing imports, allowing human developers to focus on higher-level tasks [01:00:01].
 
 - The Codebase Must Bend: The team is deliberately building for users who are willing to change their existing habits to get the most value from the agent. They argue that the codebase will eventually bend to the agent's needs, not the other way around. Examples include splitting up large files, as LLMs struggle with editing 4,000+ line files, even if they fit in the context window [01:03:45].
 

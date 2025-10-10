@@ -10,7 +10,7 @@ Episode 6 of the "Raising an Agent" series from Sourcegraph discusses the latest
 
 ### Claude Sonnet 4 Impressions
 
-The hosts share their excitement over Sonnet 4, noting its significantly improved ability to handle more complex, end-to-end features and tasks in the AMP repository [08:03]. It has proven capable of taking on tasks that were previously considered too large for older models [08:47].
+The hosts share their excitement over Sonnet 4, noting its significantly improved ability to handle more complex, end-to-end features and tasks in the Amp repository [08:03]. It has proven capable of taking on tasks that were previously considered too large for older models [08:47].
 
 ### The Power of Sub-Agents
 
