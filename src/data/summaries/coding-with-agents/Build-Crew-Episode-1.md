@@ -1,46 +1,46 @@
 ---
-title: "Prompting Strategies"
+title: "Prompting strategies"
 resourceId: 3
 series: "build-crew"
 episode: 1
 date: "2025-09-17"
 ---
 
-This video from Sourcegraph, titled "Launching Build Crew: AI agent best practices and prompting strategies with the Amp team," features Ryan, Thorsten Ball, Jason Harris, Justin, Tyler, and Graham from the Amp team discussing the launch of Build Crew, a community for developers building with AI agents.
+Episode 1 of "Build Crew Live" video features the Amp team introducing their new community, Build Crew, and discussing their personal best practices for prompting and working with AI agents.
 
-## Build Crew Launch
+### **Launching the Build Crew Community**
 
-Sourcegraph launched "Build Crew," a free community for developers working with AI agents. It offers a platform for sharing knowledge, a leaderboard, badges, and a Twitter DM group for support. Users of Amp also receive $100 in credits.
+The core of the episode is the announcement of **Build Crew**, a free community for developers shipping with AI agents, launched by the Amp team [02:12].
+
+* **Purpose:** The community aims to connect developers, share knowledge, and provide support for the challenges of building with agents [02:02].
+* **Features:** Joining gives access to a private Twitter DM group, a leaderboard, and badges, and offers a \$100 credit for those who use Amp [03:52].
+* **Shared Learning:** The team hopes sharing public threads will become a standard way to move the industry forward and combat "imposter syndrome" by normalizing the learning process [51:43].
+
+### **AI Agent Best Practices & Workflow Strategies**
+
+The Amp team shared several practical and advanced techniques for effective agent interaction:
+
+* **Provide a Feedback Loop:** The agent can do a much better job if it can reproduce a bug or get feedback on its code, similar to how a developer uses simple scripts to reliably reproduce an issue [08:26].
+* **The "Desk" Analogy for Context:** Think of the context window as your desk. Keep all necessary information there, but move high-level, complex questions over to the "senior engineer"—the **Oracle** (a smart reasoning sub-agent)—to prevent cluttering your main thread's context [16:14].
+* **Handling Long-Running Processes:** Use a terminal multiplexer like **tmux** to start processes that wait for user input (like a CLI), allowing the agent to remote control the terminal and interact with the process [11:16, 13:22].
+
+### **Structuring Prompts for Success**
+
+Effective prompt structure is key to managing complexity and ensuring clarity:
+
+* **Goal, Phases, and Confirmation:** Start with a clear goal (TLDR), break the task into phases, and ask the agent to **repeat its mission** back to you before coding. This acts as a proofreading/chain-of-thought mechanism to ensure alignment [20:11, 21:43].
+* **External Memory for Context:** When starting a new thread or reaching a context limit, ask the agent to summarize all the relevant information (problem, background, current state, next steps) and write it into a **markdown file**. A new thread can then simply reference this file, maintaining long-term memory [29:30, 30:34].
+* **Forking Threads:** Use the "fork" feature to freeze the context of a thread and create variations from a specific message point. This lets you experiment with different approaches without modifying the core context [33:02].
+
+### **The Team's Pro-Tips for Developers**
+
+The team concluded with quick-fire advice for improving agent development:
+
+* **Slow Down and Plan:** Take the time to think through the problem and let the agent plan the solution. This slower approach often leads to smoother, faster results [55:59, 57:08].
+* **Confirm the Fix:** When asking the agent to fix a bug, instruct it to confirm the fix with a new test or a reliable confirmation step [54:17].
+* **"Don't Get Drunk on Tokens":** Even with massive context windows, don't try to fill them up. Keep your threads small, fork, and compact when necessary to reduce noise and maintain focus [57:13].
+* **Ask for Anything:** Do not limit what you ask an agent to do; you would be surprised at what the latest models are capable of achieving [57:49].
+
+Full Video: [Watch on Youtube](https://www.youtube.com/watch?v=VkV4p-eDPmM&list=PL6zLuuRVa1_g_ieW4LnrwhVo6bNHmRwEA&index=1)
 
 Build Crew: <https://buildcrew.team/>
-
-## Prompting Strategies for AI Agents
-
-The team shares their best practices for prompting agents.
-
-- Structured Prompts [20:03]: Jason uses a structured approach with a clear goal and phases, often asking the agent to repeat the mission to ensure understanding.
-
-- Chain of Thought Prompting [27:38]: Thorsten emphasizes the importance of making the agent plan its actions aloud, similar to a "chain of thought," which improves results by keeping the plan in the context window.
-
-- Short Threads and External Memory [29:04]: Thorsten prefers short threads and, if a new thread is needed for a continuing task, he has the agent write the relevant information (problem, background, steps left) into a file, which is then referenced in the new thread. This acts as an external memory to avoid context limits and noise.
-
-- Oracle (Sub-Agent) for Reasoning [14:46]: The Amp team utilizes an "Oracle" sub-agent (using OpenAI's 03 model) for complex reasoning tasks. The main agent provides the Oracle with only the necessary context, allowing for more efficient and focused problem-solving.
-
-- Verbalizing Prompts [55:08]: Graham finds verbalizing his ideas with tools like Super Whisper helpful for generating more comprehensive initial prompts.
-
-- Slowing Down and Specificity [55:59]: Tyler and Thorsten both advocate for slowing down, thinking through the problem, and providing long, specific prompts to reduce the solution space for the agent.
-
-- Code is Cheap, Iterate Fast [56:43]: Tyler highlights that with AI, code generation is cheap, encouraging willingness to revert and try different code paths without significant cost.
-
-- Don't Get Drunk on Tokens [57:13]: Justin advises against filling the context window unnecessarily, promoting smaller, focused interactions.
-
-- Don't Say No for Your Buyer [57:49]: Jason encourages users to be open-minded about what AI agents can achieve, as their capabilities are rapidly advancing.
-
-## Sharing Threads and Public Prompts
-
-The team discusses the growing trend of sharing AI agent threads, either for feedback, education, or as part of pull requests. While there's a perceived "imposter syndrome" [51:35] around sharing prompts, they encourage it as a way to collectively learn and advance the industry. They also mention redacting common API keys for security, but advise users to be cautious with sensitive data.
-
-You can watch the full video here:
-
-- Youtube: <<https://www.youtube.com/watch?v=3bqA5HVyQbk>
-- X:  <https://x.com/AmpCode/status/1966532763680682286>
