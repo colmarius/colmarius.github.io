@@ -6,6 +6,8 @@ episode: 2
 date: "2025-10-01"
 ---
 
+## Mastering AI Agent Prompting and the Evolving Developer Role
+
 Episode 2 of "Build Crew Live" dives into the dynamic world of AI coding agents, offering insights and best practices from Sourcegraph's Amp team and a product manager turned builder. The discussion centers around the newly launched **Build Crew community**, effective **prompting strategies**, and the **evolving role of developers** in an AI-first era.
 
 ### The Build Crew Community: Empowering AI Builders

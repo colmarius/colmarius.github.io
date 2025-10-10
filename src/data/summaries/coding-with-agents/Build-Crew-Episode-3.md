@@ -1,10 +1,12 @@
 ---
-title: "BuildCrew - Episode 3"
+title: "Future of Agentic Workflows"
 resourceId: 3
 series: "build-crew"
 episode: 3
 date: "2025-10-08"
 ---
+
+## Custom Tools, Agent Delegation, and the Future of Agentic Workflows
 
 Episode 3 of "Build Crew Live" features discussions on various aspects of agentic coding, including personal changes of mind, building custom tools for Amp, the evolution of agents, and effective strategies for working with them.
 

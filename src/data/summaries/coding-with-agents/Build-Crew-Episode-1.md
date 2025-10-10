@@ -6,6 +6,8 @@ episode: 1
 date: "2025-09-17"
 ---
 
+## Essential AI Agent Workflows: Context Management and Prompting Best Practices
+
 Episode 1 of "Build Crew Live" video features the Amp team introducing their new community, Build Crew, and discussing their personal best practices for prompting and working with AI agents.
 
 ### **Launching the Build Crew Community**
