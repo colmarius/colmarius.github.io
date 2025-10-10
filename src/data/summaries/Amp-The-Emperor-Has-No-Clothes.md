@@ -4,48 +4,57 @@ resourceId: 2
 date: "2025-09-26"
 ---
 
-This video from Latent Space, features a discussion with Alessio, Quinn Slack (CEO), and Thorsten Ball (Amp Dictator) from Sourcegraph about their new product, Amp, an AI coding agent.
+This episode of the Latent Space podcast features a discussion with Quinn and Thorsten from Sourcegraph about the evolution from Cody to Amp, their philosophy on building agentic coding tools, and the future of software development.
 
-### Extended summary of the important topics
+### The Genesis of Amp: Disrupting from Within
 
-- Introduction: The podcast introduces Quinn Slack, CEO, and Thorsten Ball, "Amp Dictator," from Sourcegraph, who discuss their AI coding agent, Amp Code.
+* **From Cody to Amp** [00:20]: Thorsten explains that Amp emerged from a new project that started when Claude 3.5 was released. They aimed to give the model tools and let it "go nuts" without the constraints of Cody.
+* **Resetting Expectations** [02:16]: They realized Amp was a fundamentally different product requiring a reset of user expectations, especially regarding permissions and cost, moving from a $20 subscription model to hundreds of dollars per month.
+* **Technical Liberation** [04:32]: Thorsten highlights the technical freedom gained by separating Amp from Sourcegraph's platform, allowing them to ship 15 times a day, a game-changer for rapid iteration and adaptation in the fast-paced AI development landscape.
+* **Focus on the Best Coding Agent** [03:22]: Quinn emphasizes that the sole focus is on building the "best coding agent," believing this is a bigger endeavor than anything that came before. This involves moving fast and learning continuously.
 
-- Transition from Cody to Amp: Sourcegraph decided to launch Amp as a new brand, separate from their previous product Cody, to reset user expectations and allow for faster iteration and a different pricing model. They realized Amp was a different kind of product—a "tool calling agent" that needed to be handled differently.
+### Internal Operations and Product Strategy
 
-- The Importance of Building the Best Coding Agent: In a rapidly evolving AI tooling landscape where no single tool maintains dominance for long, the primary goal for Amp is to build the best coding agent, focusing on continuous improvement rather than static features.
+* **Funding Innovation** [08:26]: Sourcegraph's successful existing product and customer trust enable them to fund "crazy stuff" like Amp, which operates with minimal bureaucracy regarding consistent pricing, user model choice, and compliance.
+* **Lean and Agile Team** [09:38]: The Amp core team is small (around eight people) and operates with a "personal project mode," pushing directly to main with no formal code reviews and shipping 15 times a day. This fosters fast feedback loops and dogfooding.
+* **Platform Leverage** [11:31]: They leverage Sourcegraph's existing platform teams (security, infrastructure) to handle foundational concerns, allowing the Amp team to concentrate on the client and user experience.
 
-- Adapting to a Rapidly Evolving AI Tooling Landscape: The speakers highlight the constant changes in AI models and tools, emphasizing the need for their product and team to be adaptable and ready to respond quickly to new developments.
+### Product Structure: CLI vs. VS Code Extension
 
-- Dogfooding at Sourcegraph: The Amp team actively uses their own product (dogfooding) to build software, including writing 80-90% of their codebase with Amp, which provides valuable fast feedback loops. They also ship new features 15 times a day with no formal code reviews, showcasing an unconventional approach to development.
+* **Initial VS Code Focus** [13:31]: They started with a VS Code extension due to its ease of distribution and proximity to the editor.
+* **Emergence of CLI** [14:16]: The popularity and flexibility of CLI tools (SSH, multiple split panes, different environments per tab) surprised them, leading to a rebuild of their CLI client.
+* **No Clear Winner** [16:48]: An internal poll showed a 50/50 split between VS Code and CLI users, indicating advantages and disadvantages to both. Younger users tend to prefer the editor, while older users might lean towards the terminal [17:23].
+* **Constant Tension and Adaptability** [19:08]: The team constantly evaluates whether to shed features or reduce complexity to remain agile, even considering eliminating the VS Code extension at one point before new developments made them reconsider.
 
-- CLI vs. VS Code Extension: While Amp started with a VS Code extension for ease of distribution and feedback, they were surprised by the popularity and advantages of a CLI tool, especially for its flexibility in various environments and the rich features terminals offer. They currently support both.
+### The Future of Models and Agent Interaction
 
-- Positioning Amp in the Coding Agent Market: Amp is not trying to compete with every developer tool, but rather focuses on power users and those at the "model product frontier" who want to move fast and are willing to adapt their workflows to leverage the latest AI capabilities.
+* **Beyond Model Choice** [21:11]: The focus is not on maximizing revenue or user adoption today, as the landscape is changing rapidly. They prioritize building the best coding agent, even if it means foregoing features users *think* they want (like model choice or specific buttons) that would slow them down [22:06].
+* **Models as Implementation Details** [25:55]: The vision is a future where the specific model running becomes an implementation detail, with different models used in the background for various tasks (e.g., faster models for specific modes).
+* **Multi-Model Strategy** [30:11]: Amp already utilizes models from Anthropic, OpenAI, and Google, and is close to integrating a fast open-source model, leveraging the strengths and weaknesses of different providers.
+* **Cutting-Edge Models and Open Source** [27:39]: The rapid evolution of models, including open-source options like Qwen 3 Coder and Kimmy K2, means that reliance on a single provider or older models is not sustainable. A significant portion of the internal team now uses models other than Sonnet for their primary Amp interaction [28:36].
+* **The Problem of Non-Deterministic LLMs** [34:43]: A significant challenge is the non-deterministic nature of LLMs, where products built on them can appear to work but might fail in a small percentage of cases, leading to a "hangover" effect for users.
 
-- The Diminishing Importance of Model Selectors: They argue that offering model choices to users is becoming less important as the "harness" or "scaffolding" around the model—the system prompt, tools, and overall interaction design—plays a more critical role in achieving good results. Models are increasingly seen as implementation details.
+### Building for the Frontier: User Expectations and Feedback Loops
 
-- Tooling vs. Harness: The team focuses on building a "scaffolding" that can easily adapt as models improve, rather than over-investing in features that might be rendered obsolete by more capable models. They are cautious about adding complex features that don't fundamentally improve the agent's core capabilities.
+* **Targeting Early Adopters** [39:25]: Amp explicitly targets users "at the frontier" of agentic coding who are curious and open to learning new workflows, rather than mainstream users who might expect traditional software behaviors [40:21].
+* **"Bullshit Features"** [40:43]: Features like "prompt enhancers" are deemed ineffective because LLMs need fundamental information, not just phrasing tricks. Similarly, elaborate custom sub-agents or MCP servers can lead to high token usage, slow performance, and debugging challenges.
+* **The "Harness" or "Scaffolding" Around the Model** [32:47]: The strategy is to build a flexible "scaffolding" around the model that can easily adapt or be replaced as models improve, rather than investing heavily in features that might become redundant.
+* **The Value of Short Threads and Context Engineering** [46:20]: Users are encouraged to start many small threads and be strict about what goes into context to avoid "context rot" and the pitfalls of compacting conversations that might lose critical information or past failures [44:42].
+* **Optimizing for Agent Consumption** [54:53]: There's a growing trend to optimize tooling and logs not just for human consumption, but for agents, such as unified, verbose, JSON-line logs that agents can easily process.
 
-- Common Failure Modes of Coding Agents: A significant challenge is users outsourcing thinking rather than just typing, leading to "spaghetti code" or ineffective results when they don't have a clear desired outcome or understand the agent's limitations. They also mention the non-deterministic nature of LLMs as a unique challenge in software development.
+### The Outer Loop: Orchestration and Future of Development
 
-- Agent-Friendly Logging and Tooling: The discussion points to the need for tooling and logging to evolve to be more "agent-friendly," such as unified and verbose logs (like JSON line outputs) that agents can easily interpret, even if they are not formatted for human consumption.
+* **Challenges of Multi-Agent Workflows** [01:03:52]: Managing multiple parallel agents presents challenges in tracking progress, understanding blockages, and re-orienting oneself after breaks.
+* **The Chess Analogy** [01:05:16]: Quinn describes the goal as enabling users to play "10 chess boards at once," quickly orienting themselves to a task, making a move, and moving on.
+* **Code Review in an Agentic World** [01:06:32]: The rise of agents means that much of the code is written by agents and reviewed by at least one human, shifting the traditional code review paradigm not reflected in platforms like GitHub.
+* **Git and Version Control Systems** [01:08:03]: The discussion raises questions about whether existing tools like Git are well-designed for a future with agents that might generate more frequent merge conflicts due to parallel changes.
+* **Changing User Demands** [01:08:40]: Agentic coding might lead to a tolerance for less "perfect" software if it's much faster, cheaper, and personalized, altering user demands and standards.
+* **Engineering as Leadership** [58:16]: Mike emphasizes that the number one skill for engineers in this new world is not prompting or advanced coding techniques, but **leadership and delegation**, applying human-to-human interaction skills to guiding agents.
+* **The Engineer as a Business Driver** [01:17:13]: Thorsten highlights that engineers need a broader understanding of business, product, and design, and the ability to wield code faster to achieve business goals, as the pure act of typing code will diminish in value.
 
-- Are Subagents Real?: The concept of subagents, with curated tools and contexts, shows potential for tasks like running specific tests, potentially even utilizing smaller, fine-tuned models for those specialized functions.
+### Conclusion and Call to Action
 
-- New Frameworks and Agent-Integrated Developer Tools: They anticipate a future where frameworks and developer tools are built with agents in mind, offering deeper integration and making it easier for agents to access context and troubleshoot problems, similar to how Rails provided an in-error-page CLI.
+* **Embrace Change and Stay Nimble** [01:07:07]: The overarching message is that everything is changing rapidly in agentic coding, and companies must be prepared to react quickly and adapt their products and processes.
+* **Join the Journey** [01:21:14]: Sourcegraph is actively looking for engineers interested in agentic programming, inviting them to use Amp, provide feedback, and help build the future of coding.
 
-- How Agents Are Encouraging Codebase and Workflow Changes: Agents are driving a shift where developers are more willing to adapt their codebases and processes to better utilize AI, a departure from the past where codebases were considered static.
-
-- Evolving Outer Loop Tasks: The challenge of managing multiple async agents and understanding their progress is discussed, comparing it to a chess master playing multiple boards simultaneously. The need for better UI/UX to quickly orient users to agent changes is highlighted.
-
-- Version Control and Merge Conflicts in an AI-First World: AI agents, especially when run in parallel, can introduce more frequent merge conflicts, raising questions about whether current version control systems like Git are well-suited for this AI-driven future.
-
-- Rise of User-Generated Enterprise Software: The discussion touches on the idea that non-coders who are skilled at unambiguously specifying their needs can build powerful custom software using AI agents, moving towards a future of user-generated enterprise applications.
-
-- Empowering Technical Leaders with AI: They emphasize the importance of empowering technical leaders who possess a strong internal constitution and first-principles thinking to experiment and "do crazy stuff" to drive innovation in the AI space.
-
-- Evaluating Product Without Traditional Evals: The Amp team does not use formal evals for their coding agent due to the rapid pace of change and the complexity of evaluating an agent across many different codebases and tasks. Instead, they rely on fast feedback loops from internal dogfooding.
-
-- Hiring: They are interested in talking to and hiring engineers who are passionate about agentic programming and are excited to explore the changing landscape of programming.
-
-You can watch the full video here: <https://www.youtube.com/watch?v=b4rOVZWLW6E>
+Full video: <https://www.youtube.com/watch?v=b4rOVZWLW6E>
