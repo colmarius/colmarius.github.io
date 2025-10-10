@@ -1,5 +1,15 @@
 [
   {
+    "id": 4,
+    "title": "Next Token – Series",
+    "url": "https://x.com/i/broadcasts/1MnxnPWoDwLGO",
+    "description": "A series featuring discussions, sharing experiences, and exploring the latest trends in AI agents and development practices.",
+    "type": "video",
+    "source": "X/Twitter",
+    "date": "2025-10-01",
+    "tags": ["Coding agents", "Workflow", "Live coding"]
+  },
+  {
     "id": 3,
     "title": "Build Crew - Series",
     "url": "https://www.youtube.com/playlist?list=PL6zLuuRVa1_g_ieW4LnrwhVo6bNHmRwEA",
