@@ -147,15 +147,26 @@ const CodingWithAgents = () => {
   >({});
 
   useEffect(() => {
-    const checkSummaries = async () => {
+    let cancelled = false;
+    (async () => {
+      const results = await Promise.allSettled(
+        sortedResources.map((r) => resolveSummaryRef(r.id)),
+      );
+
+      if (cancelled) return;
+
       const availability: Record<number, boolean> = {};
-      for (const resource of sortedResources) {
-        const ref = await resolveSummaryRef(resource.id);
-        availability[resource.id] = ref !== null;
-      }
+      sortedResources.forEach((r, i) => {
+        const res = results[i];
+        availability[r.id] =
+          res.status === 'fulfilled' && res.value != null;
+      });
+
       setSummaryAvailability(availability);
+    })();
+    return () => {
+      cancelled = true;
     };
-    checkSummaries();
   }, [sortedResources]);
 
   return (
