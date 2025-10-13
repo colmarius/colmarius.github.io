@@ -35,18 +35,20 @@ export default function ResourceListItem({
 }: Props) {
   return (
     <div className="flex flex-col md:flex-row gap-6 p-6 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-lg hover:border-gray-300 transition-all duration-200 group focus-within:ring-2 focus-within:ring-indigo-600/50 focus-within:ring-offset-2 focus-within:ring-offset-white">
-      <div className="flex-shrink-0">
-        <img
-          src={image.src}
-          alt={image.alt}
-          className={image.className}
-          onError={(e) => {
-            if (image.fallback) {
-              e.currentTarget.src = image.fallback;
-            }
-          }}
-        />
-      </div>
+      {image.src && (
+        <div className="flex-shrink-0">
+          <img
+            src={image.src}
+            alt={image.alt}
+            className={image.className}
+            onError={(e) => {
+              if (image.fallback) {
+                e.currentTarget.src = image.fallback;
+              }
+            }}
+          />
+        </div>
+      )}
       <div className="flex-1 flex flex-col gap-3 md:gap-4">
         <div className="flex items-center gap-2">
           <h3 className="text-xl font-medium text-gray-900">{title}</h3>
