@@ -1,5 +1,16 @@
 [
   {
+    "id": 5,
+    "title": "The Emerging Skillset of Wielding Coding Agents",
+    "subtitle": "Beyang Liu at AI Engineer Conference",
+    "url": "https://www.youtube.com/watch?v=F_RyElT_gJk",
+    "description": "Beyang Liu explores the evolution of AI coding agents from co-pilots to autonomous tools, covering controversial design decisions (autonomous edits, minimal UI, model coupling), Amp's implementation, and power user insights. Discusses best practices like detailed prompts, feedback loops, and sub-agents for complex tasks, while highlighting anti-patterns including micromanaging and underprompting.",
+    "type": "video",
+    "source": "AI Engineer",
+    "date": "2025-07-01",
+    "tags": ["Coding agents", "Workflow", "Practices", "Architecture"]
+  },
+  {
     "id": 4,
     "title": "Next Token – Series",
     "url": "https://x.com/i/broadcasts/1MnxnPWoDwLGO",

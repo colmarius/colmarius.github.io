@@ -6,7 +6,7 @@ episode: 8
 date: "2025-06-01"
 ---
 
-Episode 8 of "Raising an Agent" features Camden from the AMP Core team discussing how they evaluate and integrate different Large Language Models (LLMs) and models into their agentic coding tool, Amp.
+Episode 8 of "Raising an Agent" features Camden from the Amp Core team discussing how they evaluate and integrate different Large Language Models (LLMs) and models into their agentic coding tool, Amp.
 
 ### Amp's Multi-Model Philosophy
 
