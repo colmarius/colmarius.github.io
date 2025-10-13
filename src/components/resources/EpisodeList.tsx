@@ -1,4 +1,4 @@
-import { type KeyboardEvent, useEffect, useRef } from 'react';
+import { type KeyboardEvent, useCallback, useRef } from 'react';
 
 type Episode = {
   path: string;
@@ -22,17 +22,15 @@ export const EpisodeList = ({
   isCollapsed = false,
 }: EpisodeListProps) => {
   const listRef = useRef<HTMLDivElement>(null);
-  const selectedRef = useRef<HTMLButtonElement>(null);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: scrollIntoView on selection change
-  useEffect(() => {
-    if (selectedRef.current) {
-      selectedRef.current.scrollIntoView({
+  const setSelectedRef = useCallback((el: HTMLButtonElement | null) => {
+    if (el) {
+      el.scrollIntoView({
         block: 'nearest',
         behavior: 'smooth',
       });
     }
-  }, [selectedEpisode]);
+  }, []);
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (episodes.length === 0) return;
@@ -126,7 +124,7 @@ export const EpisodeList = ({
             type="button"
             key={episode.episode}
             id={`episode-${episode.episode}`}
-            ref={isSelected ? selectedRef : null}
+            ref={isSelected ? setSelectedRef : null}
             role="option"
             aria-selected={isSelected}
             onClick={() => onSelectEpisode(episode.episode, episode.path)}
