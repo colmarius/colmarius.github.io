@@ -94,7 +94,7 @@ const CodingWithAgents = () => {
         const { content } = parseFrontmatter(markdown);
         setSummaryContent(content);
       } else if (ref.kind === 'series') {
-        const episodeList = await listSeries(ref.seriesName);
+        const episodeList = await listSeries(ref.seriesName, ref.seriesPrefix);
         setEpisodes(episodeList);
 
         if (episodeList.length > 0) {

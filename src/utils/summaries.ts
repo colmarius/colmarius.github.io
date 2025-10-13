@@ -145,9 +145,12 @@ async function resolveSummaryRef(
 
 async function listSeries(
   seriesName: string,
+  seriesPrefix?: string,
 ): Promise<Array<{ path: string; episode: number; title: string }>> {
   try {
-    const paths = Object.keys(summaryFiles);
+    const paths = Object.keys(summaryFiles).filter(
+      (p) => !seriesPrefix || p.startsWith(seriesPrefix),
+    );
     const episodes: Array<{ path: string; episode: number; title: string }> =
       [];
 
