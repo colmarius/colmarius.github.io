@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import codingResources from '../../data/resources/coding-with-agents.json';
+import { useIsMdUp } from '../../hooks';
 import {
   listSeries,
   loadMarkdown,
@@ -8,7 +9,12 @@ import {
   type SummaryRef,
   titleCase,
 } from '../../utils';
-import { Button, DocumentIcon, ExternalLinkIcon } from '../ui';
+import {
+  Button,
+  CollapsibleButton,
+  DocumentIcon,
+  ExternalLinkIcon,
+} from '../ui';
 import { EpisodeList } from './EpisodeList';
 import MarkdownRenderer from './MarkdownRenderer';
 import ResourceListItem from './ResourceListItem';
@@ -28,6 +34,7 @@ type Resource = {
 };
 
 const CodingWithAgents = () => {
+  const isMdUp = useIsMdUp();
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedResource, setSelectedResource] = useState<Resource | null>(
     null,
@@ -40,6 +47,7 @@ const CodingWithAgents = () => {
   >([]);
   const [selectedEpisode, setSelectedEpisode] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [isEpisodeListExpanded, setIsEpisodeListExpanded] = useState(false);
 
   const sortedResources = useMemo(
     () =>
@@ -130,6 +138,7 @@ const CodingWithAgents = () => {
     setSelectedEpisode(null);
     setSummaryRef(null);
     setError(null);
+    setIsEpisodeListExpanded(false);
   };
 
   const [summaryAvailability, setSummaryAvailability] = useState<
@@ -204,7 +213,6 @@ const CodingWithAgents = () => {
                       onClick={() => handleOpenSummary(resource)}
                       aria-haspopup="dialog"
                       aria-controls={`summary-modal-${resource.id}`}
-                      aria-expanded="false"
                     >
                       <DocumentIcon />
                       Read{' '}
@@ -241,12 +249,22 @@ const CodingWithAgents = () => {
         ) : error ? (
           <div className="text-red-600 p-4 bg-red-50 rounded-lg">{error}</div>
         ) : summaryRef?.kind === 'series' && episodes.length > 0 ? (
-          <div className="flex flex-col md:flex-row gap-6 min-h-0 flex-1 overflow-hidden">
-            <aside className="md:w-64 md:flex-shrink-0 md:overflow-y-auto overflow-y-auto">
+          <div className="flex flex-col md:flex-row gap-6 min-h-0 flex-1 md:overflow-hidden">
+            <aside className="md:w-64 md:flex-shrink-0 md:overflow-y-auto md:max-h-full">
+              <div className="md:hidden mb-3">
+                <CollapsibleButton
+                  label="Episodes"
+                  isOpen={isEpisodeListExpanded}
+                  onClick={() =>
+                    setIsEpisodeListExpanded(!isEpisodeListExpanded)
+                  }
+                />
+              </div>
               <EpisodeList
                 episodes={episodes}
                 selectedEpisode={selectedEpisode}
                 onSelectEpisode={handleSelectEpisode}
+                isCollapsed={!isMdUp && !isEpisodeListExpanded}
               />
             </aside>
             <main className="flex-1 min-w-0 overflow-y-auto">

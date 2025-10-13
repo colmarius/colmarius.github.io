@@ -11,6 +11,7 @@ type EpisodeListProps = {
   selectedEpisode: number | null;
   onSelectEpisode: (episode: number, path: string) => void;
   isLoading?: boolean;
+  isCollapsed?: boolean;
 };
 
 export const EpisodeList = ({
@@ -18,6 +19,7 @@ export const EpisodeList = ({
   selectedEpisode,
   onSelectEpisode,
   isLoading = false,
+  isCollapsed = false,
 }: EpisodeListProps) => {
   const listRef = useRef<HTMLDivElement>(null);
   const selectedRef = useRef<HTMLButtonElement>(null);
@@ -91,6 +93,10 @@ export const EpisodeList = ({
     );
   }
 
+  const displayedEpisodes = isCollapsed
+    ? episodes.filter((ep) => ep.episode === selectedEpisode)
+    : episodes;
+
   return (
     <div
       ref={listRef}
@@ -104,8 +110,12 @@ export const EpisodeList = ({
       className="flex flex-col gap-1 p-0 focus:outline-none text-sm text-gray-600 dark:text-zinc-300"
     >
       <h3 className="sr-only">Episodes</h3>
-      {episodes.map((episode) => {
+      {displayedEpisodes.map((episode) => {
         const isSelected = episode.episode === selectedEpisode;
+        const trimmedTitle = episode.title.replace(
+          /\s*-\s*Episode\s+\d+$/i,
+          '',
+        );
         return (
           <button
             type="button"
@@ -142,9 +152,9 @@ export const EpisodeList = ({
                     ? 'text-gray-900 dark:text-zinc-100'
                     : 'text-gray-600 dark:text-zinc-400 group-hover:text-gray-800 dark:group-hover:text-zinc-200'
                 }`}
-                title={episode.title.replace(/\s*-\s*Episode\s+\d+$/i, '')}
+                title={trimmedTitle}
               >
-                {episode.title.replace(/\s*-\s*Episode\s+\d+$/i, '')}
+                {trimmedTitle}
               </span>
             </div>
           </button>
