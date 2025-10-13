@@ -24,6 +24,7 @@ export const EpisodeList = ({
   const listRef = useRef<HTMLDivElement>(null);
   const selectedRef = useRef<HTMLButtonElement>(null);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: scrollIntoView on selection change
   useEffect(() => {
     if (selectedRef.current) {
       selectedRef.current.scrollIntoView({
@@ -31,7 +32,7 @@ export const EpisodeList = ({
         behavior: 'smooth',
       });
     }
-  }, []);
+  }, [selectedEpisode]);
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (episodes.length === 0) return;
