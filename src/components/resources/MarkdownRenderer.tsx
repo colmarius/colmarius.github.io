@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import ReactMarkdown from 'react-markdown';
 import rehypeSanitize from 'rehype-sanitize';
 import remarkGfm from 'remark-gfm';
@@ -7,7 +7,7 @@ type MarkdownRendererProps = {
   markdown: string;
 };
 
-export default function MarkdownRenderer({ markdown }: MarkdownRendererProps) {
+function MarkdownRenderer({ markdown }: MarkdownRendererProps) {
   const components = useMemo(
     () => ({
       a: ({
@@ -65,3 +65,5 @@ export default function MarkdownRenderer({ markdown }: MarkdownRendererProps) {
     </div>
   );
 }
+
+export default memo(MarkdownRenderer);
