@@ -54,11 +54,19 @@ function parseFrontmatter(markdown: string): {
     if (key === 'title') {
       metadata.title = value.replace(/^["']|["']$/g, '');
     } else if (key === 'resourceId') {
-      metadata.resourceId = Number.parseInt(value, 10);
+      const raw = value.replace(/^["']|["']$/g, '');
+      const n = Number.parseInt(raw, 10);
+      if (!Number.isNaN(n)) {
+        metadata.resourceId = n;
+      }
     } else if (key === 'series') {
       metadata.series = value.replace(/^["']|["']$/g, '');
     } else if (key === 'episode') {
-      metadata.episode = Number.parseInt(value, 10);
+      const raw = value.replace(/^["']|["']$/g, '');
+      const n = Number.parseInt(raw, 10);
+      if (!Number.isNaN(n)) {
+        metadata.episode = n;
+      }
     } else if (key === 'date') {
       metadata.date = value.replace(/^["']|["']$/g, '');
     }
@@ -147,30 +155,35 @@ async function listSeries(
   seriesName: string,
   seriesPrefix?: string,
 ): Promise<Array<{ path: string; episode: number; title: string }>> {
-  try {
-    const paths = Object.keys(summaryFiles).filter(
-      (p) => !seriesPrefix || p.startsWith(seriesPrefix),
-    );
-    const episodes: Array<{ path: string; episode: number; title: string }> =
-      [];
+  const paths = Object.keys(summaryFiles).filter(
+    (p) => !seriesPrefix || p.startsWith(seriesPrefix),
+  );
+  const episodes: Array<{ path: string; episode: number; title: string }> = [];
 
-    for (const path of paths) {
-      const markdown = await loadMarkdown(path);
-      const { metadata } = parseFrontmatter(markdown);
+  await Promise.allSettled(
+    paths.map(async (path) => {
+      try {
+        const markdown = await loadMarkdown(path);
+        const { metadata } = parseFrontmatter(markdown);
 
-      if (metadata.series === seriesName && metadata.episode != null) {
-        episodes.push({
-          path,
-          episode: metadata.episode,
-          title: metadata.title,
-        });
+        if (
+          metadata.series === seriesName &&
+          metadata.episode != null &&
+          !Number.isNaN(metadata.episode)
+        ) {
+          episodes.push({
+            path,
+            episode: metadata.episode,
+            title: metadata.title,
+          });
+        }
+      } catch {
+        // Ignore this file
       }
-    }
+    }),
+  );
 
-    return episodes.sort((a, b) => a.episode - b.episode);
-  } catch {
-    return [];
-  }
+  return episodes.sort((a, b) => a.episode - b.episode);
 }
 
 export { parseFrontmatter, loadMarkdown, resolveSummaryRef, listSeries };

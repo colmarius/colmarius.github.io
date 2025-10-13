@@ -1,4 +1,10 @@
-import { type KeyboardEvent, useCallback, useRef, useState } from 'react';
+import {
+  type KeyboardEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 type Episode = {
   path: string;
@@ -25,6 +31,10 @@ export const EpisodeList = ({
   const [focusedEpisode, setFocusedEpisode] = useState<number | null>(
     selectedEpisode,
   );
+
+  useEffect(() => {
+    setFocusedEpisode(selectedEpisode);
+  }, [selectedEpisode]);
 
   const setSelectedRef = useCallback((el: HTMLButtonElement | null) => {
     if (el) {
@@ -66,6 +76,7 @@ export const EpisodeList = ({
         break;
       case 'Enter':
       case ' ':
+      case 'Spacebar':
         event.preventDefault();
         if (focusedEpisode !== null) {
           const episode = episodes.find((ep) => ep.episode === focusedEpisode);
