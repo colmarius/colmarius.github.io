@@ -83,21 +83,16 @@ export function SummaryModal({
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 animate-fadeIn"
-      onClick={(e) => {
-        if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
-          onClose();
-        }
-      }}
-      onKeyDown={(e) => {
-        if (e.key === 'Escape') {
-          onClose();
-        }
-      }}
       aria-labelledby={modalId}
       aria-modal="true"
       role="dialog"
     >
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+      <button
+        type="button"
+        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        onClick={onClose}
+        aria-label="Close modal"
+      />
 
       <div
         ref={modalRef}

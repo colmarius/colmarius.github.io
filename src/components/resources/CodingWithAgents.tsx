@@ -48,6 +48,7 @@ const CodingWithAgents = () => {
   const [selectedEpisode, setSelectedEpisode] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isEpisodeListExpanded, setIsEpisodeListExpanded] = useState(false);
+  const [isEpisodeLoading, setIsEpisodeLoading] = useState(false);
 
   const sortedResources = useMemo(
     () =>
@@ -115,7 +116,7 @@ const CodingWithAgents = () => {
 
   const handleSelectEpisode = async (episodeNumber: number, path: string) => {
     setSelectedEpisode(episodeNumber);
-    setIsLoading(true);
+    setIsEpisodeLoading(true);
 
     try {
       const markdown = await loadMarkdown(path);
@@ -126,7 +127,7 @@ const CodingWithAgents = () => {
         `Failed to load episode: ${err instanceof Error ? err.message : 'Unknown error'}`,
       );
     } finally {
-      setIsLoading(false);
+      setIsEpisodeLoading(false);
     }
   };
 
@@ -267,7 +268,15 @@ const CodingWithAgents = () => {
                 isCollapsed={!isMdUp && !isEpisodeListExpanded}
               />
             </aside>
-            <main className="flex-1 min-w-0 overflow-y-auto">
+            <main
+              className="relative flex-1 min-w-0 overflow-y-auto"
+              aria-busy={isEpisodeLoading}
+            >
+              {isEpisodeLoading && (
+                <div className="absolute inset-0 flex items-center justify-center bg-white/60 pointer-events-none">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-600" />
+                </div>
+              )}
               <MarkdownRenderer markdown={summaryContent} />
             </main>
           </div>
