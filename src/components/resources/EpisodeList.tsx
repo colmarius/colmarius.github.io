@@ -1,4 +1,4 @@
-import { type KeyboardEvent, useCallback, useRef } from 'react';
+import { type KeyboardEvent, useCallback, useRef, useState } from 'react';
 
 type Episode = {
   path: string;
@@ -22,6 +22,9 @@ export const EpisodeList = ({
   isCollapsed = false,
 }: EpisodeListProps) => {
   const listRef = useRef<HTMLDivElement>(null);
+  const [focusedEpisode, setFocusedEpisode] = useState<number | null>(
+    selectedEpisode,
+  );
 
   const setSelectedRef = useCallback((el: HTMLButtonElement | null) => {
     if (el) {
@@ -36,7 +39,7 @@ export const EpisodeList = ({
     if (episodes.length === 0) return;
 
     const currentIndex = episodes.findIndex(
-      (ep) => ep.episode === selectedEpisode,
+      (ep) => ep.episode === focusedEpisode,
     );
 
     let nextIndex = currentIndex;
@@ -44,7 +47,10 @@ export const EpisodeList = ({
     switch (event.key) {
       case 'ArrowDown':
         event.preventDefault();
-        nextIndex = Math.min(currentIndex + 1, episodes.length - 1);
+        nextIndex = Math.min(
+          currentIndex >= 0 ? currentIndex + 1 : 0,
+          episodes.length - 1,
+        );
         break;
       case 'ArrowUp':
         event.preventDefault();
@@ -61,9 +67,11 @@ export const EpisodeList = ({
       case 'Enter':
       case ' ':
         event.preventDefault();
-        if (currentIndex >= 0) {
-          const episode = episodes[currentIndex];
-          onSelectEpisode(episode.episode, episode.path);
+        if (focusedEpisode !== null) {
+          const episode = episodes.find((ep) => ep.episode === focusedEpisode);
+          if (episode) {
+            onSelectEpisode(episode.episode, episode.path);
+          }
         }
         return;
       default:
@@ -72,7 +80,7 @@ export const EpisodeList = ({
 
     if (nextIndex !== currentIndex && nextIndex >= 0) {
       const episode = episodes[nextIndex];
-      onSelectEpisode(episode.episode, episode.path);
+      setFocusedEpisode(episode.episode);
     }
   };
 
@@ -106,7 +114,7 @@ export const EpisodeList = ({
       role="listbox"
       aria-label="Episode list"
       aria-activedescendant={
-        selectedEpisode !== null ? `episode-${selectedEpisode}` : undefined
+        focusedEpisode !== null ? `episode-${focusedEpisode}` : undefined
       }
       tabIndex={0}
       onKeyDown={handleKeyDown}
@@ -115,6 +123,7 @@ export const EpisodeList = ({
       <h3 className="sr-only">Episodes</h3>
       {displayedEpisodes.map((episode) => {
         const isSelected = episode.episode === selectedEpisode;
+        const isFocused = episode.episode === focusedEpisode;
         const trimmedTitle = episode.title.replace(
           /\s*-\s*Episode\s+\d+$/i,
           '',
@@ -128,6 +137,7 @@ export const EpisodeList = ({
             role="option"
             aria-selected={isSelected}
             onClick={() => onSelectEpisode(episode.episode, episode.path)}
+            onFocus={() => setFocusedEpisode(episode.episode)}
             className={`
 							group w-full rounded-sm px-2.5 py-1.5 text-left transition-colors cursor-pointer
 							bg-transparent border border-transparent
@@ -135,7 +145,9 @@ export const EpisodeList = ({
 							${
                 isSelected
                   ? 'text-gray-900 dark:text-zinc-100 bg-gray-50/60 dark:bg-zinc-800/40 border-l-2 border-l-gray-400 dark:border-l-zinc-500 pl-2'
-                  : 'text-gray-600 dark:text-zinc-400 hover:text-gray-800 dark:hover:text-zinc-200 hover:bg-gray-50/40 dark:hover:bg-zinc-800/30'
+                  : isFocused
+                    ? 'text-gray-800 dark:text-zinc-200 bg-gray-50/30 dark:bg-zinc-800/20'
+                    : 'text-gray-600 dark:text-zinc-400 hover:text-gray-800 dark:hover:text-zinc-200 hover:bg-gray-50/40 dark:hover:bg-zinc-800/30'
               }
 						`}
           >
