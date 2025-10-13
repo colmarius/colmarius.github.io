@@ -158,8 +158,7 @@ const CodingWithAgents = () => {
       const availability: Record<number, boolean> = {};
       sortedResources.forEach((r, i) => {
         const res = results[i];
-        availability[r.id] =
-          res.status === 'fulfilled' && res.value != null;
+        availability[r.id] = res.status === 'fulfilled' && res.value != null;
       });
 
       setSummaryAvailability(availability);

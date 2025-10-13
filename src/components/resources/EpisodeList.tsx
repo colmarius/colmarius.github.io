@@ -95,9 +95,7 @@ export const EpisodeList = ({
   }
 
   if (isCollapsed && selectedEpisode === null) {
-    return (
-      <div className="p-4 text-gray-500 text-sm">Select an episode</div>
-    );
+    return <div className="p-4 text-gray-500 text-sm">Select an episode</div>;
   }
 
   const displayedEpisodes = isCollapsed
