@@ -16,6 +16,20 @@ const summaryFiles = import.meta.glob<string>('/src/data/summaries/**/*.md', {
   eager: false,
 });
 
+// Cache markdown loads
+const markdownCache = new Map<string, Promise<string>>();
+
+// Cache summary ref lookups
+const refCache = new Map<number, Promise<SummaryRef | null>>();
+
+// Clear caches on HMR to avoid stale data in dev
+if (import.meta.hot) {
+  import.meta.hot.accept(() => {
+    markdownCache.clear();
+    refCache.clear();
+  });
+}
+
 function parseFrontmatter(markdown: string): {
   metadata: SummaryMetadata;
   content: string;
@@ -57,53 +71,76 @@ function parseFrontmatter(markdown: string): {
 }
 
 async function loadMarkdown(path: string): Promise<string> {
-  const loader = summaryFiles[path];
-  if (!loader) {
-    throw new Error(`Summary not found: ${path}`);
+  let p = markdownCache.get(path);
+  if (!p) {
+    const loader = summaryFiles[path];
+    if (!loader) {
+      throw new Error(`Summary not found: ${path}`);
+    }
+    p = loader().catch((err) => {
+      markdownCache.delete(path);
+      throw err;
+    });
+    markdownCache.set(path, p);
   }
-  return await loader();
+  return await p;
 }
 
 async function resolveSummaryRef(
   resourceId: number,
 ): Promise<SummaryRef | null> {
-  try {
-    const paths = Object.keys(summaryFiles);
-    const seriesMap = new Map<string, { count: number; seriesName: string }>();
+  let p = refCache.get(resourceId);
+  if (!p) {
+    const execute = async (): Promise<SummaryRef | null> => {
+      const paths = Object.keys(summaryFiles);
+      const seriesMap = new Map<
+        string,
+        { count: number; seriesName: string }
+      >();
 
-    for (const path of paths) {
-      const markdown = await loadMarkdown(path);
-      const { metadata } = parseFrontmatter(markdown);
+      for (const path of paths) {
+        try {
+          const markdown = await loadMarkdown(path);
+          const { metadata } = parseFrontmatter(markdown);
 
-      if (metadata.resourceId === resourceId) {
-        if (metadata.series) {
-          const prefix = path.substring(0, path.lastIndexOf('/') + 1);
-          const existing = seriesMap.get(prefix);
-          seriesMap.set(prefix, {
-            count: (existing?.count || 0) + 1,
-            seriesName: metadata.series,
-          });
-        } else {
-          return { kind: 'single', singlePath: path };
+          if (metadata.resourceId === resourceId) {
+            if (metadata.series) {
+              const prefix = path.substring(0, path.lastIndexOf('/') + 1);
+              const existing = seriesMap.get(prefix);
+              seriesMap.set(prefix, {
+                count: (existing?.count || 0) + 1,
+                seriesName: metadata.series,
+              });
+            } else {
+              return { kind: 'single' as const, singlePath: path };
+            }
+          }
+        } catch {
+          // Ignore this file and continue
         }
       }
-    }
 
-    if (seriesMap.size > 0) {
-      const [prefix, data] = Array.from(seriesMap.entries()).sort(
-        (a, b) => b[1].count - a[1].count,
-      )[0];
-      return {
-        kind: 'series',
-        seriesPrefix: prefix,
-        seriesName: data.seriesName,
-      };
-    }
+      if (seriesMap.size > 0) {
+        const [prefix, data] = Array.from(seriesMap.entries()).sort(
+          (a, b) => b[1].count - a[1].count,
+        )[0];
+        return {
+          kind: 'series' as const,
+          seriesPrefix: prefix,
+          seriesName: data.seriesName,
+        };
+      }
 
-    return null;
-  } catch {
-    return null;
+      return null;
+    };
+
+    p = execute().catch((err) => {
+      refCache.delete(resourceId);
+      throw err;
+    }) as Promise<SummaryRef | null>;
+    refCache.set(resourceId, p);
   }
+  return p;
 }
 
 async function listSeries(
