@@ -8,7 +8,7 @@ date: "2025-10-21"
 
 ## ChatGPT Atlas Browser, Handoffs, and AR Apps
 
-In Episode 5 of "Build Crew Live" the team (Graham, Thorston, Ryan, and Cyan) is joined by Build Crew community member AJ. They cover the team's weekly "changed my mind" segment, demo new features in Amp, review OpenAI's new Atlas browser, and get a look at AJ's work with augmented reality.
+In Episode 5 of "Build Crew Live" the team (Graham, Thorsten, Ryan, and Cyan) is joined by Build Crew community member AJ. They cover the team's weekly "changed my mind" segment, demo new features in Amp, review OpenAI's new Atlas browser, and get a look at AJ's work with augmented reality.
 
 ### **The "What I Changed My Mind About" Round**
 
@@ -16,7 +16,7 @@ The team kicks off by sharing what they've changed their minds about in the worl
 
 * **AJ:** He no longer "baby-steps" the AI. He's found that agents can successfully code **entire features** at once, so long as he has strong, integrated tests to back them up.
 * **Cyan:** He has moved from favoring slow, thorough context searches to preferring **faster, parallel searches**. He now trusts the agent to get similar results by processing more information quickly, which reduces his wait time.
-* **Thorston:** After launching the ad-supported **Amp Free**, he has changed his mind on ads. He now believes that relevant, well-integrated ads (like those in dev tools or Google Maps) are a good way to make powerful products accessible to everyone for free.
+* **Thorsten:** After launching the ad-supported **Amp Free**, he has changed his mind on ads. He now believes that relevant, well-integrated ads (like those in dev tools or Google Maps) are a good way to make powerful products accessible to everyone for free.
 * **Ryan:** He's reconsidering his CI/CD pipeline. After seeing a post online, he's exploring the idea of **separating flaky end-to-end (E2E) tests** from the main CI process and running them asynchronously, so they don't block PRs from merging.
 
 ### **Pro-Tips and New Feature Demos**
@@ -29,7 +29,7 @@ Ryan gives a review of the new **Atlas browser from OpenAI**. He demonstrates it
 
 #### **Amp's New "Handoff" Feature**
 
-Thorston demos `/handoff`, a new feature for managing context in Amp. Instead of letting a thread get infinitely long, you can type `/handoff` with a new goal (e.g., "now test this feature"). An LLM then reads your current thread, extracts only the relevant files and context for the new task, and starts a brand new, focused thread for you.
+Thorsten demos `/handoff`, a new feature for managing context in Amp. Instead of letting a thread get infinitely long, you can type `/handoff` with a new goal (e.g., "now test this feature"). An LLM then reads your current thread, extracts only the relevant files and context for the new task, and starts a brand new, focused thread for you.
 
 #### **AI for Code Reviews**
 
