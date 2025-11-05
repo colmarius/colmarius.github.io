@@ -1,57 +1,67 @@
 ---
-title: 'Welcome to Posts'
-description: 'First post on the new posts section of my website. Testing the setup and getting ready to write about coding with AI agents.'
+title: 'LLM Agents: Tools in a Loop'
+description: 'A simple introduction: an LLM agent runs tools in a loop to achieve a goal—what that means, a quick example, and when the loop stops.'
 pubDate: 2025-11-05
-tags: ['meta', 'ai-agents']
+tags: ['ai-agents', 'intro']
 draft: false
 ---
 
-## Welcome
+Inspired by [Simon Willison's definition](https://simonwillison.net/2025/Sep/18/agents/)—"LLMs calling tools in a loop to achieve a goal"—this post keeps things simple and practical. If you remember one thing about agents, make it this: **an agent is a loop that thinks, acts with tools, observes, and repeats until done.**
 
-This is the first post on my new blog. I'll be writing about coding with AI agents, software engineering, and other technical topics.
+## What is an Agent?
 
-### What to Expect
+- An agent uses an LLM to decide what to do next
+- It can call **tools** (functions/APIs/scripts) to act in the world
+- It runs in a loop: think → act → observe → decide → repeat, guided by a goal
 
-I'm planning to write a series of posts covering:
+## The Core Loop
 
-- Introduction to coding with AI agents
-- Core concepts and patterns
-- Practical examples and use cases
-- Best practices and lessons learned
-
-### Testing Code Blocks
-
-Here's a simple code example to test syntax highlighting:
-
-```typescript
-function greet(name: string): string {
-  return `Hello, ${name}!`;
-}
-
-const message = greet('World');
-console.log(message);
+```text
+goal → think → choose_tool → call_tool → observe_result
+    → decide: done? otherwise refine plan and loop
 ```
 
-### Testing Lists
+## Tools an Agent Can Call
 
-**Unordered list:**
+- **Files:** read/write files, list directories
+- **Code:** run a snippet (e.g., Python/TypeScript) or a test
+- **HTTP/APIs:** fetch JSON, call app backends, web search
+- **Data:** query a database or vector index
+- **System:** shell commands or task runners (with guardrails)
 
-- First item
-- Second item
-- Third item with **bold text**
+## A Quick Example
 
-**Ordered list:**
+**Goal:** "Turn expenses.csv into a bar chart of monthly totals."
 
-1. Start here
-2. Then this
-3. Finally that
+1. **Think:** "I need to read the file, group by month, and plot."
+2. **Act:** Call `file.read('expenses.csv')` → observe rows
+3. **Think:** "I'll write and run a small Python snippet."
+4. **Act:** Call `code.run(python, script)` → observe a PNG path
+5. **Decide:** Goal reached → return "Chart saved at charts/monthly.png"
 
-### Testing Quotes
+## When Does the Loop Stop?
 
-> "The best way to predict the future is to invent it." - Alan Kay
+- **Goal reached:** the result satisfies the instruction
+- **Safety limits:** max steps/tokens/time reached
+- **Stuck:** repeated failures or no progress detected
+- **User stop:** human cancels or asks for partial results
 
-### More Content
+## Why This Matters
 
-This post is just testing the rendering capabilities. Real content coming soon!
+- **Moves beyond chat:** the LLM can actually *do* things via tools
+- **Robustness via iteration:** adjust after each observation
+- **Composability:** clear, testable tools keep agents maintainable
+- **Safety by design:** constrain tools, log actions, cap loops
 
-Stay tuned for more posts about AI-assisted development, patterns for working with coding agents, and practical examples from real projects.
+## What's Next
+
+Future posts will cover:
+
+- How I think about coding agents
+- How I use Amp coding agent
+- Practical patterns and workflows
+- Real-world examples and lessons learned
+
+---
+
+**Reference:** Simon Willison's [post on agents](https://simonwillison.net/2025/Sep/18/agents/) provides the foundational definition this intro builds on.
