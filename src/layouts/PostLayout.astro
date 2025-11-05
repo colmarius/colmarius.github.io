@@ -2,18 +2,18 @@
 import Layout from './Layout.astro';
 
 type Props = {
-	title: string;
-	description: string;
-	pubDate: Date;
-	tags?: string[];
+  title: string;
+  description: string;
+  pubDate: Date;
+  tags?: string[];
 };
 
 const { title, description, pubDate, tags } = Astro.props;
 
 const formattedDate = pubDate.toLocaleDateString('en-US', {
-	year: 'numeric',
-	month: 'long',
-	day: 'numeric',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
 });
 ---
 

@@ -1,15 +1,15 @@
 ---
-import Layout from '@layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import Layout from '@layouts/Layout.astro';
 
 const allPosts = await getCollection('posts');
 
 const posts = import.meta.env.PROD
-	? allPosts.filter((post) => !post.data.draft)
-	: allPosts;
+  ? allPosts.filter((post) => !post.data.draft)
+  : allPosts;
 
 const sortedPosts = posts.sort(
-	(a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
 );
 ---
 
