@@ -42,3 +42,35 @@ src/
 - Browser APIs must be conditionally accessed
 - Build outputs to `dist/`
 - Always run `npm run build` after changes to verify
+
+## Development Workflow
+
+### Plan Tracking
+
+**All plans should be tracked in `.agents/plans/` structure:**
+
+```text
+.agents/plans/
+├── todo/
+├── in-progress/
+└── completed/
+```
+
+**Plan Lifecycle:**
+
+1. Create new plans in `.agents/plans/todo/[plan-name].md`
+2. For complex/multi-layer plans: Consult Oracle to review and simplify before starting work
+3. Move to `.agents/plans/in-progress/` when work begins
+4. Keep plans up to date while working on implementation
+5. Move to `.agents/plans/completed/` when done
+6. Update plan after completion with results
+
+**Guidelines:**
+
+- Plans should have specific, actionable steps
+- **Keep scope minimal:** Focus on core functionality, defer nice-to-haves
+- **Include "Implementation Notes":** Add context for key principles, pitfalls, testing strategy
+- Update plan status and progress regularly during development
+- Reference related files and code locations in plans
+- Use plans to track multi-step changes across layers
+- For blocked plans: note the blocker and next action in the plan
