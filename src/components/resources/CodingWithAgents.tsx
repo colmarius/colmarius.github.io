@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import codingResources from '../../data/resources/coding-with-agents.json';
 import { useIsMdUp } from '../../hooks';
 import { titleCase } from '../../utils';
@@ -90,22 +90,25 @@ const CodingWithAgents = ({ manifest }: CodingWithAgentsProps) => {
     }
   };
 
-  const resolveSummaryRef = (resourceId: number): SummaryRef | null => {
-    const entries = manifest.filter((e) => e.resourceId === resourceId);
-    if (entries.length === 0) return null;
+  const resolveSummaryRef = useCallback(
+    (resourceId: number): SummaryRef | null => {
+      const entries = manifest.filter((e) => e.resourceId === resourceId);
+      if (entries.length === 0) return null;
 
-    const hasSeries = entries.some((e) => e.series !== null);
-    if (hasSeries) {
-      const seriesName = entries.find((e) => e.series)?.series;
-      if (!seriesName) return null;
-      const episodeEntries = entries
-        .filter((e) => e.series === seriesName && e.episode !== null)
-        .sort((a, b) => (a.episode ?? 0) - (b.episode ?? 0));
-      return { kind: 'series', series: seriesName, episodes: episodeEntries };
-    }
+      const hasSeries = entries.some((e) => e.series !== null);
+      if (hasSeries) {
+        const seriesName = entries.find((e) => e.series)?.series;
+        if (!seriesName) return null;
+        const episodeEntries = entries
+          .filter((e) => e.series === seriesName && e.episode !== null)
+          .sort((a, b) => (a.episode ?? 0) - (b.episode ?? 0));
+        return { kind: 'series', series: seriesName, episodes: episodeEntries };
+      }
 
-    return { kind: 'single', slug: entries[0].slug };
-  };
+      return { kind: 'single', slug: entries[0].slug };
+    },
+    [manifest],
+  );
 
   const fetchSummary = async (slug: string): Promise<string> => {
     const response = await fetch(`/api/summaries/${slug}.json`);
@@ -187,7 +190,7 @@ const CodingWithAgents = ({ manifest }: CodingWithAgentsProps) => {
       availability[r.id] = resolveSummaryRef(r.id) !== null;
     });
     return availability;
-  }, [manifest, sortedResources]);
+  }, [sortedResources, resolveSummaryRef]);
 
   return (
     <section>

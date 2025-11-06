@@ -1,8 +1,8 @@
 ---
+import { getCollection } from 'astro:content';
 import CodingWithAgentsList from '../../components/resources/CodingWithAgents';
 import ResourcesNav from '../../components/resources/ResourcesNav.astro';
 import Layout from '../../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
 
 const entries = await getCollection('summaries');
 const manifest = entries.map((e) => ({
