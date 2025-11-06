@@ -34,6 +34,7 @@ src/
 - Use `type` not `interface`
 - Functional patterns over OOP
 - Single quotes, semicolons (Biome enforced)
+- 2 spaces for indentation, no tabs (Biome enforced)
 - No unused imports/vars in `.astro` files (Biome override)
 
 ## Important Notes
