@@ -1,14 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import codingResources from '../../data/resources/coding-with-agents.json';
 import { useIsMdUp } from '../../hooks';
-import {
-  listSeries,
-  loadMarkdown,
-  parseFrontmatter,
-  resolveSummaryRef,
-  type SummaryRef,
-  titleCase,
-} from '../../utils';
+import { titleCase } from '../../utils';
 import {
   Button,
   CollapsibleButton,
@@ -33,7 +26,33 @@ type Resource = {
   tags?: string[];
 };
 
-const CodingWithAgents = () => {
+type ManifestEntry = {
+  slug: string;
+  resourceId: number;
+  title: string;
+  date: Date | null;
+  series: string | null;
+  episode: number | null;
+};
+
+type SummaryData = {
+  slug: string;
+  title: string;
+  date: string | null;
+  series: string | null;
+  episode: number | null;
+  body: string;
+};
+
+type SummaryRef =
+  | { kind: 'single'; slug: string }
+  | { kind: 'series'; series: string; episodes: ManifestEntry[] };
+
+type CodingWithAgentsProps = {
+  manifest: ManifestEntry[];
+};
+
+const CodingWithAgents = ({ manifest }: CodingWithAgentsProps) => {
   const isMdUp = useIsMdUp();
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedResource, setSelectedResource] = useState<Resource | null>(
@@ -42,9 +61,7 @@ const CodingWithAgents = () => {
   const [summaryContent, setSummaryContent] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [summaryRef, setSummaryRef] = useState<SummaryRef | null>(null);
-  const [episodes, setEpisodes] = useState<
-    Array<{ path: string; episode: number; title: string }>
-  >([]);
+  const [episodes, setEpisodes] = useState<ManifestEntry[]>([]);
   const [selectedEpisode, setSelectedEpisode] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isEpisodeListExpanded, setIsEpisodeListExpanded] = useState(false);
@@ -73,6 +90,32 @@ const CodingWithAgents = () => {
     }
   };
 
+  const resolveSummaryRef = (resourceId: number): SummaryRef | null => {
+    const entries = manifest.filter((e) => e.resourceId === resourceId);
+    if (entries.length === 0) return null;
+
+    const hasSeries = entries.some((e) => e.series !== null);
+    if (hasSeries) {
+      const seriesName = entries.find((e) => e.series)?.series;
+      if (!seriesName) return null;
+      const episodeEntries = entries
+        .filter((e) => e.series === seriesName && e.episode !== null)
+        .sort((a, b) => (a.episode ?? 0) - (b.episode ?? 0));
+      return { kind: 'series', series: seriesName, episodes: episodeEntries };
+    }
+
+    return { kind: 'single', slug: entries[0].slug };
+  };
+
+  const fetchSummary = async (slug: string): Promise<string> => {
+    const response = await fetch(`/api/summaries/${slug}.json`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch summary: ${response.statusText}`);
+    }
+    const data: SummaryData = await response.json();
+    return data.body;
+  };
+
   const handleOpenSummary = async (resource: Resource) => {
     setSelectedResource(resource);
     setModalOpen(true);
@@ -80,7 +123,7 @@ const CodingWithAgents = () => {
     setError(null);
 
     try {
-      const ref = await resolveSummaryRef(resource.id);
+      const ref = resolveSummaryRef(resource.id);
       setSummaryRef(ref);
 
       if (!ref) {
@@ -90,18 +133,15 @@ const CodingWithAgents = () => {
       }
 
       if (ref.kind === 'single') {
-        const markdown = await loadMarkdown(ref.singlePath);
-        const { content } = parseFrontmatter(markdown);
+        const content = await fetchSummary(ref.slug);
         setSummaryContent(content);
       } else if (ref.kind === 'series') {
-        const episodeList = await listSeries(ref.seriesName, ref.seriesPrefix);
-        setEpisodes(episodeList);
+        setEpisodes(ref.episodes);
 
-        if (episodeList.length > 0) {
-          const firstEpisode = episodeList[0];
+        if (ref.episodes.length > 0) {
+          const firstEpisode = ref.episodes[0];
           setSelectedEpisode(firstEpisode.episode);
-          const markdown = await loadMarkdown(firstEpisode.path);
-          const { content } = parseFrontmatter(markdown);
+          const content = await fetchSummary(firstEpisode.slug);
           setSummaryContent(content);
         }
       }
@@ -114,13 +154,12 @@ const CodingWithAgents = () => {
     }
   };
 
-  const handleSelectEpisode = async (episodeNumber: number, path: string) => {
+  const handleSelectEpisode = async (episodeNumber: number, slug: string) => {
     setSelectedEpisode(episodeNumber);
     setIsEpisodeLoading(true);
 
     try {
-      const markdown = await loadMarkdown(path);
-      const { content } = parseFrontmatter(markdown);
+      const content = await fetchSummary(slug);
       setSummaryContent(content);
     } catch (err) {
       setError(
@@ -142,31 +181,13 @@ const CodingWithAgents = () => {
     setIsEpisodeListExpanded(false);
   };
 
-  const [summaryAvailability, setSummaryAvailability] = useState<
-    Record<number, boolean>
-  >({});
-
-  useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      const results = await Promise.allSettled(
-        sortedResources.map((r) => resolveSummaryRef(r.id)),
-      );
-
-      if (cancelled) return;
-
-      const availability: Record<number, boolean> = {};
-      sortedResources.forEach((r, i) => {
-        const res = results[i];
-        availability[r.id] = res.status === 'fulfilled' && res.value != null;
-      });
-
-      setSummaryAvailability(availability);
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, [sortedResources]);
+  const summaryAvailability = useMemo(() => {
+    const availability: Record<number, boolean> = {};
+    sortedResources.forEach((r) => {
+      availability[r.id] = resolveSummaryRef(r.id) !== null;
+    });
+    return availability;
+  }, [manifest, sortedResources]);
 
   return (
     <section>
@@ -272,7 +293,11 @@ const CodingWithAgents = () => {
                 />
               </div>
               <EpisodeList
-                episodes={episodes}
+                episodes={episodes.map((e) => ({
+                  path: e.slug,
+                  episode: e.episode ?? 0,
+                  title: e.title,
+                }))}
                 selectedEpisode={selectedEpisode}
                 onSelectEpisode={handleSelectEpisode}
                 isCollapsed={!isMdUp && !isEpisodeListExpanded}
