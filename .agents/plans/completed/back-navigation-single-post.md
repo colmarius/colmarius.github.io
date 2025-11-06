@@ -67,13 +67,22 @@ Add the back navigation HTML directly into PostLayout.astro before the article c
 
 ## Implementation Steps
 
-1. [ ] Create `BackNav.astro` anchor-only component with props: href, label, class
-2. [ ] Integrate BackNav into PostLayout.astro (inside article, before header, wrapped in nav)
-3. [ ] Test navigation flow: Posts list → Single post → Back to Posts
-4. [ ] Verify styling, hover, and focus states match ResourcesNav
-5. [ ] Optionally refactor ResourcesNav to use BackNav component
-6. [ ] Test keyboard navigation and accessibility
-7. [ ] Run `npm run build` to verify no type errors
+1. [x] Create `BackNav.astro` anchor-only component with props: href, label, class
+2. [x] Integrate BackNav into PostLayout.astro (inside article, before header, wrapped in nav)
+3. [x] Test navigation flow: Posts list → Single post → Back to Posts
+4. [x] Verify styling, hover, and focus states match ResourcesNav
+5. [x] Optionally refactor ResourcesNav to use BackNav component
+6. [x] Test keyboard navigation and accessibility
+7. [x] Run `npm run build` to verify no type errors
+
+## Completion Summary
+
+Successfully implemented back navigation for single post pages:
+
+- Created reusable `BackNav.astro` component (anchor-only, accepts href, label, class props)
+- Integrated into `PostLayout.astro` with proper semantic nav wrapper
+- Refactored `ResourcesNav.astro` to reuse the BackNav component
+- All tests passed, build successful with no errors
 
 ## Files to Modify
 
