@@ -34,7 +34,7 @@ const formattedDate = pubDate.toISOString().split('T')[0];
 				</div>
 			)}
 			<div class="slides-link-container">
-				<a href={`/posts/${slug}/slides`} class="slides-link">📊 View as Slides</a>
+				<a href={`/posts/${slug}/slides`} class="slides-link">View as slides</a>
 			</div>
 		</header>
 
@@ -95,23 +95,35 @@ const formattedDate = pubDate.toISOString().split('T')[0];
 	}
 
 	.slides-link-container {
-		margin-top: 1rem;
+		margin-top: 1.5rem;
 	}
 
 	.slides-link {
-		display: inline-block;
-		padding: 0.5rem 1rem;
-		background-color: #4338ca;
-		color: #ffffff;
-		border-radius: 0.375rem;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.5rem 0;
+		color: #6b7280;
+		border: none;
+		background: none;
 		font-size: 0.875rem;
-		font-weight: 500;
+		font-weight: 400;
 		text-decoration: none;
-		transition: background-color 0.2s ease;
+		transition: color 0.2s ease;
+	}
+
+	.slides-link::before {
+		content: '→';
+		font-size: 1rem;
+		transition: transform 0.2s ease;
 	}
 
 	.slides-link:hover {
-		background-color: #3730a3;
+		color: #111827;
+	}
+
+	.slides-link:hover::before {
+		transform: translateX(3px);
 	}
 
 	.prose {
