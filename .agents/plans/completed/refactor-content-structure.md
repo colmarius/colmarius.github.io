@@ -1,7 +1,8 @@
 # Refactor Content Structure
 
-**Status:** TODO
+**Status:** COMPLETED
 **Created:** 2025-11-06
+**Completed:** 2025-11-06
 **Goal:** Consolidate content into Astro Content Collections (standard approach), eliminate manual frontmatter parsing
 
 ## Current State
@@ -144,8 +145,28 @@ export const collections = { posts, summaries };
 
 **Phase 2:** Skip for now (0 hours)
 
+## Implementation Results
+
+**✅ Successfully completed:**
+- All 17 summaries migrated to Content Collections with kebab-case filenames
+- API endpoints pre-rendered correctly (verified in dist/)
+- Build succeeds with no errors
+- All features tested with Playwright:
+  - Single summary loading works
+  - Series (playlist) loading works
+  - Episode switching works correctly
+- Removed ~900 lines of manual parsing code
+- Type-safe frontmatter with Zod validation
+
+**Key implementation details:**
+- Used `__` separator for nested paths in slugs (e.g., `coding-with-agents__build-crew-episode-1`)
+- Manifest passed as props to client component
+- API endpoints fetch summary markdown on demand
+- Wrapped `resolveSummaryRef` in `useCallback` for proper React dependencies
+
 ## Future Considerations
 
 - Convert JSON to Data Collections if we need schema validation
 - Pre-render summary pages for SEO (`/summaries/[slug].astro`)
 - Add CMS integration (works better with Content Collections)
+- Consider pre-rendering HTML instead of raw markdown in API for smaller client bundle
