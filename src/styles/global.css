@@ -1,2 +1,14 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
+@layer utilities {
+  .prose-post {
+    @apply prose;
+    max-width: none;
+  }
+
+  .prose-slide {
+    @apply prose prose-invert;
+    max-width: none;
+  }
+}
