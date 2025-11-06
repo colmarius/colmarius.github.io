@@ -26,6 +26,7 @@ const { Content } = await render(post);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{post.data.title} - Slides</title>
+    <link rel="stylesheet" href="/src/styles/typography.css" />
     <style>
       * {
         margin: 0;
@@ -108,103 +109,6 @@ const { Content } = await render(post);
 
       :global(.slide.active) {
         display: block;
-      }
-
-      .slide :global(h2) {
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin-bottom: 2rem;
-        color: #f1f5f9;
-        line-height: 1.2;
-      }
-
-      .slide :global(h3) {
-        font-size: 1.75rem;
-        font-weight: 600;
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-        color: #f1f5f9;
-      }
-
-      .slide :global(h4) {
-        font-size: 1.25rem;
-        font-weight: 600;
-        margin-top: 1.5rem;
-        margin-bottom: 0.75rem;
-        color: #f1f5f9;
-      }
-
-      .slide :global(p) {
-        font-size: 1.125rem;
-        line-height: 1.75;
-        margin-bottom: 1.5rem;
-        color: #cbd5e1;
-      }
-
-      .slide :global(ul),
-      .slide :global(ol) {
-        margin-bottom: 1.5rem;
-        padding-left: 2rem;
-      }
-
-      .slide :global(li) {
-        font-size: 1.125rem;
-        line-height: 1.75;
-        margin-bottom: 0.75rem;
-        color: #cbd5e1;
-      }
-
-      .slide :global(code) {
-        background: #0f172a;
-        padding: 0.25rem 0.5rem;
-        border-radius: 0.25rem;
-        font-size: 0.9em;
-        color: #fbbf24;
-      }
-
-      .slide :global(pre) {
-        background: #0f172a;
-        padding: 1.5rem;
-        border-radius: 0.5rem;
-        overflow-x: auto;
-        margin-bottom: 1.5rem;
-      }
-
-      .slide :global(pre code) {
-        background: transparent;
-        padding: 0;
-        color: #e2e8f0;
-        font-size: 0.875rem;
-      }
-
-      .slide :global(img) {
-        max-width: 100%;
-        height: auto;
-        border-radius: 0.5rem;
-        margin: 1.5rem 0;
-      }
-
-      .slide :global(a) {
-        color: #60a5fa;
-        text-decoration: underline;
-        transition: color 0.2s;
-      }
-
-      .slide :global(a:hover) {
-        color: #93c5fd;
-      }
-
-      .slide :global(blockquote) {
-        border-left: 4px solid #475569;
-        padding-left: 1.5rem;
-        margin: 1.5rem 0;
-        font-style: italic;
-        color: #94a3b8;
-      }
-
-      .slide :global(strong) {
-        font-weight: 600;
-        color: #f1f5f9;
       }
 
       .controls {
@@ -346,7 +250,7 @@ const { Content } = await render(post);
         // Create slide elements
         slides.forEach((slideNodes, index) => {
           const slideDiv = document.createElement('div');
-          slideDiv.className = 'slide';
+          slideDiv.className = 'slide prose-slide';
           slideDiv.dataset.index = index;
           slideNodes.forEach(node => slideDiv.appendChild(node));
           container.appendChild(slideDiv);

@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .prose-post {
+    @apply prose max-w-none;
+  }
+
+  .prose-slide {
+    @apply prose prose-invert max-w-none;
+  }
+}
