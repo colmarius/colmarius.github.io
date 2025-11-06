@@ -63,6 +63,29 @@
     border-radius: 0.125rem !important;
   }
 
+  /* Restore list styling */
+  .prose-post :is(ul),
+  .prose-slide :is(ul) {
+    list-style-type: disc !important;
+    padding-left: 1.625em !important;
+  }
+
+  .prose-post :is(ol),
+  .prose-slide :is(ol) {
+    list-style-type: decimal !important;
+    padding-left: 1.625em !important;
+  }
+
+  .prose-post :is(ul > li),
+  .prose-slide :is(ul > li) {
+    list-style-type: disc !important;
+  }
+
+  .prose-post :is(ol > li),
+  .prose-slide :is(ol > li) {
+    list-style-type: decimal !important;
+  }
+
   /* Remove extra top spacing on first heading in slides */
   .prose-slide :where(h1,h2,h3,h4,h5,h6):first-child {
     margin-top: 0;
