@@ -34,12 +34,27 @@ Create `PostNav.astro` similar to `ResourcesNav.astro` but specific to posts (no
 
 Add the back navigation HTML directly into PostLayout.astro before the article content.
 
-## Proposed Approach (Option 1 - Preferred)
+## Recommended Approach (Option 1 - Oracle Approved)
 
-1. Create `src/components/BackNav.astro` with reusable back button
-2. Update `ResourcesNav.astro` to use the new BackNav component
-3. Add BackNav to `PostLayout.astro`
-4. Ensure consistent styling with resources pages
+**Oracle Feedback Summary:**
+
+- ✅ Option 1 is the best approach for maintainability and consistency
+- Keep BackNav as **anchor-only** (no `<nav>` wrapper) to avoid nested semantics
+- Let callers control spacing and wrapper elements
+- Place inside article container for proper width alignment
+
+**Implementation Details:**
+
+1. Create `src/components/BackNav.astro` as a reusable anchor component
+   - Props: `href` (required), `label` (default: "Back"), `class` (optional)
+   - Same SVG and styling as current ResourcesNav back link
+2. Integrate in `PostLayout.astro`:
+   - Wrap BackNav in `<nav class="mb-10" aria-label="Back">` for semantics
+   - Place inside `<article>`, before `<header>` to align with content width
+   - Use `href="/posts"` and `label="Back to Posts"`
+3. Optionally refactor `ResourcesNav.astro`:
+   - Replace current back `<a>` with `<BackNav href="/resources" label="Back to Resources" class="mb-6" />`
+   - Keep existing outer `<nav class="mb-10">` and tab links intact
 
 ## Styling Requirements
 
@@ -52,13 +67,13 @@ Add the back navigation HTML directly into PostLayout.astro before the article c
 
 ## Implementation Steps
 
-1. [ ] Create `BackNav.astro` component with props for href and label
-2. [ ] Test BackNav component in isolation
-3. [ ] Integrate BackNav into PostLayout.astro (before article header)
-4. [ ] Optionally refactor ResourcesNav to use BackNav
-5. [ ] Test navigation flow: Posts list → Single post → Back to Posts
-6. [ ] Verify styling consistency across all back navigation instances
-7. [ ] Run build to verify no type errors
+1. [ ] Create `BackNav.astro` anchor-only component with props: href, label, class
+2. [ ] Integrate BackNav into PostLayout.astro (inside article, before header, wrapped in nav)
+3. [ ] Test navigation flow: Posts list → Single post → Back to Posts
+4. [ ] Verify styling, hover, and focus states match ResourcesNav
+5. [ ] Optionally refactor ResourcesNav to use BackNav component
+6. [ ] Test keyboard navigation and accessibility
+7. [ ] Run `npm run build` to verify no type errors
 
 ## Files to Modify
 
@@ -77,7 +92,23 @@ Add the back navigation HTML directly into PostLayout.astro before the article c
 
 ## Implementation Notes
 
-- Keep it simple: just an anchor link, no client-side routing needed
-- Match the existing SVG arrow from ResourcesNav
-- Consider placement: above the post header, consistent with resources pages
-- Maintain accessibility: focus-visible rings, semantic HTML
+**Key Principles (from Oracle):**
+
+- **Anchor-only component**: BackNav should NOT include `<nav>` wrapper to avoid nested nav semantics
+- **Caller-controlled spacing**: Let parent components control spacing via wrapper or class prop
+- **Width alignment**: Place inside article.post-content container to align with content max-width
+- **Spacing differences**: Use `nav.mb-10` wrapper in posts; use `class="mb-6"` in resources to preserve space above tabs
+
+**Technical Details:**
+
+- Simple anchor link, no client-side routing needed
+- Match the existing SVG arrow from ResourcesNav exactly
+- Placement: inside article, before header (NOT inside .post-header to avoid border-bottom)
+- Maintain accessibility: focus-visible rings, semantic HTML, aria-label on wrapper
+- Default label to "Back" with override option for context-specific labels
+
+**Edge Cases:**
+
+- Ensure BackNav placement doesn't get included within .post-header's border-bottom
+- Verify focus-visible ring classes work in current Tailwind setup
+- Path coupling: "/posts" is hard-coded (acceptable; update if route changes)
