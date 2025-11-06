@@ -148,6 +148,7 @@ export const collections = { posts, summaries };
 ## Implementation Results
 
 **✅ Successfully completed:**
+
 - All 17 summaries migrated to Content Collections with kebab-case filenames
 - API endpoints pre-rendered correctly (verified in dist/)
 - Build succeeds with no errors
@@ -159,6 +160,7 @@ export const collections = { posts, summaries };
 - Type-safe frontmatter with Zod validation
 
 **Key implementation details:**
+
 - Used `__` separator for nested paths in slugs (e.g., `coding-with-agents__build-crew-episode-1`)
 - Manifest passed as props to client component
 - API endpoints fetch summary markdown on demand

@@ -257,6 +257,7 @@ src/
 Successfully implemented the minimal MVP for the posts section:
 
 **Files Created:**
+
 1. ✅ `src/content/config.ts` - Content collection config with minimal schema
 2. ✅ `src/layouts/PostLayout.astro` - Post layout with scoped typography CSS
 3. ✅ `src/pages/posts/index.astro` - Posts list page with draft filtering
@@ -265,12 +266,14 @@ Successfully implemented the minimal MVP for the posts section:
 6. ✅ `src/components/Navigation.astro` - Updated with Posts link
 
 **Build Status:**
+
 - ✅ `npm run build` passes successfully
 - ✅ All pages generated correctly
 - ✅ No TypeScript errors
 - ✅ Draft filtering works (dev shows drafts, prod filters them)
 
 **What Was Deferred (as planned):**
+
 - MDX support (using plain .md)
 - Tags/pagination
 - RSS, search, Open Graph images
@@ -279,6 +282,7 @@ Successfully implemented the minimal MVP for the posts section:
 - Complex React components for posts
 
 **Next Steps:**
+
 - Write actual content posts about coding with AI agents
 - Test posts on mobile and desktop
 - Add more posts as needed
