@@ -3,14 +3,14 @@ import BackNav from '@components/BackNav.astro';
 import Layout from './Layout.astro';
 
 type Props = {
+  slug: string;
   title: string;
   description: string;
   pubDate: Date;
   tags?: string[];
-  slug?: string;
 };
 
-const { title, description, pubDate, tags, slug } = Astro.props;
+const { slug, title, description, pubDate, tags } = Astro.props;
 
 const formattedDate = pubDate.toISOString().split('T')[0];
 ---
@@ -33,11 +33,9 @@ const formattedDate = pubDate.toISOString().split('T')[0];
 					))}
 				</div>
 			)}
-			{slug && (
-				<div class="slides-link-container">
-					<a href={`/posts/${slug}/slides`} class="slides-link">📊 View as Slides</a>
-				</div>
-			)}
+			<div class="slides-link-container">
+				<a href={`/posts/${slug}/slides`} class="slides-link">📊 View as Slides</a>
+			</div>
 		</header>
 
 		<div class="prose">
