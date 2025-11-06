@@ -2,6 +2,17 @@
 import CodingWithAgentsList from '../../components/resources/CodingWithAgents';
 import ResourcesNav from '../../components/resources/ResourcesNav.astro';
 import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const entries = await getCollection('summaries');
+const manifest = entries.map((e) => ({
+  slug: e.id,
+  resourceId: e.data.resourceId,
+  title: e.data.title,
+  date: e.data.date,
+  series: e.data.series,
+  episode: e.data.episode,
+}));
 ---
 
 <Layout title="Marius Colacioiu – Resources – Coding with Agents">
@@ -15,6 +26,6 @@ import Layout from '../../layouts/Layout.astro';
       Podcasts, videos, and articles exploring AI-powered coding workflows, agentic design patterns, and the future of software development.
     </p>
 
-    <CodingWithAgentsList client:load />
+    <CodingWithAgentsList client:load manifest={manifest} />
   </div>
 </Layout>
