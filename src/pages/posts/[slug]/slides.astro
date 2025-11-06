@@ -1,0 +1,420 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+
+  const filteredPosts = import.meta.env.PROD
+    ? posts.filter((post) => !post.data.draft)
+    : posts;
+
+  return filteredPosts.map((post) => ({
+    params: { slug: post.id },
+    props: post,
+  }));
+}
+
+type Props = CollectionEntry<'posts'>;
+
+const post = Astro.props;
+const { Content } = await render(post);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{post.data.title} - Slides</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+        background: #0f172a;
+        color: #e2e8f0;
+        overflow: hidden;
+      }
+
+      .topbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3.5rem;
+        background: #1e293b;
+        border-bottom: 1px solid #334155;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 2rem;
+        z-index: 100;
+      }
+
+      .back-link {
+        color: #94a3b8;
+        text-decoration: none;
+        font-size: 0.875rem;
+        transition: color 0.2s;
+      }
+
+      .back-link:hover {
+        color: #e2e8f0;
+      }
+
+      .slide-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #e2e8f0;
+        flex: 1;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding: 0 2rem;
+      }
+
+      .slide-counter {
+        font-size: 0.875rem;
+        color: #94a3b8;
+        min-width: 4rem;
+        text-align: right;
+      }
+
+      .slides-container {
+        position: fixed;
+        top: 3.5rem;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow-y: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+
+      .slide {
+        display: none;
+        max-width: 56rem;
+        width: 100%;
+        background: #1e293b;
+        border-radius: 0.5rem;
+        padding: 3rem;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+      }
+
+      .slide.active {
+        display: block;
+      }
+
+      .slide :global(h2) {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        color: #f1f5f9;
+        line-height: 1.2;
+      }
+
+      .slide :global(h3) {
+        font-size: 1.75rem;
+        font-weight: 600;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: #f1f5f9;
+      }
+
+      .slide :global(h4) {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        color: #f1f5f9;
+      }
+
+      .slide :global(p) {
+        font-size: 1.125rem;
+        line-height: 1.75;
+        margin-bottom: 1.5rem;
+        color: #cbd5e1;
+      }
+
+      .slide :global(ul),
+      .slide :global(ol) {
+        margin-bottom: 1.5rem;
+        padding-left: 2rem;
+      }
+
+      .slide :global(li) {
+        font-size: 1.125rem;
+        line-height: 1.75;
+        margin-bottom: 0.75rem;
+        color: #cbd5e1;
+      }
+
+      .slide :global(code) {
+        background: #0f172a;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        font-size: 0.9em;
+        color: #fbbf24;
+      }
+
+      .slide :global(pre) {
+        background: #0f172a;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        margin-bottom: 1.5rem;
+      }
+
+      .slide :global(pre code) {
+        background: transparent;
+        padding: 0;
+        color: #e2e8f0;
+        font-size: 0.875rem;
+      }
+
+      .slide :global(img) {
+        max-width: 100%;
+        height: auto;
+        border-radius: 0.5rem;
+        margin: 1.5rem 0;
+      }
+
+      .slide :global(a) {
+        color: #60a5fa;
+        text-decoration: underline;
+        transition: color 0.2s;
+      }
+
+      .slide :global(a:hover) {
+        color: #93c5fd;
+      }
+
+      .slide :global(blockquote) {
+        border-left: 4px solid #475569;
+        padding-left: 1.5rem;
+        margin: 1.5rem 0;
+        font-style: italic;
+        color: #94a3b8;
+      }
+
+      .slide :global(strong) {
+        font-weight: 600;
+        color: #f1f5f9;
+      }
+
+      .controls {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        display: flex;
+        gap: 0.5rem;
+        z-index: 100;
+      }
+
+      .control-btn {
+        width: 3rem;
+        height: 3rem;
+        background: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 0.5rem;
+        color: #94a3b8;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        transition: all 0.2s;
+      }
+
+      .control-btn:hover:not(:disabled) {
+        background: #334155;
+        color: #e2e8f0;
+        border-color: #475569;
+      }
+
+      .control-btn:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+
+      #source {
+        display: none;
+      }
+
+      @media (max-width: 768px) {
+        .topbar {
+          padding: 0 1rem;
+        }
+
+        .slide-title {
+          font-size: 0.875rem;
+          padding: 0 1rem;
+        }
+
+        .slides-container {
+          padding: 1rem;
+        }
+
+        .slide {
+          padding: 2rem 1.5rem;
+        }
+
+        .slide :global(h2) {
+          font-size: 1.75rem;
+        }
+
+        .slide :global(h3) {
+          font-size: 1.5rem;
+        }
+
+        .slide :global(p),
+        .slide :global(li) {
+          font-size: 1rem;
+        }
+
+        .controls {
+          bottom: 1rem;
+          right: 1rem;
+        }
+
+        .control-btn {
+          width: 2.5rem;
+          height: 2.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <a href={`/posts/${post.id}`} class="back-link">← Back to Post</a>
+      <div class="slide-title">{post.data.title}</div>
+      <div class="slide-counter">
+        <span id="current">1</span> / <span id="total">1</span>
+      </div>
+    </div>
+
+    <div class="slides-container" id="slides-container"></div>
+
+    <div id="source">
+      <Content />
+    </div>
+
+    <div class="controls">
+      <button class="control-btn" id="prev-btn" aria-label="Previous slide">
+        ←
+      </button>
+      <button class="control-btn" id="next-btn" aria-label="Next slide">
+        →
+      </button>
+    </div>
+
+    <script is:inline>
+      // Split content by H2 headers
+      function splitIntoSlides() {
+        const source = document.getElementById('source');
+        const container = document.getElementById('slides-container');
+        const nodes = Array.from(source.children);
+        
+        let slides = [];
+        let currentSlide = [];
+
+        for (const node of nodes) {
+          if (node.tagName === 'H2') {
+            if (currentSlide.length > 0) {
+              slides.push(currentSlide);
+            }
+            currentSlide = [node.cloneNode(true)];
+          } else {
+            currentSlide.push(node.cloneNode(true));
+          }
+        }
+
+        if (currentSlide.length > 0) {
+          slides.push(currentSlide);
+        }
+
+        // If no H2s found, treat entire content as one slide
+        if (slides.length === 0) {
+          slides.push(nodes.map(n => n.cloneNode(true)));
+        }
+
+        // Create slide elements
+        slides.forEach((slideNodes, index) => {
+          const slideDiv = document.createElement('div');
+          slideDiv.className = 'slide';
+          slideDiv.dataset.index = index;
+          slideNodes.forEach(node => slideDiv.appendChild(node));
+          container.appendChild(slideDiv);
+        });
+
+        return slides.length;
+      }
+
+      // Navigation state
+      let currentIndex = 0;
+      let totalSlides = 0;
+
+      function updateSlide() {
+        const slides = document.querySelectorAll('.slide');
+        slides.forEach((slide, index) => {
+          slide.classList.toggle('active', index === currentIndex);
+        });
+
+        document.getElementById('current').textContent = currentIndex + 1;
+        document.getElementById('prev-btn').disabled = currentIndex === 0;
+        document.getElementById('next-btn').disabled = currentIndex === totalSlides - 1;
+
+        window.location.hash = currentIndex + 1;
+      }
+
+      function nextSlide() {
+        if (currentIndex < totalSlides - 1) {
+          currentIndex++;
+          updateSlide();
+        }
+      }
+
+      function prevSlide() {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateSlide();
+        }
+      }
+
+      // Initialize
+      totalSlides = splitIntoSlides();
+      document.getElementById('total').textContent = totalSlides;
+
+      // Check hash for initial slide
+      const hash = window.location.hash.slice(1);
+      if (hash && !isNaN(hash)) {
+        const slideNum = parseInt(hash, 10) - 1;
+        if (slideNum >= 0 && slideNum < totalSlides) {
+          currentIndex = slideNum;
+        }
+      }
+
+      updateSlide();
+
+      // Event listeners
+      document.getElementById('prev-btn').addEventListener('click', prevSlide);
+      document.getElementById('next-btn').addEventListener('click', nextSlide);
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          prevSlide();
+        } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+          e.preventDefault();
+          nextSlide();
+        }
+      });
+    </script>
+  </body>
+</html>
