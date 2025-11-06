@@ -20,6 +20,7 @@ export default defineConfig({
         '@types': '/src/types',
         '@assets': '/src/assets',
         '@layouts': '/src/layouts',
+        '@utils': '/src/utils',
       },
       dedupe: ['react', 'react-dom'],
     },

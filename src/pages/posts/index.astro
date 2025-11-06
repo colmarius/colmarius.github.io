@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '@layouts/Layout.astro';
+import { formatDate } from '@utils';
 
 const allPosts = await getCollection('posts');
 
@@ -30,7 +31,7 @@ const sortedPosts = posts.sort(
 						<p class="post-excerpt">{post.data.description}</p>
 						<div class="post-meta">
 							<time datetime={post.data.pubDate.toISOString()}>
-								{post.data.pubDate.toISOString().split('T')[0]}
+								{formatDate(post.data.pubDate)}
 							</time>
 							{post.data.tags && post.data.tags.length > 0 && (
 								<div class="post-card-tags">
@@ -122,7 +123,7 @@ const sortedPosts = posts.sort(
 
 	.post-meta time {
 		font-size: 0.875rem;
-		color: #6b7280;
+		color: #4b5563;
 	}
 
 	.post-card-tags {

@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
 import codingResources from '../../data/resources/coding-with-agents.json';
 import { useIsMdUp } from '../../hooks';
-import { titleCase } from '../../utils';
+import { formatDate, titleCase } from '../../utils';
 import {
   Button,
   CollapsibleButton,
@@ -224,7 +224,9 @@ const CodingWithAgents = ({ manifest }: CodingWithAgentsProps) => {
                 <div className="flex flex-col gap-2">
                   <div className="text-sm text-gray-500 flex items-center gap-x-4">
                     <span className="font-medium">{resource.source}</span>
-                    {resource.date && <span>{resource.date}</span>}
+                    {resource.date && (
+                      <span>{formatDate(new Date(resource.date))}</span>
+                    )}
                   </div>
 
                   {resource.tags && resource.tags.length > 0 && (
