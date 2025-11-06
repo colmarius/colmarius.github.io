@@ -44,6 +44,11 @@ src/
 - Build outputs to `dist/`
 - Always run `npm run build` after changes to verify
 
+## Astro Best Practices
+
+- When implementing features with Astro, consult <https://docs.astro.build/llms.txt> for official best practices and patterns
+- Use `read_web_page` tool to fetch guidance when needed
+
 ## Development Workflow
 
 ### Plan Tracking
