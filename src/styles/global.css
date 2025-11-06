@@ -13,7 +13,7 @@
   --color-primary-800: #3730a3;
   --color-primary-900: #312e81;
   --color-primary-950: #1e1b4b;
-  
+
   /* Customize typography plugin colors */
   --color-prose-links: #4338ca;
   --color-prose-links-hover: #6366f1;
@@ -23,27 +23,6 @@
   /* Shared prose base: light by default */
   .prose-base {
     @apply prose prose-slate max-w-none;
-    
-    /* Override typography link styles */
-    --tw-prose-links: #4338ca;
-  }
-  
-  .prose-base a {
-    color: #4338ca;
-    text-decoration: none;
-    transition-property: color;
-    transition-duration: 200ms;
-  }
-
-  .prose-base a:hover {
-    color: #6366f1;
-  }
-
-  .prose-base a:focus-visible {
-    outline: 2px solid transparent;
-    outline-offset: 2px;
-    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.5);
-    border-radius: 0.125rem;
   }
 
   /* Dark variant */
@@ -59,6 +38,29 @@
   /* Slide prose: slightly larger for readability */
   .prose-slide {
     @apply prose-base prose-lg sm:prose-xl;
+  }
+
+  /* Brand color for links - applied to both post and slide */
+  .prose-post :is(a),
+  .prose-slide :is(a) {
+    color: #4338ca !important;
+    text-decoration: underline !important;
+    text-decoration-thickness: 1px !important;
+    text-underline-offset: 2px !important;
+    transition: color 0.2s ease !important;
+  }
+
+  .prose-post :is(a):hover,
+  .prose-slide :is(a):hover {
+    color: #6366f1 !important;
+  }
+
+  .prose-post :is(a):focus-visible,
+  .prose-slide :is(a):focus-visible {
+    outline: 2px solid transparent !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.5) !important;
+    border-radius: 0.125rem !important;
   }
 
   /* Remove extra top spacing on first heading in slides */
