@@ -1,14 +1,81 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@theme {
+  --color-primary-50: #eef2ff;
+  --color-primary-100: #e0e7ff;
+  --color-primary-200: #c7d2fe;
+  --color-primary-300: #a5b4fc;
+  --color-primary-400: #818cf8;
+  --color-primary-500: #6366f1;
+  --color-primary-600: #4f46e5;
+  --color-primary-700: #4338ca;
+  --color-primary-800: #3730a3;
+  --color-primary-900: #312e81;
+  --color-primary-950: #1e1b4b;
+  
+  /* Customize typography plugin colors */
+  --color-prose-links: #4338ca;
+  --color-prose-links-hover: #6366f1;
+}
+
 @layer utilities {
-  .prose-post {
-    @apply prose;
-    max-width: none;
+  /* Shared prose base: light by default */
+  .prose-base {
+    @apply prose prose-slate max-w-none;
+    
+    /* Override typography link styles */
+    --tw-prose-links: #4338ca;
+  }
+  
+  .prose-base a {
+    color: #4338ca;
+    text-decoration: none;
+    transition-property: color;
+    transition-duration: 200ms;
   }
 
+  .prose-base a:hover {
+    color: #6366f1;
+  }
+
+  .prose-base a:focus-visible {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.5);
+    border-radius: 0.125rem;
+  }
+
+  /* Dark variant */
+  .dark .prose-base {
+    @apply prose-invert;
+  }
+
+  /* Post prose (same size as posts) */
+  .prose-post {
+    @apply prose-base;
+  }
+
+  /* Slide prose: slightly larger for readability */
   .prose-slide {
-    @apply prose prose-invert;
-    max-width: none;
+    @apply prose-base prose-lg sm:prose-xl;
+  }
+
+  /* Remove extra top spacing on first heading in slides */
+  .prose-slide :where(h1,h2,h3,h4,h5,h6):first-child {
+    margin-top: 0;
+  }
+
+  /* Consistent code block styling */
+  .prose-base pre {
+    @apply bg-slate-50 border border-slate-200 rounded-md p-4;
+  }
+
+  .dark .prose-base pre {
+    @apply bg-slate-800 border-slate-700;
+  }
+
+  .prose-base code {
+    @apply font-medium;
   }
 }
