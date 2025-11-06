@@ -25,24 +25,22 @@ const sortedPosts = posts.sort(
 
 		<div class="posts-list">
 			{sortedPosts.map((post) => (
-				<article class="post-card">
-					<a href={`/posts/${post.id}`} class="post-link">
-						<h2>{post.data.title}</h2>
-						<p class="post-excerpt">{post.data.description}</p>
-						<div class="post-meta">
-							<time datetime={post.data.pubDate.toISOString()}>
-								{formatDate(post.data.pubDate)}
-							</time>
-							{post.data.tags && post.data.tags.length > 0 && (
-								<div class="post-card-tags">
-									{post.data.tags.map((tag) => (
-										<span class="tag">{tag}</span>
-									))}
-								</div>
-							)}
-						</div>
-					</a>
-				</article>
+				<a href={`/posts/${post.id}`} class="post-card">
+					<h2>{post.data.title}</h2>
+					<p class="post-excerpt">{post.data.description}</p>
+					<div class="post-meta">
+						<time datetime={post.data.pubDate.toISOString()}>
+							{formatDate(post.data.pubDate)}
+						</time>
+						{post.data.tags && post.data.tags.length > 0 && (
+							<div class="post-card-tags">
+								{post.data.tags.map((tag) => (
+									<span class="tag">{tag}</span>
+								))}
+							</div>
+						)}
+					</div>
+				</a>
 			))}
 		</div>
 
@@ -82,11 +80,14 @@ const sortedPosts = posts.sort(
 	}
 
 	.post-card {
+		display: block;
 		padding: 1.5rem;
 		border: 1px solid #e5e7eb;
 		border-radius: 0.5rem;
 		transition: all 0.2s ease;
 		background-color: white;
+		text-decoration: none;
+		color: inherit;
 	}
 
 	.post-card:hover {
@@ -94,10 +95,11 @@ const sortedPosts = posts.sort(
 		box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 	}
 
-	.post-link {
-		text-decoration: none;
-		color: inherit;
-		display: block;
+	.post-card:focus-visible {
+		outline: none;
+		box-shadow:
+			0 0 0 2px white,
+			0 0 0 4px rgba(99, 102, 241, 0.5);
 	}
 
 	.post-card h2 {
