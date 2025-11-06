@@ -1,5 +1,6 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
+import '../../../styles/global.css';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
@@ -26,7 +27,6 @@ const { Content } = await render(post);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{post.data.title} - Slides</title>
-    <link rel="stylesheet" href="/src/styles/global.css" />
     <style>
       :global(.slide) {
         display: none;
