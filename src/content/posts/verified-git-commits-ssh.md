@@ -121,24 +121,6 @@ Here's what the relevant section should look like:
   format = ssh
 ```
 
-## Troubleshooting
-
-**"error: gpg failed to sign the data"**
-
-- Check your signing key path: `git config --global user.signingkey`
-- Verify the file exists: `cat ~/.ssh/id_rsa.pub`
-
-**Commits still showing unverified**
-
-- Make sure you added the key as "Signing Key" type on GitHub
-- Verify the email in `git config user.email` matches your GitHub account
-- Check that the email is verified in GitHub settings
-
-**Passphrase still prompting**
-
-- Confirm ssh-agent is running: `ssh-add -l`
-- Re-add key with keychain: `ssh-add --apple-use-keychain ~/.ssh/id_rsa`
-
 ## Why This Matters
 
 This is like HTTPS was a decade ago—optional until it wasn't. Organizations can require signed commits through branch protection rules. Security tools flag unsigned commits. And when supply chain attacks happen, signed commits are the only way to prove what's legitimate.
