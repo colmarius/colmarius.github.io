@@ -5,11 +5,13 @@ export const prerender = true;
 
 export async function getStaticPaths() {
   const entries = await getCollection('summaries');
-  return entries.map((e) => ({ params: { slug: e.id } }));
+  return entries.map((e) => ({ 
+    params: { slug: e.id.replace(/\//g, '__') } 
+  }));
 }
 
 export const GET: APIRoute = async ({ params }) => {
-  const slug = params.slug!;
+  const slug = params.slug?.replace(/__/g, '/') || '';
   const entry = await getEntry('summaries', slug);
   
   if (!entry) {
