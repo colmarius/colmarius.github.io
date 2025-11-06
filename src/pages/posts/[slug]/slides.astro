@@ -95,7 +95,7 @@ const { Content } = await render(post);
         padding: 2rem;
       }
 
-      .slide {
+      :global(.slide) {
         display: none;
         max-width: 56rem;
         width: 100%;
@@ -106,7 +106,7 @@ const { Content } = await render(post);
         box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
       }
 
-      .slide.active {
+      :global(.slide.active) {
         display: block;
       }
 
