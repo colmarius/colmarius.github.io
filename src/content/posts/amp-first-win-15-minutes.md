@@ -3,7 +3,7 @@ title: 'How I Use Amp: From Clean Repo to First Win in 15 Minutes'
 description: 'A step-by-step guide to getting your first real success with a coding agent—from setup to verified results.'
 pubDate: 2025-11-07
 tags: ['ai-agents', 'amp', 'workflows', 'getting-started']
-draft: true
+draft: false
 ---
 
 **TL;DR:**

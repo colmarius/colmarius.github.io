@@ -3,7 +3,7 @@ title: 'Agent Workflows That Stick: Short Threads, External Memory, Staged Diffs
 description: 'Patterns that make agent success repeatable and robust—avoid context rot, maintain quality, and ship with confidence.'
 pubDate: 2025-11-07
 tags: ['ai-agents', 'amp', 'workflows', 'best-practices']
-draft: true
+draft: false
 ---
 
 **TL;DR:**

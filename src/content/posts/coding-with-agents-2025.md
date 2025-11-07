@@ -3,7 +3,7 @@ title: 'Coding with Agents in 2025: A Practical Field Guide'
 description: 'From zero to productive with coding agents—what works, what to avoid, and how to get your first wins in minutes.'
 pubDate: 2025-11-07
 tags: ['ai-agents', 'amp', 'workflows']
-draft: true
+draft: false
 ---
 
 **TL;DR:**

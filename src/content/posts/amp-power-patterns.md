@@ -3,7 +3,7 @@ title: 'Amp Power Patterns: Subagents, Oracle, Librarian, and Rush Mode'
 description: "Unlock leverage without complexity—when and how to use Amp's advanced features for parallelization, deep reasoning, and cross-repo research."
 pubDate: 2025-11-07
 tags: ['ai-agents', 'amp', 'workflows', 'advanced']
-draft: true
+draft: false
 ---
 
 **TL;DR:**
