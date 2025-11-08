@@ -75,6 +75,16 @@ const { Content } = await render(post);
     </div>
 
     <script is:inline>
+      // Render Mermaid diagrams BEFORE splitting into slides
+      async function initializePage() {
+        const { renderMermaid } = await import('../../../scripts/mermaid.ts');
+        await renderMermaid();
+        
+        // Now split into slides with rendered diagrams
+        splitIntoSlides();
+        updateSlide();
+      }
+
       // Split content by H2 headers
       function splitIntoSlides() {
         const source = document.getElementById('source');
@@ -153,20 +163,22 @@ const { Content } = await render(post);
         }
       }
 
-      // Initialize
-      totalSlides = splitIntoSlides();
-      document.getElementById('total').textContent = totalSlides;
+      // Initialize - wait for Mermaid rendering then split
+      initializePage().then(() => {
+        totalSlides = document.querySelectorAll('.slide').length;
+        document.getElementById('total').textContent = totalSlides;
 
-      // Check hash for initial slide
-      const hash = window.location.hash.slice(1);
-      if (hash && !isNaN(hash)) {
-        const slideNum = parseInt(hash, 10) - 1;
-        if (slideNum >= 0 && slideNum < totalSlides) {
-          currentIndex = slideNum;
+        // Check hash for initial slide
+        const hash = window.location.hash.slice(1);
+        if (hash && !isNaN(hash)) {
+          const slideNum = parseInt(hash, 10) - 1;
+          if (slideNum >= 0 && slideNum < totalSlides) {
+            currentIndex = slideNum;
+          }
         }
-      }
 
-      updateSlide();
+        updateSlide();
+      });
 
       // Event listeners
       document.getElementById('prev-btn').addEventListener('click', prevSlide);
@@ -181,13 +193,6 @@ const { Content } = await render(post);
         }
       });
 
-      // Final cleanup: remove all mermaid-loading classes
-      document.querySelectorAll('.mermaid-loading').forEach(el => {
-        el.classList.remove('mermaid-loading');
-      });
-
-      // Render Mermaid diagrams in cloned slides
-      import('../../../scripts/mermaid.ts').then(({ renderMermaid }) => renderMermaid());
     </script>
 
     <style is:global>
