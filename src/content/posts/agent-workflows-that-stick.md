@@ -3,6 +3,8 @@ title: 'Agent Workflows That Stick: Short Threads, External Memory, Staged Diffs
 description: 'Patterns that make agent success repeatable and robust—avoid context rot, maintain quality, and ship with confidence.'
 pubDate: 2025-11-07
 tags: ['ai-agents', 'amp', 'workflows', 'best-practices']
+difficulty: 'intermediate'
+readingTime: '20 min'
 draft: false
 ---
 
@@ -11,6 +13,24 @@ draft: false
 - Start new threads around 50–100k tokens; beyond ~100k quality degrades
 - External memory (context.md) beats long threads every time
 - Git staging area + tight feedback loops = quality at speed
+
+> **📖 Quick Start**
+>
+> - **Who it's for:** Developers with first wins ready to level up
+> - **Time to complete:** 20 minutes reading + practice
+> - **Prerequisites:** [First win completed](/posts/amp-first-win-15-minutes)
+> - **Expected outcome:** Repeatable workflow patterns that avoid context rot
+> - **Next step:** [Master power patterns](/posts/amp-power-patterns)
+
+> **📋 Workflow Checklist**
+>
+> - [ ] Start new threads for each distinct task
+> - [ ] Write decisions to .agents/context/ files
+> - [ ] Use feedback loops (tests, builds, screenshots)
+> - [ ] Stage good changes, discard bad ones
+> - [ ] Fork threads to explore alternatives
+> - [ ] Add tests to verify fixes/features
+> - [ ] Monitor token usage, start fresh around 50-100k
 
 ## The Problem with Long Threads
 
@@ -218,26 +238,7 @@ then fix the bug and verify the test passes."
 happy path and two error cases."
 ```
 
-## Don't Get Drunk on Tokens
-
-**Token sprawl happens when:**
-
-- You keep adding to the same thread
-- Agent reads entire large files repeatedly
-- You paste full error logs (when a summary would work)
-- You let the agent explore without boundaries
-
-**How to stay lean:**
-
-- **Cap exploration:** "Check only the auth/ directory"
-- **Focus reads:** "Read just the exports from this file"
-- **Prune logs:** "Summarize the error, don't paste the full stack"
-- **New threads:** Start new threads around 50–100k tokens; beyond ~100k quality degrades
-
-**Check token usage:**
-
-- In VS Code: Bottom of Amp sidebar
-- In CLI: Shown after each turn
+> **💡 Token Management:** Token sprawl degrades quality beyond ~100k tokens. Cap exploration, focus reads, prune logs, and start new threads often. For comprehensive token hygiene strategies and mode selection, see [Power Patterns](/posts/amp-power-patterns)
 
 ## Real Example: Refactoring a Component
 
@@ -304,20 +305,120 @@ You: [Review, stage, commit]
 - Committing without reviewing diffs
 - Letting token count climb unchecked
 
-## Try This
+## This Week: Practice These 3 Workflows
 
-**This week, apply these patterns:**
+> **🔨 Try It Now: Three Workflow Exercises**
+>
+> **Exercise 1: External Memory Extraction**
+>
+> **Prompt:**
+>
+> ```text
+> Extract the key architectural decisions from this conversation
+> to .agents/context/architecture.md. Include constraints,
+> patterns we're using, and what to avoid.
+> ```
+>
+> **Verification:** File exists, readable by a fresh thread
+> **Success criteria:** Start a new thread, reference the file, agent understands context
+>
+> **Exercise 2: Fork and Compare**
+>
+> **Prompt in Thread A:**
+>
+> ```text
+> Refactor this component using approach A (hooks)
+> ```
+>
+> **Then fork thread and prompt in Thread B:**
+>
+> ```text
+> Refactor this component using approach B (composition)
+> ```
+>
+> **Verification:** Compare diffs side by side
+> **Success criteria:** Pick the better approach, discard the other
+>
+> **Exercise 3: Test-First Fix**
+>
+> **Prompt:**
+>
+> ```text
+> Write a test that reproduces the bug in [component].
+> Verify it fails. Then fix the bug and verify the test passes.
+> ```
+>
+> **Verification:** See test fail, then pass
+> **Success criteria:** Bug fixed with proof via passing test
+>
+> **Expected outcome:** These patterns become muscle memory for your daily workflow.
 
-1. **Short threads:** Next bug fix, start fresh thread, commit, close
-2. **External memory:** Create `.agents/context/project-decisions.md` for your main project
-3. **Git discipline:** Review every diff before staging, discard at least one bad change
-4. **Test-driven:** "Fix this bug AND add a test that verifies it"
+### Exercise 1: Short Thread Discipline
+
+**Task:** Fix a bug or implement a small feature in a new thread, commit, close
+
+**Prompt:**
+
+```text
+"Fix [specific bug] in a fresh thread. Run tests to verify the fix, then show me the diff."
+```
+
+**Success criteria:**
+
+- Thread stays under 50k tokens
+- Clean, focused commit
+- No leftover uncommitted changes
+- Tests pass
+
+### Exercise 2: External Memory
+
+**Task:** Create `.agents/context/decisions.md` for your main project
+
+**Prompt:**
+
+```text
+"Review the architecture of [your project] and create .agents/context/decisions.md
+documenting 3-5 key architectural decisions with rationale. Include: tech choices,
+API patterns, and known constraints."
+```
+
+**Success criteria:**
+
+- File contains 3-5 documented decisions
+- Each decision includes rationale
+- File is committed and version-controlled
+- You can reference it in future threads
+
+### Exercise 3: Test-Driven Fix
+
+**Task:** Fix a bug AND verify it with a test
+
+**Prompt:**
+
+```text
+"Fix [specific bug]. First write a test that reproduces the bug and verify it fails.
+Then fix the bug and verify the test passes. Commit both together."
+```
+
+**Success criteria:**
+
+- Test fails before fix
+- Test passes after fix
+- Both test and fix committed together
+- No other changes in the commit
 
 ---
 
 **Next:** [Amp Power Patterns](/posts/amp-power-patterns) — When to use subagents, Oracle, Librarian, and Rush mode for maximum leverage.
 
+**Practice Path:**
+
+1. [What is an Agent](/posts/what-is-an-agent)
+2. [First Win in 15 Minutes](/posts/amp-first-win-15-minutes)
+3. **You are here**: Workflows That Stick
+4. [Power Patterns](/posts/amp-power-patterns)
+5. [Planning Workflow](/posts/agent-planning-workflow)
+
 **Related:**
 
-- [First Win in 15 Minutes](/posts/amp-first-win-15-minutes) — Get started fast
-- [Coding with Agents in 2025](/posts/coding-with-agents-2025) — The big picture
+- [Coding with Agents in 2025](/posts/coding-with-agents-2025) — The complete overview

@@ -3,6 +3,8 @@ title: 'Amp Power Patterns: Subagents, Oracle, Librarian, and Rush Mode'
 description: "Unlock leverage without complexity—when and how to use Amp's advanced features for parallelization, deep reasoning, and cross-repo research."
 pubDate: 2025-11-07
 tags: ['ai-agents', 'amp', 'workflows', 'advanced']
+difficulty: 'advanced'
+readingTime: '30 min'
 draft: false
 ---
 
@@ -13,9 +15,36 @@ draft: false
 - Oracle: deep reasoning, planning, debugging across multiple files (uses GPT-5)
 - Librarian: search public/private GitHub repos for cross-repo insights
 
+> **📖 Quick Start**
+>
+> - **Who it's for:** Developers ready to optimize agent workflows
+> - **Time to complete:** 30 minutes reading + exercises
+> - **Prerequisites:** [Core workflows mastered](/posts/agent-workflows-that-stick)
+> - **Expected outcome:** Know when to use Rush, Oracle, Subagents, and Librarian
+> - **Next step:** [Set up planning workflow](/posts/agent-planning-workflow)
+
 ## Choosing Your Mode: Rush vs Smart vs Oracle
 
 Not all tasks need the same horsepower. Pick based on complexity, not urgency.
+
+```mermaid
+flowchart TD
+    Start([New Task]) --> Q1{Task is<br/>well-defined?}
+    Q1 -->|Yes| Q2{Single file<br/>change?}
+    Q1 -->|No| Smart[Smart Mode]
+    Q2 -->|Yes| Rush[Rush Mode<br/>67% cheaper, 50% faster]
+    Q2 -->|No| Q3{Needs deep<br/>reasoning?}
+    Q3 -->|No| Smart
+    Q3 -->|Yes| Oracle[Oracle Mode<br/>GPT-5 reasoning]
+
+    style Start fill:#1a1a1a,stroke:#4CAF50,color:#fff
+    style Rush fill:#1a1a1a,stroke:#4CAF50,color:#fff
+    style Smart fill:#1a1a1a,stroke:#2196F3,color:#fff
+    style Oracle fill:#1a1a1a,stroke:#9C27B0,color:#fff
+    style Q1 fill:#1a1a1a,stroke:#FF9800,color:#fff
+    style Q2 fill:#1a1a1a,stroke:#FF9800,color:#fff
+    style Q3 fill:#1a1a1a,stroke:#FF9800,color:#fff
+```
 
 ### Rush Mode
 
@@ -464,6 +493,66 @@ established by the subagents.
 
 ## Try This Week
 
+> **🔨 Try It Now: Power Pattern Exercises**
+>
+> **Exercise 1: Rush vs Smart Comparison**
+>
+> **Task:** Experience the speed difference
+>
+> **Rush mode prompt:**
+>
+> ```text
+> Switch mode to Rush, then:
+> Remove all TODO comments from @src/components/ and verify build succeeds.
+> ```
+>
+> **Verification:** Build passes, all TODOs gone, check token usage
+>
+> **Then try Smart mode for comparison:**
+>
+> ```text
+> Switch mode to Smart, then:
+> Refactor error handling in @utils/ to use a consistent pattern.
+> ```
+>
+> **Expected outcome:** Understand when to use each mode
+>
+> **Exercise 2: Oracle Plan Review**
+>
+> **Task:** Get deep analysis before coding
+>
+> **Prompt:**
+>
+> ```text
+> Oracle: review the plan in .agents/plans/todo/[feature].md
+> Simplify to minimal viable implementation. Flag over-engineering.
+> List 3 risks and suggest one quick win to start with.
+> ```
+>
+> **Verification:** Oracle finds simpler approach or catches issues
+> **Expected outcome:** Avoid hours of unnecessary work
+>
+> **Exercise 3: Subagent Parallel Work**
+>
+> **Task:** Parallelize independent changes
+>
+> **Prompt:**
+>
+> ```text
+> Use 3 subagents to add PropTypes to these components:
+> - @components/Header.tsx
+> - @components/Footer.tsx
+> - @components/Sidebar.tsx
+>
+> Each subagent should only modify its assigned file.
+> Verify PropTypes are correct and build succeeds.
+> ```
+>
+> **Verification:** All 3 files updated independently, no conflicts
+> **Expected outcome:** 3x faster than sequential changes
+>
+> **Expected outcome:** Know exactly when to reach for advanced modes.
+
 **Pick one power pattern and apply it:**
 
 1. **Rush mode:** Convert 10 CSS files to Tailwind utility classes
@@ -472,12 +561,35 @@ established by the subagents.
 4. **Librarian:** "Find how other teams implement feature flags in Next.js"
 5. **Handoff:** Take a long thread and extract context for the next phase
 
+## Slide Outline
+
+Want to present this? Here's a 10-slide outline:
+
+1. **Why modes matter** - Not all tasks need same horsepower
+2. **Decision tree** - When to use Rush vs Smart vs Oracle
+3. **Rush examples** - Small, well-defined tasks (console.log removal)
+4. **Smart default** - Complex refactoring, feature implementation
+5. **Oracle requests** - Deep analysis, architecture planning
+6. **Subagents do/don't** - Parallelize independent, not coupled work
+7. **Librarian scope** - Cross-repo research and examples
+8. **Handoff** - Fresh context without losing progress
+9. **Pitfalls checklist** - Over-parallelization, stale context, noisy diffs
+10. **Try this week** - Pick one power pattern and apply it
+
 ---
+
+**Next:** [Set Up Planning Workflow](/posts/agent-planning-workflow) — Use Oracle and .agents/plans structure to prevent rewrites.
+
+**Practice Path:**
+
+1. [What is an Agent](/posts/what-is-an-agent)
+2. [First Win in 15 Minutes](/posts/amp-first-win-15-minutes)
+3. [Workflows That Stick](/posts/agent-workflows-that-stick)
+4. **You are here**: Power Patterns
+5. [Planning Workflow](/posts/agent-planning-workflow)
 
 **Related:**
 
-- [Agent Workflows That Stick](/posts/agent-workflows-that-stick) — Patterns for repeatable success
-- [First Win in 15 Minutes](/posts/amp-first-win-15-minutes) — Get started fast
 - [Coding with Agents in 2025](/posts/coding-with-agents-2025) — The complete overview
 
 **Resources:**

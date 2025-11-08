@@ -3,6 +3,8 @@ title: 'How I Use Amp: From Clean Repo to First Win in 15 Minutes'
 description: 'A step-by-step guide to getting your first real success with a coding agent—from setup to verified results.'
 pubDate: 2025-11-07
 tags: ['ai-agents', 'amp', 'workflows', 'getting-started']
+difficulty: 'beginner'
+readingTime: '15-20 min'
 draft: false
 ---
 
@@ -11,6 +13,14 @@ draft: false
 - One small, real win beats a dozen half-finished experiments
 - Feedback loops (tests, builds, screenshots) turn chaos into confidence
 - Git staging is your safety net—stage good, discard bad, iterate fast
+
+> **📖 Quick Start**
+>
+> - **Who it's for:** Developers ready to try their first agent task
+> - **Time to complete:** 15-20 minutes end-to-end
+> - **Prerequisites:** Amp installed ([ampcode.com/install](https://ampcode.com/install))
+> - **Expected outcome:** One verified win (passing test, working UI, or clean build)
+> - **Next step:** [Learn workflows that stick](/posts/agent-workflows-that-stick)
 
 ## The Goal: One Small Win, End-to-End
 
@@ -38,22 +48,112 @@ Pick something you can verify in 30 seconds.
 
 **Pro tip:** Keep the sidebar open. You'll live there.
 
-**Note:** Adjust test commands below for your test runner (Jest, Vitest, etc.).
+> **⚠️ Common Issues**
+>
+> **"Tests not found":** Prompt: "Find all test files in this project and show me how to run them"
+>
+> **"Build command unknown":** Check package.json scripts or AGENTS.md
+>
+> **"Agent changed wrong files":** Be specific: "Only modify @tests/user-auth.test.ts"
+>
+> **"Environment variables missing":** Prompt: "Check .env.example for required vars and create .env"
 
 ## Pick Your Target
 
+Choose a track based on what's easiest to verify in your project:
+
+### Track 1: Tests (Most Reliable)
+
+Best for projects with test suites. Clear pass/fail feedback.
+
 **Good first tasks:**
 
-- Failing test (clear success criteria)
-- Small UI tweak (visual confirmation)
-- TypeScript errors in one file (build passes)
-- Adding a simple feature with tests
+- Fix a failing test
+- Add tests for an existing function
+- Increase coverage for a specific module
 
-**Bad first tasks:**
+**Verification:**
+
+```bash
+npm test              # or: pnpm test, yarn test
+npm test -- path/to/test.spec.ts
+```
+
+### Track 2: UI Changes (Most Visual)
+
+Best when you don't have tests but have UI components.
+
+**Good first tasks:**
+
+- Add a button or toggle
+- Change styling or layout
+- Add icons or visual elements
+
+**Verification:**
+
+```bash
+npm run dev           # or: pnpm dev, yarn dev
+npm run storybook     # or: pnpm storybook, yarn storybook
+```
+
+Then check localhost in browser or let Amp take screenshots.
+
+### Track 3: Debug & Cleanup (Most Practical)
+
+Best for cleaning up existing code.
+
+**Good first tasks:**
+
+- Remove all console.log/debug statements
+- Fix TypeScript errors in one file
+- Clean up unused imports
+
+**Verification:**
+
+```bash
+npm run build         # or: pnpm build, yarn build
+npm run check         # or: pnpm check, yarn check
+```
+
+### Tasks to Avoid (For Now)
 
 - "Refactor the entire auth system"
 - "Add real-time collaboration"
 - Anything without a clear "done" signal
+
+> **🔨 Try It Now: Three Tracks to Your First Win**
+>
+> Pick the track that matches your codebase:
+>
+> **Track 1: Fix with Test Confirmation**
+>
+> ```text
+> Run tests in @tests/, identify one failing test, fix it,
+> and re-run until it passes. Show me the before/after test output.
+> ```
+>
+> **Verification:** Test goes from red to green
+>
+> **Track 2: UI Change with Screenshot**
+>
+> ```text
+> Add a dark mode toggle to @components/Header.tsx.
+> Look at localhost:3000, take a screenshot, and verify it renders.
+> ```
+>
+> **Verification:** Screenshot shows working toggle
+>
+> **Track 3: Debug with Temporary Logs**
+>
+> ```text
+> Add temporary console.log statements to trace the auth flow
+> in @utils/auth.ts. Run the app, capture the logs, then remove
+> the debug statements and verify build succeeds.
+> ```
+>
+> **Verification:** You understand the flow, logs are gone, build clean
+>
+> **Expected outcome:** One verified win in 10-15 minutes.
 
 ## Build a Feedback Loop
 
@@ -72,23 +172,21 @@ Agent makes changes
 **For tests:**
 
 ```bash
-npm test -- @tests/failing-test.spec.ts
+npm test -- @tests/failing-test.spec.ts  # or: pnpm test, yarn test
 ```
 
 **For UI:**
 
 ```bash
-npm run storybook
+npm run storybook  # or: pnpm storybook, yarn storybook
 # Then tell Amp to look at localhost:6006
 ```
 
 **For types:**
 
 ```bash
-npm run build
+npm run build  # or: pnpm build, yarn build
 ```
-
-**Note:** Adjust to your package manager (npm/pnpm/yarn) and test runner.
 
 ## Prompt Pattern: Goal → Phases → Confirm Mission
 
@@ -125,7 +223,7 @@ Stop when all tests pass.
 
 **What Amp does:**
 
-1. Runs `npm test -- @tests/user-auth.test.ts`
+1. Runs `npm test -- @tests/user-auth.test.ts` (uses your package manager)
 2. Sees 3 failures
 3. Fixes first failure
 4. Re-runs tests
@@ -158,14 +256,16 @@ Stop when all tests pass.
 **For tests:**
 
 ```bash
-npm test  # All green
+npm test  # or: pnpm test, yarn test
+# All green
 ```
 
 **For builds:**
 
 ```bash
-npm run build  # No errors
-npm run check  # Types pass
+npm run build  # or: pnpm build, yarn build
+npm run check  # or: pnpm check, yarn check
+# No errors, types pass
 ```
 
 **For UI:**
@@ -177,11 +277,38 @@ npm run check  # Types pass
 **For features:**
 
 ```bash
-npm test  # Existing tests still pass
-# Manual verification in browser
+npm test  # or: pnpm test, yarn test
+# Existing tests still pass, manual verification in browser
 ```
 
 ## Common Snags and Fixes
+
+> **🔨 Try It Now: Troubleshooting Practice**
+>
+> **Task:** Use these fix prompts when you hit issues
+>
+> **For "Agent changed unrelated files":**
+>
+> ```text
+> Discard changes to all files except @[specific-file].
+> Only modify the files I specified.
+> ```
+>
+> **For "Agent stuck in retry loop":**
+>
+> ```text
+> Start a new thread with: "The previous approach failed because [reason].
+> Try [alternative approach] instead."
+> ```
+>
+> **For "No clear verification":**
+>
+> ```text
+> After making changes, run [specific command] and show me the output
+> to prove it worked.
+> ```
+>
+> **Expected outcome:** Recover from common issues quickly instead of abandoning the task.
 
 ### Environment & Output Issues
 
@@ -279,4 +406,14 @@ take a screenshot to verify it renders correctly.
 
 **Next:** [Agent Workflows That Stick](/posts/agent-workflows-that-stick) — Make this success repeatable with patterns that avoid context rot.
 
-**Related:** [Coding with Agents in 2025](/posts/coding-with-agents-2025) — The big-picture overview and mindset.
+**Practice Path:**
+
+1. [What is an Agent](/posts/what-is-an-agent)
+2. **You are here**: First Win in 15 Minutes
+3. [Workflows That Stick](/posts/agent-workflows-that-stick)
+4. [Power Patterns](/posts/amp-power-patterns)
+5. [Planning Workflow](/posts/agent-planning-workflow)
+
+**Related:**
+
+- [Coding with Agents in 2025](/posts/coding-with-agents-2025) — The big-picture overview and mindset

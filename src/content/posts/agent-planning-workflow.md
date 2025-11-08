@@ -3,6 +3,8 @@ title: 'Planning Before Coding: The Agent Workflow That Prevents Rewrites'
 description: 'Why agents should plan first, code second—and how the .agents/plans structure turns complex tasks into systematic wins.'
 pubDate: 2025-11-07
 tags: ['ai-agents', 'amp', 'workflows', 'planning']
+difficulty: 'intermediate'
+readingTime: '25-40 min'
 draft: false
 ---
 
@@ -12,6 +14,14 @@ draft: false
 - `.agents/plans/` structure (todo → in-progress → completed) creates accountability
 - Oracle reviews catch over-engineering before you write a single line
 - Keep plans minimal: core functionality first, nice-to-haves later
+
+> **📖 Quick Start**
+>
+> - **Who it's for:** Developers tackling multi-file or complex features
+> - **Time to complete:** 25-40 minutes to learn + practice
+> - **Prerequisites:** Understanding of [power patterns](/posts/amp-power-patterns)
+> - **Expected outcome:** Planning workflow that prevents rewrites
+> - **Next step:** Apply to your next complex feature
 
 ## The Problem: Coding Without Planning
 
@@ -37,6 +47,26 @@ draft: false
 **The fix:** Plan first, code second.
 
 ## The Planning Workflow
+
+```mermaid
+flowchart LR
+    Todo[📝 todo/<br/>new-feature.md] --> Review{Oracle<br/>Review}
+    Review -->|Simplify| Todo
+    Review -->|Approved| Progress[🚧 in-progress/<br/>new-feature.md]
+    Progress --> Code[Agent<br/>Implements]
+    Code --> Update[Update<br/>Progress]
+    Update --> Done{Success<br/>Criteria?}
+    Done -->|No| Code
+    Done -->|Yes| Complete[✅ completed/<br/>new-feature.md]
+
+    style Todo fill:#1a1a1a,stroke:#FF9800,color:#fff
+    style Progress fill:#1a1a1a,stroke:#2196F3,color:#fff
+    style Complete fill:#1a1a1a,stroke:#4CAF50,color:#fff
+    style Review fill:#1a1a1a,stroke:#9C27B0,color:#fff
+    style Code fill:#1a1a1a,stroke:#2196F3,color:#fff
+    style Update fill:#1a1a1a,stroke:#2196F3,color:#fff
+    style Done fill:#1a1a1a,stroke:#F44336,color:#fff
+```
 
 ### Step 1: Create a Plan
 
@@ -108,10 +138,31 @@ Implement JWT-based authentication for API endpoints.
 
 Before starting work, ask Oracle to review the plan:
 
-```text
-You: "Review the plan in .agents/plans/todo/add-user-auth.md
-and simplify it. Focus on minimal viable implementation."
-```
+> **🔨 Try It Now: Oracle Plan Review**
+>
+> **Task:** Get Oracle feedback before coding
+>
+> **Prompt:**
+>
+> ```text
+> Oracle: review the plan in .agents/plans/todo/[your-feature].md
+>
+> Focus on:
+> 1. Is the scope minimal or over-engineered?
+> 2. Are there simpler approaches I'm missing?
+> 3. What should be deferred to later?
+> 4. Are the steps in the right order?
+>
+> Suggest a simplified version with core functionality only.
+> ```
+>
+> **Verification:**
+>
+> - Oracle provides specific simplification suggestions
+> - Identifies at least one thing to defer
+> - Confirms dependencies and ordering
+>
+> **Expected outcome:** Plan is 30-50% simpler, focused on core value, ready to execute.
 
 **Oracle catches:**
 
@@ -146,12 +197,31 @@ This signals:
 
 Start a fresh thread with plan attached:
 
-```text
-You: "Implement the plan in @.agents/plans/in-progress/add-user-auth.md
-
-Follow the steps in order. After each step, update the plan
-with progress notes."
-```
+> **🔨 Try It Now: Mission Repeat-Back**
+>
+> **Task:** Ensure agent understands the plan before coding
+>
+> **Prompt:**
+>
+> ```text
+> Read the plan in @.agents/plans/in-progress/[feature].md
+>
+> Before writing any code, repeat back to me:
+> 1. The core goal in one sentence
+> 2. The first 3 steps you'll take
+> 3. What success looks like
+> 4. What's explicitly out of scope
+>
+> Then proceed with implementation.
+> ```
+>
+> **Verification:**
+>
+> - Agent summarizes correctly before coding
+> - Implementation follows the plan steps
+> - Agent updates plan with ✅ after each step
+>
+> **Expected outcome:** No wasted work on wrong approach, plan stays in sync with reality.
 
 **Agent behavior changes:**
 
@@ -496,12 +566,26 @@ Result: Done in 15 minutes, zero issues.
 - **Update plans during work** — living documents, not static artifacts
 - **Document results** — completed plans build institutional memory
 
-## Related Posts
+## What's Next
 
-- [Agent Workflows That Stick](/posts/agent-workflows-that-stick) — Short threads, external memory, staged diffs
-- [How I Use Amp: From Clean Repo to First Win in 15 Minutes](/posts/amp-first-win-15-minutes) — Getting started with agents
-- [Amp Power Patterns](/posts/amp-power-patterns) — Using Oracle, subagents, and advanced features
+You've completed the practice path! Now apply these patterns to your daily work.
+
+**Practice Path:**
+
+1. [What is an Agent](/posts/what-is-an-agent)
+2. [First Win in 15 Minutes](/posts/amp-first-win-15-minutes)
+3. [Workflows That Stick](/posts/agent-workflows-that-stick)
+4. [Power Patterns](/posts/amp-power-patterns)
+5. **You are here**: Planning Workflow
+
+**Related:**
+
+- [Coding with Agents in 2025](/posts/coding-with-agents-2025) — The complete overview
+
+**Standalone:**
+
+- [Verified Git Commits with SSH](/posts/verified-git-commits-ssh) — Security best practice
 
 ---
 
-**Next:** Try it on your next feature. Create a plan, get Oracle review, then code. You'll never go back.
+**Challenge:** Try it on your next feature. Create a plan, get Oracle review, then code. You'll never go back.

@@ -160,6 +160,7 @@ for each node in post HTML:
 ## Implementation Results
 
 All success criteria met:
+
 - ✅ `/posts/[slug]/slides` route exists for each non-draft post
 - ✅ H2 headers correctly split content into slides
 - ✅ Navigation works with keyboard (arrow keys) and on-screen buttons
@@ -172,8 +173,10 @@ All success criteria met:
 - ✅ Responsive design for mobile
 
 Files created:
+
 - `src/pages/posts/[slug]/slides.astro` - Main slides view
 
 Files updated:
+
 - `src/layouts/PostLayout.astro` - Added slug prop and "View as Slides" link
 - `src/pages/posts/[slug].astro` - Pass slug to layout

@@ -3,6 +3,8 @@ title: 'Coding with Agents in 2025: A Practical Field Guide'
 description: 'From zero to productive with coding agents—what works, what to avoid, and how to get your first wins in minutes.'
 pubDate: 2025-11-07
 tags: ['ai-agents', 'amp', 'workflows']
+difficulty: 'beginner'
+readingTime: '20-30 min'
 draft: false
 ---
 
@@ -11,6 +13,14 @@ draft: false
 - Coding agents run tools in a loop to achieve your goals—no magic, just good engineering
 - Small wins compounded beat big ambitious failures—start simple, iterate fast
 - Short threads + clear goals + feedback loops = reliable results
+
+> **📖 Quick Start**
+>
+> - **Who it's for:** Developers new to coding agents
+> - **Time to complete:** 20-30 minutes reading
+> - **Prerequisites:** None—this is the overview
+> - **Expected outcome:** Complete mental model + first prompts to try
+> - **Next step:** [Get your first win in 15 minutes](/posts/amp-first-win-15-minutes)
 
 ## Why Agents Now?
 
@@ -40,6 +50,25 @@ goal → think → choose_tool → call_tool → observe_result
     → decide: done? otherwise refine and loop
 ```
 
+```mermaid
+flowchart TD
+    Start([Goal]) --> Think[Think: Analyze situation]
+    Think --> Choose[Choose Tool]
+    Choose --> Call[Call Tool]
+    Call --> Observe[Observe Result]
+    Observe --> Decide{Goal Reached?}
+    Decide -->|No| Think
+    Decide -->|Yes| End([Done])
+
+    style Start fill:#1a1a1a,stroke:#4CAF50,color:#fff
+    style End fill:#1a1a1a,stroke:#4CAF50,color:#fff
+    style Think fill:#1a1a1a,stroke:#2196F3,color:#fff
+    style Choose fill:#1a1a1a,stroke:#2196F3,color:#fff
+    style Call fill:#1a1a1a,stroke:#FF9800,color:#fff
+    style Observe fill:#1a1a1a,stroke:#9C27B0,color:#fff
+    style Decide fill:#1a1a1a,stroke:#F44336,color:#fff
+```
+
 This loop is why agents work. They don't just generate code—they:
 
 - Run it
@@ -59,10 +88,11 @@ This loop is why agents work. They don't just generate code—they:
 
 In practice, this means:
 
-- **Short threads**: Start new threads around 50–100k tokens; beyond ~100k quality degrades
 - **Clear goals**: "Fix TypeScript errors and re-run build until it passes"
 - **Feedback loops**: Let the agent run tests, see screenshots, verify results
 - **Git discipline**: Stage good changes, discard bad ones
+
+> **💡 Token Management:** Start new threads around 50–100k tokens; beyond ~100k quality degrades. For comprehensive token hygiene best practices, see [Cost and Time Tips in Power Patterns](/posts/amp-power-patterns#cost-and-time-tips)
 
 ## Three Workflows to Master
 
@@ -101,6 +131,31 @@ Use 3 subagents to convert these CSS files to Tailwind
 
 ## Prompts You Can Copy Today
 
+> **🔨 Try It Now: First Quick Win**
+>
+> **Task:** Get a verifiable result in under 5 minutes
+>
+> **Prompt (pick one based on your codebase):**
+>
+> ```text
+> Run the tests in @tests/ and list all failures.
+> Fix the first failing test and re-run to verify it passes.
+> ```
+>
+> Or:
+>
+> ```text
+> Remove all console.log and debugger statements from @src/components/
+> and verify the build still succeeds.
+> ```
+>
+> **Verification:**
+>
+> - Tests go from failing to passing, OR
+> - Build succeeds with no console statements
+>
+> **Expected outcome:** One clean, verified change you can stage and commit.
+
 **Quick wins:**
 
 - "Fix all TypeScript errors in @src/components/Header.tsx and re-run build"
@@ -115,6 +170,26 @@ Use 3 subagents to convert these CSS files to Tailwind
 
 - "Look at localhost:3000, take a screenshot, and make the header more minimal"
 
+> **🔨 Try It Now: Wish-List Scaffolding**
+>
+> **Task:** Turn a feature idea into a structured plan
+>
+> **Prompt:**
+>
+> ```text
+> I want to add [feature name]. Create a plan file at .agents/plans/todo/[feature].md
+> with Goal, Current State, Scope (in/out), Steps, and Success Criteria.
+> Don't write any code yet.
+> ```
+>
+> **Verification:**
+>
+> - Plan file exists in .agents/plans/todo/
+> - Contains all required sections
+> - Scope clearly separates MVP from nice-to-haves
+>
+> **Expected outcome:** A structured plan ready for Oracle review before any coding starts.
+
 **Deep analysis (uses Oracle):**
 
 - "Review this API design and suggest improvements"
@@ -123,9 +198,29 @@ Use 3 subagents to convert these CSS files to Tailwind
 
 - "Find prior art across org repos for 'feature flag middleware'"
 
+> **🔨 Try It Now: Task.md Handoff**
+>
+> **Task:** Save context from a long thread for later use
+>
+> **Prompt:**
+>
+> ```text
+> Summarize the key decisions, constraints, and next steps from this conversation
+> into .agents/context/[topic].md. Include what worked, what didn't, and any
+> patterns we established.
+> ```
+>
+> **Verification:**
+>
+> - Context file created in .agents/context/
+> - Contains actionable information for future threads
+> - No implementation details, just decisions and patterns
+>
+> **Expected outcome:** Clean external memory you can reference in new threads to avoid context rot.
+
 ## Common Pitfalls
 
-**Context sprawl:** Start new threads around 50–100k tokens; beyond ~100k quality degrades. Fix: start new threads often.
+**Context sprawl:** Threads degrade beyond ~100k tokens. Fix: start new threads often. See [Cost and Time Tips](/posts/amp-power-patterns#cost-and-time-tips) for token management.
 
 **Vague prompts:** "Build a batch tool" won't work. Fix: add file paths, links, constraints, approach guidance.
 
@@ -135,13 +230,17 @@ Use 3 subagents to convert these CSS files to Tailwind
 
 **Underprompting:** Assuming the agent knows what you want. Fix: be explicit—"Use git blame to tell me who wrote this component."
 
-## Choosing Speed vs Depth
+## Self-Check: Are You Doing These 5 Things?
 
-**Rush mode:** 67% cheaper, 50% faster—for small, well-defined tasks
-**Smart mode:** State-of-the-art models, unconstrained context—for complex work (default)
-**Oracle:** GPT-5 for deep reasoning, planning, debugging across multiple files
+✅ **Short threads:** Starting new threads around 50-100k tokens
+✅ **Clear goals:** Every prompt has a verification step
+✅ **Feedback loops:** Agent can run tests/builds to verify
+✅ **Git discipline:** Reviewing diffs, staging good changes
+✅ **Right mode:** Using Rush for simple, Smart for most, Oracle for critical decisions
 
-Pick based on task complexity, not urgency. Set mode from the Amp UI or command palette.
+If you're missing any, revisit the relevant sections above.
+
+> **💡 Mode Selection:** Pick Rush for small tasks (67% cheaper, 50% faster), Smart for complex work (default), or Oracle for deep reasoning. For comprehensive guidance on choosing modes, see [Choosing Your Mode in Power Patterns](/posts/amp-power-patterns#choosing-your-mode-rush-vs-smart-vs-oracle)
 
 ## Your First 30 Minutes with Amp
 
@@ -156,15 +255,23 @@ Pick based on task complexity, not urgency. Set mode from the Amp UI or command 
 
 ## What's Next
 
-**Deep-dive posts:**
+Ready to put this into practice? Follow the recommended path:
 
-- [How I Use Amp: From Clean Repo to First Win in 15 Minutes](/posts/amp-first-win-15-minutes) - End-to-end first win
-- [Agent Workflows That Stick](/posts/agent-workflows-that-stick) - Repeatable patterns that avoid context rot
-- [Amp Power Patterns](/posts/amp-power-patterns) - Subagents, Oracle, Librarian, and when to use them
+**Next:** [Get Your First Win in 15 Minutes](/posts/amp-first-win-15-minutes) — End-to-end first win with a real task.
 
-**Foundation:**
+**Or start with fundamentals:** [What is an Agent?](/posts/what-is-an-agent) — Core concepts explained.
 
-- [LLM Agents: Tools in a Loop](/posts/what-is-an-agent) - Core concepts explained
+**Practice Path:**
+
+1. [What is an Agent](/posts/what-is-an-agent) or **You are here**: Overview
+2. [First Win in 15 Minutes](/posts/amp-first-win-15-minutes)
+3. [Workflows That Stick](/posts/agent-workflows-that-stick)
+4. [Power Patterns](/posts/amp-power-patterns)
+5. [Planning Workflow](/posts/agent-planning-workflow)
+
+**Standalone:**
+
+- [Verified Git Commits with SSH](/posts/verified-git-commits-ssh) — Security best practice
 
 **Resources:**
 
