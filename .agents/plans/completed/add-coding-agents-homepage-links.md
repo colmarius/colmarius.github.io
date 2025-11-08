@@ -30,7 +30,7 @@ Make "Coding with Agents" content more discoverable by adding strategic links fr
 
 **Blog Post Enhancement:**
 
-- Add conditional footer callout in post layout for posts tagged 'ai-agents'
+- Add conditional footer callout in post layout for posts tagged 'AI Agents'
 - Links to `/resources/coding-with-agents`
 - Only shows on agent-related posts (not all posts)
 
@@ -78,7 +78,7 @@ Make "Coding with Agents" content more discoverable by adding strategic links fr
 ```astro
 ---
 const { frontmatter } = Astro.props;
-const isAgentPost = (frontmatter?.tags || []).includes('ai-agents');
+const isAgentPost = (frontmatter?.tags || []).includes('AI Agents');
 ---
 
 <article>
@@ -99,7 +99,7 @@ const isAgentPost = (frontmatter?.tags || []).includes('ai-agents');
 
 **Logic:**
 
-- Only shows when post has 'ai-agents' tag
+- Only shows when post has 'AI Agents' tag
 - Appears after main content and existing "Next/Practice Path" sections
 - Same visual style as homepage callout
 
@@ -147,7 +147,7 @@ In the "Resources" section at the bottom, ensure it links to the resources page:
 **Verification:**
 
 - Check all URLs are correct
-- Verify 'ai-agents' tag exists on all 7 agent posts
+- Verify 'AI Agents' tag exists on all 7 agent posts
 - Test responsive layout on mobile
 - Ensure spacing doesn't break on different screen sizes
 
@@ -161,8 +161,8 @@ In the "Resources" section at the bottom, ensure it links to the resources page:
 ## Research Findings ✅
 
 1. **Post layout file:** `src/layouts/PostLayout.astro` (confirmed)
-2. **Tag to use:** 'ai-agents' (all agent posts have this tag)
-3. **Agent posts with 'ai-agents' tag:** 6 confirmed
+2. **Tag to use:** 'AI Agents' (all agent posts have this tag)
+3. **Agent posts with 'AI Agents' tag:** 6 confirmed
    - agent-planning-workflow.md
    - agent-workflows-that-stick.md
    - amp-first-win-15-minutes.md
@@ -193,7 +193,7 @@ In the "Resources" section at the bottom, ensure it links to the resources page:
 
 - Main post: `/posts/coding-with-agents-2025`
 - Resources page: `/resources/coding-with-agents`
-- All agent posts have 'ai-agents' tag in frontmatter
+- All agent posts have 'AI Agents' tag in frontmatter
 - Site uses Astro v5 + TailwindCSS v4
 
 ---
@@ -203,32 +203,37 @@ In the "Resources" section at the bottom, ensure it links to the resources page:
 **Completed:** All 3 steps implemented successfully
 
 ### Step 1: Homepage Featured Section ✅
+
 - **File modified:** `src/pages/index.astro`
 - **Change:** Added Featured section between AboutMeSummary and ReachOutMessage
 - **Result:** Homepage now prominently features link to "Coding with Agents in 2025" field guide
 - **Commit:** 769e82e
 
 ### Step 2: Conditional Footer for Agent Posts ✅
+
 - **File modified:** `src/layouts/PostLayout.astro`
 - **Changes:**
-  - Added `isAgentPost` flag checking for 'ai-agents' tag
+  - Added `isAgentPost` flag checking for 'AI Agents' tag
   - Added conditional resources callout after post content
 - **Result:** 6 agent posts now show resources hub footer, non-agent posts don't
 - **Commit:** 8c3e237
 
 ### Step 3: Resources Hub Link in Main Post ✅
+
 - **File modified:** `src/content/posts/coding-with-agents-2025.md`
 - **Change:** Added link to resources hub as first item in Resources section
 - **Result:** Bidirectional linking between field guide and resources page
 - **Commit:** 539d1ef
 
 ### Build Verification ✅
+
 - Build completed successfully with no errors
 - All 22 pages generated correctly
 - TypeScript checks passed
 - No warnings related to our changes
 
 ### Success Criteria Met ✅
+
 - ✅ Homepage has featured guide callout linking to main post
 - ✅ Featured section matches existing design language (minimal, professional)
 - ✅ All 6 agent posts show resources footer callout

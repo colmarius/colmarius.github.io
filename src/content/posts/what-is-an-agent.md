@@ -2,7 +2,7 @@
 title: 'LLM Agents: Tools in a Loop'
 description: 'A simple introduction: an LLM agent runs tools in a loop to achieve a goal—what that means, a quick example, and when the loop stops.'
 pubDate: 2025-11-05
-tags: ['ai-agents', 'intro']
+tags: ['AI Agents', 'Intro']
 difficulty: 'beginner'
 readingTime: '5 min'
 draft: false

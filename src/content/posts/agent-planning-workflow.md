@@ -2,7 +2,7 @@
 title: 'Planning Before Coding: The Agent Workflow That Prevents Rewrites'
 description: 'Why agents should plan first, code second—and how the .agents/plans structure turns complex tasks into systematic wins.'
 pubDate: 2025-11-07
-tags: ['ai-agents', 'amp', 'workflows', 'planning']
+tags: ['AI Agents', 'Amp', 'Workflows', 'Planning']
 difficulty: 'intermediate'
 readingTime: '25-40 min'
 draft: false

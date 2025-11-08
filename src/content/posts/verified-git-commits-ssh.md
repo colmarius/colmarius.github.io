@@ -1,8 +1,8 @@
 ---
 title: 'How to Sign Git Commits with SSH Keys'
 description: 'A practical guide to setting up verified commits on GitHub using SSH keys—simpler than GPG and you probably already have the key.'
-pubDate: 2025-11-06
-tags: ['git', 'github', 'security']
+pubDate: 2025-11-04
+tags: ['Git', 'GitHub', 'Security']
 difficulty: 'beginner'
 readingTime: '10-15 min'
 draft: false
