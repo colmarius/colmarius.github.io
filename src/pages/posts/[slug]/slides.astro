@@ -74,16 +74,17 @@ const { Content } = await render(post);
       </button>
     </div>
 
-    <script is:inline>
-      // Render Mermaid diagrams BEFORE splitting into slides
-      async function initializePage() {
-        const { renderMermaid } = await import('../../../scripts/mermaid.ts');
-        await renderMermaid();
-        
-        // Now split into slides with rendered diagrams
-        return splitIntoSlides();
-      }
+    <script>
+      import { renderMermaid } from '@scripts/mermaid';
 
+      // Wait for DOM, render Mermaid, then initialize slides
+      document.addEventListener('DOMContentLoaded', async () => {
+        await renderMermaid();
+        window.dispatchEvent(new Event('mermaid-ready'));
+      });
+    </script>
+
+    <script is:inline>
       // Split content by H2 headers
       function splitIntoSlides() {
         const source = document.getElementById('source');
@@ -163,8 +164,8 @@ const { Content } = await render(post);
       }
 
       // Initialize - wait for Mermaid rendering then split
-      initializePage().then(() => {
-        totalSlides = document.querySelectorAll('.slide').length;
+      function initialize() {
+        totalSlides = splitIntoSlides();
         document.getElementById('total').textContent = totalSlides;
 
         // Check hash for initial slide
@@ -177,7 +178,10 @@ const { Content } = await render(post);
         }
 
         updateSlide();
-      });
+      }
+
+      // Wait for Mermaid to finish rendering before splitting
+      window.addEventListener('mermaid-ready', initialize);
 
       // Event listeners
       document.getElementById('prev-btn').addEventListener('click', prevSlide);
