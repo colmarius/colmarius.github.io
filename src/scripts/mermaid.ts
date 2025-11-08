@@ -1,3 +1,5 @@
+import { mermaidConfig } from './mermaid-config';
+
 export async function renderMermaid() {
   // Prefer explicit language markers
   let codes = Array.from(
@@ -40,10 +42,8 @@ export async function renderMermaid() {
   const { default: mermaid } = await import(
     'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs'
   );
-  mermaid.initialize({
-    startOnLoad: false,
-    securityLevel: 'strict',
-  });
+  // @ts-expect-error - CDN types incomplete
+  mermaid.initialize(mermaidConfig);
   await mermaid.run({ querySelector: '.mermaid' });
 
   // Remove loading class from all mermaid elements (including pre-rendered/cloned ones)

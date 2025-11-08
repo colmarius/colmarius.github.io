@@ -59,14 +59,6 @@ flowchart LR
     Update --> Done{Success<br/>Criteria?}
     Done -->|No| Code
     Done -->|Yes| Complete[✅ completed/<br/>new-feature.md]
-
-    style Todo fill:#1a1a1a,stroke:#FF9800,color:#fff
-    style Progress fill:#1a1a1a,stroke:#2196F3,color:#fff
-    style Complete fill:#1a1a1a,stroke:#4CAF50,color:#fff
-    style Review fill:#1a1a1a,stroke:#9C27B0,color:#fff
-    style Code fill:#1a1a1a,stroke:#2196F3,color:#fff
-    style Update fill:#1a1a1a,stroke:#2196F3,color:#fff
-    style Done fill:#1a1a1a,stroke:#F44336,color:#fff
 ```
 
 ### Step 1: Create a Plan

@@ -60,14 +60,6 @@ flowchart TD
     Observe --> Decide{Goal Reached?}
     Decide -->|No| Think
     Decide -->|Yes| End([Done])
-
-    style Start fill:#1a1a1a,stroke:#4CAF50,color:#fff
-    style End fill:#1a1a1a,stroke:#4CAF50,color:#fff
-    style Think fill:#1a1a1a,stroke:#2196F3,color:#fff
-    style Choose fill:#1a1a1a,stroke:#2196F3,color:#fff
-    style Call fill:#1a1a1a,stroke:#FF9800,color:#fff
-    style Observe fill:#1a1a1a,stroke:#9C27B0,color:#fff
-    style Decide fill:#1a1a1a,stroke:#F44336,color:#fff
 ```
 
 This loop is why agents work. They don't just generate code—they:

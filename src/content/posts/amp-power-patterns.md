@@ -37,14 +37,6 @@ flowchart TD
     Q2 -->|No| Q3{Needs deep<br/>reasoning?}
     Q3 -->|No| Smart
     Q3 -->|Yes| Oracle[Oracle Mode<br/>GPT-5 reasoning]
-
-    style Start fill:#1a1a1a,stroke:#4CAF50,color:#fff
-    style Rush fill:#1a1a1a,stroke:#4CAF50,color:#fff
-    style Smart fill:#1a1a1a,stroke:#2196F3,color:#fff
-    style Oracle fill:#1a1a1a,stroke:#9C27B0,color:#fff
-    style Q1 fill:#1a1a1a,stroke:#FF9800,color:#fff
-    style Q2 fill:#1a1a1a,stroke:#FF9800,color:#fff
-    style Q3 fill:#1a1a1a,stroke:#FF9800,color:#fff
 ```
 
 ### Rush Mode

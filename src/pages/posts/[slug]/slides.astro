@@ -85,6 +85,35 @@ const { Content } = await render(post);
     </div>
 
     <script is:inline>
+      // Shared Mermaid config (keep in sync with src/scripts/mermaid-config.ts)
+      const mermaidConfig = {
+        startOnLoad: false,
+        securityLevel: 'strict',
+        theme: 'default',
+        themeVariables: {
+          primaryColor: '#eef2ff',
+          primaryTextColor: '#1e1b4b',
+          primaryBorderColor: '#a5b4fc',
+          secondaryColor: '#f8fafc',
+          secondaryTextColor: '#0f172a',
+          secondaryBorderColor: '#e2e8f0',
+          tertiaryColor: '#ffffff',
+          tertiaryTextColor: '#0f172a',
+          tertiaryBorderColor: '#cbd5e1',
+          noteBkgColor: '#ffffff',
+          noteTextColor: '#0f172a',
+          noteBorderColor: '#e2e8f0',
+          lineColor: '#64748b',
+          textColor: '#0f172a',
+          mainBkg: '#ffffff',
+          secondBkg: '#f8fafc',
+          border1: '#e2e8f0',
+          border2: '#cbd5e1',
+          arrowheadColor: '#64748b',
+          fontFamily: 'system-ui, -apple-system, sans-serif',
+        },
+      };
+
       // Inline version of renderMermaid for slides (scoped to specific element)
       async function renderMermaidInline(root = document) {
         const selectors = [
@@ -129,7 +158,7 @@ const { Content } = await render(post);
         const { default: mermaid } = await import(
           'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs'
         );
-        mermaid.initialize({ startOnLoad: false, securityLevel: 'strict' });
+        mermaid.initialize(mermaidConfig);
 
         const mermaidElements = root.querySelectorAll('.mermaid');
         if (mermaidElements.length > 0) {
@@ -257,23 +286,5 @@ const { Content } = await render(post);
         }
       });
     </script>
-
-    <style is:global>
-      /* Mermaid diagram styles */
-      .mermaid {
-        display: flex;
-        justify-content: center;
-        margin: 2rem 0;
-      }
-      .mermaid svg {
-        display: block;
-        max-width: 100%;
-        height: auto;
-      }
-      .mermaid-loading {
-        opacity: 0;
-        min-height: 200px;
-      }
-    </style>
   </body>
 </html>
