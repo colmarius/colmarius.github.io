@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Navigation from '@components/Navigation.astro';
+import Footer from '@components/Footer.astro';
 
 type Props = {
   title: string;
@@ -39,18 +40,7 @@ const currentPath = Astro.url.pathname;
           <slot />
         </main>
 
-        <footer class="mx-auto">
-          <div class="text-sm text-gray-600 font-light flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-            <span>Copyright © {new Date().getFullYear()} Marius Colacioiu</span>
-            <span class="hidden sm:inline text-gray-400">•</span>
-            <span class="text-gray-500">
-              AI-assisted: implementation and content are managed by
-              <a href="https://ampcode.com" target="_blank" rel="noopener noreferrer" class="underline decoration-dotted underline-offset-2 hover:decoration-solid hover:text-gray-700">Amp</a>
-              (coding agent). 
-              <a href="https://github.com/colmarius/colmarius.github.io" target="_blank" rel="noopener noreferrer" class="underline decoration-dotted underline-offset-2 hover:decoration-solid hover:text-gray-700">Source on GitHub</a>.
-            </span>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </div>
 
