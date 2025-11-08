@@ -49,6 +49,38 @@ const { slug, title, description, pubDate, tags } = Astro.props;
 	</article>
 </Layout>
 
+<script is:inline type="module">
+  async function renderMermaid() {
+    const codes = document.querySelectorAll('pre > code.language-mermaid');
+    if (codes.length === 0 && !document.querySelector('.mermaid')) return;
+
+    // Replace code fences with <div class="mermaid"> blocks
+    for (const code of codes) {
+      const pre = code.closest('pre');
+      const div = document.createElement('div');
+      div.className = 'mermaid';
+      div.textContent = code.textContent || '';
+      pre?.replaceWith(div);
+    }
+
+    // Lazy-load Mermaid only if needed
+    const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs');
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: 'strict',
+    });
+    mermaid.run({ querySelector: '.mermaid' });
+  }
+
+  // Initial load and Astro navigations
+  document.addEventListener('DOMContentLoaded', renderMermaid, { once: true });
+  document.addEventListener('astro:page-load', renderMermaid);
+</script>
+
+<style is:global>
+  .mermaid svg { display: block; max-width: 100%; height: auto; }
+</style>
+
 <style>
 	.slides-link {
 		display: inline-flex;
