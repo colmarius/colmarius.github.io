@@ -87,7 +87,16 @@ const { slug, title, description, pubDate, tags } = Astro.props;
 </script>
 
 <style is:global>
-  .mermaid svg { display: block; max-width: 100%; height: auto; }
+  .mermaid {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+  }
+  .mermaid svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
 </style>
 
 <style>
