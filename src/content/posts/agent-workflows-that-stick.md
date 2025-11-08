@@ -6,6 +6,7 @@ tags: ['AI Agents', 'Amp', 'Workflows', 'Best Practices']
 difficulty: 'intermediate'
 readingTime: '20 min'
 draft: false
+order: 4
 ---
 
 **TL;DR:**

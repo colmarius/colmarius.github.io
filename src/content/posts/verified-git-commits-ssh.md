@@ -6,6 +6,7 @@ tags: ['Git', 'GitHub', 'Security']
 difficulty: 'beginner'
 readingTime: '10-15 min'
 draft: false
+order: 7
 ---
 
 > **📖 Quick Start**

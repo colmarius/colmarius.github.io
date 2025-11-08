@@ -6,6 +6,7 @@ tags: ['AI Agents', 'Intro']
 difficulty: 'beginner'
 readingTime: '5 min'
 draft: false
+order: 1
 ---
 
 > **📖 Quick Start**

@@ -6,6 +6,7 @@ tags: ['AI Agents', 'Amp', 'Workflows', 'Getting Started']
 difficulty: 'beginner'
 readingTime: '15-20 min'
 draft: false
+order: 3
 ---
 
 **TL;DR:**

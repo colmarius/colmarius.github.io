@@ -6,6 +6,7 @@ tags: ['AI Agents', 'Amp', 'Workflows', 'Advanced']
 difficulty: 'advanced'
 readingTime: '30 min'
 draft: false
+order: 6
 ---
 
 **TL;DR:**
