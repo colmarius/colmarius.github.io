@@ -38,37 +38,36 @@ const NAVIGATION_ITEMS = [
     </ul>
 
     <button
-      class="flex sm:hidden"
-      onclick="toggleMobileMenu()"
+      type="button"
       id="mobile-menu-button"
+      class="sm:hidden inline-flex items-center justify-center w-11 h-11 rounded-md text-gray-900 hover:text-indigo-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600/50 focus-visible:ring-offset-2 relative z-50"
+      aria-controls="mobile-menu"
+      aria-expanded="false"
+      aria-label="Open menu"
+      onclick="toggleMobileMenu()"
     >
-      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg id="icon-hamburger" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
+      <svg id="icon-close" class="h-6 w-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <line x1="22" y1="2" x2="2" y2="22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="2" y1="2" x2="22" y2="22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </button>
-    <div id="mobile-menu" class="hide-menu-nav">
-      <div class="absolute top-0 right-0 mt-1 p-4" onclick="closeMobileMenu()">
-        <svg
-          class="h-8 w-8 text-gray-600"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <line x1="22" y1="2" x2="2" y2="22" />
-          <line x1="2" y1="2" x2="22" y2="22" />
-        </svg>
-      </div>
-      <ul class="flex flex-col items-center justify-between min-h-[150px]">
+    <div
+      id="mobile-menu"
+      class="hide-menu-nav fixed inset-0 z-40 bg-white"
+      role="dialog"
+      aria-modal="true"
+    >
+      <ul class="flex flex-col w-full pt-20 divide-y divide-gray-200">
         {NAVIGATION_ITEMS.map((item) => (
-          <li>
+          <li class="w-full">
             <a
               href={item.link}
               onclick="closeMobileMenu()"
-              class={`font-light uppercase hover:text-indigo-600 my-8 border-indigo-600 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600/50 focus-visible:ring-offset-2 rounded-sm ${
-                normalizedCurrentPath === item.link ? 'text-indigo-600 border-b-2 pb-2' : ''
+              class={`block w-full px-6 py-4 text-lg font-medium text-gray-900 hover:bg-gray-50 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600/50 focus-visible:ring-offset-2 ${
+                normalizedCurrentPath === item.link ? 'text-indigo-600 bg-indigo-50' : ''
               }`}
             >
               {item.title}
@@ -102,21 +101,44 @@ const NAVIGATION_ITEMS = [
 </style>
 
 <script>
-  function toggleMobileMenu() {
+  function setMenuState(open: boolean) {
     const menu = document.getElementById('mobile-menu');
-    if (menu?.classList.contains('hide-menu-nav')) {
-      menu.classList.remove('hide-menu-nav');
-      menu.classList.add('show-menu-nav');
+    const btn = document.getElementById('mobile-menu-button');
+    const iconOpen = document.getElementById('icon-hamburger');
+    const iconClose = document.getElementById('icon-close');
+
+    if (open) {
+      menu?.classList.remove('hide-menu-nav');
+      menu?.classList.add('show-menu-nav');
+      btn?.setAttribute('aria-expanded', 'true');
+      btn?.setAttribute('aria-label', 'Close menu');
+      iconOpen?.classList.add('hidden');
+      iconClose?.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
     } else {
-      closeMobileMenu();
+      menu?.classList.remove('show-menu-nav');
+      menu?.classList.add('hide-menu-nav');
+      btn?.setAttribute('aria-expanded', 'false');
+      btn?.setAttribute('aria-label', 'Open menu');
+      iconOpen?.classList.remove('hidden');
+      iconClose?.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
     }
   }
 
-  function closeMobileMenu() {
+  function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
-    menu?.classList.remove('show-menu-nav');
-    menu?.classList.add('hide-menu-nav');
+    const opening = menu?.classList.contains('hide-menu-nav');
+    setMenuState(!!opening);
   }
+
+  function closeMobileMenu() {
+    setMenuState(false);
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMobileMenu();
+  });
 
   // @ts-ignore
   window.toggleMobileMenu = toggleMobileMenu;
