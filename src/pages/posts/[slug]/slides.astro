@@ -74,24 +74,42 @@ const { Content } = await render(post);
       </button>
     </div>
 
-    <script>
-      import { renderMermaid } from '@scripts/mermaid';
-
-      // Render Mermaid and signal ready
-      async function initMermaid() {
-        await renderMermaid();
-        window.dispatchEvent(new Event('mermaid-ready'));
-      }
-
-      // Run immediately if DOM ready, otherwise wait
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initMermaid);
-      } else {
-        initMermaid();
-      }
-    </script>
-
     <script is:inline>
+      // Inline version of renderMermaid for slides
+      async function renderMermaidInline() {
+        let codes = Array.from(
+          document.querySelectorAll('pre > code.language-mermaid, pre > code.lang-mermaid')
+        );
+
+        if (codes.length === 0) {
+          codes = Array.from(document.querySelectorAll('pre > code')).filter(code => {
+            const text = code.textContent?.trim() || '';
+            return text.startsWith('flowchart') || text.startsWith('graph') || 
+                   text.startsWith('sequenceDiagram') || text.startsWith('classDiagram') ||
+                   text.startsWith('stateDiagram') || text.startsWith('erDiagram') ||
+                   text.startsWith('journey') || text.startsWith('gantt') ||
+                   text.startsWith('pie') || text.startsWith('gitGraph');
+          });
+        }
+
+        if (codes.length === 0 && !document.querySelector('.mermaid')) return;
+
+        for (const code of codes) {
+          const pre = code.closest('pre');
+          const div = document.createElement('div');
+          div.className = 'mermaid mermaid-loading';
+          div.textContent = code.textContent || '';
+          pre?.replaceWith(div);
+        }
+
+        const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs');
+        mermaid.initialize({ startOnLoad: false, securityLevel: 'strict' });
+        await mermaid.run({ querySelector: '.mermaid' });
+
+        document.querySelectorAll('.mermaid-loading').forEach(el => {
+          el.classList.remove('mermaid-loading');
+        });
+      }
       // Split content by H2 headers
       function splitIntoSlides() {
         const source = document.getElementById('source');
@@ -170,8 +188,10 @@ const { Content } = await render(post);
         }
       }
 
-      // Initialize - wait for Mermaid rendering then split
-      function initialize() {
+      // Initialize - render Mermaid then split into slides
+      async function initialize() {
+        await renderMermaidInline();
+        
         totalSlides = splitIntoSlides();
         document.getElementById('total').textContent = totalSlides;
 
@@ -187,8 +207,8 @@ const { Content } = await render(post);
         updateSlide();
       }
 
-      // Wait for Mermaid to finish rendering before splitting
-      window.addEventListener('mermaid-ready', initialize);
+      // Run initialization
+      initialize();
 
       // Event listeners
       document.getElementById('prev-btn').addEventListener('click', prevSlide);
