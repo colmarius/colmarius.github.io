@@ -21,7 +21,7 @@
 src/
 ├── components/    # React components
 ├── data/          # Content data
-├── layouts/       # Astro layouts  
+├── layouts/       # Astro layouts
 ├── pages/         # Routes (index.astro is entry)
 ├── scripts/       # Client scripts
 ├── styles/        # Global styles
