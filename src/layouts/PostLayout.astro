@@ -51,7 +51,16 @@ const { slug, title, description, pubDate, tags } = Astro.props;
 
 <script is:inline type="module">
   async function renderMermaid() {
-    const codes = document.querySelectorAll('pre > code.language-mermaid');
+    // Find code blocks that start with mermaid keywords
+    const codes = Array.from(document.querySelectorAll('pre > code')).filter(code => {
+      const text = code.textContent?.trim() || '';
+      return text.startsWith('flowchart') || text.startsWith('graph') || 
+             text.startsWith('sequenceDiagram') || text.startsWith('classDiagram') ||
+             text.startsWith('stateDiagram') || text.startsWith('erDiagram') ||
+             text.startsWith('journey') || text.startsWith('gantt') ||
+             text.startsWith('pie') || text.startsWith('gitGraph');
+    });
+    
     if (codes.length === 0 && !document.querySelector('.mermaid')) return;
 
     // Replace code fences with <div class="mermaid"> blocks
