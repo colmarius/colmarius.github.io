@@ -58,16 +58,16 @@ const { Content } = await render(post);
     </div>
 
     <div class="fixed bottom-4 sm:bottom-8 right-4 sm:right-8 flex gap-2 z-50">
-      <button 
-        class="w-10 h-10 sm:w-12 sm:h-12 bg-white border border-slate-200 rounded-lg text-slate-600 cursor-pointer flex items-center justify-center text-xl transition-all hover:bg-slate-50 hover:text-slate-900 hover:border-slate-300 disabled:opacity-30 disabled:cursor-not-allowed" 
-        id="prev-btn" 
+      <button
+        class="w-10 h-10 sm:w-12 sm:h-12 bg-white border border-slate-200 rounded-lg text-slate-600 cursor-pointer flex items-center justify-center text-xl transition-all hover:bg-slate-50 hover:text-slate-900 hover:border-slate-300 disabled:opacity-30 disabled:cursor-not-allowed"
+        id="prev-btn"
         aria-label="Previous slide"
       >
         ←
       </button>
-      <button 
-        class="w-10 h-10 sm:w-12 sm:h-12 bg-white border border-slate-200 rounded-lg text-slate-600 cursor-pointer flex items-center justify-center text-xl transition-all hover:bg-slate-50 hover:text-slate-900 hover:border-slate-300 disabled:opacity-30 disabled:cursor-not-allowed" 
-        id="next-btn" 
+      <button
+        class="w-10 h-10 sm:w-12 sm:h-12 bg-white border border-slate-200 rounded-lg text-slate-600 cursor-pointer flex items-center justify-center text-xl transition-all hover:bg-slate-50 hover:text-slate-900 hover:border-slate-300 disabled:opacity-30 disabled:cursor-not-allowed"
+        id="next-btn"
         aria-label="Next slide"
       >
         →
@@ -80,7 +80,7 @@ const { Content } = await render(post);
         const source = document.getElementById('source');
         const container = document.getElementById('slides-container');
         const nodes = Array.from(source.children);
-        
+
         let slides = [];
         let currentSlide = [];
 
@@ -110,6 +110,12 @@ const { Content } = await render(post);
           slideDiv.className = 'slide prose-slide mx-auto max-w-3xl bg-white border border-slate-200 rounded-lg p-8 sm:p-12 shadow-sm';
           slideDiv.dataset.index = index;
           slideNodes.forEach(node => slideDiv.appendChild(node));
+
+          // Remove mermaid-loading class from cloned mermaid elements
+          slideDiv.querySelectorAll('.mermaid-loading').forEach(el => {
+            el.classList.remove('mermaid-loading');
+          });
+
           container.appendChild(slideDiv);
         });
 
@@ -173,6 +179,11 @@ const { Content } = await render(post);
           e.preventDefault();
           nextSlide();
         }
+      });
+
+      // Final cleanup: remove all mermaid-loading classes
+      document.querySelectorAll('.mermaid-loading').forEach(el => {
+        el.classList.remove('mermaid-loading');
       });
     </script>
 

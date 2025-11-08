@@ -69,6 +69,17 @@ const isAgentPost = (tags || []).includes('AI Agents');
 </script>
 
 <style is:global>
+  /* Hide raw Mermaid code blocks before JS runs to prevent FOUC */
+  pre:has(> code.language-mermaid),
+  pre:has(> code.lang-mermaid) {
+    display: none;
+  }
+  /* Fallback for browsers without :has() */
+  pre > code.language-mermaid,
+  pre > code.lang-mermaid {
+    display: none;
+  }
+
   .mermaid {
     display: flex;
     justify-content: center;
@@ -78,6 +89,10 @@ const isAgentPost = (tags || []).includes('AI Agents');
     display: block;
     max-width: 100%;
     height: auto;
+  }
+  .mermaid-loading {
+    opacity: 0;
+    min-height: 200px;
   }
 </style>
 
