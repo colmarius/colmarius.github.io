@@ -263,15 +263,106 @@ Enhance all blog posts to maximize reader value, learning, and actionability bas
 - Check all internal links work
 - Verify diagrams render correctly
 
+## Context Integration (Oracle Review #2)
+
+Oracle confirmed the episode summaries and amp-research.md contain valuable insights to enhance the blog posts.
+
+### Key Additions from Context Sources
+
+**Missing concepts to add:**
+
+- External memory/task.md handoffs
+- Deterministic custom commands (.agents/commands/)
+- tmux for interactive CLIs
+- Refactor-by-example (recording diffs)
+- Parallel agents/workspaces
+- "Mission repeat-back" step before coding
+
+**Valuable quotes/anecdotes (with timestamps):**
+
+- "Magic of the no token limit" [13:20] - Raising Ep2
+- "Wish list → flow" [01:31] - Raising Ep2
+- "Agent created new file then moved it" [08:44] - Raising Ep1
+- "Refactor-by-example recording" [03:10] - Raising Ep1
+- "task.md salvage" [05:19] - Raising Ep2
+- "Parallel agent threads/workspaces" [17:41][20:49] - Raising Ep2
+- "Confirm the fix with a test" [54:17] - Build Crew Ep1
+- "Desk" analogy [16:14] - Build Crew Ep1
+- "Don't get drunk on tokens" [57:13] - Build Crew Ep1
+
+### Enhanced "Try It Now" Exercises
+
+**From episodes:**
+
+- Task.md salvage and handoff
+- Refactor-by-example workflow
+- tmux interactive CLI control
+- Deterministic custom command (.agents/commands/)
+- Wish-list scaffolding
+- Confirm fix with new test
+- Mission repeat-back pattern
+
+### Per-Post Context Mapping
+
+**1. amp-power-patterns.md**
+
+- Sources: Amp Research (modes, Oracle, subagents), Raising Ep2 (no token limit, multi-agent), Raising Ep1 (refactor-by-example), Build Crew Ep2 (deterministic tools)
+- Add: "No token limit" quote, refactor-by-example pattern, task.md handoff, deterministic commands pattern
+- Try it now: Rush vs Smart comparison, Oracle review, deterministic command creation
+
+**2. coding-with-agents-2025.md**
+
+- Sources: Raising Ep2 (wish list flow, architecture struggles, task.md, email-to-PR vision), Build Crew Ep1 (tmux, feedback loops), Amp Research (agent fundamentals)
+- Add: Wish-list anecdote, task.md salvage guidance, tmux tip, trajectory vision snippet
+- Try it now: Wish-list scaffolding, task.md salvage, tmux CLI interaction
+
+**3. amp-first-win-15-minutes.md**
+
+- Sources: Raising Ep1 (debug prints fix), Build Crew Ep1 (confirm fix), Amp Research (example prompts)
+- Add: Three tracks (tests/UI/debug), debug workflow with logs
+- Try it now: Fix with test confirmation, UI with screenshot, debug with temporary logs
+
+**4. agent-workflows-that-stick.md**
+
+- Sources: Build Crew Ep1 (desk analogy, fork, external memory), Build Crew Ep2 (artifacts, code is cheap), Amp Research (Thorsten's practices)
+- Add: Workflow checklist, quote callouts
+- Try it now: Extract to artifact.md, fork and compare, test-first fix
+
+**5. what-is-an-agent.md**
+
+- Sources: Amp Research (fundamentals), Raising Ep1 (resourcefulness anecdote)
+- Add: Loop explanation, resourcefulness example
+- Try it now: Simple file edit with verification, auth discovery task
+
+**6. agent-planning-workflow.md**
+
+- Sources: Build Crew Ep1 (Goal→Phases→Confirm), Raising Ep2 (task.md, multi-agent), Amp Research (Oracle)
+- Add: 2-min quickstart, artifacts pattern, Oracle review box
+- Try it now: Mission repeat-back, handoff with task.md, Oracle plan critique
+
+**7. verified-git-commits-ssh.md**
+
+- Sources: Optional Amp-assist validation
+- Add: "Use Amp to validate" tip
+- Try it now: Amp validates git config and guides setup
+
+### Updated Effort Estimate
+
+With context integration: Medium (1-2 days total) to implement all additions alongside the existing improvement plan.
+
 ## Deferred for Future
 
 - Full slide decks with speaker notes (wait for workshop needs)
 - Downloadable cheat sheets/PDFs (wait for traffic growth)
 - Sample demo repository (if readers request more hands-on)
 - Interactive content/embeds
+- Parallel agents workflows (multi-workspace guide)
+- Deterministic context toolbelt (.agents/commands/ pack)
 
 ## Related Context
 
 - All blog posts in src/content/posts/
+- Episode summaries in src/content/summaries/coding-with-agents/
+- Amp research notes in .agents/context/amp-research.md
 - Site structure: Astro v5 + React + TailwindCSS
 - Diagrams: Use Mermaid (supported in Markdown)
