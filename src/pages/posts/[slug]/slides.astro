@@ -1,7 +1,6 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import BackNav from '@components/BackNav.astro';
-import MermaidRenderer from '@components/MermaidRenderer.astro';
 import '../../../styles/global.css';
 
 export async function getStaticPaths() {
@@ -186,8 +185,27 @@ const { Content } = await render(post);
       document.querySelectorAll('.mermaid-loading').forEach(el => {
         el.classList.remove('mermaid-loading');
       });
+
+      // Render Mermaid diagrams in cloned slides
+      import('@scripts/mermaid').then(({ renderMermaid }) => renderMermaid());
     </script>
 
-    <MermaidRenderer />
+    <style is:global>
+      /* Mermaid diagram styles */
+      .mermaid {
+        display: flex;
+        justify-content: center;
+        margin: 2rem 0;
+      }
+      .mermaid svg {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+      .mermaid-loading {
+        opacity: 0;
+        min-height: 200px;
+      }
+    </style>
   </body>
 </html>
