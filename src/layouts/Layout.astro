@@ -45,13 +45,17 @@ const currentPath = Astro.url.pathname;
     </div>
 
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
+      const initPage = () => {
         document.body.style.opacity = '0';
         document.body.style.transition = 'opacity 150ms ease-out';
 
         requestAnimationFrame(() => {
           document.body.style.opacity = '1';
         });
+      };
+
+      document.addEventListener('DOMContentLoaded', () => {
+        initPage();
 
         const links = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href^="../"]');
 
@@ -76,6 +80,12 @@ const currentPath = Astro.url.pathname;
             }, 150);
           });
         });
+      });
+
+      window.addEventListener('pageshow', (event) => {
+        if (event.persisted) {
+          initPage();
+        }
       });
     </script>
   </body>
