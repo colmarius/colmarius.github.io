@@ -107,6 +107,7 @@ Enable Mermaid diagram rendering in markdown blog posts with minimal configurati
 ## Results
 
 Successfully implemented Mermaid diagram support with:
+
 - Client-side script in PostLayout.astro that detects `pre > code.language-mermaid` blocks
 - Lazy-loaded Mermaid from CDN (only when diagrams exist on page)
 - Responsive styling for `.mermaid svg` elements

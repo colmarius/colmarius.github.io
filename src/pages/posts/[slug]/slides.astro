@@ -43,15 +43,25 @@ const { Content } = await render(post);
     </style>
   </head>
   <body class="bg-white text-slate-900 overflow-hidden">
-    <div class="fixed top-0 left-0 right-0 h-14 bg-white border-b border-slate-200 flex items-center justify-between px-4 sm:px-8 z-50">
+    <div
+      class="fixed top-0 left-0 right-0 h-14 bg-white border-b border-slate-200 flex items-center justify-between px-4 sm:px-8 z-50"
+    >
       <BackNav href={`/posts/${post.id}`} label="Back to Post" />
-      <div class="text-sm font-semibold text-slate-900 flex-1 text-center truncate px-4">{post.data.title}</div>
+      <div
+        class="text-sm font-semibold text-slate-900 flex-1 text-center truncate px-4"
+      >
+        {post.data.title}
+      </div>
       <div class="text-sm text-slate-600 min-w-16 text-right">
         <span id="current">1</span> / <span id="total">1</span>
       </div>
     </div>
 
-    <div id="slides-container" class="fixed top-14 left-0 right-0 bottom-0 overflow-y-auto p-4 sm:p-8"></div>
+    <div
+      id="slides-container"
+      class="fixed top-14 left-0 right-0 bottom-0 overflow-y-auto p-4 sm:p-8"
+    >
+    </div>
 
     <div id="source">
       <Content />
@@ -75,24 +85,38 @@ const { Content } = await render(post);
     </div>
 
     <script is:inline>
-      // Inline version of renderMermaid for slides
-      async function renderMermaidInline() {
-        let codes = Array.from(
-          document.querySelectorAll('pre > code.language-mermaid, pre > code.lang-mermaid')
-        );
+      // Inline version of renderMermaid for slides (scoped to specific element)
+      async function renderMermaidInline(root = document) {
+        const selectors = [
+          'pre > code.language-mermaid',
+          'pre > code.lang-mermaid',
+          'pre[data-language="mermaid"] > code',
+          'pre[class*="language-mermaid"] > code',
+        ].join(', ');
+
+        let codes = Array.from(root.querySelectorAll(selectors));
 
         if (codes.length === 0) {
-          codes = Array.from(document.querySelectorAll('pre > code')).filter(code => {
-            const text = code.textContent?.trim() || '';
-            return text.startsWith('flowchart') || text.startsWith('graph') || 
-                   text.startsWith('sequenceDiagram') || text.startsWith('classDiagram') ||
-                   text.startsWith('stateDiagram') || text.startsWith('erDiagram') ||
-                   text.startsWith('journey') || text.startsWith('gantt') ||
-                   text.startsWith('pie') || text.startsWith('gitGraph');
-          });
+          codes = Array.from(root.querySelectorAll('pre > code')).filter(
+            (code) => {
+              const text = code.textContent?.trim() || '';
+              return (
+                text.startsWith('flowchart') ||
+                text.startsWith('graph') ||
+                text.startsWith('sequenceDiagram') ||
+                text.startsWith('classDiagram') ||
+                text.startsWith('stateDiagram') ||
+                text.startsWith('erDiagram') ||
+                text.startsWith('journey') ||
+                text.startsWith('gantt') ||
+                text.startsWith('pie') ||
+                text.startsWith('gitGraph')
+              );
+            },
+          );
         }
 
-        if (codes.length === 0 && !document.querySelector('.mermaid')) return;
+        if (codes.length === 0 && !root.querySelector('.mermaid')) return;
 
         for (const code of codes) {
           const pre = code.closest('pre');
@@ -102,66 +126,66 @@ const { Content } = await render(post);
           pre?.replaceWith(div);
         }
 
-        const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs');
+        const { default: mermaid } = await import(
+          'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs'
+        );
         mermaid.initialize({ startOnLoad: false, securityLevel: 'strict' });
-        await mermaid.run({ querySelector: '.mermaid' });
 
-        document.querySelectorAll('.mermaid-loading').forEach(el => {
+        const mermaidElements = root.querySelectorAll('.mermaid');
+        if (mermaidElements.length > 0) {
+          await mermaid.run({ nodes: Array.from(mermaidElements) });
+        }
+
+        root.querySelectorAll('.mermaid-loading').forEach((el) => {
           el.classList.remove('mermaid-loading');
         });
       }
-      // Split content by H2 headers
+      // Split content by H2 headers using Range to handle Astro's wrapper elements
       function splitIntoSlides() {
         const source = document.getElementById('source');
         const container = document.getElementById('slides-container');
-        const nodes = Array.from(source.children);
-
-        let slides = [];
-        let currentSlide = [];
-
-        for (const node of nodes) {
-          if (node.tagName === 'H2') {
-            if (currentSlide.length > 0) {
-              slides.push(currentSlide);
-            }
-            currentSlide = [node.cloneNode(true)];
-          } else {
-            currentSlide.push(node.cloneNode(true));
-          }
-        }
-
-        if (currentSlide.length > 0) {
-          slides.push(currentSlide);
-        }
+        const headings = Array.from(source.querySelectorAll('h2'));
 
         // If no H2s found, treat entire content as one slide
-        if (slides.length === 0) {
-          slides.push(nodes.map(n => n.cloneNode(true)));
+        if (headings.length === 0) {
+          const slideDiv = document.createElement('div');
+          slideDiv.className =
+            'slide prose-slide mx-auto max-w-3xl bg-white border border-slate-200 rounded-lg p-8 sm:p-12 shadow-sm';
+          slideDiv.dataset.index = 0;
+          Array.from(source.children).forEach((child) => {
+            slideDiv.appendChild(child.cloneNode(true));
+          });
+          container.appendChild(slideDiv);
+          return 1;
         }
 
-        // Create slide elements
-        slides.forEach((slideNodes, index) => {
+        // Create slides using Range for each H2 section
+        headings.forEach((heading, index) => {
+          const range = document.createRange();
+          range.setStartBefore(heading);
+
+          if (index < headings.length - 1) {
+            range.setEndBefore(headings[index + 1]);
+          } else {
+            range.setEndAfter(source.lastChild || heading);
+          }
+
           const slideDiv = document.createElement('div');
-          slideDiv.className = 'slide prose-slide mx-auto max-w-3xl bg-white border border-slate-200 rounded-lg p-8 sm:p-12 shadow-sm';
+          slideDiv.className =
+            'slide prose-slide mx-auto max-w-3xl bg-white border border-slate-200 rounded-lg p-8 sm:p-12 shadow-sm';
           slideDiv.dataset.index = index;
-          slideNodes.forEach(node => slideDiv.appendChild(node));
-
-          // Remove mermaid-loading class from cloned mermaid elements
-          slideDiv.querySelectorAll('.mermaid-loading').forEach(el => {
-            el.classList.remove('mermaid-loading');
-          });
-
+          slideDiv.appendChild(range.cloneContents());
           container.appendChild(slideDiv);
         });
 
-        return slides.length;
+        return headings.length;
       }
 
       // Navigation state
       let currentIndex = 0;
       let totalSlides = 0;
 
-      function updateSlide() {
+      async function updateSlide() {
         const slides = document.querySelectorAll('.slide');
         slides.forEach((slide, index) => {
           slide.classList.toggle('active', index === currentIndex);
@@ -169,9 +193,17 @@ const { Content } = await render(post);
 
         document.getElementById('current').textContent = currentIndex + 1;
         document.getElementById('prev-btn').disabled = currentIndex === 0;
-        document.getElementById('next-btn').disabled = currentIndex === totalSlides - 1;
+        document.getElementById('next-btn').disabled =
+          currentIndex === totalSlides - 1;
 
         window.location.hash = currentIndex + 1;
+
+        // Render Mermaid on current slide if not already rendered
+        const currentSlide = slides[currentIndex];
+        if (currentSlide && !currentSlide.dataset.mermaidRendered) {
+          await renderMermaidInline(currentSlide);
+          currentSlide.dataset.mermaidRendered = 'true';
+        }
       }
 
       function nextSlide() {
@@ -188,10 +220,8 @@ const { Content } = await render(post);
         }
       }
 
-      // Initialize - render Mermaid then split into slides
+      // Initialize - split into slides then render Mermaid on visible slide
       async function initialize() {
-        await renderMermaidInline();
-        
         totalSlides = splitIntoSlides();
         document.getElementById('total').textContent = totalSlides;
 
@@ -204,7 +234,7 @@ const { Content } = await render(post);
           }
         }
 
-        updateSlide();
+        await updateSlide();
       }
 
       // Run initialization
@@ -217,12 +247,15 @@ const { Content } = await render(post);
       document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
           prevSlide();
-        } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+        } else if (
+          e.key === 'ArrowRight' ||
+          e.key === 'ArrowDown' ||
+          e.key === ' '
+        ) {
           e.preventDefault();
           nextSlide();
         }
       });
-
     </script>
 
     <style is:global>
