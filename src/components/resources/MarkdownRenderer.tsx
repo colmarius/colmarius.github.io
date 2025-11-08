@@ -1,5 +1,5 @@
 import { memo, useMemo } from 'react';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown, { type Components } from 'react-markdown';
 import rehypeSanitize from 'rehype-sanitize';
 import remarkGfm from 'remark-gfm';
 
@@ -8,17 +8,9 @@ type MarkdownRendererProps = {
 };
 
 function MarkdownRenderer({ markdown }: MarkdownRendererProps) {
-  const components = useMemo(
+  const components = useMemo<Components>(
     () => ({
-      a: ({
-        children,
-        href,
-        ...props
-      }: {
-        children?: React.ReactNode;
-        href?: string;
-        [key: string]: unknown;
-      }) => {
+      a: ({ children, href, ...props }) => {
         const isExternal = href?.startsWith('http');
         return (
           <a
