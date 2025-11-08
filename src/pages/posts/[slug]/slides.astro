@@ -81,8 +81,7 @@ const { Content } = await render(post);
         await renderMermaid();
         
         // Now split into slides with rendered diagrams
-        splitIntoSlides();
-        updateSlide();
+        return splitIntoSlides();
       }
 
       // Split content by H2 headers
