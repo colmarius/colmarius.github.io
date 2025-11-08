@@ -1,6 +1,7 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import BackNav from '@components/BackNav.astro';
+import MermaidRenderer from '@components/MermaidRenderer.astro';
 import '../../../styles/global.css';
 
 export async function getStaticPaths() {
@@ -187,22 +188,6 @@ const { Content } = await render(post);
       });
     </script>
 
-    <script>
-      import { renderMermaid } from '@scripts/mermaid';
-      renderMermaid();
-    </script>
-
-    <style is:global>
-      .mermaid {
-        display: flex;
-        justify-content: center;
-        margin: 2rem 0;
-      }
-      .mermaid svg {
-        display: block;
-        max-width: 100%;
-        height: auto;
-      }
-    </style>
+    <MermaidRenderer />
   </body>
 </html>

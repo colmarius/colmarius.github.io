@@ -1,5 +1,6 @@
 ---
 import BackNav from '@components/BackNav.astro';
+import MermaidRenderer from '@components/MermaidRenderer.astro';
 import { formatDate } from '@utils';
 import Layout from './Layout.astro';
 
@@ -61,40 +62,7 @@ const isAgentPost = (tags || []).includes('AI Agents');
 	</article>
 </Layout>
 
-<script>
-  import { renderMermaid } from '@scripts/mermaid';
-
-  document.addEventListener('DOMContentLoaded', renderMermaid, { once: true });
-  document.addEventListener('astro:page-load', renderMermaid);
-</script>
-
-<style is:global>
-  /* Hide raw Mermaid code blocks before JS runs to prevent FOUC */
-  pre:has(> code.language-mermaid),
-  pre:has(> code.lang-mermaid) {
-    display: none;
-  }
-  /* Fallback for browsers without :has() */
-  pre > code.language-mermaid,
-  pre > code.lang-mermaid {
-    display: none;
-  }
-
-  .mermaid {
-    display: flex;
-    justify-content: center;
-    margin: 2rem 0;
-  }
-  .mermaid svg {
-    display: block;
-    max-width: 100%;
-    height: auto;
-  }
-  .mermaid-loading {
-    opacity: 0;
-    min-height: 200px;
-  }
-</style>
+<MermaidRenderer />
 
 <style>
 	.slides-link {
