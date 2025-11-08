@@ -77,11 +77,18 @@ const { Content } = await render(post);
     <script>
       import { renderMermaid } from '@scripts/mermaid';
 
-      // Wait for DOM, render Mermaid, then initialize slides
-      document.addEventListener('DOMContentLoaded', async () => {
+      // Render Mermaid and signal ready
+      async function initMermaid() {
         await renderMermaid();
         window.dispatchEvent(new Event('mermaid-ready'));
-      });
+      }
+
+      // Run immediately if DOM ready, otherwise wait
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMermaid);
+      } else {
+        initMermaid();
+      }
     </script>
 
     <script is:inline>
