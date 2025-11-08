@@ -1,8 +1,21 @@
 # AI Disclaimer Feature
 
+## Status: ✅ COMPLETED
+
 ## Goal
 
 Add a minimalistic, non-invasive AI disclaimer to the website that transparently indicates the site is managed by Amp coding agent, with links to the GitHub repo and ampcode.com.
+
+## Results
+
+Successfully implemented AI disclaimer in footer:
+- Updated `src/layouts/Layout.astro` footer with responsive flex layout
+- Added disclaimer text: "AI-assisted: implementation and content are managed by Amp (coding agent). Source on GitHub."
+- Links to [ampcode.com](https://ampcode.com) and [GitHub repo](https://github.com/colmarius/colmarius.github.io)
+- Responsive design: stacks on mobile, inline with middot separator on desktop
+- Subtle styling with muted colors (`text-gray-500`), dotted underlines with hover effects
+- Build successful with no errors
+- Committed in: `207aace`
 
 ## Oracle Recommendation Summary
 
