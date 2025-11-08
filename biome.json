@@ -55,6 +55,13 @@
           "cssModules": false,
           "tailwindDirectives": true
         }
+      },
+      "linter": {
+        "rules": {
+          "complexity": {
+            "noImportantStyles": "off"
+          }
+        }
       }
     }
   ]
