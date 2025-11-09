@@ -50,15 +50,23 @@ order: 5
 ## The Planning Workflow
 
 ```mermaid
-flowchart LR
-    Todo[📝 todo/<br/>new-feature.md] --> Review{Oracle<br/>Review}
+flowchart TD
+    Todo[📝 todo/new-feature.md]
+    Review{Oracle Review}
+    Progress[🚧 in-progress/new-feature.md]
+    Code[Agent Implements]
+    Update[Update Progress]
+    Done{Success Criteria Met?}
+    Complete[✅ completed/new-feature.md]
+
+    Todo --> Review
     Review -->|Simplify| Todo
-    Review -->|Approved| Progress[🚧 in-progress/<br/>new-feature.md]
-    Progress --> Code[Agent<br/>Implements]
-    Code --> Update[Update<br/>Progress]
-    Update --> Done{Success<br/>Criteria?}
+    Review -->|Approved| Progress
+    Progress --> Code
+    Code --> Update
+    Update --> Done
     Done -->|No| Code
-    Done -->|Yes| Complete[✅ completed/<br/>new-feature.md]
+    Done -->|Yes| Complete
 ```
 
 ### Step 1: Create a Plan
