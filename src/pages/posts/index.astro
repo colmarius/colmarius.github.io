@@ -15,8 +15,8 @@ const sortedPosts = posts.sort((a, b) => a.data.order - b.data.order);
 <Layout title="Posts - Marius Colacioiu">
 	<div class="posts-container">
 		<header class="posts-header">
-			<h1>Posts</h1>
-			<p class="posts-description">
+			<h1 class="text-4xl md:text-5xl font-light mb-4 text-gray-900">Posts</h1>
+			<p class="text-xl text-gray-600 mb-16 font-light leading-relaxed">
 				Thoughts on coding, AI agents, and software engineering.
 			</p>
 		</header>
@@ -56,19 +56,6 @@ const sortedPosts = posts.sort((a, b) => a.data.order - b.data.order);
 
 	.posts-header {
 		margin-bottom: 3rem;
-	}
-
-	.posts-header h1 {
-		font-size: 3rem;
-		font-weight: 700;
-		margin-bottom: 1rem;
-		color: #111827;
-	}
-
-	.posts-description {
-		font-size: 1.25rem;
-		color: #6b7280;
-		line-height: 1.6;
 	}
 
 	.posts-list {
@@ -150,14 +137,6 @@ const sortedPosts = posts.sort((a, b) => a.data.order - b.data.order);
 	}
 
 	@media (max-width: 640px) {
-		.posts-header h1 {
-			font-size: 2.5rem;
-		}
-
-		.posts-description {
-			font-size: 1.125rem;
-		}
-
 		.post-card h2 {
 			font-size: 1.25rem;
 		}
