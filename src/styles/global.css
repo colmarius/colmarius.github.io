@@ -100,8 +100,15 @@
     @apply bg-slate-800 border-slate-700;
   }
 
-  .prose-base code {
-    @apply font-medium;
+  /* Inline code styling */
+  .prose-post code:not(pre code),
+  .prose-slide code:not(pre code) {
+    @apply font-medium bg-slate-100 px-1.5 py-0.5 rounded;
+  }
+
+  .dark .prose-post code:not(pre code),
+  .dark .prose-slide code:not(pre code) {
+    @apply bg-slate-700;
   }
 
   /* Shared Mermaid diagram styles */
