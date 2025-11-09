@@ -331,7 +331,7 @@ Handoff extracts relevant context from a long thread into a new, focused thread.
 ```text
 Use Handoff from the command palette.
 Goal: Continue implementing user dashboard with the
-decisions we made about data fetching and state management.
+      decisions we made about data fetching and state management.
 ```
 
 **Switch focus:**
@@ -339,7 +339,7 @@ decisions we made about data fetching and state management.
 ```text
 Use Handoff from the command palette.
 Goal: Take the authentication work and now add
-authorization with role-based access control.
+      authorization with role-based access control.
 ```
 
 **Clean slate for next phase:**
@@ -347,7 +347,7 @@ authorization with role-based access control.
 ```text
 Use Handoff from the command palette.
 Goal: Testing phase—write tests for all the features
-we just implemented.
+      we just implemented.
 ```
 
 ### What Handoff Does
@@ -438,8 +438,7 @@ Subagent 3:
 - Card.css → Card.tsx
 - Button.css → Button.tsx
 
-Each should preserve styles, verify in Storybook,
-and create a summary of changes.
+Each should preserve styles, verify in Storybook, and create a summary of changes.
 ```
 
 **Step 3: Review and Integrate**
@@ -453,8 +452,7 @@ Review subagent diffs, stage good changes, test in browser.
 ```text
 Switch mode to Rush (Amp UI/command palette), then:
 
-Update remaining 4 simple components using the pattern
-established by the subagents.
+Update remaining 4 simple components using the pattern established by the subagents.
 ```
 
 **Time:** 30-40 minutes for 10 components (vs 2-3 hours manually)

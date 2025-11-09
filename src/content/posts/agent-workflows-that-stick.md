@@ -99,14 +99,14 @@ Each thread: focused, verifiable, committable.
 
 ```text
 You: "Summarize the key decisions and constraints from this
-conversation to .agents/context/auth-refactor.md"
+      conversation to .agents/context/auth-refactor.md"
 
 [Agent writes context.md]
 
 [Start new thread]
 
 You: "Read @.agents/context/auth-refactor.md and continue
-adding the JWT middleware"
+     adding the JWT middleware"
 ```
 
 **What to store:**
@@ -262,7 +262,7 @@ Agent: [breaks the refactor, forgets loading states]
 
 ```text
 You: Refactor @components/UserProfile.tsx to use hooks instead of class
-syntax. Verify existing tests still pass.
+     syntax. Verify existing tests still pass.
 Agent: [refactor + verify]
 You: [Review, stage, commit]
 ```
@@ -271,7 +271,7 @@ You: [Review, stage, commit]
 
 ```text
 You: Add loading and error states to @components/UserProfile.tsx.
-Write tests for both states.
+     Write tests for both states.
 Agent: [implement + test]
 You: [Review, stage, commit]
 ```
@@ -280,7 +280,7 @@ You: [Review, stage, commit]
 
 ```text
 You: Add error boundary around @components/UserProfile.tsx.
-Add a test that verifies it catches render errors.
+     Add a test that verifies it catches render errors.
 Agent: [implement + test]
 You: [Review, stage, commit]
 ```
