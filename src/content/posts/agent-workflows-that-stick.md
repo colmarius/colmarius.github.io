@@ -35,16 +35,16 @@ order: 4
 
 ## The Problem with Long Threads
 
-**You:** "Fix the authentication bug"
+**You:** "Fix the authentication bug"  
 **Agent:** ✅ Done
 
-**You:** "Now add logging"
+**You:** "Now add logging"  
 **Agent:** ✅ Done
 
-**You:** "Refactor the API client"
+**You:** "Refactor the API client"  
 **Agent:** ✅ Done
 
-**You:** "Add tests"
+**You:** "Add tests"  
 **Agent:** 🤔 *Forgets the auth fix, breaks the logger, introduces new bugs*
 
 **What happened?** Context sprawl. Beyond ~100k tokens, quality degrades—the model:
