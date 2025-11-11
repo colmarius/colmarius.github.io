@@ -225,10 +225,10 @@ Use 3 subagents to convert these CSS files to Tailwind
 
 ## Self-Check: Are You Doing These 5 Things?
 
-✅ **Short threads:** Starting new threads around 50-100k tokens
-✅ **Clear goals:** Every prompt has a verification step
-✅ **Feedback loops:** Agent can run tests/builds to verify
-✅ **Git discipline:** Reviewing diffs, staging good changes
+✅ **Short threads:** Starting new threads around 50-100k tokens  
+✅ **Clear goals:** Every prompt has a verification step  
+✅ **Feedback loops:** Agent can run tests/builds to verify  
+✅ **Git discipline:** Reviewing diffs, staging good changes  
 ✅ **Right mode:** Using Rush for simple, Smart for most, Oracle for critical decisions
 
 If you're missing any, revisit the relevant sections above.
