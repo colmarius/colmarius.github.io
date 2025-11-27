@@ -1,5 +1,16 @@
 [
   {
+    "id": 6,
+    "title": "The Truth About Coding Agents: Why 90% of Your Time Is Now Code Review",
+    "subtitle": "Beyang Liu in conversation with a16z",
+    "url": "https://www.youtube.com/watch?v=Jxz4GJSG8ZA",
+    "description": "Beyang Liu discusses Sourcegraph's Amp agent and the shift in software engineering from coding to orchestrating agents, where 90% of time is spent on code review. Topics include the 'Smart' vs 'Fast' agent architecture, the rise of Chinese open source models for agentic tool use, and the transition to probabilistic software where developers manage intent while agents handle implementation logic.",
+    "type": "video",
+    "source": "a16z Deep Dives",
+    "date": "2025-11-25",
+    "tags": ["Coding agents", "Workflow", "Architecture", "Trends"]
+  },
+  {
     "id": 5,
     "title": "The Emerging Skillset of Wielding Coding Agents",
     "subtitle": "Beyang Liu at AI Engineer Conference",

@@ -42,7 +42,6 @@ export async function renderMermaid() {
   const { default: mermaid } = await import(
     'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs'
   );
-  // @ts-expect-error - CDN types incomplete
   mermaid.initialize(mermaidConfig);
   await mermaid.run({ querySelector: '.mermaid' });
 
