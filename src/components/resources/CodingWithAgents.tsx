@@ -284,10 +284,12 @@ const CodingWithAgents = ({ manifest }: CodingWithAgentsProps) => {
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-600" />
           </div>
         ) : error ? (
-          <div className="text-red-600 p-4 bg-red-50 rounded-lg">{error}</div>
+          <div className="p-6">
+            <div className="text-red-600 p-4 bg-red-50 rounded-lg">{error}</div>
+          </div>
         ) : summaryRef?.kind === 'series' && episodes.length > 0 ? (
           <div className="flex flex-col md:flex-row gap-6 min-h-0 flex-1 md:overflow-hidden">
-            <aside className="md:w-64 md:flex-shrink-0 md:overflow-y-auto md:max-h-full">
+            <aside className="md:w-64 md:flex-shrink-0 md:overflow-y-auto md:max-h-full p-6 pb-0 md:pr-0 md:pb-6">
               <div className="md:hidden mb-3">
                 <CollapsibleButton
                   label="Episodes"
@@ -309,7 +311,7 @@ const CodingWithAgents = ({ manifest }: CodingWithAgentsProps) => {
               />
             </aside>
             <main
-              className="relative flex-1 min-w-0 overflow-y-auto"
+              className="relative flex-1 min-w-0 overflow-y-auto p-6 pt-0 md:pt-6 md:pl-0"
               aria-busy={isEpisodeLoading}
             >
               {isEpisodeLoading && (
@@ -321,7 +323,7 @@ const CodingWithAgents = ({ manifest }: CodingWithAgentsProps) => {
             </main>
           </div>
         ) : (
-          <div className="overflow-y-auto flex-1">
+          <div className="overflow-y-auto flex-1 p-6">
             <MarkdownRenderer markdown={summaryContent} />
           </div>
         )}

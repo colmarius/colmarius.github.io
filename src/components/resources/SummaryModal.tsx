@@ -129,7 +129,7 @@ export function SummaryModal({
           </button>
         </div>
 
-        <div className="px-6 py-6 flex-1 min-h-0 overflow-hidden flex flex-col">
+        <div className="flex-1 min-h-0 overflow-hidden flex flex-col">
           {children}
         </div>
       </div>
