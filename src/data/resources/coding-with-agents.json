@@ -1,5 +1,15 @@
 [
   {
+    "id": 7,
+    "title": "Keynote: Linus Torvalds, Creator of Linux & Git, in Conversation with Dirk Hohndel",
+    "url": "https://www.youtube.com/watch?v=tWx769t1JKg",
+    "description": "Linus Torvalds shares his perspective on AI's impact on open source infrastructure, including crawler strain on kernel.org and AI-generated spam reports. He expresses skepticism about 'vibe coding' for serious maintenance while acknowledging AI as a great learning gateway for beginners. Compares AI to compilers—a tool that removes minutia rather than replacing developers—and predicts more software jobs, not fewer.",
+    "type": "video",
+    "source": "Open Source Summit",
+    "date": "2025-11-12",
+    "tags": ["Coding agents", "Trends", "Open source"]
+  },
+  {
     "id": 6,
     "title": "The Truth About Coding Agents: Why 90% of Your Time Is Now Code Review",
     "subtitle": "Beyang Liu in conversation with a16z",
