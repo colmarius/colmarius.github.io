@@ -42,6 +42,16 @@
     "tags": ["Coding agents", "Workflow", "Practices"]
   },
   {
+    "id": 8,
+    "title": "Craft & Chaos - Series",
+    "url": "https://x.com/AmpCode/status/1998800449768665274",
+    "description": "The rebranded Build Crew live series featuring live coding sessions, Prompt Duel at Dawn challenges, and opportunities to win Amp Credits. Continues the community-driven format with AI agent best practices and real-time development.",
+    "type": "playlist",
+    "source": "Sourcegraph",
+    "date": "2025-12-10",
+    "tags": ["Coding agents", "Workflow", "Live coding"]
+  },
+  {
     "id": 3,
     "title": "Build Crew - Series",
     "url": "https://www.youtube.com/playlist?list=PL6zLuuRVa1_g_ieW4LnrwhVo6bNHmRwEA",
