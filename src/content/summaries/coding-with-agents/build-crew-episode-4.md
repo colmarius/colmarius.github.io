@@ -6,8 +6,6 @@ episode: 4
 date: "2025-10-14"
 ---
 
-## Databases, Custom Tools, & Workflow Automation
-
 In Episode 4 of "Build Crew Live" the team (Thorsten Ball, Ryan Carson, and Graham McBain) is joined by community member Colleen Brady to discuss databases, custom tools, and workflow automation. The conversation covers what they've recently "changed their minds" about, a series of pro-tips for working with agentic coding tools like Amp, and a deep dive into the difference between slash commands and toolboxes.
 
 ### **What's New? The "Changed Your Mind" Round**

@@ -6,8 +6,6 @@ episode: 5
 date: "2025-10-21"
 ---
 
-## ChatGPT Atlas Browser, Handoffs, and AR Apps
-
 In Episode 5 of "Build Crew Live" the team (Graham, Thorsten, Ryan, and Cyan) is joined by Build Crew community member AJ. They cover the team's weekly "changed my mind" segment, demo new features in Amp, review OpenAI's new Atlas browser, and get a look at AJ's work with augmented reality.
 
 ### **The "What I Changed My Mind About" Round**

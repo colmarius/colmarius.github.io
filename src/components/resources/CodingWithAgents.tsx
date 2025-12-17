@@ -66,29 +66,9 @@ const CodingWithAgents = ({ manifest }: CodingWithAgentsProps) => {
   const [error, setError] = useState<string | null>(null);
   const [isEpisodeListExpanded, setIsEpisodeListExpanded] = useState(false);
   const [isEpisodeLoading, setIsEpisodeLoading] = useState(false);
-
-  const sortedResources = useMemo(
-    () =>
-      [...codingResources].sort(
-        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-      ),
-    [],
+  const [currentEpisodeTitle, setCurrentEpisodeTitle] = useState<string | null>(
+    null,
   );
-
-  const getLinkText = (type: string) => {
-    switch (type) {
-      case 'video':
-        return 'Watch Video';
-      case 'playlist':
-        return 'Watch Playlist';
-      case 'podcast':
-        return 'Listen to Podcast';
-      case 'article':
-        return 'Read Article';
-      default:
-        return 'View Resource';
-    }
-  };
 
   const resolveSummaryRef = useCallback(
     (resourceId: number): SummaryRef | null => {
@@ -109,6 +89,50 @@ const CodingWithAgents = ({ manifest }: CodingWithAgentsProps) => {
     },
     [manifest],
   );
+
+  const latestEpisodeDates = useMemo(() => {
+    const dates: Record<number, Date> = {};
+    (codingResources as Resource[]).forEach((r) => {
+      const ref = resolveSummaryRef(r.id);
+      if (ref?.kind === 'series' && ref.episodes.length > 0) {
+        const latestDate = ref.episodes
+          .map((e) => e.date)
+          .filter((d): d is Date => d !== null)
+          .sort((a, b) => b.getTime() - a.getTime())[0];
+        if (latestDate) {
+          dates[r.id] = latestDate;
+        }
+      }
+    });
+    return dates;
+  }, [resolveSummaryRef]);
+
+  const getDisplayDate = (resource: Resource): Date => {
+    return latestEpisodeDates[resource.id] ?? new Date(resource.date);
+  };
+
+  const sortedResources = useMemo(
+    () =>
+      [...codingResources].sort(
+        (a, b) => getDisplayDate(b).getTime() - getDisplayDate(a).getTime(),
+      ),
+    [latestEpisodeDates],
+  );
+
+  const getLinkText = (type: string) => {
+    switch (type) {
+      case 'video':
+        return 'Watch Video';
+      case 'playlist':
+        return 'Watch Playlist';
+      case 'podcast':
+        return 'Listen to Podcast';
+      case 'article':
+        return 'Read Article';
+      default:
+        return 'View Resource';
+    }
+  };
 
   const fetchSummary = async (slug: string): Promise<string> => {
     const response = await fetch(`/api/summaries/${slug}.json`);
@@ -144,6 +168,7 @@ const CodingWithAgents = ({ manifest }: CodingWithAgentsProps) => {
         if (ref.episodes.length > 0) {
           const firstEpisode = ref.episodes[0];
           setSelectedEpisode(firstEpisode.episode);
+          setCurrentEpisodeTitle(firstEpisode.title);
           const content = await fetchSummary(firstEpisode.slug);
           setSummaryContent(content);
         }
@@ -160,6 +185,11 @@ const CodingWithAgents = ({ manifest }: CodingWithAgentsProps) => {
   const handleSelectEpisode = async (episodeNumber: number, slug: string) => {
     setSelectedEpisode(episodeNumber);
     setIsEpisodeLoading(true);
+
+    const episode = episodes.find((e) => e.episode === episodeNumber);
+    if (episode) {
+      setCurrentEpisodeTitle(episode.title);
+    }
 
     try {
       const content = await fetchSummary(slug);
@@ -182,6 +212,7 @@ const CodingWithAgents = ({ manifest }: CodingWithAgentsProps) => {
     setSummaryRef(null);
     setError(null);
     setIsEpisodeListExpanded(false);
+    setCurrentEpisodeTitle(null);
   };
 
   const summaryAvailability = useMemo(() => {
@@ -224,9 +255,7 @@ const CodingWithAgents = ({ manifest }: CodingWithAgentsProps) => {
                 <div className="flex flex-col gap-2">
                   <div className="text-sm text-gray-500 flex items-center gap-x-4">
                     <span className="font-medium">{resource.source}</span>
-                    {resource.date && (
-                      <span>{formatDate(new Date(resource.date))}</span>
-                    )}
+                    <span>{formatDate(getDisplayDate(resource))}</span>
                   </div>
 
                   {resource.tags && resource.tags.length > 0 && (
@@ -318,6 +347,11 @@ const CodingWithAgents = ({ manifest }: CodingWithAgentsProps) => {
                 <div className="absolute inset-0 flex items-center justify-center bg-white/60 pointer-events-none">
                   <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-600" />
                 </div>
+              )}
+              {currentEpisodeTitle && (
+                <h2 className="text-xl font-semibold text-gray-900 mb-4 not-prose">
+                  {currentEpisodeTitle}
+                </h2>
               )}
               <MarkdownRenderer markdown={summaryContent} />
             </main>

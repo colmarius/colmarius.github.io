@@ -1,12 +1,10 @@
 ---
-title: "Prompt Duel at Dawn + win $500 Amp Credits"
+title: "Craft & Chaos: Episode 1 Highlights"
 resourceId: 8
 series: "craft-and-chaos"
 episode: 1
 date: "2025-12-10"
 ---
-
-## Craft & Chaos: Episode 1 Highlights
 
 Live coding, Prompt Duel at Dawn, win $500 Amp Credits and more! The first episode of "Craft & Chaos" - the rebranded Build Crew live series.
 
