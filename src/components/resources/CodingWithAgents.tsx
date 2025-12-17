@@ -107,16 +107,19 @@ const CodingWithAgents = ({ manifest }: CodingWithAgentsProps) => {
     return dates;
   }, [resolveSummaryRef]);
 
-  const getDisplayDate = (resource: Resource): Date => {
-    return latestEpisodeDates[resource.id] ?? new Date(resource.date);
-  };
+  const getDisplayDate = useCallback(
+    (resource: Resource): Date => {
+      return latestEpisodeDates[resource.id] ?? new Date(resource.date);
+    },
+    [latestEpisodeDates],
+  );
 
   const sortedResources = useMemo(
     () =>
       [...codingResources].sort(
         (a, b) => getDisplayDate(b).getTime() - getDisplayDate(a).getTime(),
       ),
-    [latestEpisodeDates],
+    [getDisplayDate],
   );
 
   const getLinkText = (type: string) => {
