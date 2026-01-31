@@ -80,3 +80,30 @@ src/
 - Reference related files and code locations in plans
 - Use plans to track multi-step changes across layers
 - For blocked plans: note the blocker and next action in the plan
+
+### Ralph-Ready Task Format
+
+```markdown
+- [ ] **Task N: Short descriptive title**
+  - Scope: `path/to/affected/files` or module name
+  - Depends on: Task M (or "none")
+  - Acceptance:
+    - Specific, verifiable criterion 1
+    - Specific, verifiable criterion 2
+  - Notes: Optional implementation hints
+```
+
+**Task markers:**
+
+| Marker | Meaning |
+|--------|---------|
+| `- [ ]` | Not started |
+| `- [x]` | Completed |
+| `- [ ] (blocked)` | Blocked, needs intervention |
+| `- [ ] (manual-verify)` | Requires manual verification |
+
+## Git Workflow
+
+- Write clear, descriptive commit messages
+- Reference plan numbers in commits (e.g., "Plan 001: Initial setup")
+- Commit after each logical step
