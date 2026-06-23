@@ -1,6 +1,6 @@
 # Plan 002: Workshop - Hands on Agents
 
-**Status:** Todo
+**Status:** Completed
 **Created:** 2025-01-31
 
 ## Goal
@@ -24,14 +24,14 @@ Create a 30-minute workshop blog post with slides about setting up `dot-agents` 
 
 ## Tasks
 
-- [ ] **Task 1: Create workshop post file**
+- [x] **Task 1: Create workshop post file**
   - Scope: `src/content/posts/workshop-hands-on-agents.md`
   - Depends on: none
   - Acceptance:
     - File created with proper frontmatter (title, description, pubDate, tags)
     - Uses existing post structure conventions
 
-- [ ] **Task 2: Write Intro Section (20%)**
+- [x] **Task 2: Write Intro Section (20%)**
   - Scope: Intro content in post
   - Depends on: Task 1
   - Acceptance:
@@ -41,7 +41,7 @@ Create a 30-minute workshop blog post with slides about setting up `dot-agents` 
     - Discount link: <https://www.buildcrew.team/> ($100 discount)
     - Note: Amp has free tier with ads, $10 free/day
 
-- [ ] **Task 3: Write Main Workshop Section (40%)**
+- [x] **Task 3: Write Main Workshop Section (40%)**
   - Scope: Step-by-step guide in post
   - Depends on: Task 2
   - Acceptance:
@@ -51,7 +51,7 @@ Create a 30-minute workshop blog post with slides about setting up `dot-agents` 
     - Verify setup works
     - Simple, follow-along format
 
-- [ ] **Task 4: Add Production Example Placeholder (20%)**
+- [x] **Task 4: Add Production Example Placeholder (20%)**
   - Scope: Placeholder section in post
   - Depends on: Task 3
   - Acceptance:
@@ -60,7 +60,7 @@ Create a 30-minute workshop blog post with slides about setting up `dot-agents` 
     - Will be filled during actual workshop presentation
   - Notes: This section is for live code showing, not written content
 
-- [ ] **Task 5: Write Resources & Q&A Section (20%)**
+- [x] **Task 5: Write Resources & Q&A Section (20%)**
   - Scope: Resources section at end
   - Depends on: Task 4
   - Acceptance:
@@ -68,7 +68,7 @@ Create a 30-minute workshop blog post with slides about setting up `dot-agents` 
     - Space for discussion prompts / Q&A starters
     - Related posts from the practice path
 
-- [ ] **Task 6: Verify build and lint**
+- [x] **Task 6: Verify build and lint**
   - Scope: Build verification
   - Depends on: Task 5
   - Acceptance:

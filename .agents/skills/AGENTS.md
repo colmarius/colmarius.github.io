@@ -48,6 +48,8 @@ The description determines when the skill gets loaded:
 3. **Define workflows** - Step-by-step processes work best
 4. **Add checklists** - Help ensure nothing is missed
 5. **Reference patterns** - Point to existing code/files
+6. **Keep workflow skills durable** - Put reusable templates in `assets/` and runnable helpers in `scripts/`
+7. **Avoid runner-specific concepts** - Prefer work items and handoff prompts over assuming a specific agent runtime
 
 ## Testing Skills
 
@@ -62,7 +64,8 @@ Verify your skill by loading it and checking:
 
 | Skill | Purpose |
 | ----- | ------- |
-| `adapt` | Analyze project and fill in PROJECT.md after installation |
-| `ralph` | Autonomous multi-iteration implementation using handoff loops |
-| `research` | Deep research on technical topics, saves to `.agents/research/` |
+| `adapt` | Analyze project and fill in AGENTS.md after installation |
+| `agent-work` | Create and maintain `.agents/work/` work items |
+| `feature-planning` | Turn context into plans and paste-ready handoff prompts |
+| `research` | Research technical topics, saving work-local or reusable findings |
 | `tmux` | Manage background processes using tmux windows for servers and long-running tasks |
