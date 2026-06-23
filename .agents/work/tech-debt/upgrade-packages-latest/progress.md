@@ -33,7 +33,7 @@
 
 ### Next
 
-- Implement Task 1 from `plan.md`: create an upgrade branch, record baseline verification, then run the dependency upgrade.
+- Implement Task 1 from `plan.md`: create an upgrade branch, record baseline verification, then apply compatibility prep.
 
 ---
 
@@ -61,5 +61,40 @@
 ### Next
 
 - Implement Task 1 from `plan.md`: create an upgrade branch, record baseline verification, then run the dependency upgrade.
+
+---
+
+## Oracle stress review
+
+**Thread**: https://ampcode.com/threads/T-019ef606-6e21-77a6-aa05-43916f7d6441
+**Status**: completed
+**Iteration**: 3
+
+### Changes
+
+- Consulted Oracle to stress-test `research.md`, `plan.md`, `index.md`, and `progress.md`.
+- Updated `research.md` to add CI Node, `compressHTML`, summary API, Mermaid, and Oracle-review findings.
+- Updated `plan.md` to add compatibility prep before package upgrades, GitHub Pages workflow scope, richer smoke tests, and safer verification ordering after `lint:fix`.
+- Updated `index.md` with the new decisions and removed the remaining open question.
+
+### Commands Run
+
+- `git status --short && git branch --show-current` ✓
+- Read work item artifacts ✓
+- Oracle review ✓
+- Inspected `.github/workflows/deploy.yml` ✓
+- Checked Astro 5 exposes `astro/zod` in `node_modules/astro/dist/zod.*` ✓
+- Searched repo for workflow Node, `compressHTML`, Mermaid, and inline spacing patterns ✓
+
+### Learnings
+
+- GitHub Pages deploy currently uses `withastro/action@v3`, whose documented default Node is 20; Astro 7 needs Node `>=22.12.0`, so the workflow must pin Node `22.18.0`.
+- Set `compressHTML: true` proactively because this is a compatibility upgrade and the site has inline text/link spacing patterns.
+- Build alone is insufficient: verify summary JSON routes, Coding with Agents modal fetches, and Mermaid rendering in both post and slides views.
+- Because `npm run lint:fix` writes files, rerun `npm run check` and `npm run build` after lint formatting changes.
+
+### Next
+
+- Implement Task 1 from `plan.md`: create an upgrade branch, record baseline verification, then apply compatibility prep.
 
 ---

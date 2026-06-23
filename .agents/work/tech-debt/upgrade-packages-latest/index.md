@@ -18,8 +18,15 @@ Upgrade this Astro static site and its npm packages to the latest compatible ver
 
 ## Next Action
 
-- Implement Task 1 from `plan.md`: create an upgrade branch, record baseline verification, then run the dependency upgrade.
+- Implement Task 1 from `plan.md`: create an upgrade branch and record baseline verification, then continue with Task 2 compatibility prep.
+
+## Decisions
+
+- Upgrade directly to latest Astro 7.
+- Keep TypeScript on latest 5.x; defer TypeScript 6.
+- Set `compressHTML: true` proactively for compatibility with Astro 5/6 whitespace behavior.
+- Update the GitHub Pages workflow Node version for Astro 7.
 
 ## Open Questions
 
-- [ ] Should `compressHTML: true` be set proactively, or only if visual smoke testing finds missing inline spaces? Default: only add it if needed.
+- [ ] None.

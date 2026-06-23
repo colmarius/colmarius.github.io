@@ -12,6 +12,8 @@ Upgrade Astro directly to Astro 7 with the official `npx @astrojs/upgrade` flow,
 
 - **Astro target:** upgrade to latest Astro 7 (`7.0.2` as of 2026-06-23), not just Astro 6.
 - **TypeScript target:** keep latest TypeScript 5.x for this upgrade (`5.9.3` as of 2026-06-23); defer TypeScript 6 to a separate follow-up work item if desired.
+- **HTML whitespace:** set `compressHTML: true` during the Astro 7 upgrade to preserve Astro 5/6 HTML-aware whitespace behavior. This site has multiple inline text/link patterns across line breaks, and the upgrade goal is compatibility rather than adopting JSX whitespace semantics.
+- **CI Node version:** update the GitHub Pages workflow to use Node `22.18.0` (matching `.nvmrc`) because Astro 7 requires Node `>=22.12.0` and `withastro/action@v3` defaults to Node 20.
 
 ## Current Environment
 
@@ -20,6 +22,7 @@ Upgrade Astro directly to Astro 7 with the official `npx @astrojs/upgrade` flow,
 - Local npm: `10.9.3`
 - Astro latest engine requirement from `npm view astro@latest`: Node `>=22.12.0`, npm `>=9.6.5`
 - Engine compatibility: OK
+- GitHub Pages workflow currently uses `withastro/action@v3` with the default Node version documented as 20 in `.github/workflows/deploy.yml`; this must be pinned to Node `22.18.0` for Astro 7.
 
 ## Outdated Packages
 
@@ -82,6 +85,8 @@ Official source: <https://docs.astro.build/en/guides/upgrade-to/v7/>
 - `src/content/config.ts` imports `z` from `astro:content`; migrate to `astro/zod` during the upgrade.
 - No `src/fetch.ts` exists.
 - Astro Markdown plugins are not configured in `astro.config.mjs`; the only remark/rehype usage is in `src/components/resources/MarkdownRenderer.tsx` via `react-markdown`.
+- Summary API routes depend on nested content IDs encoded with `__`; verify generated JSON routes and client modal fetches after moving to `src/content.config.ts`.
+- Astro v7 Markdown/Sätteri is low config risk, but Mermaid rendering depends on Markdown code block output. Verify Mermaid diagrams in both normal post and slides views, not just build success.
 - Existing verification command `npm run build` passes before upgrade.
 
 ## Sources
@@ -92,7 +97,8 @@ Official source: <https://docs.astro.build/en/guides/upgrade-to/v7/>
 - `npm view @tailwindcss/vite@latest ...` — Vite peer compatibility through Vite 8.
 - [Astro v6 upgrade guide](https://docs.astro.build/en/guides/upgrade-to/v6/) — content collections, Zod 4, Vite 7, official upgrade command.
 - [Astro v7 upgrade guide](https://docs.astro.build/en/guides/upgrade-to/v7/) — Vite 8, Rust compiler, Sätteri Markdown processor, whitespace handling, reserved `src/fetch.ts`.
+- Oracle stress review in current Amp thread — identified CI Node version, whitespace, smoke-test, Mermaid, and lint-order gaps.
 
 ## Open Questions
 
-- [ ] Should `compressHTML: true` be set proactively for compatibility, or only if visual smoke testing finds missing inline spaces? Default recommendation: only add it if needed.
+- [ ] None.
