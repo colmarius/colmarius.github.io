@@ -4,7 +4,8 @@ Upgrade this static Astro site from Astro 5 to the latest package set, with Astr
 
 ## Goals
 
-- Upgrade `astro`, official Astro integrations, React, Tailwind, TypeScript/tooling, and other outdated packages to latest compatible versions.
+- Upgrade `astro`, official Astro integrations, React, Tailwind, Biome, and utility packages to latest compatible versions.
+- Keep TypeScript on latest 5.x for this upgrade; defer TypeScript 6 to a separate follow-up if desired.
 - Apply required Astro v6/v7 migrations for content collections and config compatibility.
 - Keep the site static and GitHub Pages-compatible.
 - Preserve current behavior and styling, especially Markdown posts, slide pages, Mermaid rendering, and resources summaries.
@@ -26,9 +27,10 @@ Upgrade this static Astro site from Astro 5 to the latest package set, with Astr
   - Acceptance:
     - `astro` is upgraded to latest (`7.0.2` as of 2026-06-23) unless npm latest changes.
     - `@astrojs/react` and `@astrojs/check` are upgraded to latest compatible versions.
-    - Outdated React, Tailwind, Biome, TypeScript, and utility packages are upgraded to latest versions where verification allows.
+    - Outdated React, Tailwind, Biome, and utility packages are upgraded to latest versions where verification allows.
+    - TypeScript remains on latest 5.x (`5.9.3` as of 2026-06-23), not TypeScript 6.
     - `npm install` completes without peer dependency conflicts or lockfile inconsistencies.
-  - Notes: Prefer `npx @astrojs/upgrade` for Astro + official integrations, then `npm install <pkg>@latest` for remaining outdated packages. If TypeScript 6 causes broad unrelated failures, keep TypeScript 5.9.3 and record a follow-up.
+  - Notes: Prefer `npx @astrojs/upgrade` for Astro + official integrations, then `npm install <pkg>@latest` for remaining outdated packages. Do not upgrade TypeScript to 6 in this work item.
 
 - [ ] **Task 3: Apply Astro v6/v7 migration fixes**
   - Scope: `src/content/config.ts`, `src/content.config.ts`, `astro.config.mjs`, related imports
@@ -75,6 +77,7 @@ Upgrade this static Astro site from Astro 5 to the latest package set, with Astr
 
 - Official Astro upgrade command: `npx @astrojs/upgrade`.
 - Current latest target from research: `astro@7.0.2`, `@astrojs/react@6.0.0`, `@astrojs/check@0.9.9`.
+- TypeScript target: latest 5.x (`5.9.3` as of 2026-06-23). TypeScript 6 is explicitly out of scope for this work item.
 - Node `.nvmrc` is `22.18.0`, satisfying Astro 7's `>=22.12.0` engine requirement.
 - The repo is static (`output: 'static'`) and has no Astro SSR adapter, so adapter migration notes should not apply.
 - The most likely required source migration is moving `src/content/config.ts` to `src/content.config.ts` and importing `z` from `astro/zod`.
@@ -87,11 +90,11 @@ Upgrade this static Astro site from Astro 5 to the latest package set, with Astr
 - Keep scope to dependency upgrades and required migration fixes.
 - Do not redesign UI, refactor content architecture, or change deployment target.
 - Do not add new dependencies unless required by the Astro migration guides or to preserve existing behavior.
-- If TypeScript 6 is the only blocker and the site passes with TypeScript 5.9.3, defer TypeScript 6 to a follow-up instead of blocking Astro.
+- Defer TypeScript 6 to a separate work item instead of combining it with the Astro 7 migration.
 
 ## Acceptance Criteria
 
-- All outdated packages are either upgraded to latest or explicitly deferred with a reason in `progress.md`.
+- All outdated packages are either upgraded to latest or explicitly deferred with a reason in `progress.md`; TypeScript 6 is intentionally deferred.
 - Astro is upgraded to latest and the site remains static-buildable.
 - Content collections work under Astro 7.
 - Build, typecheck, lint/format, and local smoke tests pass.

@@ -36,3 +36,30 @@
 - Implement Task 1 from `plan.md`: create an upgrade branch, record baseline verification, then run the dependency upgrade.
 
 ---
+
+## Decision update: Astro 7 and TypeScript 5
+
+**Thread**: https://ampcode.com/threads/T-019ef606-6e21-77a6-aa05-43916f7d6441
+**Status**: completed
+**Iteration**: 2
+
+### Changes
+
+- Updated `research.md` to record the decision to upgrade directly to Astro 7.
+- Updated `research.md` and `plan.md` to keep TypeScript on latest 5.x and defer TypeScript 6.
+- Updated `index.md` to remove the TypeScript 6 open question.
+
+### Commands Run
+
+- Read current work item artifacts ✓
+
+### Learnings
+
+- The implementation should target Astro 7 now; stopping at Astro 6 is unnecessary for this static site.
+- TypeScript 6 should be a separate upgrade to reduce variables during the Astro migration.
+
+### Next
+
+- Implement Task 1 from `plan.md`: create an upgrade branch, record baseline verification, then run the dependency upgrade.
+
+---

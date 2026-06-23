@@ -6,7 +6,12 @@
 
 ## Recommendation
 
-Upgrade Astro with the official `npx @astrojs/upgrade` flow, then update the remaining pinned packages with `npm install <pkg>@latest`. The highest-risk upgrade is Astro `5.15.9` to `7.0.2` because it crosses v6 and v7 breaking changes; this repo is well positioned because it already uses Content Layer loaders and Node `22.18.0`, but it should still migrate the content config file path/imports and run build, check, lint, and a local preview smoke test.
+Upgrade Astro directly to Astro 7 with the official `npx @astrojs/upgrade` flow, then update the remaining pinned packages with `npm install <pkg>@latest`. Keep TypeScript on the latest 5.x release for this upgrade rather than crossing the TypeScript 6 major at the same time. The highest-risk upgrade is Astro `5.15.9` to `7.0.2` because it crosses v6 and v7 breaking changes; this repo is well positioned because it already uses Content Layer loaders and Node `22.18.0`, but it should still migrate the content config file path/imports and run build, check, lint, and a local preview smoke test.
+
+## Decisions
+
+- **Astro target:** upgrade to latest Astro 7 (`7.0.2` as of 2026-06-23), not just Astro 6.
+- **TypeScript target:** keep latest TypeScript 5.x for this upgrade (`5.9.3` as of 2026-06-23); defer TypeScript 6 to a separate follow-up work item if desired.
 
 ## Current Environment
 
@@ -34,7 +39,7 @@ Collected with `npm outdated --json` on 2026-06-23.
 | `@types/react-dom` | `19.1.7` | `19.2.3` | Update with React DOM. |
 | `tailwind-merge` | `3.3.1` | `3.6.0` | Minor update. |
 | `@biomejs/biome` | `2.3.4` | `2.5.1` | Tooling update. |
-| `typescript` | `5.9.3` | `6.0.3` | Major update; `@astrojs/check@0.9.9` allows it, but verify carefully. |
+| `typescript` | `5.9.3` | `6.0.3` | Intentionally keep latest 5.x (`5.9.3`) during the Astro 7 upgrade; defer TypeScript 6. |
 
 Packages not reported outdated by npm include `clsx`, `react-markdown`, `rehype-sanitize`, and `remark-gfm`.
 
@@ -90,5 +95,4 @@ Official source: <https://docs.astro.build/en/guides/upgrade-to/v7/>
 
 ## Open Questions
 
-- [ ] Should TypeScript 6 be included in the same PR as Astro 7, or upgraded separately if it causes noisy type errors? Default recommendation: include it if `npm run check` passes after fixes; otherwise pin TypeScript 5.9.3 and create a follow-up work item.
 - [ ] Should `compressHTML: true` be set proactively for compatibility, or only if visual smoke testing finds missing inline spaces? Default recommendation: only add it if needed.

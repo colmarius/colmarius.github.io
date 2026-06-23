@@ -22,4 +22,4 @@ Upgrade this Astro static site and its npm packages to the latest compatible ver
 
 ## Open Questions
 
-- [ ] If TypeScript 6 causes noisy failures, decide whether to defer it while still completing the Astro upgrade.
+- [ ] Should `compressHTML: true` be set proactively, or only if visual smoke testing finds missing inline spaces? Default: only add it if needed.
