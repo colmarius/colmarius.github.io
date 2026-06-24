@@ -288,11 +288,4 @@ This is like HTTPS was a decade ago—optional until it wasn't. Organizations ca
 
 You're not setting this up for today. You're setting it up for when it matters.
 
----
-
-**Related:**
-
-- [Coding with Agents in 2025](/posts/coding-with-agents-2025) — Overview of coding with AI agents
-- [What is an Agent?](/posts/what-is-an-agent) — Understanding AI coding agents
-
 **Credits:** Inspired by [Nick Taylor's article](https://www.nickyt.co/blog/anyone-can-commit-code-as-you-on-github-heres-how-to-stop-them-2in7/) on GPG commit signing, adapted for the simpler SSH approach.

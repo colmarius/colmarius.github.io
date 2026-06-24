@@ -72,3 +72,42 @@
 
 - Decide whether old personal-site URLs should become lightweight moved stubs or whether a single external pointer to `https://with-agents.dev` is enough, then proceed with Task 6 personal-site pruning.
 - Manual deployment follow-up: in GitHub settings for private `colmarius/with-agents`, enable Pages from GitHub Actions if private Pages is supported, add/verify `with-agents.dev`, configure DNS records, and enforce HTTPS after DNS settles.
+
+## 2026-06-24 — Personal-site pruning and public deployment completion
+
+**Status:** Tasks 6–7 completed
+
+**Actions:**
+
+- Applied the resolved old-URL strategy: removed migrated content from this personal site and kept one homepage pointer to `https://with-agents.dev`.
+- Removed the six published migrated agent posts from `src/content/posts/`.
+- Removed the Coding with Agents resource route, summaries API route, summaries content collection files, Coding with Agents resource data, and resource-summary React components.
+- Removed the agent-post resource callout from `PostLayout.astro` and removed dead migrated-post links from `verified-git-commits-ssh.md`.
+- Kept books/newsletters resources and pages.
+- Left `src/content/posts/draft/workflow-ideas.md` in place because it was not a migrated published post.
+- Removed now-unused summary modal dependencies (`react-markdown`, `rehype-sanitize`, `remark-gfm`) and unused UI/hooks files.
+- Added `.agents/references` to the parent Biome exclusions after `npm run lint:fix` found the nested target repo's own `biome.json` as a conflicting root configuration.
+- Updated target docs for the user-approved public repository policy and pushed target commit `b7db948` (`Document public repository policy`).
+- Set/confirmed `colmarius/with-agents` visibility as `PUBLIC`.
+- Recorded user's manual deployment updates: GitHub repo made public, GitHub Actions enabled for Pages, HTTPS enforced, and DNS configured.
+
+**Target state:**
+
+- Target latest commit: `b7db948` (`Document public repository policy`), pushed to `origin/main`.
+- Target repository visibility: `PUBLIC`.
+- GitHub Pages workflow: latest `Deploy to GitHub Pages` run succeeded.
+- Live check: `curl -I https://with-agents.dev` returned `HTTP/2 200`.
+- DNS check: `with-agents.dev` resolves to GitHub Pages A records `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, and `185.199.111.153`.
+- DNS note: no CNAME is required for the apex domain. The current `www` CNAME to `with-agents.dev` resolves through to the same A records; GitHub's recommended Pages target is `colmarius.github.io` if GitHub domain checks ever complain.
+
+**Verification:**
+
+- `npm run lint:fix` ✓ after excluding `.agents/references` from parent Biome scope.
+- `npm run check` ✓ — 0 errors, 0 warnings, 0 hints.
+- `npm run build` ✓ — built 9 personal-site pages: `/`, `/about`, `/contact`, `/posts`, `/posts/verified-git-commits-ssh`, `/posts/verified-git-commits-ssh/slides`, `/resources`, `/resources/books`, and `/resources/newsletters`.
+- Source scan ✓ — no remaining source/package matches for removed migrated routes/imports/dependencies (`coding-with-agents`, deleted post slugs, summaries API/content, removed summary dependencies, or removed summary UI helpers).
+- Pointer scan ✓ — only one source pointer to `https://with-agents.dev`, on the homepage.
+
+**Next Action:**
+
+- None for code. Optional DNS follow-up only if `www.with-agents.dev` behavior matters or GitHub reports a domain-check issue.

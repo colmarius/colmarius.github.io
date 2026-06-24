@@ -78,58 +78,12 @@ const BookIcon = () => (
   </svg>
 );
 
-const CodingIcon = () => (
-  <svg
-    className="w-20 h-20"
-    viewBox="0 0 80 80"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <rect
-      x="10"
-      y="18"
-      width="60"
-      height="44"
-      rx="4"
-      className="fill-emerald-100 stroke-emerald-600"
-      strokeWidth="2.5"
-    />
-    <circle cx="18" cy="27" r="2" className="fill-emerald-600" />
-    <circle cx="26" cy="27" r="2" className="fill-emerald-600" />
-    <circle cx="34" cy="27" r="2" className="fill-emerald-600" />
-    <path
-      d="M22 40 L28 46 L22 52"
-      className="stroke-emerald-600"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      fill="none"
-    />
-    <path
-      d="M38 52 L32 40"
-      className="stroke-emerald-600"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M50 40 L44 46 L50 52"
-      className="stroke-emerald-600"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      fill="none"
-    />
-  </svg>
-);
-
 const iconMap = {
   newsletter: NewsletterIcon,
   book: BookIcon,
-  coding: CodingIcon,
 };
 
-type IconType = 'newsletter' | 'book' | 'coding';
+type IconType = 'newsletter' | 'book';
 
 type Props = {
   href: string;

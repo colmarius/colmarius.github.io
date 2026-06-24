@@ -54,9 +54,9 @@ Create a clean `with-agents` Astro site in `.agents/references/with-agents`, ver
     - `astro.config.mjs` uses `site: 'https://with-agents.dev'`, `output: 'static'`, and no GitHub Pages `base` path.
     - `public/CNAME` contains exactly `with-agents.dev`.
     - GitHub Pages workflow uses the Astro action with Node `22.18.0` and npm lockfile support.
-    - README documents required manual GitHub settings: create private `colmarius/with-agents`, enable Pages from GitHub Actions, add custom domain, verify domain, configure DNS, and enforce HTTPS.
-    - Deployment notes call out that private-repo Pages depends on GitHub plan support and that the site output is public even if the source repository remains private.
-    - README says to keep the repo private by default; if private Pages is unavailable, delay Pages or choose another host rather than making the repository public without user approval.
+    - README documents required manual GitHub settings: use public `colmarius/with-agents`, enable Pages from GitHub Actions, add custom domain, verify domain, configure DNS, and enforce HTTPS.
+    - Deployment notes call out that the source repository is public by explicit user decision.
+    - README says not to commit private notes, secrets, drafts that should stay private, or account-only deployment details.
   - Notes: DNS for apex `with-agents.dev`: A records to GitHub Pages IPv4s; optional AAAA records; optional `www` CNAME to `colmarius.github.io` for redirect pairing.
 
 - [x] **Task 5: Verify and commit the target repository**
@@ -69,10 +69,10 @@ Create a clean `with-agents` Astro site in `.agents/references/with-agents`, ver
     - `npm run build` succeeds and generates expected routes for `/`, `/posts`, `/posts/coding-with-agents-2025/`, `/posts/coding-with-agents-2025/slides/`, `/resources/coding-with-agents`, and at least one `/api/summaries/*.json` endpoint.
     - Pre-first-commit leak audit passes: no matches for `marius-colacioiu`, `marius-colacioiu.com`, `colmarius.github.io`, `Engineering Leader`, `marius-photo`, `/about`, `/contact`, `/resources/books`, `/resources/newsletters`, `books.json`, `newsletters.json`, `verified-git-commits-ssh`, copied parent work items, or other personal-only strings/files except deliberate author attribution.
     - Target git status is clean after a first commit with a descriptive message.
-    - If `gh` is available and authenticated, private GitHub repo creation/push is completed; otherwise README/progress records the exact manual push commands.
+    - If `gh` is available and authenticated, GitHub repo setup/push is completed with the user-approved visibility; otherwise README/progress records the exact manual push commands.
   - Notes: Do not proceed to current-repo pruning until this task is complete and the target commit is pushed/backed up, unless the user explicitly accepts local-only backup risk.
 
-- [ ] **Task 6: Prune migrated content from this personal site**
+- [x] **Task 6: Prune migrated content from this personal site**
   - Scope: `src/content`, `src/data/resources`, `src/pages`, `src/components/resources`, `src/layouts/PostLayout.astro`, `src/pages/index.astro`
   - Depends on: Task 5
   - Acceptance:
@@ -86,7 +86,7 @@ Create a clean `with-agents` Astro site in `.agents/references/with-agents`, ver
     - Posts/resources navigation still builds with remaining personal-site content.
   - Notes: Preserve books/newsletters resources unless a later decision removes the entire resources section.
 
-- [ ] **Task 7: Verify and commit this personal-site cleanup**
+- [x] **Task 7: Verify and commit this personal-site cleanup**
   - Scope: current repository worktree and `.agents/work/tech-debt/extract-with-agents-site/`
   - Depends on: Task 6
   - Acceptance:
@@ -101,7 +101,7 @@ Create a clean `with-agents` Astro site in `.agents/references/with-agents`, ver
 
 - The safest default is a broad allowlist copy, fresh dot-agents install, prune immediately, leak audit, verify, then commit. The target repository's first commit should not include personal-only pages/assets or copied work-item history.
 - Keep target work inside `.agents/references/with-agents`; because `.agents/references/*` is ignored by this repository, use `git -C .agents/references/with-agents ...` for target status/commits.
-- Treat `with-agents.dev` GitHub Pages and DNS configuration as manual/account-level unless the future implementation thread confirms authenticated tooling.
+- Treat `with-agents.dev` GitHub Pages and DNS configuration as manual/account-level unless the implementation thread confirms authenticated tooling or user reports manual completion.
 - If target build fails because of missing dependencies after pruning, restore from the current repo rather than inventing replacements until the dependency boundary is clear.
 - After target extraction, consider a separate content refresh plan for updating older `.agents/plans` references in posts to dot-agents v0.3 `.agents/work` language.
 
@@ -112,7 +112,7 @@ Create a clean `with-agents` Astro site in `.agents/references/with-agents`, ver
 - Current repository is not pruned until target build verification passes.
 - `verified-git-commits-ssh.md` stays in the personal site by default because it is Git/security content, not coding-agent-specific.
 - Workshop post is restored as draft by default with a unique draft order unless the user decides to publish/refine it immediately.
-- Personal-site migrated URLs get moved stubs or at least one external pointer by default after `with-agents.dev` is live.
+- Personal-site migrated URLs use one external homepage pointer to `https://with-agents.dev`.
 
 ## Acceptance Criteria
 

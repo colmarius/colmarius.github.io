@@ -1,12 +1,12 @@
 # Extract With Agents Site
 
-Status: blocked
+Status: completed
 Category: tech-debt
 Updated: 2026-06-24
 
 ## Summary
 
-Extract the coding-with-agents posts, resource hub, summaries, and reusable agent-learning material from this personal site into the nested repository at `.agents/references/with-agents`. Target-side extraction, verification, and private GitHub backup are complete at target commit `e7ca74f` pushed to private `colmarius/with-agents`. This repository still needs the gated pruning phase after the old URL strategy is decided.
+Extracted the coding-with-agents posts, resource hub, summaries, and reusable agent-learning material from this personal site into the nested repository at `.agents/references/with-agents`. Target extraction, public GitHub backup, GitHub Pages deployment, DNS setup, and personal-site pruning are complete. The live target is <https://with-agents.dev> and the target repository is public by explicit user decision.
 
 ## Artifacts
 
@@ -18,9 +18,9 @@ Extract the coding-with-agents posts, resource hub, summaries, and reusable agen
 
 ## Next Action
 
-- Decide the old URL strategy for migrated personal-site URLs, then execute Task 6 in `plan.md` to prune migrated content from this personal site. Manual follow-up remains for GitHub Pages/custom-domain settings and DNS for `with-agents.dev`.
+- None for code. Optional DNS follow-up: keep `www.with-agents.dev` only if desired; the current `www` CNAME to `with-agents.dev` resolves, though GitHub's recommended Pages target is `colmarius.github.io` if domain checks ever complain.
 
 ## Open Questions
 
-- [ ] Confirm private GitHub Pages support before deployment; default is to keep the repo private and delay Pages rather than make source public automatically.
-- [ ] Confirm old URL strategy before Task 6 deletions; default is to keep lightweight moved stubs or an external pointer for one release cycle after `with-agents.dev` is live.
+- [x] Repository visibility resolved: `colmarius/with-agents` is public by explicit user decision.
+- [x] Old URL strategy resolved: remove migrated personal-site content and keep one homepage pointer to `https://with-agents.dev`.

@@ -14,15 +14,4 @@ const posts = defineCollection({
   }),
 });
 
-const summaries = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/summaries' }),
-  schema: z.object({
-    title: z.string(),
-    resourceId: z.coerce.number(),
-    series: z.string().optional(),
-    episode: z.number().int().optional(),
-    date: z.coerce.date().optional(),
-  }),
-});
-
-export const collections = { posts, summaries };
+export const collections = { posts };

@@ -15,15 +15,3 @@ export type Book = {
   image: string;
   category: string;
 };
-
-export type CodingResource = {
-  id: number;
-  title: string;
-  url: string;
-  description: string;
-  type: 'podcast' | 'video' | 'article';
-  source: string;
-  date?: string;
-  duration?: string;
-  tags?: string[];
-};
