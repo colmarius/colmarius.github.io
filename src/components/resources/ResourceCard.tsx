@@ -6,16 +6,16 @@ const NewsletterIcon = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <rect
-      x="10"
-      y="20"
-      width="60"
-      height="45"
+      x="12"
+      y="21"
+      width="56"
+      height="42"
       rx="4"
       className="fill-indigo-100 stroke-indigo-600"
       strokeWidth="2.5"
     />
     <path
-      d="M10 25 L40 45 L70 25"
+      d="M12 26 L40 45 L68 26"
       className="stroke-indigo-600"
       strokeWidth="2.5"
       strokeLinecap="round"
@@ -51,26 +51,26 @@ const BookIcon = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      d="M15 20 C15 20, 25 15, 40 15 C55 15, 65 20, 65 20 L65 60 C65 60, 55 55, 40 55 C25 55, 15 60, 15 60 Z"
+      d="M12 21 C12 21, 23 16, 40 16 C57 16, 68 21, 68 21 L68 62 C68 62, 57 57, 40 57 C23 57, 12 62, 12 62 Z"
       className="fill-purple-100 stroke-purple-600"
       strokeWidth="2.5"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
-      d="M40 15 L40 55"
+      d="M40 16 L40 57"
       className="stroke-purple-600"
       strokeWidth="2.5"
       strokeLinecap="round"
     />
     <path
-      d="M25 28 L35 28 M25 35 L35 35 M25 42 L35 42"
+      d="M24 29 L35 29 M24 36 L35 36 M24 43 L35 43"
       className="stroke-purple-400"
       strokeWidth="2"
       strokeLinecap="round"
     />
     <path
-      d="M45 28 L55 28 M45 35 L55 35 M45 42 L55 42"
+      d="M45 29 L56 29 M45 36 L56 36 M45 43 L56 43"
       className="stroke-purple-400"
       strokeWidth="2"
       strokeLinecap="round"
@@ -86,16 +86,16 @@ const AgentIcon = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <rect
-      x="14"
+      x="12"
       y="18"
-      width="52"
-      height="40"
+      width="56"
+      height="44"
       rx="6"
       className="fill-sky-100 stroke-sky-600"
       strokeWidth="2.5"
     />
     <path
-      d="M28 35 L36 40 L28 45"
+      d="M27 36 L35 40 L27 44"
       className="stroke-sky-600"
       strokeWidth="2.5"
       strokeLinecap="round"
@@ -104,14 +104,14 @@ const AgentIcon = () => (
     <line
       x1="42"
       y1="45"
-      x2="52"
+      x2="54"
       y2="45"
       className="stroke-sky-400"
       strokeWidth="2.5"
       strokeLinecap="round"
     />
-    <circle cx="30" cy="28" r="2" className="fill-sky-500" />
-    <circle cx="50" cy="28" r="2" className="fill-sky-500" />
+    <circle cx="29" cy="29" r="2" className="fill-sky-500" />
+    <circle cx="51" cy="29" r="2" className="fill-sky-500" />
     <path
       d="M40 18 L40 10 M35 10 L45 10"
       className="stroke-sky-600"
