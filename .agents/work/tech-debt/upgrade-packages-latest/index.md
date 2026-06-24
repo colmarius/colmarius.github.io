@@ -1,12 +1,12 @@
 # Upgrade packages to latest
 
-Status: planned
+Status: completed
 Category: tech-debt
-Updated: 2026-06-23
+Updated: 2026-06-24
 
 ## Summary
 
-Upgrade this Astro static site and its npm packages to the latest compatible versions, with Astro as the primary migration focus. The work item captures current dependency drift, Astro v6/v7 migration risks, and an implementation-ready plan for a safe upgrade branch.
+Upgraded this Astro static site from Astro 5.15.9 to Astro 7.0.2 and refreshed compatible packages while preserving static GitHub Pages behavior. TypeScript remains on 5.9.3; TypeScript 6 is intentionally deferred.
 
 ## Artifacts
 
@@ -18,7 +18,7 @@ Upgrade this Astro static site and its npm packages to the latest compatible ver
 
 ## Next Action
 
-- Implement Task 1 from `plan.md`: create an upgrade branch and record baseline verification, then continue with Task 2 compatibility prep.
+- Work item complete. Optional follow-ups: evaluate TypeScript 6 separately and monitor `@astrojs/check`/language-server audit advisories for a non-downgrade fix.
 
 ## Decisions
 
