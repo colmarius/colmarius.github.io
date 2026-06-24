@@ -6,16 +6,16 @@ const NewsletterIcon = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <rect
-      x="13"
-      y="19"
-      width="54"
-      height="44"
+      x="12"
+      y="17"
+      width="56"
+      height="48"
       rx="4"
       className="fill-indigo-100 stroke-indigo-600"
       strokeWidth="2.5"
     />
     <path
-      d="M13 25 L40 45 L67 25"
+      d="M12 23 L40 47 L68 23"
       className="stroke-indigo-600"
       strokeWidth="2.5"
       strokeLinecap="round"
@@ -87,15 +87,15 @@ const AgentIcon = () => (
   >
     <rect
       x="13"
-      y="18"
+      y="20"
       width="54"
-      height="44"
+      height="42"
       rx="6"
       className="fill-sky-100 stroke-sky-600"
       strokeWidth="2.5"
     />
     <path
-      d="M27 36 L35 40 L27 44"
+      d="M27 37 L35 41 L27 45"
       className="stroke-sky-600"
       strokeWidth="2.5"
       strokeLinecap="round"
@@ -103,17 +103,17 @@ const AgentIcon = () => (
     />
     <line
       x1="42"
-      y1="45"
+      y1="46"
       x2="54"
-      y2="45"
+      y2="46"
       className="stroke-sky-400"
       strokeWidth="2.5"
       strokeLinecap="round"
     />
-    <circle cx="29" cy="29" r="2" className="fill-sky-500" />
-    <circle cx="51" cy="29" r="2" className="fill-sky-500" />
+    <circle cx="29" cy="31" r="2" className="fill-sky-500" />
+    <circle cx="51" cy="31" r="2" className="fill-sky-500" />
     <path
-      d="M40 18 L40 10 M35 10 L45 10"
+      d="M40 20 L40 14 M35 14 L45 14"
       className="stroke-sky-600"
       strokeWidth="2.5"
       strokeLinecap="round"
