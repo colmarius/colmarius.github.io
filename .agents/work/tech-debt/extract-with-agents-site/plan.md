@@ -11,7 +11,7 @@ Create a clean `with-agents` Astro site in `.agents/references/with-agents`, ver
 
 ## Tasks
 
-- [ ] **Task 1: Scaffold target repository from the current site**
+- [x] **Task 1: Scaffold target repository from the current site**
   - Scope: `.agents/references/with-agents`, root config files, `.github/workflows/deploy.yml`, fresh `.agents/` setup
   - Depends on: none
   - Acceptance:
@@ -23,7 +23,7 @@ Create a clean `with-agents` Astro site in `.agents/references/with-agents`, ver
     - Target `package.json` name, `README.md`, footer source link, and high-level branding are changed from `colmarius.github.io` to `with-agents`.
   - Notes: Prefer `rsync` with explicit include/exclude rules or a short allowlist script. Do not copy this repository's `.agents`; use the installer.
 
-- [ ] **Task 2: Migrate and normalize coding-agent content in target**
+- [x] **Task 2: Migrate and normalize coding-agent content in target**
   - Scope: `.agents/references/with-agents/src/content`, `.agents/references/with-agents/src/data/resources/coding-with-agents.json`
   - Depends on: Task 1
   - Acceptance:
@@ -35,7 +35,7 @@ Create a clean `with-agents` Astro site in `.agents/references/with-agents`, ver
     - Optional `draft/workflow-ideas.md` is intentionally left behind by default unless the user requests it.
   - Notes: Keep frontmatter compatible with `src/content.config.ts`; update internal links after target routes are finalized.
 
-- [ ] **Task 3: Prune personal-site features from target and create a focused landing page**
+- [x] **Task 3: Prune personal-site features from target and create a focused landing page**
   - Scope: `.agents/references/with-agents/src/pages`, `src/components`, `src/layouts`, `src/styles`, `public`
   - Depends on: Task 2
   - Acceptance:
@@ -47,7 +47,7 @@ Create a clean `with-agents` Astro site in `.agents/references/with-agents`, ver
     - Target internal links do not point to unmigrated personal routes such as `/posts/verified-git-commits-ssh`, `/about`, `/contact`, or removed resources pages.
   - Notes: Keep the current design system unless a smaller Astro-only replacement is faster and preserves required behavior.
 
-- [ ] **Task 4: Configure target deployment and custom domain**
+- [x] **Task 4: Configure target deployment and custom domain**
   - Scope: `.agents/references/with-agents/astro.config.mjs`, `.github/workflows/deploy.yml`, `public/CNAME`, README deployment docs
   - Depends on: Task 3
   - Acceptance:
@@ -59,7 +59,7 @@ Create a clean `with-agents` Astro site in `.agents/references/with-agents`, ver
     - README says to keep the repo private by default; if private Pages is unavailable, delay Pages or choose another host rather than making the repository public without user approval.
   - Notes: DNS for apex `with-agents.dev`: A records to GitHub Pages IPv4s; optional AAAA records; optional `www` CNAME to `colmarius.github.io` for redirect pairing.
 
-- [ ] **Task 5: Verify and commit the target repository**
+- [x] **Task 5: Verify and commit the target repository**
   - Scope: `.agents/references/with-agents`, target git history
   - Depends on: Task 4
   - Acceptance:

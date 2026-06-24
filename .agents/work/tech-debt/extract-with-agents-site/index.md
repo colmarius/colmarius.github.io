@@ -1,12 +1,12 @@
 # Extract With Agents Site
 
-Status: planned
+Status: blocked
 Category: tech-debt
 Updated: 2026-06-24
 
 ## Summary
 
-Extract the coding-with-agents posts, resource hub, summaries, and reusable agent-learning material from this personal site into the empty nested repository at `.agents/references/with-agents`. The target repository will become `colmarius/with-agents`, a private Astro/GitHub Pages site for <https://with-agents.dev>, while this repository will later be pruned back toward a minimal personal site.
+Extract the coding-with-agents posts, resource hub, summaries, and reusable agent-learning material from this personal site into the nested repository at `.agents/references/with-agents`. Target-side extraction, verification, and private GitHub backup are complete at target commit `e7ca74f` pushed to private `colmarius/with-agents`. This repository still needs the gated pruning phase after the old URL strategy is decided.
 
 ## Artifacts
 
@@ -18,9 +18,9 @@ Extract the coding-with-agents posts, resource hub, summaries, and reusable agen
 
 ## Next Action
 
-- Execute Task 1 in `plan.md`: scaffold `.agents/references/with-agents` from an allowlist of current site files, preserve the target `.git`, and run a fresh dot-agents install instead of copying this repository's `.agents` directory.
+- Decide the old URL strategy for migrated personal-site URLs, then execute Task 6 in `plan.md` to prune migrated content from this personal site. Manual follow-up remains for GitHub Pages/custom-domain settings and DNS for `with-agents.dev`.
 
 ## Open Questions
 
 - [ ] Confirm private GitHub Pages support before deployment; default is to keep the repo private and delay Pages rather than make source public automatically.
-- [ ] Confirm old URL strategy; default is to keep lightweight moved stubs or an external pointer for one release cycle after `with-agents.dev` is live.
+- [ ] Confirm old URL strategy before Task 6 deletions; default is to keep lightweight moved stubs or an external pointer for one release cycle after `with-agents.dev` is live.
