@@ -86,10 +86,10 @@ const AgentIcon = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <rect
-      x="13"
-      y="20"
-      width="54"
-      height="42"
+      x="12"
+      y="19"
+      width="56"
+      height="44"
       rx="6"
       className="fill-sky-100 stroke-sky-600"
       strokeWidth="2.5"
@@ -104,7 +104,7 @@ const AgentIcon = () => (
     <line
       x1="42"
       y1="46"
-      x2="54"
+      x2="55"
       y2="46"
       className="stroke-sky-400"
       strokeWidth="2.5"
@@ -113,7 +113,7 @@ const AgentIcon = () => (
     <circle cx="29" cy="31" r="2" className="fill-sky-500" />
     <circle cx="51" cy="31" r="2" className="fill-sky-500" />
     <path
-      d="M40 20 L40 14 M35 14 L45 14"
+      d="M40 19 L40 13 M35 13 L45 13"
       className="stroke-sky-600"
       strokeWidth="2.5"
       strokeLinecap="round"
