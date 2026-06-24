@@ -6,7 +6,7 @@ Updated: 2026-06-24
 
 ## Summary
 
-Extracted the coding-with-agents posts, resource hub, summaries, and reusable agent-learning material from this personal site into the nested repository at `.agents/references/with-agents`. Target extraction, public GitHub backup, GitHub Pages deployment, DNS setup, and personal-site pruning are complete. The live target is <https://with-agents.dev> and the target repository is public by explicit user decision.
+Extracted the coding-with-agents posts, resource hub, summaries, and reusable agent-learning material from this personal site into the nested repository at `.agents/references/with-agents`. Target extraction, public GitHub backup, GitHub Pages deployment, DNS setup, and personal-site pruning are complete. The personal site keeps lightweight external pointers from the homepage and `/resources` to <https://with-agents.dev>. The live target is <https://with-agents.dev> and the target repository is public by explicit user decision.
 
 ## Artifacts
 
@@ -23,4 +23,4 @@ Extracted the coding-with-agents posts, resource hub, summaries, and reusable ag
 ## Open Questions
 
 - [x] Repository visibility resolved: `colmarius/with-agents` is public by explicit user decision.
-- [x] Old URL strategy resolved: remove migrated personal-site content and keep one homepage pointer to `https://with-agents.dev`.
+- [x] Old URL strategy resolved: remove migrated personal-site content and keep lightweight external pointers to `https://with-agents.dev`.

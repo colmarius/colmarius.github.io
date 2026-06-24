@@ -112,7 +112,7 @@ Create a clean `with-agents` Astro site in `.agents/references/with-agents`, ver
 - Current repository is not pruned until target build verification passes.
 - `verified-git-commits-ssh.md` stays in the personal site by default because it is Git/security content, not coding-agent-specific.
 - Workshop post is restored as draft by default with a unique draft order unless the user decides to publish/refine it immediately.
-- Personal-site migrated URLs use one external homepage pointer to `https://with-agents.dev`.
+- Personal site keeps lightweight external pointers to `https://with-agents.dev` from the homepage and `/resources`, without restoring duplicated migrated content.
 
 ## Acceptance Criteria
 

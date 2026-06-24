@@ -78,12 +78,57 @@ const BookIcon = () => (
   </svg>
 );
 
+const AgentIcon = () => (
+  <svg
+    className="w-20 h-20"
+    viewBox="0 0 80 80"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect
+      x="14"
+      y="18"
+      width="52"
+      height="40"
+      rx="6"
+      className="fill-sky-100 stroke-sky-600"
+      strokeWidth="2.5"
+    />
+    <path
+      d="M28 35 L36 40 L28 45"
+      className="stroke-sky-600"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <line
+      x1="42"
+      y1="45"
+      x2="52"
+      y2="45"
+      className="stroke-sky-400"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+    />
+    <circle cx="30" cy="28" r="2" className="fill-sky-500" />
+    <circle cx="50" cy="28" r="2" className="fill-sky-500" />
+    <path
+      d="M40 18 L40 10 M35 10 L45 10"
+      className="stroke-sky-600"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 const iconMap = {
   newsletter: NewsletterIcon,
   book: BookIcon,
+  agent: AgentIcon,
 };
 
-type IconType = 'newsletter' | 'book';
+type IconType = 'newsletter' | 'book' | 'agent';
 
 type Props = {
   href: string;
@@ -91,6 +136,7 @@ type Props = {
   description: string;
   count?: number;
   iconType: IconType;
+  external?: boolean;
 };
 
 export default function ResourceCard({
@@ -99,12 +145,15 @@ export default function ResourceCard({
   description,
   count,
   iconType,
+  external = false,
 }: Props) {
   const Icon = iconMap[iconType];
 
   return (
     <a
       href={href}
+      target={external ? '_blank' : undefined}
+      rel={external ? 'noopener noreferrer' : undefined}
       className="block rounded-xl border border-gray-200 p-8 hover:shadow-lg transition-all duration-200 bg-white hover:border-gray-300 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600/50 focus-visible:ring-offset-2"
     >
       <div className="flex flex-col items-center text-center">

@@ -11,9 +11,17 @@ import Layout from '../../layouts/Layout.astro';
       Resources
     </h1>
     <p class="text-xl text-gray-600 mb-16 font-light leading-relaxed">
-      A curated collection of newsletters and books that inspire and inform my work.
+      A curated collection of learning resources, newsletters, and books that inspire and inform my work.
     </p>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <ResourceCard
+        href="https://with-agents.dev"
+        title="Coding with Agents"
+        description="A dedicated site for practical articles, workflows, and resources about using coding agents."
+        iconType="agent"
+        external
+        client:load
+      />
       <ResourceCard
         href="/resources/newsletters"
         title="Newsletters"

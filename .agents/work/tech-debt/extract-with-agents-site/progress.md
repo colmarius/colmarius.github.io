@@ -111,3 +111,26 @@
 **Next Action:**
 
 - None for code. Optional DNS follow-up only if `www.with-agents.dev` behavior matters or GitHub reports a domain-check issue.
+
+## 2026-06-24 — Final migration-polish resource pointer
+
+**Status:** Final personal-site polish completed
+
+**Actions:**
+
+- Confirmed both repositories started clean and synced with `origin/main`.
+- Added a `Coding with Agents` card on `/resources` pointing externally to `https://with-agents.dev`.
+- Extended the existing resource card component with explicit external-link handling (`target="_blank"` and `rel="noopener noreferrer"`) and a coding-agent icon.
+- Kept books/newsletters resource routes unchanged and did not restore local Coding with Agents content, summaries, API routes, or summary UI components.
+
+**Verification:**
+
+- `npm run lint:fix` ✓ — checked 50 files, no fixes applied.
+- `npm run check` ✓ — 0 errors, 0 warnings, 0 hints.
+- `npm run build` ✓ — built 9 personal-site pages, including `/resources`, `/resources/books`, and `/resources/newsletters`.
+- Removed-content scan ✓ — `rg -n "coding-with-agents|what-is-an-agent|amp-first-win|agent-workflows|agent-planning|amp-power-patterns|summaries|react-markdown|remark-gfm|rehype-sanitize" src package.json package-lock.json` returned no matches.
+- Built `/resources` output includes the external `https://with-agents.dev` card with `target="_blank"` and `rel="noopener noreferrer"`.
+
+**Next Action:**
+
+- None after the parent repository polish commit.
