@@ -6,16 +6,16 @@ const NewsletterIcon = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <rect
-      x="12"
-      y="21"
-      width="56"
-      height="42"
+      x="13"
+      y="19"
+      width="54"
+      height="44"
       rx="4"
       className="fill-indigo-100 stroke-indigo-600"
       strokeWidth="2.5"
     />
     <path
-      d="M12 26 L40 45 L68 26"
+      d="M13 25 L40 45 L67 25"
       className="stroke-indigo-600"
       strokeWidth="2.5"
       strokeLinecap="round"
@@ -51,7 +51,7 @@ const BookIcon = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      d="M12 21 C12 21, 23 16, 40 16 C57 16, 68 21, 68 21 L68 62 C68 62, 57 57, 40 57 C23 57, 12 62, 12 62 Z"
+      d="M13 21 C13 21, 24 16, 40 16 C56 16, 67 21, 67 21 L67 62 C67 62, 56 57, 40 57 C24 57, 13 62, 13 62 Z"
       className="fill-purple-100 stroke-purple-600"
       strokeWidth="2.5"
       strokeLinecap="round"
@@ -86,9 +86,9 @@ const AgentIcon = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <rect
-      x="12"
+      x="13"
       y="18"
-      width="56"
+      width="54"
       height="44"
       rx="6"
       className="fill-sky-100 stroke-sky-600"
