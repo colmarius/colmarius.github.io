@@ -13,7 +13,7 @@ Upgrade this static Astro site from Astro 5 to the latest package set, with Astr
 
 ## Tasks
 
-- [ ] **Task 1: Create the upgrade branch and baseline**
+- [x] **Task 1: Create the upgrade branch and baseline**
   - Scope: git branch, current repo state
   - Depends on: none
   - Acceptance:
@@ -22,7 +22,7 @@ Upgrade this static Astro site from Astro 5 to the latest package set, with Astr
     - The active work item remains `.agents/work/tech-debt/upgrade-packages-latest/`.
   - Notes: The current baseline build passed during planning; rerun on the implementation branch before editing.
 
-- [ ] **Task 2: Apply Astro 7 compatibility prep**
+- [x] **Task 2: Apply Astro 7 compatibility prep**
   - Scope: `src/content/config.ts`, `src/content.config.ts`, `astro.config.mjs`, `.github/workflows/deploy.yml`
   - Depends on: Task 1
   - Acceptance:
@@ -33,7 +33,7 @@ Upgrade this static Astro site from Astro 5 to the latest package set, with Astr
     - No `src/fetch.ts` reserved-file conflict is introduced.
   - Notes: These changes should be compatible with the current Astro 5 baseline; if one is not, apply it immediately after the Astro package upgrade and record that in `progress.md`.
 
-- [ ] **Task 3: Upgrade Astro and dependencies**
+- [x] **Task 3: Upgrade Astro and dependencies**
   - Scope: `package.json`, `package-lock.json`
   - Depends on: Task 2
   - Acceptance:
@@ -45,7 +45,7 @@ Upgrade this static Astro site from Astro 5 to the latest package set, with Astr
     - `npm install` completes without peer dependency conflicts or lockfile inconsistencies.
   - Notes: Prefer `npx @astrojs/upgrade` for Astro + official integrations, then `npm install <pkg>@latest` for remaining outdated packages. Do not upgrade TypeScript to 6 in this work item. If a non-Astro package upgrade creates unrelated churn, defer that package with a reason in `progress.md` rather than expanding the Astro migration.
 
-- [ ] **Task 4: Fix upgrade breakages with minimal code changes**
+- [x] **Task 4: Fix upgrade breakages with minimal code changes**
   - Scope: files reported by build/check/lint failures, `astro.config.mjs`
   - Depends on: Task 3
   - Acceptance:
@@ -55,7 +55,7 @@ Upgrade this static Astro site from Astro 5 to the latest package set, with Astr
     - No deprecated Astro APIs from the v6/v7 guides remain in touched files.
   - Notes: Do not introduce new libraries unless a migration guide requires one.
 
-- [ ] **Task 5: Verify build, typecheck, lint, and local rendering**
+- [x] **Task 5: Verify build, typecheck, lint, and local rendering**
   - Scope: verification commands and smoke testing
   - Depends on: Task 4
   - Acceptance:
@@ -69,7 +69,7 @@ Upgrade this static Astro site from Astro 5 to the latest package set, with Astr
     - `progress.md` records commands run, results, any warnings, and remaining follow-ups.
   - Notes: Use `npm run preview` after build or `npm run dev`; use tmux for background server if needed.
 
-- [ ] **Task 6: Finalize work item and commit**
+- [x] **Task 6: Finalize work item and commit**
   - Scope: `.agents/work/tech-debt/upgrade-packages-latest/`, git commit
   - Depends on: Task 5
   - Acceptance:

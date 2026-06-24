@@ -7,6 +7,7 @@ import { defineConfig } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://marius-colacioiu.com',
+  compressHTML: true,
   integrations: [react()],
 
   // Configure for GitHub Pages deployment
@@ -25,7 +26,6 @@ export default defineConfig({
       dedupe: ['react', 'react-dom'],
     },
 
-    // @ts-expect-error
     plugins: [tailwindcss()],
   },
 });

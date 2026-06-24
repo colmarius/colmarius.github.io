@@ -16,12 +16,16 @@
 <style is:global>
   /* Hide raw Mermaid code blocks before JS runs (FOUC prevention) */
   pre:has(> code.language-mermaid),
-  pre:has(> code.lang-mermaid) {
+  pre:has(> code.lang-mermaid),
+  pre[data-language="mermaid"],
+  pre[class*="language-mermaid"] {
     display: none;
   }
   /* Fallback for browsers without :has() */
   pre > code.language-mermaid,
-  pre > code.lang-mermaid {
+  pre > code.lang-mermaid,
+  pre[data-language="mermaid"] > code,
+  pre[class*="language-mermaid"] > code {
     display: none;
   }
 </style>
