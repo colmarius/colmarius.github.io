@@ -13,21 +13,22 @@
     "lint:fix": "biome check --write ."
   },
   "dependencies": {
-    "@astrojs/check": "0.9.9",
-    "@astrojs/react": "6.0.0",
+    "@astrojs/check": "0.9.10",
+    "@astrojs/react": "6.0.2",
     "@tailwindcss/typography": "0.5.20",
-    "@tailwindcss/vite": "4.3.1",
-    "@types/react": "19.2.17",
-    "@types/react-dom": "19.2.3",
-    "astro": "7.1.4",
+    "@tailwindcss/vite": "4.3.3",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
+    "astro": "7.2.0",
     "clsx": "2.1.1",
-    "react": "19.2.7",
-    "react-dom": "19.2.7",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
     "tailwind-merge": "3.6.0",
-    "tailwindcss": "4.3.1"
+    "tailwindcss": "4.3.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.1",
-    "typescript": "5.9.3"
+    "@biomejs/biome": "2.5.7",
+    "@types/node": "24.13.3",
+    "typescript": "6.0.3"
   }
 }
