@@ -14,6 +14,11 @@ export default defineConfig({
   output: 'static',
 
   vite: {
+    server: {
+      allowedHosts: process.env.AMP_ORB
+        ? ['.e2b.app', '.onamp.dev']
+        : undefined,
+    },
     resolve: {
       alias: {
         '@components': '/src/components',

@@ -1,0 +1,6 @@
+services:
+  web:
+    command: npm run dev -- --host 0.0.0.0 --port "$PORT"
+    portal:
+      title: Personal Website
+      description: Astro development server with hot reload.
