@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$repo_root"
+
+node_version="$(tr -d '[:space:]' < .nvmrc)"
+node_arch=""
+
+case "$(uname -m)" in
+  x86_64) node_arch="x64" ;;
+  aarch64|arm64) node_arch="arm64" ;;
+  *)
+    echo "Unsupported architecture: $(uname -m)" >&2
+    exit 1
+    ;;
+esac
+
+node_dir="$HOME/.local/share/node-v${node_version}-${node_arch}"
+node_archive="node-v${node_version}-linux-${node_arch}.tar.xz"
+
+echo "==> Installing Node.js ${node_version}"
+step_start=$SECONDS
+if [[ ! -x "$node_dir/bin/node" ]] || [[ "$($node_dir/bin/node --version)" != "v${node_version}" ]]; then
+  download_dir="$(mktemp -d)"
+  trap 'rm -rf "$download_dir"' EXIT
+
+  curl --fail --location --silent --show-error \
+    "https://nodejs.org/dist/v${node_version}/${node_archive}" \
+    --output "$download_dir/$node_archive"
+  curl --fail --location --silent --show-error \
+    "https://nodejs.org/dist/v${node_version}/SHASUMS256.txt" \
+    --output "$download_dir/SHASUMS256.txt"
+
+  expected_checksum="$(awk -v archive="$node_archive" '$2 == archive { print $1 }' "$download_dir/SHASUMS256.txt")"
+  if [[ -z "$expected_checksum" ]]; then
+    echo "No checksum found for $node_archive" >&2
+    exit 1
+  fi
+  printf '%s  %s\n' "$expected_checksum" "$download_dir/$node_archive" | sha256sum --check --status
+
+  mkdir -p "$HOME/.local/share"
+  tar -xJf "$download_dir/$node_archive" -C "$download_dir"
+  rm -rf "$node_dir"
+  mv "$download_dir/node-v${node_version}-linux-${node_arch}" "$node_dir"
+fi
+
+mkdir -p "$HOME/.local/bin"
+for executable in node npm npx corepack; do
+  if [[ -x "$node_dir/bin/$executable" ]]; then
+    ln -sfn "$node_dir/bin/$executable" "$HOME/.local/bin/$executable"
+  fi
+done
+export PATH="$HOME/.local/bin:$PATH"
+hash -r
+echo "    Node.js ready in $((SECONDS - step_start))s"
+
+echo "==> Installing npm dependencies"
+step_start=$SECONDS
+dependency_marker="node_modules/.amp-setup-dependencies"
+dependency_fingerprint="${node_version}:$(sha256sum package.json package-lock.json | sha256sum | awk '{ print $1 }')"
+if [[ -f "$dependency_marker" ]] && [[ "$(< "$dependency_marker")" == "$dependency_fingerprint" ]]; then
+  echo "    Dependencies already match package-lock.json"
+else
+  npm ci --no-audit --no-fund
+  printf '%s\n' "$dependency_fingerprint" > "$dependency_marker"
+fi
+echo "    Dependencies ready in $((SECONDS - step_start))s"
+
+echo "==> Orb setup complete"

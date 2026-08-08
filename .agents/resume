@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$repo_root"
+
+expected_node_version="v$(tr -d '[:space:]' < .nvmrc)"
+actual_node_version="$(node --version)"
+
+if [[ "$actual_node_version" != "$expected_node_version" ]]; then
+  echo "Expected Node.js $expected_node_version, found $actual_node_version" >&2
+  exit 1
+fi
+
+if [[ ! -d node_modules ]]; then
+  echo "node_modules is missing; rerun .agents/setup" >&2
+  exit 1
+fi
+
+echo "Orb ready (Node.js $actual_node_version; dependencies installed)"
