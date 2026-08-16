@@ -9,7 +9,7 @@
     "ignoreUnknown": false,
     "includes": [
       "**",
-      "!.amp/portals",
+      "!.amp",
       "!.astro",
       "!.agents/references",
       "!node_modules",

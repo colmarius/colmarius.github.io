@@ -27,14 +27,10 @@ npm run lint:fix  # Lint & format
 ```bash
 src/
 ├── components/    # Astro and React components
-├── content/       # Content collections (posts)
 ├── data/          # Content data
 ├── layouts/       # Astro layouts
 ├── pages/         # Routes (file-based)
-├── scripts/       # Client scripts
-├── styles/        # Global styles
-├── types/         # TypeScript types
-└── utils/         # Utilities
+└── styles/        # Global styles
 ```
 
 ## Deployment

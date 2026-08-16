@@ -5,7 +5,7 @@
 - **Astro v7** + React 19 + TailwindCSS v4
 - **Static site** deployed to GitHub Pages
 - **Site**: <https://marius-colacioiu.com>
-- **Path aliases**: `@components`, `@layouts`, `@utils`, `@scripts` (defined once, in `tsconfig.json` `paths`; Astro resolves them natively)
+- **Path aliases**: `@components`, `@layouts` (defined once, in `tsconfig.json` `paths`; Astro resolves them natively)
 
 ## Commands
 
@@ -20,14 +20,10 @@
 ```text
 src/
 ├── components/    # Astro and React components
-├── content/       # Astro content collections (posts)
 ├── data/          # Content data
 ├── layouts/       # Astro layouts
 ├── pages/         # Routes (file-based; index.astro is entry)
-├── scripts/       # Client scripts
-├── styles/        # Global styles
-├── types/         # Type definitions
-└── utils/         # Utilities
+└── styles/        # Global styles
 ```
 
 ## Code Conventions
@@ -76,5 +72,5 @@ After implementation and verification, promote reusable outcomes, commit the com
 ## Git Workflow
 
 - Write clear, descriptive commit messages
-- Reference work items in commits when useful (e.g., `Work item: posts-section`)
+- Reference work items in commits when useful (e.g., `Work item: adversarial-review`)
 - Commit after each logical step
