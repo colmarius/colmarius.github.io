@@ -5,9 +5,13 @@ import Navigation from '@components/Navigation.astro';
 
 type Props = {
   title: string;
+  description?: string;
 };
 
-const { title } = Astro.props;
+const {
+  title,
+  description = 'Marius Colacioiu - Engineering Leader and Entrepreneur from Zürich, Switzerland',
+} = Astro.props;
 const currentPath = Astro.url.pathname;
 ---
 
@@ -16,19 +20,9 @@ const currentPath = Astro.url.pathname;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Marius Colacioiu - Engineering Leader and Entrepreneur from Zürich, Switzerland" />
+    <meta name="description" content={description} />
     <title>{title}</title>
     <link rel="icon" type="image/png" href="/flashtocat.png" />
-
-    <style>
-      body {
-        transition: opacity 50ms ease-out;
-      }
-    </style>
-    <script>
-      if (import.meta.env.VITE_GOOGLE_ANALYTICS_KEY) {
-      }
-    </script>
   </head>
   <body class="antialiased">
     <div class="mx-auto max-w-6xl px-8 py-16 sm:px-12 lg:px-16">

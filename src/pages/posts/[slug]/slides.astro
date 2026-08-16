@@ -84,106 +84,27 @@ const { Content } = await render(post);
       </button>
     </div>
 
-    <script is:inline>
-      // Shared Mermaid config (keep in sync with src/scripts/mermaid-config.ts)
-      const mermaidConfig = {
-        startOnLoad: false,
-        securityLevel: 'strict',
-        theme: 'default',
-        themeVariables: {
-          primaryColor: '#eef2ff',
-          primaryTextColor: '#1e1b4b',
-          primaryBorderColor: '#a5b4fc',
-          secondaryColor: '#f8fafc',
-          secondaryTextColor: '#0f172a',
-          secondaryBorderColor: '#e2e8f0',
-          tertiaryColor: '#ffffff',
-          tertiaryTextColor: '#0f172a',
-          tertiaryBorderColor: '#cbd5e1',
-          noteBkgColor: '#ffffff',
-          noteTextColor: '#0f172a',
-          noteBorderColor: '#e2e8f0',
-          lineColor: '#64748b',
-          textColor: '#0f172a',
-          mainBkg: '#ffffff',
-          secondBkg: '#f8fafc',
-          border1: '#e2e8f0',
-          border2: '#cbd5e1',
-          arrowheadColor: '#64748b',
-          fontFamily: 'system-ui, -apple-system, sans-serif',
-        },
-      };
+    <script>
+      import { renderMermaid } from '@scripts/mermaid';
 
-      // Inline version of renderMermaid for slides (scoped to specific element)
-      async function renderMermaidInline(root = document) {
-        const selectors = [
-          'pre > code.language-mermaid',
-          'pre > code.lang-mermaid',
-          'pre[data-language="mermaid"] > code',
-          'pre[class*="language-mermaid"] > code',
-        ].join(', ');
-
-        let codes = Array.from(root.querySelectorAll(selectors));
-
-        if (codes.length === 0) {
-          codes = Array.from(root.querySelectorAll('pre > code')).filter(
-            (code) => {
-              const text = code.textContent?.trim() || '';
-              return (
-                text.startsWith('flowchart') ||
-                text.startsWith('graph') ||
-                text.startsWith('sequenceDiagram') ||
-                text.startsWith('classDiagram') ||
-                text.startsWith('stateDiagram') ||
-                text.startsWith('erDiagram') ||
-                text.startsWith('journey') ||
-                text.startsWith('gantt') ||
-                text.startsWith('pie') ||
-                text.startsWith('gitGraph')
-              );
-            },
-          );
-        }
-
-        if (codes.length === 0 && !root.querySelector('.mermaid')) return;
-
-        for (const code of codes) {
-          const pre = code.closest('pre');
-          const div = document.createElement('div');
-          div.className = 'mermaid mermaid-loading';
-          div.textContent = code.textContent || '';
-          pre?.replaceWith(div);
-        }
-
-        const { default: mermaid } = await import(
-          'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs'
-        );
-        mermaid.initialize(mermaidConfig);
-
-        const mermaidElements = root.querySelectorAll('.mermaid');
-        if (mermaidElements.length > 0) {
-          await mermaid.run({ nodes: Array.from(mermaidElements) });
-        }
-
-        root.querySelectorAll('.mermaid-loading').forEach((el) => {
-          el.classList.remove('mermaid-loading');
-        });
-      }
       // Split content by H2 headers using Range to handle Astro's wrapper elements
-      function splitIntoSlides() {
+      function splitIntoSlides(): number {
         const source = document.getElementById('source');
         const container = document.getElementById('slides-container');
+        if (!source || !container) return 0;
+
+        const slideClassName =
+          'slide prose-slide mx-auto max-w-3xl bg-white border border-slate-200 rounded-lg p-8 sm:p-12 shadow-sm';
         const headings = Array.from(source.querySelectorAll('h2'));
 
         // If no H2s found, treat entire content as one slide
         if (headings.length === 0) {
           const slideDiv = document.createElement('div');
-          slideDiv.className =
-            'slide prose-slide mx-auto max-w-3xl bg-white border border-slate-200 rounded-lg p-8 sm:p-12 shadow-sm';
-          slideDiv.dataset.index = 0;
-          Array.from(source.children).forEach((child) => {
+          slideDiv.className = slideClassName;
+          slideDiv.dataset.index = '0';
+          for (const child of Array.from(source.children)) {
             slideDiv.appendChild(child.cloneNode(true));
-          });
+          }
           container.appendChild(slideDiv);
           return 1;
         }
@@ -200,9 +121,8 @@ const { Content } = await render(post);
           }
 
           const slideDiv = document.createElement('div');
-          slideDiv.className =
-            'slide prose-slide mx-auto max-w-3xl bg-white border border-slate-200 rounded-lg p-8 sm:p-12 shadow-sm';
-          slideDiv.dataset.index = index;
+          slideDiv.className = slideClassName;
+          slideDiv.dataset.index = String(index);
           slideDiv.appendChild(range.cloneContents());
           container.appendChild(slideDiv);
         });
@@ -215,22 +135,27 @@ const { Content } = await render(post);
       let totalSlides = 0;
 
       async function updateSlide() {
-        const slides = document.querySelectorAll('.slide');
+        const slides = document.querySelectorAll<HTMLElement>('.slide');
         slides.forEach((slide, index) => {
           slide.classList.toggle('active', index === currentIndex);
         });
 
-        document.getElementById('current').textContent = currentIndex + 1;
-        document.getElementById('prev-btn').disabled = currentIndex === 0;
-        document.getElementById('next-btn').disabled =
-          currentIndex === totalSlides - 1;
+        const current = document.getElementById('current');
+        if (current) current.textContent = String(currentIndex + 1);
 
-        window.location.hash = currentIndex + 1;
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        if (prevBtn instanceof HTMLButtonElement)
+          prevBtn.disabled = currentIndex === 0;
+        if (nextBtn instanceof HTMLButtonElement)
+          nextBtn.disabled = currentIndex === totalSlides - 1;
+
+        window.location.hash = String(currentIndex + 1);
 
         // Render Mermaid on current slide if not already rendered
         const currentSlide = slides[currentIndex];
         if (currentSlide && !currentSlide.dataset.mermaidRendered) {
-          await renderMermaidInline(currentSlide);
+          await renderMermaid(currentSlide);
           currentSlide.dataset.mermaidRendered = 'true';
         }
       }
@@ -252,15 +177,14 @@ const { Content } = await render(post);
       // Initialize - split into slides then render Mermaid on visible slide
       async function initialize() {
         totalSlides = splitIntoSlides();
-        document.getElementById('total').textContent = totalSlides;
+        const total = document.getElementById('total');
+        if (total) total.textContent = String(totalSlides);
 
         // Check hash for initial slide
-        const hash = window.location.hash.slice(1);
-        if (hash && !isNaN(hash)) {
-          const slideNum = parseInt(hash, 10) - 1;
-          if (slideNum >= 0 && slideNum < totalSlides) {
-            currentIndex = slideNum;
-          }
+        const slideNum =
+          Number.parseInt(window.location.hash.slice(1), 10) - 1;
+        if (!Number.isNaN(slideNum) && slideNum >= 0 && slideNum < totalSlides) {
+          currentIndex = slideNum;
         }
 
         await updateSlide();
@@ -270,8 +194,8 @@ const { Content } = await render(post);
       initialize();
 
       // Event listeners
-      document.getElementById('prev-btn').addEventListener('click', prevSlide);
-      document.getElementById('next-btn').addEventListener('click', nextSlide);
+      document.getElementById('prev-btn')?.addEventListener('click', prevSlide);
+      document.getElementById('next-btn')?.addEventListener('click', nextSlide);
 
       document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {

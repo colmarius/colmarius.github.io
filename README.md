@@ -6,7 +6,7 @@ Personal website built with Astro and React, deployed on GitHub Pages.
 
 ## Tech Stack
 
-- **Astro v5** with React 19
+- **Astro v7** with React 19
 - **TailwindCSS v4**
 - **Biome** for linting and formatting
 - **GitHub Pages** automated deployment
@@ -26,7 +26,8 @@ npm run lint:fix  # Lint & format
 
 ```bash
 src/
-├── components/    # React components
+├── components/    # Astro and React components
+├── content/       # Content collections (posts)
 ├── data/          # Content data
 ├── layouts/       # Astro layouts
 ├── pages/         # Routes (file-based)

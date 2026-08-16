@@ -5,7 +5,7 @@
 - **Astro v7** + React 19 + TailwindCSS v4
 - **Static site** deployed to GitHub Pages
 - **Site**: <https://marius-colacioiu.com>
-- **Path aliases**: `@components`, `@config`, `@types`, `@assets`, `@layouts`, `@utils`, `@scripts`
+- **Path aliases**: `@components`, `@layouts`, `@utils`, `@scripts` (defined once, in `tsconfig.json` `paths`; Astro resolves them natively)
 
 ## Commands
 
@@ -19,12 +19,11 @@
 
 ```text
 src/
-├── components/    # React components
-├── content/       # Astro content collections (posts, summaries)
+├── components/    # Astro and React components
+├── content/       # Astro content collections (posts)
 ├── data/          # Content data
-├── hooks/         # React hooks
 ├── layouts/       # Astro layouts
-├── pages/         # Routes and API endpoints (index.astro is entry)
+├── pages/         # Routes (file-based; index.astro is entry)
 ├── scripts/       # Client scripts
 ├── styles/        # Global styles
 ├── types/         # Type definitions
@@ -41,7 +40,7 @@ src/
 
 ## Important Notes
 
-- `client:only="react"` required for React components (avoid SSR issues)
+- Interactive React islands use `client:load`; purely presentational React components need no client directive
 - Browser APIs must be conditionally accessed
 - Build outputs to `dist/`
 - Always run `npm run build` after changes to verify

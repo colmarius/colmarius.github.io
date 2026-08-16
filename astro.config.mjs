@@ -20,14 +20,7 @@ export default defineConfig({
         : undefined,
     },
     resolve: {
-      alias: {
-        '@components': '/src/components',
-        '@config': '/src/config',
-        '@types': '/src/types',
-        '@assets': '/src/assets',
-        '@layouts': '/src/layouts',
-        '@utils': '/src/utils',
-      },
+      // Import aliases live in tsconfig.json "paths"; Astro resolves them natively.
       dedupe: ['react', 'react-dom'],
     },
 

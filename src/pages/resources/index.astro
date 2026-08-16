@@ -20,7 +20,6 @@ import Layout from '../../layouts/Layout.astro';
         description="A source-backed field guide to practical coding-agent workflows, articles, and resources."
         iconType="agent"
         external
-        client:load
       />
       <ResourceCard
         href="/resources/newsletters"
@@ -28,7 +27,6 @@ import Layout from '../../layouts/Layout.astro';
         description="Weekly insights on tech, AI, and software engineering from my favorite sources."
         count={newsletters.length}
         iconType="newsletter"
-        client:load
       />
       <ResourceCard
         href="/resources/books"
@@ -36,7 +34,6 @@ import Layout from '../../layouts/Layout.astro';
         description="Books that shaped my thinking on technology, business, and decision-making."
         count={books.length}
         iconType="book"
-        client:load
       />
     </div>
   </div>
