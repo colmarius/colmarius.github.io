@@ -52,12 +52,19 @@ const currentPath = Astro.url.pathname;
         links.forEach(link => {
           link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
+            const mouseEvent = e as MouseEvent;
 
             if (!href ||
                 href.startsWith('http') ||
                 href.startsWith('#') ||
                 (link as HTMLAnchorElement).target === '_blank' ||
-                link.hasAttribute('download')) {
+                link.hasAttribute('download') ||
+                // Let the browser handle modified clicks (open in new tab/window)
+                mouseEvent.ctrlKey ||
+                mouseEvent.metaKey ||
+                mouseEvent.shiftKey ||
+                mouseEvent.altKey ||
+                mouseEvent.button !== 0) {
               return;
             }
 
