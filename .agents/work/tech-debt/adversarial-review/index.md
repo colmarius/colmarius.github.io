@@ -1,6 +1,6 @@
 # Adversarial Review Improvements
 
-Status: planned
+Status: completed
 Category: tech-debt
 Updated: 2026-08-16
 
@@ -10,7 +10,7 @@ User requested an adversarial review of the repo (code, GitHub workflows, featur
 
 ## Summary
 
-Full-repo review done. Baseline `npm run build`, `npm run check`, and `biome check` all pass. Findings below, ordered by severity. Plan in `plan.md`.
+Full-repo review done; all planned fixes implemented and verified (build/check/lint green, e2e via agent-browser in dev and production preview, Mermaid verified with a temporary diagram then reverted). Evidence in `plan.md` Verification. Two findings intentionally left for user decision: 15 legacy completed work items fail closeout validation (no mechanical backfill), and draft posts 404 in dev because their `draft/` id can't match the `[slug]` route.
 
 ## Findings
 
@@ -54,8 +54,8 @@ Full-repo review done. Baseline `npm run build`, `npm run check`, and `biome che
 
 ## Next Action
 
-- Execute plan.md in this thread.
+- None.
 
 ## Open Questions
 
-- None blocking. Items 9, 16, 17, 19 intentionally left unchanged (vetoable decisions surfaced to user).
+- None blocking. Items 9, 16, 17, 19, the legacy work-item closeout, and the draft-post routing quirk were intentionally left unchanged (vetoable decisions surfaced to user).
