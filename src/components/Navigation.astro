@@ -14,6 +14,12 @@ const NAVIGATION_ITEMS = [
   { link: '/resources', title: 'Resources' },
   { link: '/contact', title: 'Contact' },
 ];
+
+const isCurrentPath = (path: string) =>
+  path === '/'
+    ? normalizedCurrentPath === '/'
+    : normalizedCurrentPath === path ||
+      normalizedCurrentPath.startsWith(`${path}/`);
 ---
 
 <header class="flex items-center justify-between pb-20">
@@ -26,8 +32,9 @@ const NAVIGATION_ITEMS = [
         <li>
           <a
             href={item.link}
+            aria-current={isCurrentPath(item.link) ? 'page' : undefined}
             class={`font-light uppercase hover:text-indigo-600 my-8 border-indigo-600 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600/50 focus-visible:ring-offset-2 rounded-sm ${
-              normalizedCurrentPath === item.link ? 'text-indigo-600 border-b-2 pb-2' : ''
+              isCurrentPath(item.link) ? 'text-indigo-600 border-b-2 pb-2' : ''
             }`}
           >
             {item.title}
@@ -43,7 +50,6 @@ const NAVIGATION_ITEMS = [
       aria-controls="mobile-menu"
       aria-expanded="false"
       aria-label="Open menu"
-      onclick="toggleMobileMenu()"
     >
       <svg id="icon-hamburger" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -58,15 +64,16 @@ const NAVIGATION_ITEMS = [
       class="hide-menu-nav fixed inset-0 z-40 bg-white"
       role="dialog"
       aria-modal="true"
+      aria-label="Site navigation"
     >
       <ul class="flex flex-col w-full pt-20 divide-y divide-gray-200">
         {NAVIGATION_ITEMS.map((item) => (
           <li class="w-full">
             <a
               href={item.link}
-              onclick="closeMobileMenu()"
+              aria-current={isCurrentPath(item.link) ? 'page' : undefined}
               class={`block w-full px-6 py-4 text-lg font-medium text-gray-900 hover:bg-gray-50 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600/50 focus-visible:ring-offset-2 ${
-                normalizedCurrentPath === item.link ? 'text-indigo-600 bg-indigo-50' : ''
+                isCurrentPath(item.link) ? 'text-indigo-600 bg-indigo-50' : ''
               }`}
             >
               {item.title}
@@ -89,35 +96,35 @@ const NAVIGATION_ITEMS = [
 </style>
 
 <script>
-  function setMenuState(open: boolean) {
-    const menu = document.getElementById('mobile-menu');
-    const btn = document.getElementById('mobile-menu-button');
-    const iconOpen = document.getElementById('icon-hamburger');
-    const iconClose = document.getElementById('icon-close');
+  const menu = document.getElementById('mobile-menu');
+  const btn = document.getElementById('mobile-menu-button');
+  const iconOpen = document.getElementById('icon-hamburger');
+  const iconClose = document.getElementById('icon-close');
+  const menuLinks = Array.from(menu?.querySelectorAll<HTMLAnchorElement>('a[href]') ?? []);
+  const backgroundContent = document.querySelectorAll<HTMLElement>('header > a, main, footer');
+
+  function setMenuState(open: boolean, restoreFocus = false) {
+    menu?.classList.toggle('hide-menu-nav', !open);
+    menu?.classList.toggle('show-menu-nav', open);
+    btn?.setAttribute('aria-expanded', String(open));
+    btn?.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    iconOpen?.classList.toggle('hidden', open);
+    iconClose?.classList.toggle('hidden', !open);
+    document.body.classList.toggle('overflow-hidden', open);
+    backgroundContent.forEach((element) => {
+      element.inert = open;
+    });
 
     if (open) {
-      menu?.classList.remove('hide-menu-nav');
-      menu?.classList.add('show-menu-nav');
-      btn?.setAttribute('aria-expanded', 'true');
-      btn?.setAttribute('aria-label', 'Close menu');
-      iconOpen?.classList.add('hidden');
-      iconClose?.classList.remove('hidden');
-      document.body.classList.add('overflow-hidden');
-    } else {
-      menu?.classList.remove('show-menu-nav');
-      menu?.classList.add('hide-menu-nav');
-      btn?.setAttribute('aria-expanded', 'false');
-      btn?.setAttribute('aria-label', 'Open menu');
-      iconOpen?.classList.remove('hidden');
-      iconClose?.classList.add('hidden');
-      document.body.classList.remove('overflow-hidden');
+      requestAnimationFrame(() => menuLinks[0]?.focus());
+    } else if (restoreFocus) {
+      btn?.focus();
     }
   }
 
   function toggleMobileMenu() {
-    const menu = document.getElementById('mobile-menu');
     const opening = menu?.classList.contains('hide-menu-nav');
-    setMenuState(!!opening);
+    setMenuState(Boolean(opening), !opening);
   }
 
   function closeMobileMenu() {
@@ -125,11 +132,31 @@ const NAVIGATION_ITEMS = [
   }
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeMobileMenu();
+    if (!menu?.classList.contains('show-menu-nav')) return;
+
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      setMenuState(false, true);
+      return;
+    }
+
+    if (e.key !== 'Tab' || !btn) return;
+
+    const focusableElements = [btn, ...menuLinks];
+    const currentIndex = focusableElements.indexOf(document.activeElement as HTMLElement);
+
+    if (e.shiftKey && currentIndex === 0) {
+      e.preventDefault();
+      focusableElements.at(-1)?.focus();
+    } else if (!e.shiftKey && currentIndex === focusableElements.length - 1) {
+      e.preventDefault();
+      focusableElements[0]?.focus();
+    }
   });
 
-  // @ts-ignore
-  window.toggleMobileMenu = toggleMobileMenu;
-  // @ts-ignore
-  window.closeMobileMenu = closeMobileMenu;
+  btn?.addEventListener('click', toggleMobileMenu);
+  menuLinks.forEach((link) => link.addEventListener('click', closeMobileMenu));
+  window.matchMedia('(min-width: 640px)').addEventListener('change', (event) => {
+    if (event.matches) setMenuState(false);
+  });
 </script>

@@ -36,8 +36,9 @@ const currentPath = Astro.url.pathname;
 
     <script>
       const initPage = () => {
+        const transitionDuration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 150;
         document.body.style.opacity = '0';
-        document.body.style.transition = 'opacity 150ms ease-out';
+        document.body.style.transition = `opacity ${transitionDuration}ms ease-out`;
 
         requestAnimationFrame(() => {
           document.body.style.opacity = '1';
@@ -47,24 +48,23 @@ const currentPath = Astro.url.pathname;
       document.addEventListener('DOMContentLoaded', () => {
         initPage();
 
-        const links = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href^="../"]');
+        const links = document.querySelectorAll<HTMLAnchorElement>('a[href^="/"], a[href^="./"], a[href^="../"]');
 
         links.forEach(link => {
           link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
-            const mouseEvent = e as MouseEvent;
 
-            if (!href ||
+            if (e.defaultPrevented ||
+                e.button !== 0 ||
+                e.metaKey ||
+                e.ctrlKey ||
+                e.shiftKey ||
+                e.altKey ||
+                !href ||
                 href.startsWith('http') ||
                 href.startsWith('#') ||
-                (link as HTMLAnchorElement).target === '_blank' ||
-                link.hasAttribute('download') ||
-                // Let the browser handle modified clicks (open in new tab/window)
-                mouseEvent.ctrlKey ||
-                mouseEvent.metaKey ||
-                mouseEvent.shiftKey ||
-                mouseEvent.altKey ||
-                mouseEvent.button !== 0) {
+                link.target === '_blank' ||
+                link.hasAttribute('download')) {
               return;
             }
 
@@ -74,7 +74,7 @@ const currentPath = Astro.url.pathname;
 
             setTimeout(() => {
               window.location.href = href;
-            }, 150);
+            }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 150);
           });
         });
       });
