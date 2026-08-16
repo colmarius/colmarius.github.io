@@ -26,3 +26,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Amp orb runtime files
+.amp/portal-proxy.mjs
+.amp/portals/
+.amp/in/
