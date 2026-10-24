@@ -15,6 +15,7 @@ const { active } = Astro.props;
   <div class="flex flex-wrap gap-2">
     <a
       href="/resources/newsletters"
+      aria-current={active === 'newsletters' ? 'page' : undefined}
       class={`px-4 py-2 rounded-full text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600/50 focus-visible:ring-offset-2 ${
         active === 'newsletters'
           ? 'bg-gray-900 text-white shadow-sm'
@@ -25,6 +26,7 @@ const { active } = Astro.props;
     </a>
     <a
       href="/resources/books"
+      aria-current={active === 'books' ? 'page' : undefined}
       class={`px-4 py-2 rounded-full text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600/50 focus-visible:ring-offset-2 ${
         active === 'books'
           ? 'bg-gray-900 text-white shadow-sm'
