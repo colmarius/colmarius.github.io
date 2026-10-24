@@ -16,8 +16,7 @@ const Newsletters = () => {
               alt: newsletter.name,
               className:
                 'w-16 h-16 md:w-20 md:h-20 rounded-lg object-cover bg-gray-100',
-              fallback:
-                'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0yNiAzNkg1NEwyNiA0NFYzNloiIGZpbGw9IiM5Q0E0QUYiLz4KPHBhdGggZD0iTTI2IDQ2SDU0TDI2IDU0VjQ2WiIgZmlsbD0iIzlDQTRBRiIvPgo8L3N2Zz4K',
+              fallback: '/resource-placeholder.svg',
             }}
             title={newsletter.name}
             description={newsletter.description}

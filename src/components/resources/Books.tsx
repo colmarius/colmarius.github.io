@@ -12,8 +12,7 @@ const Books = () => {
             alt: `${book.title} by ${book.author}`,
             className:
               'w-20 h-28 md:w-24 md:h-36 rounded object-contain bg-gray-100 border border-gray-200',
-            fallback:
-              'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA4MCA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjgwIiBoZWlnaHQ9Ijk2IiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0yMCAzMEg2MEwyMCA0MFYzMFoiIGZpbGw9IiM5Q0E0QUYiLz4KPHA+IDxwYXRoIGQ9Ik0yMCA0Mkg2MEwyMCA1MlY0MloiIGZpbGw9IiM5Q0E0QUYiLz4KPHBhdGggZD0iTTIwIDU0SDYwTDIwIDY0VjU0WiIgZmlsbD0iIzlDQTRBRiIvPgo8L3N2Zz4K',
+            fallback: '/resource-placeholder.svg',
           }}
           title={book.title}
           description={book.description}

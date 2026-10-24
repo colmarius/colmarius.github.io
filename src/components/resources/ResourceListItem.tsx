@@ -42,7 +42,10 @@ export default function ResourceListItem({
             alt={image.alt}
             className={image.className}
             onError={(e) => {
-              if (image.fallback) {
+              if (
+                image.fallback &&
+                e.currentTarget.getAttribute('src') !== image.fallback
+              ) {
                 e.currentTarget.src = image.fallback;
               }
             }}
