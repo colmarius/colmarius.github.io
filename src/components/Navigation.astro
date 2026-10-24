@@ -103,7 +103,7 @@ const isCurrentPath = (path: string) =>
   const menuLinks = Array.from(menu?.querySelectorAll<HTMLAnchorElement>('a[href]') ?? []);
   const backgroundContent = document.querySelectorAll<HTMLElement>('header > a, main, footer');
 
-  function setMenuState(open: boolean, restoreFocus = false) {
+  function setMenuState(open: boolean, moveFocus = false) {
     menu?.classList.toggle('hide-menu-nav', !open);
     menu?.classList.toggle('show-menu-nav', open);
     btn?.setAttribute('aria-expanded', String(open));
@@ -115,16 +115,18 @@ const isCurrentPath = (path: string) =>
       element.inert = open;
     });
 
-    if (open) {
-      requestAnimationFrame(() => menuLinks[0]?.focus());
-    } else if (restoreFocus) {
+    if (open && moveFocus) {
+      menuLinks[0]?.focus();
+    } else if (moveFocus) {
       btn?.focus();
     }
   }
 
-  function toggleMobileMenu() {
+  function toggleMobileMenu(event: MouseEvent) {
     const opening = menu?.classList.contains('hide-menu-nav');
-    setMenuState(Boolean(opening), !opening);
+    const keyboardActivation = event.detail === 0;
+    setMenuState(Boolean(opening), keyboardActivation);
+    if (!keyboardActivation) btn?.blur();
   }
 
   function closeMobileMenu() {
@@ -145,7 +147,10 @@ const isCurrentPath = (path: string) =>
     const focusableElements = [btn, ...menuLinks];
     const currentIndex = focusableElements.indexOf(document.activeElement as HTMLElement);
 
-    if (e.shiftKey && currentIndex === 0) {
+    if (currentIndex === -1) {
+      e.preventDefault();
+      (e.shiftKey ? focusableElements.at(-1) : btn)?.focus();
+    } else if (e.shiftKey && currentIndex === 0) {
       e.preventDefault();
       focusableElements.at(-1)?.focus();
     } else if (!e.shiftKey && currentIndex === focusableElements.length - 1) {
